@@ -27,7 +27,8 @@ If the file doesn't exist, create it:
     "slack_skill": {"complete": false},
     "skills_symlinked": {"complete": false},
     "official_plugins": {"complete": false},
-    "global_claude_md": {"complete": false}
+    "global_claude_md": {"complete": false},
+    "warp_terminal": {"complete": false, "skipped": false}
   }
 }
 ```
@@ -279,6 +280,25 @@ When asked to create a skill, write a skill, or modify a skill:
 ```
 
 This ensures the guided skill development workflow is used consistently.
+
+### Step 13: Warp terminal (optional)
+
+**Check:** `ls /Applications/Warp.app`
+
+This step is optional but recommended. Ask the user:
+
+> "Would you like to install Warp as an enhanced terminal? It's optional but recommended because:
+> 1. **Multiple Claude agents at once** — Press Cmd+D to split into columns, letting you run several Claude sessions side by side
+> 2. **Quality of life features** — Ctrl-click to open files or links, built-in markdown viewer, and more
+>
+> You can learn more at warp.dev. Would you like to install it?"
+
+**If yes:**
+```bash
+brew install --cask warp
+```
+
+**If no:** Mark as skipped and continue.
 
 ---
 
