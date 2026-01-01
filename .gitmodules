@@ -1,21 +1,21 @@
 [submodule "skills/slack"]
 	path = skills/slack
-	url = https://github.com/HartreeWorks/claude-skill--slack
+	url = https://github.com/HartreeWorks/skill--slack
 [submodule "skills/schedule-task"]
 	path = skills/schedule-task
-	url = https://github.com/HartreeWorks/claude-skill--schedule-task
+	url = https://github.com/HartreeWorks/skill--schedule-task
 [submodule "skills/secure-mcp-install"]
 	path = skills/secure-mcp-install
-	url = https://github.com/HartreeWorks/claude-skill--secure-mcp-install
+	url = https://github.com/HartreeWorks/skill--secure-mcp-install
 [submodule "skills/project-management"]
 	path = skills/project-management
-	url = https://github.com/HartreeWorks/claude-skill--project-management
+	url = https://github.com/HartreeWorks/skill--project-management
 [submodule "skills/youtube-transcribe"]
 	path = skills/youtube-transcribe
-	url = https://github.com/HartreeWorks/claude-skill--youtube-transcribe
+	url = https://github.com/HartreeWorks/skill--youtube-transcribe
 [submodule "skills/youtube-download"]
 	path = skills/youtube-download
-	url = https://github.com/HartreeWorks/claude-skill--youtube-download
+	url = https://github.com/HartreeWorks/skill--youtube-download
 [submodule "skills/transcribe-audio"]
 	path = skills/transcribe-audio
-	url = https://github.com/HartreeWorks/claude-skill--transcribe-audio
+	url = https://github.com/HartreeWorks/skill--transcribe-audio
