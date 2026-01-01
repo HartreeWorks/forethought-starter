@@ -226,27 +226,22 @@ If they want to skip, that's fine — mark as complete and note they can set it 
 
 ### Step 10: Skills symlinked
 
-**Check:** Check if symlinks exist in `~/.claude/skills/` for each skill:
-- `~/.claude/skills/project-management`
-- `~/.claude/skills/slack`
-- `~/.claude/skills/schedule-task`
-- `~/.claude/skills/secure-mcp-install`
+**Check:** List all subdirectories in `skills/` and verify each has a corresponding symlink in `~/.claude/skills/`.
 
-**If missing:**
+**If any are missing:**
+
+Run from the forethought-starter directory:
 
 ```bash
 mkdir -p ~/.claude/skills
 
-# Get the absolute path to this repo's skills folder
-STARTER_DIR="$(cd "$(dirname "$0")" && pwd)"
-
-ln -sfn "$STARTER_DIR/skills/project-management" ~/.claude/skills/project-management
-ln -sfn "$STARTER_DIR/skills/slack" ~/.claude/skills/slack
-ln -sfn "$STARTER_DIR/skills/schedule-task" ~/.claude/skills/schedule-task
-ln -sfn "$STARTER_DIR/skills/secure-mcp-install" ~/.claude/skills/secure-mcp-install
+for skill in skills/*/; do
+  skill_name=$(basename "$skill")
+  ln -sfn "$(pwd)/skills/$skill_name" ~/.claude/skills/"$skill_name"
+done
 ```
 
-Note: Run these from the forethought-starter directory so the paths resolve correctly. Use `$(pwd)` to get the current directory.
+This symlinks all skills in the repository, so new skills are automatically included.
 
 ---
 
@@ -273,12 +268,16 @@ Once all steps are complete, welcome the user:
 
 ## Skills reference
 
-| Skill | Trigger | Purpose |
-|-------|---------|---------|
-| project-management | `/new-project`, "new project", "create project" | Create and manage research projects |
-| slack | `/slack`, "send Slack message", "Slack digest" | Multi-workspace Slack messaging |
-| schedule-task | `/schedule-task`, "schedule a task", "run daily" | macOS launchd scheduling |
-| secure-mcp-install | "install MCP server", "add MCP" | Security-focused MCP installation |
+To see available skills, list the `skills/` directory. Each skill folder contains a `SKILL.md` with its triggers and documentation.
+
+```bash
+ls skills/
+```
+
+Read individual skill docs for details:
+```bash
+cat skills/<skill-name>/SKILL.md
+```
 
 ---
 
