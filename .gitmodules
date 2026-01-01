@@ -10,3 +10,12 @@
 [submodule "skills/project-management"]
 	path = skills/project-management
 	url = https://github.com/HartreeWorks/claude-skill--project-management
+[submodule "skills/youtube-transcribe"]
+	path = skills/youtube-transcribe
+	url = https://github.com/HartreeWorks/claude-skill--youtube-transcribe
+[submodule "skills/youtube-download"]
+	path = skills/youtube-download
+	url = https://github.com/HartreeWorks/claude-skill--youtube-download
+[submodule "skills/transcribe-audio"]
+	path = skills/transcribe-audio
+	url = https://github.com/HartreeWorks/claude-skill--transcribe-audio

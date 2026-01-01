@@ -42,6 +42,9 @@ Claude will:
 | slack | Multi-workspace Slack messaging |
 | schedule-task | macOS scheduled task management |
 | secure-mcp-install | Security-focused MCP server installation |
+| youtube-transcribe | Transcribe YouTube videos using Parakeet MLX |
+| youtube-download | Download YouTube videos and audio using yt-dlp |
+| transcribe-audio | Transcribe audio files using Parakeet MLX |
 
 ### Learning resources
 
