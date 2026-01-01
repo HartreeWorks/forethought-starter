@@ -280,25 +280,25 @@ Once all steps are complete, welcome the user:
 
 > **Your Claude Code environment is ready!**
 >
-> ## ⚠️ You must restart Claude Code before continuing
+> Here's what you can do next:
+
+> **1. Start a research project:**
+> Say "new project" and we can setup a new project with context, memory, and more.
 >
-> The new skills and plugins won't be available until you restart. To restart:
-> 1. Press **Ctrl+C** to exit Claude Code
-> 2. Run `claude` again in your terminal
->
-> ---
->
-> Once you've restarted, here's what you can do:
->
-> **Try one of your skills:**
-> - `/new-project` — Create a new research project with scaffolding
+> **2. Try one of your skills:**
+> - `/youtube-transcribe` — Transcribe a YouTube video
+> - `/forum-digest` — Track users/topics on LessWrong, EA Forum, Alignment Forum
+> - `/slack` — Send or read Slack messages
 > - `/schedule-task` — Schedule recurring tasks
 >
-> **Create a new skill:**
+> **3. Create a new skill:**
 > See `learning/creating-a-skill.md` for a quick tutorial, or just tell me what you want to automate and we'll build it together.
 >
-> **Start a research project:**
-> Say "new project" and I'll walk you through creating a folder structure with CLAUDE.md, MEMORY.md, and more.
+> ## ⚠️ You must restart Claude Code before continuing ⚠️
+>
+> The new skills won't be available until you restart. To restart:
+> 1. Press **Ctrl+C** to exit Claude Code
+> 2. Run `claude` again in your terminal
 
 ---
 
