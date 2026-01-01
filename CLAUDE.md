@@ -43,7 +43,7 @@ Guide the user through each step conversationally. After completing each step, u
 **Check:** `which brew`
 
 **If missing:**
-1. Explain: "Homebrew is a package manager for macOS. We'll use it to install other dependencies."
+1. Explain: "Homebrew is a package manager for macOS. We'll use it to install the software we need."
 2. Run the installer:
    ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -88,16 +88,14 @@ Verify: `gh --version`
 
 This step is optional but strongly recommended. Ask the user:
 
-> "Would you like to install Cursor? It's optional but strongly recommended for browsing and editing your project files. Cursor is an AI-enhanced code editor built on VS Code.
+> "Would you like to install Cursor? It's optional but strongly recommended to help with browsing and editing your project files.
 >
-> You can learn more at cursor.com. Would you like to install it?"
+> Would you like to install it?"
 
 **If yes:**
 ```bash
 brew install --cask cursor
 ```
-
-After installing, they may want to run "Install 'cursor' command" from Cursor's command palette to enable the `cursor` CLI.
 
 **If no:** Mark as skipped and continue.
 
@@ -105,13 +103,13 @@ After installing, they may want to run "Install 'cursor' command" from Cursor's 
 
 **Check:** `ls /Applications/Warp.app`
 
-This step is optional but recommended. Ask the user:
+This step is optional but strongly recommended. Ask the user:
 
-> "Would you like to install Warp as an enhanced terminal? It's optional but recommended because:
+> "Would you like to install Warp as an enhanced terminal? It's optional but strongly recommended because:
 > 1. **Multiple Claude agents at once** — Press Cmd+D to split into columns, letting you run several Claude sessions side by side
 > 2. **Quality of life features** — Ctrl-click to open files or links, built-in markdown viewer, and more
 >
-> You can learn more at warp.dev. Would you like to install it?"
+> Would you like to install it?"
 
 **If yes:**
 ```bash
@@ -175,7 +173,7 @@ This enables native macOS notifications for Claude Code.
 
 3. Test by sending a notification:
    ```bash
-   echo '{"cwd": "'$(pwd)'", "message": "Test notification"}' | python3 ~/.claude/scripts/notify.py Notification
+   echo '{"cwd": "'$(pwd)'", "message": "Test notification from Forethought Starter"}' | python3 ~/.claude/scripts/notify.py Notification
    ```
 
 ### Step 8: Skills symlinked
@@ -194,8 +192,6 @@ for skill in skills/*/; do
   ln -sfn "$(pwd)/skills/$skill_name" ~/.claude/skills/"$skill_name"
 done
 ```
-
-This symlinks all skills in the repository, so new skills are automatically included.
 
 ### Step 9: Official plugins
 
@@ -267,44 +263,12 @@ Ask the user:
 
 **If yes:**
 
-Follow the secure-mcp-install workflow (see `skills/secure-mcp-install/SKILL.md`):
+Follow the secure-mcp-install workflow (see `skills/secure-mcp-install/SKILL.md`) to install `https://github.com/taylorwilsdon/google_workspace_mcp`.
 
-1. Clone the repository:
-   ```bash
-   mkdir -p ~/.claude/mcp-audits
-   cd ~/.claude/mcp-audits
-   git clone https://github.com/taylorwilsdon/google_workspace_mcp google_workspace_mcp
-   cd google_workspace_mcp
-   ```
-
-2. Run the audit script:
-   ```bash
-   ~/.claude/skills/secure-mcp-install/scripts/audit-mcp-server.sh ~/.claude/mcp-audits/google_workspace_mcp
-   ```
-
-3. Create venv and install:
-   ```bash
-   cd ~/.claude/mcp-audits/google_workspace_mcp
-   python3 -m venv .venv
-   source .venv/bin/activate
-   pip install -e .
-   ```
-
-4. Register with Claude Code:
-   ```bash
-   claude mcp add-json google_workspace '{
-     "type": "stdio",
-     "command": "'$HOME'/.claude/mcp-audits/google_workspace_mcp/.venv/bin/python",
-     "args": ["-m", "google_workspace_mcp"],
-     "cwd": "'$HOME'/.claude/mcp-audits/google_workspace_mcp"
-   }'
-   ```
-
-5. **Important:** Claude Code must be restarted after adding an MCP server.
-
-6. After restart, the user needs to authenticate with Google. This happens on first use of any Google Workspace tool — a browser window will open for OAuth.
-
-7. Ask the user for their Google email address (needed for MCP tool calls). Store it somewhere they can reference.
+After installation:
+1. Claude Code must be restarted before the MCP server will work
+2. On first use of any Google Workspace tool, a browser window will open for OAuth authentication
+3. Ask the user for their Google email address (needed for MCP tool calls) and store it somewhere they can reference
 
 **If no:** Mark as skipped and continue.
 
@@ -316,17 +280,24 @@ Once all steps are complete, welcome the user:
 
 > **Your Claude Code environment is ready!**
 >
-> Here's what you can do next:
+> ## ⚠️ You must restart Claude Code before continuing
 >
-> **1. Try one of your skills:**
+> The new skills and plugins won't be available until you restart. To restart:
+> 1. Press **Ctrl+C** to exit Claude Code
+> 2. Run `claude` again in your terminal
+>
+> ---
+>
+> Once you've restarted, here's what you can do:
+>
+> **Try one of your skills:**
 > - `/new-project` — Create a new research project with scaffolding
-> - `/slack` — Send or read Slack messages
 > - `/schedule-task` — Schedule recurring tasks
 >
-> **2. Create a new skill:**
-> See `learning/creating-a-skill.md` for a quick tutorial. Tell me what you want to automate and we'll build it together.
+> **Create a new skill:**
+> See `learning/creating-a-skill.md` for a quick tutorial, or just tell me what you want to automate and we'll build it together.
 >
-> **3. Start a research project:**
+> **Start a research project:**
 > Say "new project" and I'll walk you through creating a folder structure with CLAUDE.md, MEMORY.md, and more.
 
 ---
