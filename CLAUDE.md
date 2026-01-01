@@ -25,7 +25,8 @@ If the file doesn't exist, create it:
     "notification_hooks": {"complete": false},
     "google_workspace_mcp": {"complete": false},
     "slack_skill": {"complete": false},
-    "skills_symlinked": {"complete": false}
+    "skills_symlinked": {"complete": false},
+    "official_plugins": {"complete": false}
   }
 }
 ```
@@ -242,6 +243,23 @@ done
 ```
 
 This symlinks all skills in the repository, so new skills are automatically included.
+
+### Step 11: Official plugins
+
+**Check:** Run `/plugin` and check if `plugin-dev` and `frontend-design` appear in the Installed tab.
+
+**If missing:**
+
+Install from the official Anthropic marketplace:
+
+```
+/plugin install plugin-dev@claude-plugins-official
+/plugin install frontend-design@claude-plugins-official
+```
+
+These provide:
+- **plugin-dev**: Guided workflows for creating skills, commands, and agents
+- **frontend-design**: Tools for designing and building user interfaces
 
 ---
 
