@@ -20,7 +20,7 @@ If the file doesn't exist, create it:
     "git": {"complete": false},
     "homebrew": {"complete": false},
     "github_cli": {"complete": false},
-    "cursor": {"complete": false},
+    "cursor": {"complete": false, "skipped": false},
     "terminal_notifier": {"complete": false},
     "notification_hooks": {"complete": false},
     "google_workspace_mcp": {"complete": false},
@@ -98,14 +98,24 @@ brew install gh
 
 Verify: `gh --version`
 
-### Step 5: Cursor IDE
+### Step 5: Cursor IDE (optional)
 
-**Check:** `ls /Applications/Cursor.app` or `which cursor`
+**Check:** `ls /Applications/Cursor.app`
 
-**If missing:**
-1. Guide the user to download Cursor from https://cursor.com
-2. It's an AI-enhanced code editor built on VS Code
-3. After installing, they may need to run: "Install 'cursor' command" from Cursor's command palette
+This step is optional but strongly recommended. Ask the user:
+
+> "Would you like to install Cursor? It's optional but strongly recommended for browsing and editing your project files. Cursor is an AI-enhanced code editor built on VS Code.
+>
+> You can learn more at cursor.com. Would you like to install it?"
+
+**If yes:**
+```bash
+brew install --cask cursor
+```
+
+After installing, they may want to run "Install 'cursor' command" from Cursor's command palette to enable the `cursor` CLI.
+
+**If no:** Mark as skipped and continue.
 
 ### Step 6: terminal-notifier
 
