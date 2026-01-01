@@ -23,11 +23,11 @@ If the file doesn't exist, create it:
     "warp_terminal": {"complete": false, "skipped": false},
     "terminal_notifier": {"complete": false},
     "notification_hooks": {"complete": false},
-    "google_workspace_mcp": {"complete": false},
-    "slack_skill": {"complete": false},
     "skills_symlinked": {"complete": false},
     "official_plugins": {"complete": false},
-    "global_claude_md": {"complete": false}
+    "global_claude_md": {"complete": false},
+    "slack_skill": {"complete": false, "skipped": false},
+    "google_workspace_mcp": {"complete": false, "skipped": false}
   }
 }
 ```
@@ -178,11 +178,94 @@ This enables native macOS notifications for Claude Code.
    echo '{"cwd": "'$(pwd)'", "message": "Test notification"}' | python3 ~/.claude/scripts/notify.py Notification
    ```
 
-### Step 8: Google Workspace MCP
+### Step 8: Skills symlinked
+
+**Check:** List all subdirectories in `skills/` and verify each has a corresponding symlink in `~/.claude/skills/`.
+
+**If any are missing:**
+
+Run from the forethought-starter directory:
+
+```bash
+mkdir -p ~/.claude/skills
+
+for skill in skills/*/; do
+  skill_name=$(basename "$skill")
+  ln -sfn "$(pwd)/skills/$skill_name" ~/.claude/skills/"$skill_name"
+done
+```
+
+This symlinks all skills in the repository, so new skills are automatically included.
+
+### Step 9: Official plugins
+
+**Check:** Run `/plugin` and check if `plugin-dev` and `frontend-design` appear in the Installed tab.
+
+**If missing:**
+
+Install from the official Anthropic marketplace:
+
+```
+/plugin install plugin-dev@claude-plugins-official
+/plugin install frontend-design@claude-plugins-official
+```
+
+These provide:
+- **plugin-dev**: Guided workflows for creating skills, commands, and agents
+- **frontend-design**: Tools for designing and building user interfaces
+
+### Step 10: Global CLAUDE.md guidelines
+
+**Check:** Read `~/.claude/CLAUDE.md` and check if it contains a "Skill creation" section.
+
+**If missing:**
+
+Append the following to `~/.claude/CLAUDE.md` (create the file if it doesn't exist):
+
+```markdown
+## Skill creation
+
+When asked to create a skill, write a skill, or modify a skill:
+1. **Always invoke the `plugin-dev:skill-development` skill first** before doing any work
+2. This ensures the correct skill creation process and structure is followed
+```
+
+This ensures the guided skill development workflow is used consistently.
+
+---
+
+## Optional integrations
+
+These steps are optional. Offer them to the user after the core setup is complete.
+
+### Step 11: Slack integration (optional, ~5 minutes)
+
+**Check:** Check if `~/.claude/skills/slack/config.json` exists
+
+Ask the user:
+
+> "Would you like to set up Slack integration? This lets Claude send and read Slack messages. It takes about 5 minutes to set up. You can always do this later by asking me to 'set up Slack'."
+
+**If yes:**
+
+Guide them through the setup in `skills/slack/SKILL.md`:
+
+1. Open Slack in a web browser and log in
+2. Open Developer Tools (Cmd+Option+I)
+3. Extract tokens as described in the skill documentation
+4. Run the add-workspace command
+
+**If no:** Mark as skipped and continue.
+
+### Step 12: Google Workspace integration (optional, ~10-20 minutes)
 
 **Check:** Read `~/.claude.json` and check if `mcpServers` contains a `google_workspace` or `google-workspace` entry
 
-**If missing:**
+Ask the user:
+
+> "Would you like to set up Google Workspace integration? This lets Claude read and write Google Docs, access Gmail, manage Calendar, and more. It takes about 10-20 minutes to set up. You can always do this later by asking me to 'set up Google Workspace'."
+
+**If yes:**
 
 Follow the secure-mcp-install workflow (see `skills/secure-mcp-install/SKILL.md`):
 
@@ -223,76 +306,7 @@ Follow the secure-mcp-install workflow (see `skills/secure-mcp-install/SKILL.md`
 
 7. Ask the user for their Google email address (needed for MCP tool calls). Store it somewhere they can reference.
 
-### Step 9: Slack skill
-
-**Check:** Check if `~/.claude/skills/slack/config.json` exists
-
-**If not configured:**
-
-Ask: "Would you like to set up Slack integration now? This lets Claude send and read Slack messages."
-
-If yes, guide them through the setup in `skills/slack/SKILL.md`:
-
-1. Open Slack in a web browser and log in
-2. Open Developer Tools (Cmd+Option+I)
-3. Extract tokens as described in the skill documentation
-4. Run the add-workspace command
-
-If they want to skip, that's fine — mark as complete and note they can set it up later with `/slack`.
-
-### Step 10: Skills symlinked
-
-**Check:** List all subdirectories in `skills/` and verify each has a corresponding symlink in `~/.claude/skills/`.
-
-**If any are missing:**
-
-Run from the forethought-starter directory:
-
-```bash
-mkdir -p ~/.claude/skills
-
-for skill in skills/*/; do
-  skill_name=$(basename "$skill")
-  ln -sfn "$(pwd)/skills/$skill_name" ~/.claude/skills/"$skill_name"
-done
-```
-
-This symlinks all skills in the repository, so new skills are automatically included.
-
-### Step 11: Official plugins
-
-**Check:** Run `/plugin` and check if `plugin-dev` and `frontend-design` appear in the Installed tab.
-
-**If missing:**
-
-Install from the official Anthropic marketplace:
-
-```
-/plugin install plugin-dev@claude-plugins-official
-/plugin install frontend-design@claude-plugins-official
-```
-
-These provide:
-- **plugin-dev**: Guided workflows for creating skills, commands, and agents
-- **frontend-design**: Tools for designing and building user interfaces
-
-### Step 12: Global CLAUDE.md guidelines
-
-**Check:** Read `~/.claude/CLAUDE.md` and check if it contains a "Skill creation" section.
-
-**If missing:**
-
-Append the following to `~/.claude/CLAUDE.md` (create the file if it doesn't exist):
-
-```markdown
-## Skill creation
-
-When asked to create a skill, write a skill, or modify a skill:
-1. **Always invoke the `plugin-dev:skill-development` skill first** before doing any work
-2. This ensures the correct skill creation process and structure is followed
-```
-
-This ensures the guided skill development workflow is used consistently.
+**If no:** Mark as skipped and continue.
 
 ---
 
