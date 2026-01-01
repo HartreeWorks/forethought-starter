@@ -1,0 +1,9 @@
+# Setup state (user-specific)
+setup-state.json
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
