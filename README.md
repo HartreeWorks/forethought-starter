@@ -4,30 +4,33 @@ A curated set of Claude Code skills and guided onboarding for Forethought resear
 
 ## Quick start
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repo-url> ~/forethought-starter
-   cd ~/forethought-starter
-   ```
+### 1. Install Claude Code
 
-2. **Initialise the skill submodules:**
-   ```bash
-   git submodule update --init --recursive
-   ```
+Open Terminal and run:
 
-3. **Open Claude Code:**
-   ```bash
-   claude
-   ```
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
 
-4. **Follow the guided setup.** Claude will detect incomplete setup and walk you through:
-   - Installing Homebrew (if needed)
-   - Installing GitHub CLI
-   - Installing Cursor IDE
-   - Setting up notifications
-   - Configuring Google Workspace integration
-   - Configuring Slack integration
-   - Linking skills for global availability
+Then start Claude Code:
+
+```bash
+claude
+```
+
+Log in when prompted.
+
+### 2. Ask Claude to set you up
+
+Once logged in, tell Claude:
+
+> "I want to set up the Forethought starter. Clone the repo from github.com/HartreeWorks/forethought-starter and walk me through the setup."
+
+Claude will:
+- Install Git if needed (via Xcode Command Line Tools)
+- Clone this repository
+- Initialise the skill submodules
+- Guide you through the rest of the setup
 
 ## What's included
 

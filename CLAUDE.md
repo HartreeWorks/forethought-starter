@@ -16,6 +16,8 @@ If the file doesn't exist, create it:
 {
   "version": "1.0",
   "steps": {
+    "xcode_cli_tools": {"complete": false},
+    "git": {"complete": false},
     "homebrew": {"complete": false},
     "github_cli": {"complete": false},
     "cursor": {"complete": false},
@@ -34,7 +36,37 @@ If the file doesn't exist, create it:
 
 Guide the user through each step conversationally. After completing each step, update `setup-state.json` and ask if they want to continue.
 
-### Step 1: Homebrew
+### Step 1: Xcode Command Line Tools
+
+**Check:** `xcode-select -p` (returns a path if installed)
+
+**If missing:**
+1. Explain: "Xcode Command Line Tools provides essential developer tools like Git and compilers. This is the minimal version — not the full Xcode app."
+2. Run:
+   ```bash
+   xcode-select --install
+   ```
+3. A dialog will appear. Click "Install" and wait (usually 5-10 minutes).
+4. Verify: `xcode-select -p` returns `/Library/Developer/CommandLineTools` or similar
+
+### Step 2: Git
+
+**Check:** `which git` and `git --version`
+
+Git is included with Xcode Command Line Tools. If step 1 completed, this should work.
+
+**If missing after Xcode CLI tools:**
+```bash
+brew install git
+```
+
+**Optional:** Configure Git identity if not set:
+```bash
+git config --global user.name "Their Name"
+git config --global user.email "their.email@example.com"
+```
+
+### Step 3: Homebrew
 
 **Check:** `which brew`
 
@@ -52,7 +84,7 @@ Guide the user through each step conversationally. After completing each step, u
    ```
 5. Verify: `which brew` returns a path
 
-### Step 2: GitHub CLI
+### Step 4: GitHub CLI
 
 **Check:** `which gh`
 
@@ -63,7 +95,7 @@ brew install gh
 
 Verify: `gh --version`
 
-### Step 3: Cursor IDE
+### Step 5: Cursor IDE
 
 **Check:** `ls /Applications/Cursor.app` or `which cursor`
 
@@ -72,7 +104,7 @@ Verify: `gh --version`
 2. It's an AI-enhanced code editor built on VS Code
 3. After installing, they may need to run: "Install 'cursor' command" from Cursor's command palette
 
-### Step 4: terminal-notifier
+### Step 6: terminal-notifier
 
 **Check:** `which terminal-notifier`
 
@@ -83,7 +115,7 @@ brew install terminal-notifier
 
 This enables native macOS notifications for Claude Code.
 
-### Step 5: Notification hooks
+### Step 7: Notification hooks
 
 **Check:** Read `~/.claude/settings.json` and check if `hooks.Notification` and `hooks.Stop` arrays exist
 
@@ -130,7 +162,7 @@ This enables native macOS notifications for Claude Code.
    echo '{"cwd": "'$(pwd)'", "message": "Test notification"}' | python3 ~/.claude/scripts/notify.py Notification
    ```
 
-### Step 6: Google Workspace MCP
+### Step 8: Google Workspace MCP
 
 **Check:** Read `~/.claude.json` and check if `mcpServers` contains a `google_workspace` or `google-workspace` entry
 
@@ -175,7 +207,7 @@ Follow the secure-mcp-install workflow (see `skills/secure-mcp-install/SKILL.md`
 
 7. Ask the user for their Google email address (needed for MCP tool calls). Store it somewhere they can reference.
 
-### Step 7: Slack skill
+### Step 9: Slack skill
 
 **Check:** Check if `~/.claude/skills/slack/config.json` exists
 
@@ -192,7 +224,7 @@ If yes, guide them through the setup in `skills/slack/SKILL.md`:
 
 If they want to skip, that's fine — mark as complete and note they can set it up later with `/slack`.
 
-### Step 8: Skills symlinked
+### Step 10: Skills symlinked
 
 **Check:** Check if symlinks exist in `~/.claude/skills/` for each skill:
 - `~/.claude/skills/project-management`
