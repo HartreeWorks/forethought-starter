@@ -26,7 +26,8 @@ If the file doesn't exist, create it:
     "google_workspace_mcp": {"complete": false},
     "slack_skill": {"complete": false},
     "skills_symlinked": {"complete": false},
-    "official_plugins": {"complete": false}
+    "official_plugins": {"complete": false},
+    "global_claude_md": {"complete": false}
   }
 }
 ```
@@ -260,6 +261,24 @@ Install from the official Anthropic marketplace:
 These provide:
 - **plugin-dev**: Guided workflows for creating skills, commands, and agents
 - **frontend-design**: Tools for designing and building user interfaces
+
+### Step 12: Global CLAUDE.md guidelines
+
+**Check:** Read `~/.claude/CLAUDE.md` and check if it contains a "Skill creation" section.
+
+**If missing:**
+
+Append the following to `~/.claude/CLAUDE.md` (create the file if it doesn't exist):
+
+```markdown
+## Skill creation
+
+When asked to create a skill, write a skill, or modify a skill:
+1. **Always invoke the `plugin-dev:skill-development` skill first** before doing any work
+2. This ensures the correct skill creation process and structure is followed
+```
+
+This ensures the guided skill development workflow is used consistently.
 
 ---
 
