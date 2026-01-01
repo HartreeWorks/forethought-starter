@@ -16,19 +16,18 @@ If the file doesn't exist, create it:
 {
   "version": "1.0",
   "steps": {
-    "xcode_cli_tools": {"complete": false},
-    "git": {"complete": false},
     "homebrew": {"complete": false},
+    "git": {"complete": false},
     "github_cli": {"complete": false},
     "cursor": {"complete": false, "skipped": false},
+    "warp_terminal": {"complete": false, "skipped": false},
     "terminal_notifier": {"complete": false},
     "notification_hooks": {"complete": false},
     "google_workspace_mcp": {"complete": false},
     "slack_skill": {"complete": false},
     "skills_symlinked": {"complete": false},
     "official_plugins": {"complete": false},
-    "global_claude_md": {"complete": false},
-    "warp_terminal": {"complete": false, "skipped": false}
+    "global_claude_md": {"complete": false}
   }
 }
 ```
@@ -39,37 +38,7 @@ If the file doesn't exist, create it:
 
 Guide the user through each step conversationally. After completing each step, update `setup-state.json` and ask if they want to continue.
 
-### Step 1: Xcode Command Line Tools
-
-**Check:** `xcode-select -p` (returns a path if installed)
-
-**If missing:**
-1. Explain: "Xcode Command Line Tools provides essential developer tools like Git and compilers. This is the minimal version — not the full Xcode app."
-2. Run:
-   ```bash
-   xcode-select --install
-   ```
-3. A dialog will appear. Click "Install" and wait (usually 5-10 minutes).
-4. Verify: `xcode-select -p` returns `/Library/Developer/CommandLineTools` or similar
-
-### Step 2: Git
-
-**Check:** `which git` and `git --version`
-
-Git is included with Xcode Command Line Tools. If step 1 completed, this should work.
-
-**If missing after Xcode CLI tools:**
-```bash
-brew install git
-```
-
-**Optional:** Configure Git identity if not set:
-```bash
-git config --global user.name "Their Name"
-git config --global user.email "their.email@example.com"
-```
-
-### Step 3: Homebrew
+### Step 1: Homebrew
 
 **Check:** `which brew`
 
@@ -87,7 +56,22 @@ git config --global user.email "their.email@example.com"
    ```
 5. Verify: `which brew` returns a path
 
-### Step 4: GitHub CLI
+### Step 2: Git
+
+**Check:** `which git` and `git --version`
+
+**If missing:**
+```bash
+brew install git
+```
+
+**Optional:** Configure Git identity if not set:
+```bash
+git config --global user.name "Their Name"
+git config --global user.email "their.email@example.com"
+```
+
+### Step 3: GitHub CLI
 
 **Check:** `which gh`
 
@@ -98,7 +82,7 @@ brew install gh
 
 Verify: `gh --version`
 
-### Step 5: Cursor IDE (optional)
+### Step 4: Cursor IDE (optional)
 
 **Check:** `ls /Applications/Cursor.app`
 
@@ -114,6 +98,25 @@ brew install --cask cursor
 ```
 
 After installing, they may want to run "Install 'cursor' command" from Cursor's command palette to enable the `cursor` CLI.
+
+**If no:** Mark as skipped and continue.
+
+### Step 5: Warp terminal (optional)
+
+**Check:** `ls /Applications/Warp.app`
+
+This step is optional but recommended. Ask the user:
+
+> "Would you like to install Warp as an enhanced terminal? It's optional but recommended because:
+> 1. **Multiple Claude agents at once** — Press Cmd+D to split into columns, letting you run several Claude sessions side by side
+> 2. **Quality of life features** — Ctrl-click to open files or links, built-in markdown viewer, and more
+>
+> You can learn more at warp.dev. Would you like to install it?"
+
+**If yes:**
+```bash
+brew install --cask warp
+```
 
 **If no:** Mark as skipped and continue.
 
@@ -290,25 +293,6 @@ When asked to create a skill, write a skill, or modify a skill:
 ```
 
 This ensures the guided skill development workflow is used consistently.
-
-### Step 13: Warp terminal (optional)
-
-**Check:** `ls /Applications/Warp.app`
-
-This step is optional but recommended. Ask the user:
-
-> "Would you like to install Warp as an enhanced terminal? It's optional but recommended because:
-> 1. **Multiple Claude agents at once** — Press Cmd+D to split into columns, letting you run several Claude sessions side by side
-> 2. **Quality of life features** — Ctrl-click to open files or links, built-in markdown viewer, and more
->
-> You can learn more at warp.dev. Would you like to install it?"
-
-**If yes:**
-```bash
-brew install --cask warp
-```
-
-**If no:** Mark as skipped and continue.
 
 ---
 
