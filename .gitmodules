@@ -19,3 +19,6 @@
 [submodule "skills/transcribe-audio"]
 	path = skills/transcribe-audio
 	url = https://github.com/HartreeWorks/skill--transcribe-audio
+[submodule "skills/forum-digest"]
+	path = skills/forum-digest
+	url = https://github.com/HartreeWorks/claude-skill--forum-digest

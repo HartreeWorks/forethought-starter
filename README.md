@@ -12,25 +12,20 @@ Open Terminal and run:
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-Then start Claude Code:
+### 2. Start Claude Code
 
+In Terminal, run:
 ```bash
 claude
 ```
 
 Log in when prompted.
 
-### 2. Ask Claude to set you up
+### 3. Ask Claude to set you up
 
-Once logged in, tell Claude:
+Ask Claude:
 
-> "I want to set up the Forethought starter. Clone the repo from github.com/HartreeWorks/forethought-starter and walk me through the setup."
-
-Claude will:
-- Install Git if needed (via Xcode Command Line Tools)
-- Clone this repository
-- Initialise the skill submodules
-- Guide you through the rest of the setup
+> "Please clone the repo from https://github.com/HartreeWorks/forethought-starter and walk me through the setup."
 
 ## What's included
 
@@ -45,6 +40,7 @@ Claude will:
 | youtube-transcribe | Transcribe YouTube videos using Parakeet MLX |
 | youtube-download | Download YouTube videos and audio using yt-dlp |
 | transcribe-audio | Transcribe audio files using Parakeet MLX |
+| forum-digest | Track users/topics on LessWrong, EA Forum, Alignment Forum |
 
 ### Learning resources
 
