@@ -1,0 +1,12 @@
+[submodule "claude-skill--slack"]
+	path = claude-skill--slack
+	url = https://github.com/HartreeWorks/claude-skill--slack
+[submodule "claude-skill--schedule-task"]
+	path = claude-skill--schedule-task
+	url = https://github.com/HartreeWorks/claude-skill--schedule-task
+[submodule "claude-skill--secure-mcp-install"]
+	path = claude-skill--secure-mcp-install
+	url = https://github.com/HartreeWorks/claude-skill--secure-mcp-install
+[submodule "claude-skill--project-management"]
+	path = claude-skill--project-management
+	url = https://github.com/HartreeWorks/claude-skill--project-management
