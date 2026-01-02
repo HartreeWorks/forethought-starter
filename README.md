@@ -33,14 +33,23 @@ Ask Claude:
 
 | Skill | Purpose |
 |-------|---------|
+| chain-orchestrator | Create and run multi-prompt AI workflows |
+| forum-digest | Track users/topics on LessWrong, EA Forum, Alignment Forum |
 | project-management | Create and manage research projects |
-| slack | Multi-workspace Slack messaging |
 | schedule-task | macOS scheduled task management |
 | secure-mcp-install | Security-focused MCP server installation |
-| youtube-transcribe | Transcribe YouTube videos using Parakeet MLX |
-| youtube-download | Download YouTube videos and audio using yt-dlp |
+| slack | Multi-workspace Slack messaging |
 | transcribe-audio | Transcribe audio files using Parakeet MLX |
-| forum-digest | Track users/topics on LessWrong, EA Forum, Alignment Forum |
+| youtube-download | Download YouTube videos and audio using yt-dlp |
+| youtube-transcribe | Transcribe YouTube videos using Parakeet MLX |
+
+### Tools
+
+| Tool | Purpose |
+|------|---------|
+| chain-runner | Next.js app for executing multi-step AI chains with real-time UI |
+
+To start the chain-runner: `cd tools/chain-runner && yarn dev` (runs on port 3456)
 
 ### Guides
 
