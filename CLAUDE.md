@@ -21,6 +21,7 @@ If the file doesn't exist, create it:
     "github_cli": {"complete": false},
     "cursor": {"complete": false, "skipped": false},
     "warp_terminal": {"complete": false, "skipped": false},
+    "typora": {"complete": false, "skipped": false},
     "terminal_notifier": {"complete": false},
     "notification_hooks": {"complete": false},
     "skills_symlinked": {"complete": false},
@@ -118,7 +119,24 @@ brew install --cask warp
 
 **If no:** Mark as skipped and continue.
 
-### Step 6: terminal-notifier
+### Step 6: Typora (optional)
+
+**Check:** `ls /Applications/Typora.app`
+
+This step is optional but strongly recommended. Ask the user:
+
+> "Would you like to install Typora? It's a Markdown file viewer and editor that makes reading and writing documentation much more pleasant. There's a 15-day free trial, then a one-time $15 purchase.
+>
+> Would you like to install it?"
+
+**If yes:**
+```bash
+brew install --cask typora
+```
+
+**If no:** Mark as skipped and continue.
+
+### Step 7: terminal-notifier
 
 **Check:** `which terminal-notifier`
 
@@ -129,7 +147,7 @@ brew install terminal-notifier
 
 This enables native macOS notifications for Claude Code.
 
-### Step 7: Notification hooks
+### Step 8: Notification hooks
 
 **Check:** Read `~/.claude/settings.json` and check if `hooks.Notification` and `hooks.Stop` arrays exist
 
@@ -176,7 +194,7 @@ This enables native macOS notifications for Claude Code.
    echo '{"cwd": "'$(pwd)'", "message": "Test notification from Forethought Starter"}' | python3 ~/.claude/scripts/notify.py Notification
    ```
 
-### Step 8: Skills symlinked
+### Step 9: Skills symlinked
 
 **Check:** List all subdirectories in `skills/` and verify each has a corresponding symlink in `~/.claude/skills/`.
 
@@ -193,7 +211,7 @@ for skill in skills/*/; do
 done
 ```
 
-### Step 9: Official plugins
+### Step 10: Official plugins
 
 **Check:** Run `/plugin` and check if `plugin-dev` and `frontend-design` appear in the Installed tab.
 
@@ -210,7 +228,7 @@ These provide:
 - **plugin-dev**: Guided workflows for creating skills, commands, and agents
 - **frontend-design**: Tools for designing and building user interfaces
 
-### Step 10: Global CLAUDE.md guidelines
+### Step 11: Global CLAUDE.md guidelines
 
 **Check:** Read `~/.claude/CLAUDE.md` and check if it contains a "Skill creation" section.
 
@@ -224,6 +242,8 @@ Append the following to `~/.claude/CLAUDE.md` (create the file if it doesn't exi
 When asked to create a skill, write a skill, or modify a skill:
 1. **Always invoke the `plugin-dev:skill-development` skill first** before doing any work
 2. This ensures the correct skill creation process and structure is followed
+
+There are other `plugin-dev` skills for creating agents, commands, hooks, and plugins. Invoke them if appropriate.
 ```
 
 This ensures the guided skill development workflow is used consistently.
@@ -234,7 +254,7 @@ This ensures the guided skill development workflow is used consistently.
 
 These steps are optional. Offer them to the user after the core setup is complete.
 
-### Step 11: Slack integration (optional, ~5 minutes)
+### Step 12: Slack integration (optional, ~5 minutes)
 
 **Check:** Check if `~/.claude/skills/slack/config.json` exists
 
@@ -253,7 +273,7 @@ Guide them through the setup in `skills/slack/SKILL.md`:
 
 **If no:** Mark as skipped and continue.
 
-### Step 12: Google Workspace integration (optional, ~10-20 minutes)
+### Step 13: Google Workspace integration (optional, ~10-20 minutes)
 
 **Check:** Read `~/.claude.json` and check if `mcpServers` contains a `google_workspace` or `google-workspace` entry
 
