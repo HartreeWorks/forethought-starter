@@ -312,7 +312,7 @@ Once all steps are complete, welcome the user:
 > - `/schedule-task` — Schedule recurring tasks
 >
 > **3. Create a new skill:**
-> See `learning/creating-a-skill.md` for a quick tutorial, or just tell me what you want to automate and we'll build it together.
+> See `guides/creating-a-skill.md` for a quick tutorial, or just tell me what you want to automate and we'll build it together.
 >
 > ## ⚠️ You must restart Claude Code before continuing ⚠️
 >

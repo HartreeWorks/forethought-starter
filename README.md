@@ -42,12 +42,12 @@ Ask Claude:
 | transcribe-audio | Transcribe audio files using Parakeet MLX |
 | forum-digest | Track users/topics on LessWrong, EA Forum, Alignment Forum |
 
-### Learning resources
+### Guides
 
 | File | Purpose |
 |------|---------|
-| `learning/creating-a-skill.md` | How to create your own skills |
-| `learning/skill-anatomy.md` | Reference for skill structure |
+| `guides/creating-a-skill.md` | How to create your own skills |
+| `guides/skill-anatomy.md` | Reference for skill structure |
 
 ## Updating
 
