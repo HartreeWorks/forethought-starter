@@ -1,0 +1,152 @@
+meta:
+  id: paper-critique
+  name: Paper critique
+  description: Generate dialectical critiques of a philosophy paper through a 6-step refinement process
+
+inputs:
+  - id: paper
+    type: text
+    label: Paper text
+    description: The full text of the philosophy paper to critique
+    required: true
+
+  - id: target_count
+    type: number
+    label: Initial critique count
+    description: How many critiques to brainstorm in step 1
+    default: 20
+
+steps:
+  - id: brainstorm
+    name: Brainstorm critiques
+    model: claude-sonnet-4
+    prompt: prompts/01-brainstorm.md
+    output:
+      type: json
+      schema:
+        type: array
+        items:
+          type: object
+          properties:
+            id: { type: string }
+            short: { type: string }
+            category: { type: string }
+            rationale: { type: string }
+            novelty: { type: number }
+            risk: { type: number }
+    display:
+      type: table
+      columns: [short, category, novelty, risk]
+      sort_by: novelty
+      sort_order: desc
+
+  - id: score
+    name: Score and select top five
+    model: claude-sonnet-4
+    prompt: prompts/02-score.md
+    input:
+      critiques: $steps.brainstorm.output
+    output:
+      type: json
+      schema:
+        type: object
+        properties:
+          scores:
+            type: array
+            items:
+              type: object
+              properties:
+                id: { type: string }
+                overall: { type: number }
+                strength: { type: number }
+                significance: { type: number }
+                difficulty: { type: number }
+          top5:
+            type: array
+            items: { type: string }
+          top5_details:
+            type: array
+            items:
+              type: object
+              properties:
+                id: { type: string }
+                explanation: { type: string }
+    display:
+      type: cards
+      group_by: null
+
+  - id: develop
+    name: Develop top critiques
+    model: claude-sonnet-4
+    prompt: prompts/03-develop.md
+    input:
+      top5: $steps.score.output.top5_details
+    output:
+      type: json
+      schema:
+        type: array
+        items:
+          type: object
+          properties:
+            id: { type: string }
+            title: { type: string }
+            expanded: { type: string }
+    display:
+      type: cards
+
+  - id: counter
+    name: Critique the critiques
+    model: claude-sonnet-4
+    prompt: prompts/04-counter.md
+    input:
+      developed: $steps.develop.output
+    output:
+      type: json
+      schema:
+        type: array
+        items:
+          type: object
+          properties:
+            parentId: { type: string }
+            counter: { type: string }
+    display:
+      type: cards
+
+  - id: revise
+    name: Revise critiques
+    model: claude-sonnet-4
+    prompt: prompts/05-revise.md
+    input:
+      developed: $steps.develop.output
+      counters: $steps.counter.output
+    output:
+      type: json
+      schema:
+        type: array
+        items:
+          type: object
+          properties:
+            id: { type: string }
+            revised: { type: string }
+    display:
+      type: cards
+
+  - id: final
+    name: Final selection and expansion
+    model: claude-sonnet-4
+    prompt: prompts/06-final.md
+    input:
+      revised: $steps.revise.output
+    output:
+      type: json
+      schema:
+        type: array
+        items:
+          type: object
+          properties:
+            id: { type: string }
+            deep: { type: string }
+            summary: { type: string }
+            conversational_title: { type: string }
+    display:
+      type: cards

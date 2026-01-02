@@ -7,3 +7,6 @@ setup-state.json
 # Python
 __pycache__/
 *.pyc
+
+# Node modules (in tools/)
+node_modules/
