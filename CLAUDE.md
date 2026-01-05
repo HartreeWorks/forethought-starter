@@ -288,7 +288,14 @@ Follow the secure-mcp-install workflow (see `skills/secure-mcp-install/SKILL.md`
 After installation:
 1. Claude Code must be restarted before the MCP server will work
 2. On first use of any Google Workspace tool, a browser window will open for OAuth authentication
-3. Ask the user for their Google email address (needed for MCP tool calls) and store it somewhere they can reference
+3. **Ask the user for their Google email address** (the one they'll authenticate with for Google Workspace):
+   > "What Google email address will you use for Google Workspace integration? This will be set as your default for all Google Workspace commands."
+4. **Write the email to their global `~/.claude/CLAUDE.md`**. Add or update a "Google Workspace" section:
+   ```markdown
+   ## Google Workspace
+   - Always use `<their-email>@gmail.com` for Google Workspace MCP commands unless explicitly specified otherwise.
+   ```
+   If the file doesn't exist, create it. If the section already exists, update the email address.
 
 **If no:** Mark as skipped and continue.
 
