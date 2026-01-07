@@ -1,6 +1,7 @@
 import { getChains } from "@/lib/chains";
 import { getRecentRuns } from "@/lib/persistence";
 import Link from "next/link";
+import { StatusBadge } from "@/components/StatusBadge";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +12,7 @@ export default async function Dashboard() {
   return (
     <div className="space-y-8">
       <section>
-        <h1 className="text-2xl font-bold mb-4">Chains</h1>
+        <h1 className="text-xl font-bold mb-4">Chains</h1>
         {chains.length === 0 ? (
           <p className="text-gray-500">
             No chains defined yet. Create a chain in the{" "}
@@ -39,9 +40,9 @@ export default async function Dashboard() {
       </section>
 
       <section>
-        <h2 className="text-xl font-bold mb-4">Recent runs</h2>
+        <h2 className="text-lg font-bold mb-4">Recent runs</h2>
         {recentRuns.length === 0 ? (
-          <p className="text-gray-500">No runs yet. Start a chain to create one.</p>
+          <p className="text-gray-500 text-sm">No runs yet. Start a chain to create one.</p>
         ) : (
           <div className="space-y-2">
             {recentRuns.map((run) => (
@@ -50,11 +51,11 @@ export default async function Dashboard() {
                 href={`/runs/${run.id}`}
                 className="flex items-center justify-between p-3 border rounded hover:border-blue-500 transition-colors"
               >
-                <div>
-                  <span className="font-medium">{run.chainId}</span>
-                  <span className="text-gray-400 mx-2">·</span>
-                  <span className="text-sm text-gray-500">
-                    {new Date(run.startedAt).toLocaleString()}
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="font-medium text-gray-900">{run.chainId}</span>
+                  <span className="text-gray-300">·</span>
+                  <span className="text-gray-500">
+                    {formatDateTime(run.startedAt)}
                   </span>
                 </div>
                 <StatusBadge status={run.status} />
@@ -67,19 +68,12 @@ export default async function Dashboard() {
   );
 }
 
-function StatusBadge({ status }: { status: string }) {
-  const styles: Record<string, string> = {
-    pending: "bg-gray-100 text-gray-700",
-    running: "bg-blue-100 text-blue-700",
-    completed: "bg-green-100 text-green-700",
-    failed: "bg-red-100 text-red-700",
-  };
-
-  return (
-    <span
-      className={`px-2 py-1 text-xs font-medium rounded ${styles[status] || styles.pending}`}
-    >
-      {status}
-    </span>
-  );
+function formatDateTime(isoString: string): string {
+  const date = new Date(isoString);
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }

@@ -1,8 +1,9 @@
 import { loadRunById } from "@/lib/persistence";
 import { getChain } from "@/lib/chains";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { RunViewer } from "@/components/RunViewer";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { StatusBadge } from "@/components/StatusBadge";
 
 export const dynamic = "force-dynamic";
 
@@ -20,25 +21,29 @@ export default async function RunDetailPage({ params }: Props) {
 
   const chain = await getChain(run.chainId);
 
+  const runTitle = getRunTitle(run.inputs);
+
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          href={`/chains/${run.chainId}`}
-          className="text-sm text-blue-600 hover:underline"
-        >
-          &larr; Back to {chain?.meta.name || run.chainId}
-        </Link>
-      </div>
+      <Breadcrumb
+        items={[
+          { label: "Dashboard", href: "/" },
+          { label: chain?.meta.name || run.chainId, href: `/chains/${run.chainId}` },
+          { label: runTitle || run.id },
+        ]}
+      />
 
       <header className="flex items-center justify-between gap-4">
         <div className="min-w-0 flex-1">
           <h1 className="text-xl font-bold truncate">
             {getRunTitle(run.inputs) || chain?.meta.name || run.chainId}
           </h1>
-          <div className="flex items-center gap-3 text-sm text-gray-500 mt-0.5">
+          <div className="flex items-center gap-2 text-sm text-gray-500 mt-0.5">
             {getRunTitle(run.inputs) && (
-              <span>{chain?.meta.name || run.chainId}</span>
+              <>
+                <span>{chain?.meta.name || run.chainId}</span>
+                <span className="text-gray-300">·</span>
+              </>
             )}
             <span>{formatDateTime(run.startedAt)}</span>
             {getInputUrl(run.inputs) && (
@@ -53,7 +58,7 @@ export default async function RunDetailPage({ params }: Props) {
             )}
           </div>
         </div>
-        <StatusBadge status={run.status} />
+        <StatusBadge status={run.status} size="md" />
       </header>
 
       <RunViewer
@@ -63,23 +68,6 @@ export default async function RunDetailPage({ params }: Props) {
         steps={chain?.steps || []}
       />
     </div>
-  );
-}
-
-function StatusBadge({ status }: { status: string }) {
-  const styles: Record<string, string> = {
-    pending: "bg-gray-100 text-gray-700",
-    running: "bg-blue-100 text-blue-700 animate-pulse",
-    completed: "bg-green-100 text-green-700",
-    failed: "bg-red-100 text-red-700",
-  };
-
-  return (
-    <span
-      className={`px-3 py-1.5 text-sm font-medium rounded ${styles[status] || styles.pending}`}
-    >
-      {status}
-    </span>
   );
 }
 
