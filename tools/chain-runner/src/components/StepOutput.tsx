@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { ChainStep, StepRunState } from "@/lib/types";
@@ -225,7 +225,7 @@ function ScoreStepRenderer({
   );
 }
 
-// Scores table with critique titles
+// Scores table with critique titles and sortable columns
 function ScoresTableWithTitles({
   data,
   critiqueLookup
@@ -233,25 +233,80 @@ function ScoresTableWithTitles({
   data: Record<string, unknown>[];
   critiqueLookup: CritiqueLookup;
 }) {
+  const columns = Object.keys(data[0] || {}).filter((k) => k !== "id");
+
+  // Default sort: "overall" descending if present, otherwise first numeric column
+  const defaultSortCol = columns.includes("overall") ? "overall" : columns.find(c => typeof data[0]?.[c] === "number") || null;
+
+  const [sortCol, setSortCol] = useState<string | null>(defaultSortCol);
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+
   if (data.length === 0) return null;
 
-  const columns = Object.keys(data[0]).filter((k) => k !== "id");
+  // Sort data
+  const sorted = [...data].sort((a, b) => {
+    if (!sortCol) return 0;
+    const aVal = a[sortCol];
+    const bVal = b[sortCol];
+
+    // Handle critique title sorting
+    if (sortCol === "_title") {
+      const aTitle = critiqueLookup.get(String(a.id))?.title || String(a.id);
+      const bTitle = critiqueLookup.get(String(b.id))?.title || String(b.id);
+      return sortDir === "asc"
+        ? aTitle.localeCompare(bTitle)
+        : bTitle.localeCompare(aTitle);
+    }
+
+    if (typeof aVal === "number" && typeof bVal === "number") {
+      return sortDir === "asc" ? aVal - bVal : bVal - aVal;
+    }
+    if (typeof aVal === "string" && typeof bVal === "string") {
+      return sortDir === "asc" ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+    }
+    return 0;
+  });
+
+  const handleSort = (col: string) => {
+    if (sortCol === col) {
+      setSortDir(sortDir === "asc" ? "desc" : "asc");
+    } else {
+      setSortCol(col);
+      // Default to desc for numbers, asc for strings
+      const firstVal = data[0]?.[col];
+      setSortDir(typeof firstVal === "number" ? "desc" : "asc");
+    }
+  };
+
+  const SortIndicator = ({ col }: { col: string }) => {
+    if (sortCol !== col) return <span className="text-gray-300 ml-1">↕</span>;
+    return <span className="text-blue-500 ml-1">{sortDir === "asc" ? "↑" : "↓"}</span>;
+  };
 
   return (
     <div className="border rounded overflow-hidden">
       <table className="w-full text-sm">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-3 py-2 text-left font-medium text-gray-700">Critique</th>
+            <th
+              className="px-3 py-2 text-left font-medium text-gray-700 cursor-pointer hover:bg-gray-100 select-none"
+              onClick={() => handleSort("_title")}
+            >
+              Critique <SortIndicator col="_title" />
+            </th>
             {columns.map((col) => (
-              <th key={col} className="px-3 py-2 text-left font-medium text-gray-700">
-                {formatColumnName(col)}
+              <th
+                key={col}
+                className="px-3 py-2 text-left font-medium text-gray-700 cursor-pointer hover:bg-gray-100 select-none"
+                onClick={() => handleSort(col)}
+              >
+                {formatColumnName(col)} <SortIndicator col={col} />
               </th>
             ))}
           </tr>
         </thead>
         <tbody className="divide-y">
-          {data.map((row, idx) => {
+          {sorted.map((row, idx) => {
             const id = String(row.id);
             const critique = critiqueLookup.get(id);
             return (
@@ -295,8 +350,8 @@ function TopSelectionsWithTitles({
               <div className="font-medium text-sm text-gray-900">
                 {critique?.title || id}
               </div>
-              {item.explanation && (
-                <p className="mt-1 text-sm text-gray-600">{String(item.explanation)}</p>
+              {typeof item.explanation === "string" && item.explanation && (
+                <p className="mt-1 text-sm text-gray-600">{item.explanation}</p>
               )}
             </div>
           </li>
@@ -534,7 +589,7 @@ function ExpandableCard({
       >
         <div className="flex items-start gap-3">
           {hasExpandableContent && (
-            <span className={`text-gray-500 mt-1 transition-transform ${isExpanded ? "rotate-90" : ""}`}>
+            <span className={`text-gray-500 text-lg leading-none transition-transform ${isExpanded ? "rotate-90" : ""}`}>
               ›
             </span>
           )}
@@ -579,7 +634,7 @@ function StructuredObjectRenderer({
   data: Record<string, unknown>;
   critiqueLookup?: CritiqueLookup;
 }) {
-  const sections: JSX.Element[] = [];
+  const sections: React.ReactNode[] = [];
 
   for (const [key, value] of Object.entries(data)) {
     if (Array.isArray(value) && value.length > 0) {

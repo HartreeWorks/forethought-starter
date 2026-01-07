@@ -33,11 +33,18 @@ export default async function RunDetailPage({ params }: Props) {
 
       <header className="flex items-start justify-between">
         <div>
+          {/* Primary: Show the main input (e.g., paper title) */}
           <h1 className="text-2xl font-bold mb-1">
-            {chain?.meta.name || run.chainId}
+            {getRunTitle(run.inputs) || chain?.meta.name || run.chainId}
           </h1>
-          <p className="text-sm text-gray-500 font-mono">{run.id}</p>
-          <p className="text-sm text-gray-500">
+          {/* Secondary: Chain name (only if we have a specific run title) */}
+          {getRunTitle(run.inputs) && (
+            <p className="text-sm text-gray-600 mb-1">
+              {chain?.meta.name || run.chainId}
+            </p>
+          )}
+          <p className="text-xs text-gray-400 font-mono">{run.id}</p>
+          <p className="text-xs text-gray-400">
             Started {new Date(run.startedAt).toLocaleString()}
           </p>
         </div>
@@ -69,4 +76,19 @@ function StatusBadge({ status }: { status: string }) {
       {status}
     </span>
   );
+}
+
+// Extract a human-readable title from run inputs
+function getRunTitle(inputs: Record<string, unknown>): string | null {
+  // Common field names for the primary subject of a run
+  const titleFields = ["title", "paper_title", "name", "subject", "topic"];
+
+  for (const field of titleFields) {
+    const value = inputs[field];
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+
+  return null;
 }
