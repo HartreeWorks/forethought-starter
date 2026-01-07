@@ -62,18 +62,24 @@ export function StepOutput({ step, stepState, allSteps }: Props) {
 
   // Handle arrays
   if (Array.isArray(output)) {
+    // Flatten nested arrays from for_each steps: [[...], [...], ...] -> [...]
+    let items = output;
+    if (items.length > 0 && Array.isArray(items[0])) {
+      items = items.flat();
+    }
+
     // Check if items have long text fields that need expandable treatment
-    const hasLongContent = output.length > 0 && hasLongTextFields(output[0]);
+    const hasLongContent = items.length > 0 && hasLongTextFields(items[0]);
 
     if (hasLongContent || displayType === "cards") {
-      return <ExpandableListRenderer data={output} displayHints={step.display} critiqueLookup={critiqueLookup} />;
+      return <ExpandableListRenderer data={items} displayHints={step.display} critiqueLookup={critiqueLookup} />;
     }
 
-    if (displayType === "table" || hasTableableItems(output)) {
-      return <ExpandableTableRenderer data={output} displayHints={step.display} />;
+    if (displayType === "table" || hasTableableItems(items)) {
+      return <ExpandableTableRenderer data={items} displayHints={step.display} />;
     }
 
-    return <ArrayRenderer data={output} />;
+    return <ArrayRenderer data={items} />;
   }
 
   // Handle objects with nested arrays
@@ -112,10 +118,22 @@ function buildCritiqueLookup(allSteps?: Record<string, StepRunState>): CritiqueL
 // Check if an object has fields with long text content
 function hasLongTextFields(obj: unknown): boolean {
   if (typeof obj !== "object" || obj === null) return false;
+
+  // Handle nested arrays from for_each steps: [[...], [...], ...]
+  if (Array.isArray(obj)) {
+    const first = obj[0];
+    if (Array.isArray(first) && first.length > 0) {
+      // It's a nested array - check the first item of the first inner array
+      return hasLongTextFields(first[0]);
+    }
+    return false;
+  }
+
   const record = obj as Record<string, unknown>;
-  const longFields = ["expanded", "deep", "revised", "counter", "rationale"];
+  // Include common long text fields from moral philosophy chains
+  const longFields = ["expanded", "deep", "revised", "counter", "rationale", "objection", "argument", "reasoning", "assessment_summary", "ranking_rationale"];
   return longFields.some(
-    (field) => typeof record[field] === "string" && (record[field] as string).length > 200
+    (field) => typeof record[field] === "string" && (record[field] as string).length > 100
   );
 }
 
@@ -404,21 +422,30 @@ function ExpandableTableRenderer({
 
   // Get columns from hints or infer from first item
   const allKeys = Object.keys(data[0]);
-  const columns = displayHints?.columns || allKeys.filter((k) => k !== "id");
 
-  // Fields that are hidden but shown on expand
+  // Long text fields that should go in expandable section, not columns
+  const longTextFields = ["reasoning", "assessment_summary", "ranking_rationale", "objection", "argument"];
+
+  // Filter out long text fields from columns
+  const columns = (displayHints?.columns || allKeys.filter((k) => k !== "id"))
+    .filter(k => !longTextFields.includes(k));
+
+  // Fields that are shown on expand (including long text fields)
   const expandableFields = allKeys.filter(
-    (k) => !columns.includes(k) && k !== "id" && typeof data[0][k] === "string"
+    (k) => !columns.includes(k) && k !== "id" &&
+    (longTextFields.includes(k) || (typeof data[0][k] === "string" && !columns.includes(k)))
   );
 
-  // Apply sorting
+  // Apply sorting - default to "overall" descending if present
   let sorted = [...data];
-  if (displayHints?.sort_by) {
+  const sortBy = displayHints?.sort_by || (allKeys.includes("overall") ? "overall" : null);
+  const sortOrder = displayHints?.sort_order || "desc";
+  if (sortBy) {
     sorted.sort((a, b) => {
-      const aVal = a[displayHints.sort_by!];
-      const bVal = b[displayHints.sort_by!];
+      const aVal = a[sortBy];
+      const bVal = b[sortBy];
       if (typeof aVal === "number" && typeof bVal === "number") {
-        return displayHints.sort_order === "asc" ? aVal - bVal : bVal - aVal;
+        return sortOrder === "asc" ? aVal - bVal : bVal - aVal;
       }
       return 0;
     });
@@ -559,21 +586,26 @@ function ExpandableCard({
   if (id && critiqueLookup?.has(id)) {
     title = critiqueLookup.get(id)!.title;
   } else {
-    title = (item.title || item.short || item.conversational_title || id || "Item") as string;
+    // view_name is used by evaluate_views step
+    title = (item.view_name || item.name || item.title || item.short || item.conversational_title || id || "Item") as string;
   }
 
-  const summary = item.summary as string | undefined;
+  // For objection/argument cards, use the "objection" or "argument" field as summary
+  const summary = (item.summary || item.objection || item.argument) as string | undefined;
 
   // Long content fields (shown when expanded)
-  const longFields = ["expanded", "deep", "revised", "counter"];
+  const longFields = ["expanded", "deep", "revised", "counter", "reasoning", "assessment_summary", "ranking_rationale"];
   const expandableContent = longFields
     .filter((f) => typeof item[f] === "string" && (item[f] as string).length > 0)
     .map((f) => ({ field: f, content: item[f] as string }));
 
+  // Fields to exclude from metadata display
+  const excludeFromMeta = ["id", "name", "title", "short", "conversational_title", "summary", "parentId", "objection", "argument", ...longFields];
+
   // Short metadata fields
   const metaFields = Object.entries(item).filter(
     ([k, v]) =>
-      !["id", "title", "short", "conversational_title", "summary", "parentId", ...longFields].includes(k) &&
+      !excludeFromMeta.includes(k) &&
       typeof v !== "object" &&
       v !== null
   );
@@ -695,8 +727,29 @@ function CellValue({ value }: { value: unknown }) {
   if (value === null || value === undefined) return <span className="text-gray-400">—</span>;
   if (typeof value === "boolean") return <span>{value ? "Yes" : "No"}</span>;
   if (typeof value === "number") return <span>{value.toLocaleString()}</span>;
-  if (Array.isArray(value)) return <span>{value.join(", ")}</span>;
-  if (typeof value === "object") return <span className="text-xs font-mono">{JSON.stringify(value)}</span>;
+
+  // Handle arrays of objects (like applicable_objections)
+  if (Array.isArray(value)) {
+    // Check if array contains objects with name/id fields
+    if (value.length > 0 && typeof value[0] === "object" && value[0] !== null) {
+      const names = value.map((item: any) => item.name || item.id || "—").slice(0, 5);
+      const suffix = value.length > 5 ? `, +${value.length - 5} more` : "";
+      return <span className="text-sm">{names.join(", ")}{suffix}</span>;
+    }
+    // Simple array of primitives
+    return <span>{value.join(", ")}</span>;
+  }
+
+  // Handle single objects
+  if (typeof value === "object") {
+    const obj = value as Record<string, unknown>;
+    // If object has a name or id, show that
+    if (obj.name || obj.id) {
+      return <span>{String(obj.name || obj.id)}</span>;
+    }
+    // Otherwise show a compact JSON representation
+    return <span className="text-xs font-mono text-gray-500">{JSON.stringify(value)}</span>;
+  }
 
   // For strings, check if it looks like markdown
   const str = String(value);
