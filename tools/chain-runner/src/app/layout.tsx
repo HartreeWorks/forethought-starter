@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Chain Runner",
+  title: "Prompt Chain Runner",
   description: "Multi-prompt chain orchestration for AI research workflows",
 };
 
@@ -18,7 +18,7 @@ export default function RootLayout({
           <header className="mb-8">
             <nav className="flex items-center gap-6">
               <a href="/" className="text-xl font-semibold hover:opacity-80">
-                Chain Runner
+                Prompt Chain Runner
               </a>
               <a href="/" className="text-sm opacity-70 hover:opacity-100">
                 Dashboard

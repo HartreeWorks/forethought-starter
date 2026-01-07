@@ -11,10 +11,10 @@ function getChainsDir(): string {
       ? envDir
       : path.resolve(process.cwd(), envDir);
   }
-  // Default: look for chains/ relative to chain-runner, then up in forethought-starter
+  // Default: look for prompt-chains/chains/ relative to forethought-starter root
   const candidates = [
-    path.resolve(process.cwd(), "../../chains"),
-    path.resolve(process.cwd(), "chains"),
+    path.resolve(process.cwd(), "../../prompt-chains/chains"),
+    path.resolve(process.cwd(), "prompt-chains/chains"),
   ];
   return candidates[0];
 }

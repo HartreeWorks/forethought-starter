@@ -1,0 +1,10 @@
+{
+  "id": "arg-asymmetric-person-affecting-view-02",
+  "supports_view": "asymmetric-person-affecting-view",
+  "name": "Avoiding the Repugnant Conclusion",
+  "force": 65,
+  "importance": 85,
+  "robustness": 45,
+  "overall": 65,
+  "reasoning": "The argument correctly identifies that the Asymmetric View avoids the Repugnant Conclusion, which is a major theoretical advantage and addresses a central problem in population ethics. However, the reasoning is incomplete—avoiding one counterintuitive conclusion doesn't establish the view is correct, and the Asymmetric View faces its own serious challenges (the Non-Identity Problem, counterintuitive implications about extinction being morally neutral). The robustness is limited because critics can argue it trades one bullet for another, and other views (like Variable Value or Critical Level theories) also avoid the Repugnant Conclusion without the asymmetry's costs."
+}

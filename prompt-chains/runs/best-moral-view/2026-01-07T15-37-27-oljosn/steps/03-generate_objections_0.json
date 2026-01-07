@@ -1,0 +1,42 @@
+[
+  {
+    "id": "obj-total-utilitarianism-01",
+    "target_view": "total-utilitarianism",
+    "name": "The Repugnant Conclusion",
+    "objection": "Total Utilitarianism implies that for any population of 10 billion people living wonderful, flourishing lives, there is a better outcome consisting of a vastly larger population (say, 100 trillion people) whose lives are barely worth living—perhaps spent in tedious, monotonous labor with only minimal pleasures. This follows necessarily from aggregating total wellbeing, yet the conclusion that we should prefer a world of countless people with lives barely worth living over a world of genuine human flourishing strikes most as deeply counterintuitive and morally repugnant.",
+    "type": "classic",
+    "severity_estimate": "devastating"
+  },
+  {
+    "id": "obj-total-utilitarianism-02",
+    "target_view": "total-utilitarianism",
+    "name": "The Obligation to Maximize Population",
+    "objection": "Total Utilitarianism generates an extremely demanding obligation to procreate: if creating new happy people adds value, then failing to have children when one could (or failing to support policies that maximize population growth) is morally equivalent to allowing existing people to suffer. This means individuals who choose to remain childless, or societies that stabilize their populations, are acting wrongly—even if this choice allows them to provide better lives for existing people or pursue other valuable projects. The view effectively condemns most reproductive choices as immoral.",
+    "type": "structural",
+    "severity_estimate": "very_strong"
+  },
+  {
+    "id": "obj-total-utilitarianism-03",
+    "target_view": "total-utilitarianism",
+    "name": "The Replaceability Problem",
+    "objection": "If what matters is only total wellbeing, then killing a happy person is not intrinsically wrong—it is only wrong if it reduces total wellbeing. This means that killing someone and replacing them with an equally happy person (or two slightly less happy people whose combined wellbeing exceeds the original) would be morally permissible or even required. This 'replaceability' implication treats persons as mere vessels for wellbeing rather than as individuals with their own claims to continued existence, violating deep intuitions about the wrongness of killing.",
+    "type": "structural",
+    "severity_estimate": "very_strong"
+  },
+  {
+    "id": "obj-total-utilitarianism-04",
+    "target_view": "total-utilitarianism",
+    "name": "The Temporal Infinity Problem",
+    "objection": "If the future contains infinitely many people (as it might, given cosmic timescales), then any finite action we take now contributes zero percent to the total sum of wellbeing across all time. Total Utilitarianism thus either renders all our choices morally equivalent (since finite differences divided by infinity equal zero), or requires us to compare infinite quantities in ways that lead to paradoxes—such as being unable to say whether a world with infinite happiness plus one unit is better than one with infinite happiness alone. The view becomes action-guiding only by arbitrarily restricting its scope.",
+    "type": "novel",
+    "severity_estimate": "strong"
+  },
+  {
+    "id": "obj-total-utilitarianism-05",
+    "target_view": "total-utilitarianism",
+    "name": "The Welfare Farming Thought Experiment",
+    "objection": "Consider a proposal to create billions of genetically engineered beings—perhaps simple organisms or digital minds—capable of experiencing mild contentment but nothing else: no relationships, no achievements, no complex experiences. Total Utilitarianism implies we should devote enormous resources to 'farming' such beings, since their aggregate mild contentment could exceed the total wellbeing of all humans pursuing rich, meaningful lives. This reduces morality to a kind of hedonic factory farming and suggests we should sacrifice the depth and variety of human experience for the mass production of simple positive states.",
+    "type": "novel",
+    "severity_estimate": "strong"
+  }
+]

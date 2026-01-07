@@ -1,0 +1,10 @@
+{
+  "id": "arg-total-utilitarianism-03",
+  "supports_view": "total-utilitarianism",
+  "name": "Rejecting the Asymmetry's Hidden Costs",
+  "force": 58,
+  "importance": 75,
+  "robustness": 45,
+  "overall": 59,
+  "reasoning": "The argument correctly identifies genuine tensions in asymmetric views, particularly regarding extinction and empty worlds, which are real costs that asymmetry proponents must address. However, the force is limited because asymmetry defenders have developed responses (e.g., distinguishing between creating no one and letting existing people die, or accepting the empty world implication as not actually counterintuitive). The robustness is weakened because the argument doesn't address why total utilitarianism's own counterintuitive implications (like the Repugnant Conclusion) are preferable to the asymmetry's costs."
+}

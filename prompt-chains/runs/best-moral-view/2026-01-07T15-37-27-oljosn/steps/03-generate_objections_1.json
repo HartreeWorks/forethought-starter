@@ -1,0 +1,42 @@
+[
+  {
+    "id": "obj-critical-level-utilitarianism-01",
+    "target_view": "critical-level-utilitarianism",
+    "name": "The Sadistic Conclusion",
+    "objection": "Critical Level Utilitarianism implies that it can be better to create people with negative wellbeing (suffering lives) than to create a larger number of people with positive but below-threshold wellbeing. If we must choose between adding one person at wellbeing -1 or adding a million people at wellbeing +5 (where the critical level is +10), the view counts the million people as contributing -5 million to total value, making the single suffering person preferable. This seems deeply perverse—actively choosing suffering over happiness.",
+    "type": "classic",
+    "severity_estimate": "devastating"
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-02",
+    "target_view": "critical-level-utilitarianism",
+    "name": "Arbitrary Threshold Problem",
+    "objection": "The view requires specifying a precise critical level, but there appears to be no principled, non-arbitrary way to determine what this level should be. Any specific number seems unmotivated—why should the threshold be at wellbeing level 50 rather than 49 or 51? This arbitrariness undermines the theory's action-guiding capacity and suggests the distinction between 'worth living' and 'good enough to add value' may be a philosopher's invention rather than a genuine moral boundary.",
+    "type": "structural",
+    "severity_estimate": "very_strong"
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-03",
+    "target_view": "critical-level-utilitarianism",
+    "name": "The Discontinuity Paradox",
+    "objection": "The view creates a sharp discontinuity where a life at wellbeing level 49.99 (just below threshold) contributes negatively to world value, while a life at 50.01 (just above) contributes positively. This means that slightly improving someone's life from 49.99 to 50.01 would swing their contribution from negative to positive—a massive moral difference from a trivial wellbeing change. This violates the intuition that small changes in wellbeing should produce proportionally small changes in moral evaluation.",
+    "type": "structural",
+    "severity_estimate": "strong"
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-04",
+    "target_view": "critical-level-utilitarianism",
+    "name": "The Grateful Existence Objection",
+    "objection": "Consider someone whose life is genuinely worth living (wellbeing +30) but below the critical level (+50). They are grateful to exist, would not prefer non-existence, and their life contains genuine goods. Yet Critical Level Utilitarianism says the world would be better if they had never existed—their very existence makes things worse. This seems to wrong them by denying the value of their existence from their own reasonable perspective, treating their grateful, meaningful life as a net negative.",
+    "type": "novel",
+    "severity_estimate": "very_strong"
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-05",
+    "target_view": "critical-level-utilitarianism",
+    "name": "The Extinction Implication",
+    "objection": "If most human lives fall below the critical level (as might be plausible if the threshold is set high enough to avoid the Repugnant Conclusion), then Critical Level Utilitarianism would recommend human extinction or at least dramatic population reduction. A world with only a small elite of extremely flourishing individuals would be better than our current world with billions of people living decent but sub-threshold lives. This transforms a theory meant to avoid counterintuitive conclusions into one that endorses potentially the most counterintuitive conclusion of all.",
+    "type": "novel",
+    "severity_estimate": "strong"
+  }
+]

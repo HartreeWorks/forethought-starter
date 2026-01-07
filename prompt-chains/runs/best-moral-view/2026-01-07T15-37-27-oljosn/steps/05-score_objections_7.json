@@ -1,0 +1,10 @@
+{
+  "id": "obj-critical-level-utilitarianism-03",
+  "target_view": "critical-level-utilitarianism",
+  "name": "The Discontinuity Paradox",
+  "force": 72,
+  "damage": 55,
+  "difficulty_to_rebut": 45,
+  "overall": 57,
+  "reasoning": "The objection correctly identifies a structural feature of threshold-based theories, though the 'massive moral difference' framing somewhat overstates the case—the discontinuity in contribution value is real but the absolute magnitude at the threshold is infinitesimal. Critical-level utilitarians have standard responses: they can adopt fuzzy thresholds, argue the discontinuity is a feature not a bug (similar to other threshold concepts in ethics), or note that real-world wellbeing measurement lacks the precision to make such fine distinctions actionable. The damage is moderate because the view can function practically despite this theoretical wrinkle."
+}

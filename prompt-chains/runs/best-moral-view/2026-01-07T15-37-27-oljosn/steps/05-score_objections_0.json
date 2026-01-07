@@ -1,0 +1,10 @@
+{
+  "id": "obj-total-utilitarianism-01",
+  "target_view": "total-utilitarianism",
+  "name": "The Repugnant Conclusion",
+  "force": 95,
+  "damage": 85,
+  "difficulty_to_rebut": 80,
+  "overall": 87,
+  "reasoning": "The objection follows with logical necessity from total utilitarianism's core commitment to maximizing aggregate wellbeing—if lives barely worth living have positive value, enough of them must outweigh fewer excellent lives. This strikes at the heart of the view's aggregative logic, making it extremely damaging if one accepts the intuition as valid. While some responses exist (biting the bullet, arguing the intuition is unreliable, or adopting critical levels), decades of philosophical work have failed to produce a widely accepted solution, and most rebuttals either abandon core utilitarian commitments or require accepting other counterintuitive implications."
+}

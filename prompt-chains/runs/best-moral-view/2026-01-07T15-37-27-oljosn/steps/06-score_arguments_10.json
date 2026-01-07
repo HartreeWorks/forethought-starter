@@ -1,0 +1,10 @@
+{
+  "id": "arg-asymmetric-person-affecting-view-01",
+  "supports_view": "asymmetric-person-affecting-view",
+  "name": "The Non-Identity Benefit Problem",
+  "force": 55,
+  "importance": 90,
+  "robustness": 40,
+  "overall": 62,
+  "reasoning": "The argument addresses the central challenge for asymmetric views—providing a principled basis for treating potential happiness and suffering differently—making it highly important. However, the reasoning relies on a contested asymmetry: critics argue that if we cannot benefit someone by creating them (no comparator state), the same logic should apply to harm, since the suffering person also had no prior existence to compare against. The argument is vulnerable to charges of special pleading and to impersonal value theories that bypass the comparative framework entirely."
+}

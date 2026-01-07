@@ -1,0 +1,10 @@
+{
+  "id": "obj-critical-level-utilitarianism-02",
+  "target_view": "critical-level-utilitarianism",
+  "name": "Arbitrary Threshold Problem",
+  "force": 72,
+  "damage": 65,
+  "difficulty_to_rebut": 68,
+  "overall": 68,
+  "reasoning": "The objection correctly identifies that CLU requires a precise threshold that seems difficult to justify non-arbitrarily, and this is a genuine structural concern. However, the force is somewhat mitigated by the fact that many moral theories face similar precision problems (e.g., where exactly does 'enough' lie in sufficientarianism?), and defenders can argue the critical level is discovered rather than invented, or that a range rather than point value suffices. The damage is significant but not fatal—the view's core insight about separating 'worth living' from 'worth adding' could survive even if the precise threshold remains uncertain."
+}

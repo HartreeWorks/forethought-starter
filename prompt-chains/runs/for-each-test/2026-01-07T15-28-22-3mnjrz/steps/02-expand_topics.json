@@ -1,0 +1,20 @@
+[
+  {
+    "topic_id": "topic1",
+    "key_question": "If we can technologically alter our memories, do we have a moral obligation to preserve our authentic experiences—including traumatic ones—as essential components of who we are, or does the imperative to reduce human suffering justify selective memory modification?",
+    "argument_for": "Memory modification technology could offer profound therapeutic benefits for individuals suffering from PTSD, severe depression, or other trauma-related conditions where painful memories create ongoing psychological harm. Just as we don't consider it unethical to treat physical injuries or diseases, we shouldn't view the alleviation of psychological suffering through memory modification as inherently wrong—especially when traditional therapies have failed and the person's quality of life is severely compromised.",
+    "critique": "Memory modification could fundamentally undermine the continuity of personal identity and authentic human experience. Our traumatic experiences, while painful, often contribute to personal growth, empathy, and wisdom. By selectively editing our past, we risk creating a fragmented sense of self and potentially losing important lessons that inform our decision-making. Additionally, there's a concerning potential for abuse—whether by authoritarian regimes, corporations, or even well-meaning family members who might pressure individuals to modify memories deemed 'inconvenient.'"
+  },
+  {
+    "topic_id": "topic2",
+    "key_question": "If creativity is fundamentally about novel expression and meaning-making, can algorithmic systems that lack consciousness and intentionality truly create, or do they simply recombine existing patterns in ways that appear creative to human observers?",
+    "argument_for": "This topic is crucial to explore as AI-generated content becomes increasingly sophisticated and prevalent across creative industries. Understanding the nature of machine creativity will help us redefine human artistic value, establish appropriate attribution and ownership frameworks, and determine how to integrate AI tools ethically into creative processes while preserving the unique aspects of human expression.",
+    "critique": "This debate may be fundamentally unanswerable because it relies on contested definitions of consciousness, intentionality, and creativity that we don't fully understand even in humans. Additionally, focusing too heavily on whether machines are 'truly' creative might distract from more practical concerns about AI's impact on creative livelihoods, cultural authenticity, and the democratization versus commodification of artistic expression."
+  },
+  {
+    "topic_id": "topic3",
+    "key_question": "If future generations don't yet exist and may never exist, can we meaningfully say we have moral duties toward them, and how do we weigh their potential interests against the concrete needs of people alive today?",
+    "argument_for": "Our current decisions about climate change, resource depletion, and technological risks will profoundly shape the world future generations inherit, making it morally irresponsible to ignore their potential welfare simply because they don't yet exist - just as we wouldn't poison a well knowing someone will drink from it later, even if we don't know their identity.",
+    "critique": "This framework leads to paralyzing moral demands and logical contradictions - we cannot have duties to beings whose very existence depends on our choices, since different decisions create different people rather than helping or harming the same individuals, and prioritizing hypothetical future people over actual present suffering seems to invert moral priorities."
+  }
+]

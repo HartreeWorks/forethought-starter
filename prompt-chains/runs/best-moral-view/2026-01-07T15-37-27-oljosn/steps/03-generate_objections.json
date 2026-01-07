@@ -1,0 +1,128 @@
+[
+  [
+    {
+      "id": "obj-total-utilitarianism-01",
+      "target_view": "total-utilitarianism",
+      "name": "The Repugnant Conclusion",
+      "objection": "Total Utilitarianism implies that for any population of 10 billion people living wonderful, flourishing lives, there is a better outcome consisting of a vastly larger population (say, 100 trillion people) whose lives are barely worth living—perhaps spent in tedious, monotonous labor with only minimal pleasures. This follows necessarily from aggregating total wellbeing, yet the conclusion that we should prefer a world of countless people with lives barely worth living over a world of genuine human flourishing strikes most as deeply counterintuitive and morally repugnant.",
+      "type": "classic",
+      "severity_estimate": "devastating"
+    },
+    {
+      "id": "obj-total-utilitarianism-02",
+      "target_view": "total-utilitarianism",
+      "name": "The Obligation to Maximize Population",
+      "objection": "Total Utilitarianism generates an extremely demanding obligation to procreate: if creating new happy people adds value, then failing to have children when one could (or failing to support policies that maximize population growth) is morally equivalent to allowing existing people to suffer. This means individuals who choose to remain childless, or societies that stabilize their populations, are acting wrongly—even if this choice allows them to provide better lives for existing people or pursue other valuable projects. The view effectively condemns most reproductive choices as immoral.",
+      "type": "structural",
+      "severity_estimate": "very_strong"
+    },
+    {
+      "id": "obj-total-utilitarianism-03",
+      "target_view": "total-utilitarianism",
+      "name": "The Replaceability Problem",
+      "objection": "If what matters is only total wellbeing, then killing a happy person is not intrinsically wrong—it is only wrong if it reduces total wellbeing. This means that killing someone and replacing them with an equally happy person (or two slightly less happy people whose combined wellbeing exceeds the original) would be morally permissible or even required. This 'replaceability' implication treats persons as mere vessels for wellbeing rather than as individuals with their own claims to continued existence, violating deep intuitions about the wrongness of killing.",
+      "type": "structural",
+      "severity_estimate": "very_strong"
+    },
+    {
+      "id": "obj-total-utilitarianism-04",
+      "target_view": "total-utilitarianism",
+      "name": "The Temporal Infinity Problem",
+      "objection": "If the future contains infinitely many people (as it might, given cosmic timescales), then any finite action we take now contributes zero percent to the total sum of wellbeing across all time. Total Utilitarianism thus either renders all our choices morally equivalent (since finite differences divided by infinity equal zero), or requires us to compare infinite quantities in ways that lead to paradoxes—such as being unable to say whether a world with infinite happiness plus one unit is better than one with infinite happiness alone. The view becomes action-guiding only by arbitrarily restricting its scope.",
+      "type": "novel",
+      "severity_estimate": "strong"
+    },
+    {
+      "id": "obj-total-utilitarianism-05",
+      "target_view": "total-utilitarianism",
+      "name": "The Welfare Farming Thought Experiment",
+      "objection": "Consider a proposal to create billions of genetically engineered beings—perhaps simple organisms or digital minds—capable of experiencing mild contentment but nothing else: no relationships, no achievements, no complex experiences. Total Utilitarianism implies we should devote enormous resources to 'farming' such beings, since their aggregate mild contentment could exceed the total wellbeing of all humans pursuing rich, meaningful lives. This reduces morality to a kind of hedonic factory farming and suggests we should sacrifice the depth and variety of human experience for the mass production of simple positive states.",
+      "type": "novel",
+      "severity_estimate": "strong"
+    }
+  ],
+  [
+    {
+      "id": "obj-critical-level-utilitarianism-01",
+      "target_view": "critical-level-utilitarianism",
+      "name": "The Sadistic Conclusion",
+      "objection": "Critical Level Utilitarianism implies that it can be better to create people with negative wellbeing (suffering lives) than to create a larger number of people with positive but below-threshold wellbeing. If we must choose between adding one person at wellbeing -1 or adding a million people at wellbeing +5 (where the critical level is +10), the view counts the million people as contributing -5 million to total value, making the single suffering person preferable. This seems deeply perverse—actively choosing suffering over happiness.",
+      "type": "classic",
+      "severity_estimate": "devastating"
+    },
+    {
+      "id": "obj-critical-level-utilitarianism-02",
+      "target_view": "critical-level-utilitarianism",
+      "name": "Arbitrary Threshold Problem",
+      "objection": "The view requires specifying a precise critical level, but there appears to be no principled, non-arbitrary way to determine what this level should be. Any specific number seems unmotivated—why should the threshold be at wellbeing level 50 rather than 49 or 51? This arbitrariness undermines the theory's action-guiding capacity and suggests the distinction between 'worth living' and 'good enough to add value' may be a philosopher's invention rather than a genuine moral boundary.",
+      "type": "structural",
+      "severity_estimate": "very_strong"
+    },
+    {
+      "id": "obj-critical-level-utilitarianism-03",
+      "target_view": "critical-level-utilitarianism",
+      "name": "The Discontinuity Paradox",
+      "objection": "The view creates a sharp discontinuity where a life at wellbeing level 49.99 (just below threshold) contributes negatively to world value, while a life at 50.01 (just above) contributes positively. This means that slightly improving someone's life from 49.99 to 50.01 would swing their contribution from negative to positive—a massive moral difference from a trivial wellbeing change. This violates the intuition that small changes in wellbeing should produce proportionally small changes in moral evaluation.",
+      "type": "structural",
+      "severity_estimate": "strong"
+    },
+    {
+      "id": "obj-critical-level-utilitarianism-04",
+      "target_view": "critical-level-utilitarianism",
+      "name": "The Grateful Existence Objection",
+      "objection": "Consider someone whose life is genuinely worth living (wellbeing +30) but below the critical level (+50). They are grateful to exist, would not prefer non-existence, and their life contains genuine goods. Yet Critical Level Utilitarianism says the world would be better if they had never existed—their very existence makes things worse. This seems to wrong them by denying the value of their existence from their own reasonable perspective, treating their grateful, meaningful life as a net negative.",
+      "type": "novel",
+      "severity_estimate": "very_strong"
+    },
+    {
+      "id": "obj-critical-level-utilitarianism-05",
+      "target_view": "critical-level-utilitarianism",
+      "name": "The Extinction Implication",
+      "objection": "If most human lives fall below the critical level (as might be plausible if the threshold is set high enough to avoid the Repugnant Conclusion), then Critical Level Utilitarianism would recommend human extinction or at least dramatic population reduction. A world with only a small elite of extremely flourishing individuals would be better than our current world with billions of people living decent but sub-threshold lives. This transforms a theory meant to avoid counterintuitive conclusions into one that endorses potentially the most counterintuitive conclusion of all.",
+      "type": "novel",
+      "severity_estimate": "strong"
+    }
+  ],
+  [
+    {
+      "id": "obj-asymmetric-person-affecting-view-01",
+      "target_view": "asymmetric-person-affecting-view",
+      "name": "Unexplained Asymmetry",
+      "objection": "The view posits a fundamental asymmetry between pleasure and pain but provides no principled explanation for why the absence of suffering is good when no one exists to benefit from that absence, while the absence of pleasure is not bad despite no one existing to be deprived. If we accept that non-existent beings cannot be benefited, it seems equally true that they cannot be harmed—yet the view treats these cases differently without adequate justification. This makes the asymmetry appear ad hoc rather than grounded in a coherent metaphysics of value.",
+      "type": "structural",
+      "severity_estimate": "very_strong"
+    },
+    {
+      "id": "obj-asymmetric-person-affecting-view-02",
+      "target_view": "asymmetric-person-affecting-view",
+      "name": "The Procreative Paralysis Problem",
+      "objection": "Since virtually every possible person will experience some suffering during their life, the view implies we have strong moral reasons against creating almost anyone. Even a person whose life would contain overwhelming happiness and minimal suffering still generates a moral reason against their creation (the suffering) with no countervailing moral reason for their creation (the happiness). This leads to the implausible conclusion that procreation is almost always morally problematic, effectively endorsing voluntary human extinction as the morally optimal outcome.",
+      "type": "novel",
+      "severity_estimate": "devastating"
+    },
+    {
+      "id": "obj-asymmetric-person-affecting-view-03",
+      "target_view": "asymmetric-person-affecting-view",
+      "name": "Non-Identity Problem Vulnerability",
+      "objection": "Consider a couple who can either conceive now (creating child A with a minor disability) or wait three months (creating different child B who would be perfectly healthy). The asymmetric view struggles to explain why conceiving now is wrong: Child A is not harmed by being created since they wouldn't otherwise exist, and the view denies that failing to create the happier Child B is bad. The view's person-affecting component undermines its ability to guide choices between creating different possible people with different welfare levels.",
+      "type": "classic",
+      "severity_estimate": "strong"
+    },
+    {
+      "id": "obj-asymmetric-person-affecting-view-04",
+      "target_view": "asymmetric-person-affecting-view",
+      "name": "The Sadistic Conclusion Reversal",
+      "objection": "The view implies that a world with one billion supremely happy people is not better than an empty world (since creating happy people has no positive moral weight), but an empty world is better than a world with even one person experiencing mild, temporary suffering. This means we should prefer preventing the existence of a trillion flourishing lives containing trivial frustrations over allowing them to exist. The view thus generates its own form of sadistic conclusion by treating the prevention of any suffering as lexically prior to any amount of foregone happiness.",
+      "type": "structural",
+      "severity_estimate": "very_strong"
+    },
+    {
+      "id": "obj-asymmetric-person-affecting-view-05",
+      "target_view": "asymmetric-person-affecting-view",
+      "name": "The Rescue vs. Creation Inconsistency",
+      "objection": "The view creates a puzzling inconsistency between our obligations to existing and potential people. If a child already exists and is suffering, we have strong reasons to help them experience pleasure instead. But if we could create that same child in identical circumstances, we have no reason to do so (creating pleasure has no moral weight) and only reasons against (they might suffer). This means the moral status of providing someone a wonderful life depends entirely on the metaphysically arbitrary fact of whether they already exist, making temporal location do implausible moral work.",
+      "type": "novel",
+      "severity_estimate": "strong"
+    }
+  ]
+]

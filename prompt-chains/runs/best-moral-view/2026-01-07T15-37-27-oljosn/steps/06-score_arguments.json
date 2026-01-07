@@ -1,0 +1,152 @@
+[
+  {
+    "id": "arg-total-utilitarianism-01",
+    "supports_view": "total-utilitarianism",
+    "name": "Impartiality and Equal Moral Worth",
+    "force": 58,
+    "importance": 85,
+    "robustness": 42,
+    "overall": 62,
+    "reasoning": "The argument correctly identifies impartiality as a foundational moral commitment and draws a plausible analogy to anti-discrimination principles. However, it conflates equal moral worth of existing persons with the contestable claim that potential persons have equal claims to existence—a significant logical gap. The argument is vulnerable to person-affecting objections (we can be impartial among actual people without thinking we must create more), and the analogy to race/gender discrimination is imperfect since those involve existing persons with interests."
+  },
+  {
+    "id": "arg-total-utilitarianism-02",
+    "supports_view": "total-utilitarianism",
+    "name": "Avoiding Arbitrary Thresholds",
+    "force": 62,
+    "importance": 58,
+    "robustness": 45,
+    "overall": 55,
+    "reasoning": "The argument correctly identifies a genuine problem for Critical Level Utilitarianism, but its claim that zero is uniquely non-arbitrary is contestable—the zero point itself requires a theory of what makes life 'worth living' which may be equally arbitrary. The argument is more effective as a critique of CLU than as a positive case for Total Utilitarianism, and it doesn't address the Repugnant Conclusion which motivates CLU in the first place. Standard counters include that some arbitrariness may be acceptable if it avoids worse theoretical costs, and that the neutral level might be determined by principled considerations rather than arbitrary stipulation."
+  },
+  {
+    "id": "arg-total-utilitarianism-03",
+    "supports_view": "total-utilitarianism",
+    "name": "Rejecting the Asymmetry's Hidden Costs",
+    "force": 58,
+    "importance": 75,
+    "robustness": 45,
+    "overall": 59,
+    "reasoning": "The argument correctly identifies genuine tensions in asymmetric views, particularly regarding extinction and empty worlds, which are real costs that asymmetry proponents must address. However, the force is limited because asymmetry defenders have developed responses (e.g., distinguishing between creating no one and letting existing people die, or accepting the empty world implication as not actually counterintuitive). The robustness is weakened because the argument doesn't address why total utilitarianism's own counterintuitive implications (like the Repugnant Conclusion) are preferable to the asymmetry's costs."
+  },
+  {
+    "id": "arg-total-utilitarianism-04",
+    "supports_view": "total-utilitarianism",
+    "name": "Clear Guidance for Existential Risk Policy",
+    "force": 45,
+    "importance": 55,
+    "robustness": 35,
+    "overall": 45,
+    "reasoning": "The argument overstates Total Utilitarianism's uniqueness—other views (person-affecting with caveats, contractualism, virtue ethics) can also justify existential risk mitigation without the same theoretical commitments. The 'practical clarity' claim is contestable since TU's guidance on existential risk depends heavily on speculative assumptions about future populations and probabilities. Moreover, this practical argument doesn't defend the view's truth, and critics note TU's existential risk guidance comes bundled with counterintuitive implications (like the Repugnant Conclusion) that undermine its overall practical appeal."
+  },
+  {
+    "id": "arg-total-utilitarianism-05",
+    "supports_view": "total-utilitarianism",
+    "name": "The Repugnant Conclusion as Moral Progress",
+    "force": 45,
+    "importance": 85,
+    "robustness": 35,
+    "overall": 55,
+    "reasoning": "The argument makes a legitimate point about cognitive limitations regarding large numbers and the historical unreliability of moral intuitions, but it's largely speculative about which intuitions are biased. It addresses a central challenge for total utilitarianism (the Repugnant Conclusion is perhaps THE major objection), but the 'moral progress' framing cuts both ways—critics can equally claim that rejecting the RC represents progress toward respecting individual welfare thresholds. The argument is vulnerable to the counter that our intuition against the RC may track something real (like the value of flourishing lives vs. merely positive ones) rather than mere cognitive bias."
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-01",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "The Contribution Threshold Intuition",
+    "force": 58,
+    "importance": 85,
+    "robustness": 42,
+    "overall": 62,
+    "reasoning": "The argument articulates a genuine and widely-shared intuition that distinguishes personal worth-living from impersonal contribution to value, which is philosophically substantive and central to motivating CLU over classical utilitarianism. However, the intuition itself is contestable—total utilitarians can argue this conflates two distinct questions, and the argument doesn't explain why the threshold should be set at any particular level rather than zero. It's also vulnerable to the charge that it may reflect status quo bias or failure to properly aggregate small positive values."
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-02",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "Avoiding the Repugnant Conclusion",
+    "force": 72,
+    "importance": 88,
+    "robustness": 45,
+    "overall": 68,
+    "reasoning": "The argument correctly identifies a major motivation for CLU—avoiding the Repugnant Conclusion is central to population ethics debates and the reasoning is logically sound. However, robustness suffers significantly because CLU faces its own well-known problems: it implies the 'Very Repugnant Conclusion' (preferring hellish additions to avoid sub-critical positive lives) and struggles to non-arbitrarily justify any particular critical level. The comparative advantage over Total Utilitarianism is real but comes with substantial theoretical costs."
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-03",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "Coherent Aggregation Despite Asymmetry",
+    "force": 58,
+    "importance": 72,
+    "robustness": 45,
+    "overall": 58,
+    "reasoning": "The argument correctly identifies a genuine advantage of CLU over asymmetric person-affecting views in maintaining coherent aggregation, but overstates how 'principled' this middle ground is—critics argue the critical level is arbitrary and that CLU faces its own problems (like the Very Repugnant Conclusion for high thresholds). The comparative framing addresses an important structural question about population ethics, but the claim that CLU 'preserves' asymmetric intuitions is contestable since it still counts sub-threshold lives negatively rather than neutrally."
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-04",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "The Sadistic Conclusion Objection is Manageable",
+    "force": 42,
+    "importance": 85,
+    "robustness": 35,
+    "overall": 54,
+    "reasoning": "The argument correctly identifies that the Sadistic Conclusion is a major objection requiring response, and the tu quoque against Total Utilitarianism has some merit. However, the defense is weak: claiming CLU 'correctly identifies' such lives as non-contributing simply restates the view rather than defending it, and the Sadistic Conclusion remains deeply counterintuitive—it implies adding suffering people could be better than adding people with lives worth living but below the threshold. The 'set the critical level thoughtfully' response doesn't resolve the structural problem that any positive critical level generates this implication."
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-05",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "Sensible Guidance for Population Policy",
+    "force": 45,
+    "importance": 50,
+    "robustness": 35,
+    "overall": 43,
+    "reasoning": "The argument appeals to practical alignment with policy intuitions, but this is philosophically weak—matching intuitions doesn't establish theoretical correctness, and total utilitarianism could also claim to provide clear guidance. The importance is moderate since practical applicability matters but doesn't address the core theoretical question of why the critical level should be set where it is. The argument is vulnerable to counters: critics can note that CLU's guidance depends entirely on the contested critical level choice, and that prioritizing 'quality over quantity' begs the question against views that count all positive lives as valuable."
+  },
+  {
+    "id": "arg-asymmetric-person-affecting-view-01",
+    "supports_view": "asymmetric-person-affecting-view",
+    "name": "The Non-Identity Benefit Problem",
+    "force": 55,
+    "importance": 90,
+    "robustness": 40,
+    "overall": 62,
+    "reasoning": "The argument addresses the central challenge for asymmetric views—providing a principled basis for treating potential happiness and suffering differently—making it highly important. However, the reasoning relies on a contested asymmetry: critics argue that if we cannot benefit someone by creating them (no comparator state), the same logic should apply to harm, since the suffering person also had no prior existence to compare against. The argument is vulnerable to charges of special pleading and to impersonal value theories that bypass the comparative framework entirely."
+  },
+  {
+    "id": "arg-asymmetric-person-affecting-view-02",
+    "supports_view": "asymmetric-person-affecting-view",
+    "name": "Avoiding the Repugnant Conclusion",
+    "force": 65,
+    "importance": 85,
+    "robustness": 45,
+    "overall": 65,
+    "reasoning": "The argument correctly identifies that the Asymmetric View avoids the Repugnant Conclusion, which is a major theoretical advantage and addresses a central problem in population ethics. However, the reasoning is incomplete—avoiding one counterintuitive conclusion doesn't establish the view is correct, and the Asymmetric View faces its own serious challenges (the Non-Identity Problem, counterintuitive implications about extinction being morally neutral). The robustness is limited because critics can argue it trades one bullet for another, and other views (like Variable Value or Critical Level theories) also avoid the Repugnant Conclusion without the asymmetry's costs."
+  },
+  {
+    "id": "arg-asymmetric-person-affecting-view-03",
+    "supports_view": "asymmetric-person-affecting-view",
+    "name": "The Phenomenological Asymmetry of Suffering",
+    "force": 55,
+    "importance": 75,
+    "robustness": 40,
+    "overall": 57,
+    "reasoning": "The argument appeals to a genuine phenomenological observation about the urgency of suffering, but the inference from descriptive phenomenology to normative asymmetry is contestable—intensity of experience doesn't straightforwardly translate to moral priority. It addresses an important foundational question about why we should treat suffering and happiness asymmetrically. However, it's vulnerable to counters: peak positive experiences (flow, ecstasy, love) can be equally phenomenologically compelling, and the argument conflates the urgency of existing suffering with claims about non-existent beings."
+  },
+  {
+    "id": "arg-asymmetric-person-affecting-view-04",
+    "supports_view": "asymmetric-person-affecting-view",
+    "name": "Coherence with Procreative Liberty",
+    "force": 52,
+    "importance": 45,
+    "robustness": 40,
+    "overall": 46,
+    "reasoning": "The argument shows that the Asymmetric View aligns with common intuitions about procreative liberty, but this is primarily an appeal to intuition coherence rather than independent philosophical justification—the intuitions themselves may be mistaken or inconsistent. As a practical argument, it addresses application rather than the fundamental metaphysical or ethical questions at stake in population ethics. Critics can readily counter that many ethical views can be made consistent with procreative liberty through different framings, and that coherence with existing intuitions doesn't establish truth, especially when those intuitions may themselves reflect the asymmetry being defended (circularity concern)."
+  },
+  {
+    "id": "arg-asymmetric-person-affecting-view-05",
+    "supports_view": "asymmetric-person-affecting-view",
+    "name": "The Absent Beneficiary Response",
+    "force": 45,
+    "importance": 85,
+    "robustness": 35,
+    "overall": 55,
+    "reasoning": "The argument addresses a central symmetry objection but its core move—claiming preventing bad differs fundamentally from failing to create good—largely restates the asymmetry rather than justifying it. Critics can reasonably ask why the intrinsic badness of suffering makes its absence good without a beneficiary while the intrinsic goodness of happiness doesn't make its absence bad. The argument survives initial scrutiny but remains vulnerable to the charge that it assumes what it needs to prove about the metaphysical asymmetry between positive and negative states."
+  }
+]

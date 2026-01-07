@@ -1,0 +1,202 @@
+[
+  {
+    "id": "c1",
+    "short": "Arbitrary value thresholds",
+    "category": "Questionable premises",
+    "rationale": "The 50% threshold for 'mostly-great' and 90% for 'near-best' futures appear arbitrary and lack philosophical justification. Different thresholds could dramatically alter the conclusions about eutopian difficulty.",
+    "novelty": 3,
+    "risk": 7
+  },
+  {
+    "id": "c2",
+    "short": "Gamble-based value definition",
+    "category": "Alternative interpretations",
+    "rationale": "Defining value quantities through gambling comparisons may not capture how reasonable moral views actually assess outcomes. Many moral frameworks reject such risk-neutral quantification of value.",
+    "novelty": 5,
+    "risk": 8
+  },
+  {
+    "id": "c3",
+    "short": "Multiplicative value assumption",
+    "category": "Logical weaknesses",
+    "rationale": "The claim that value is multiplicative across dimensions lacks justification and conflicts with many moral theories that allow compensation between goods. This assumption drives much of the 'fragility' conclusion.",
+    "novelty": 7,
+    "risk": 9
+  },
+  {
+    "id": "c4",
+    "short": "Historical moral catastrophe analogy",
+    "category": "Questionable premises",
+    "rationale": "The argument assumes historical moral failures predict future ones, but technological abundance and moral progress could break this pattern. The analogy may not hold for unprecedented future conditions.",
+    "novelty": 4,
+    "risk": 6
+  },
+  {
+    "id": "c5",
+    "short": "Fat-tailed distribution assumption",
+    "category": "Empirical claims",
+    "rationale": "The claim that value-efficiency follows fat-tailed distributions is speculative and based on weak analogies to wealth and citations. Future value distributions could be fundamentally different.",
+    "novelty": 6,
+    "risk": 7
+  },
+  {
+    "id": "c6",
+    "short": "Resource separability requirement",
+    "category": "Questionable premises",
+    "rationale": "Linear views requiring resource separability may be too restrictive. Many plausible moral views allow for emergent value from resource combinations that isn't captured by additive models.",
+    "novelty": 6,
+    "risk": 6
+  },
+  {
+    "id": "c7",
+    "short": "Bounded view classification",
+    "category": "Gaps in argumentation",
+    "rationale": "The taxonomy of bounded views seems incomplete and may miss hybrid approaches. The sharp distinction between 'joint' and 'separate' aggregation overlooks more nuanced aggregation methods.",
+    "novelty": 5,
+    "risk": 7
+  },
+  {
+    "id": "c8",
+    "short": "Intertheoretic comparison problems",
+    "category": "Logical weaknesses",
+    "rationale": "The paper acknowledges but doesn't resolve fundamental problems with comparing across moral theories. The various normalization methods yield contradictory conclusions, undermining the overall argument.",
+    "novelty": 4,
+    "risk": 8
+  },
+  {
+    "id": "c9",
+    "short": "Digital beings speculation",
+    "category": "Empirical claims",
+    "rationale": "Claims about digital beings and their moral status are highly speculative. The argument assumes digital beings will exist in vast numbers and have moral status, which remains uncertain.",
+    "novelty": 3,
+    "risk": 5
+  },
+  {
+    "id": "c10",
+    "short": "Scale insensitivity critique",
+    "category": "Alternative interpretations",
+    "rationale": "The paper criticizes scope insensitivity but may itself suffer from it by treating galactic-scale futures as obviously more valuable. Some moral views reasonably discount or cap the value of scale.",
+    "novelty": 6,
+    "risk": 6
+  },
+  {
+    "id": "c11",
+    "short": "Common-sense utopia strawman",
+    "category": "Gaps in argumentation",
+    "rationale": "The 'common-sense utopia' example may be a strawman that doesn't represent sophisticated easygoing views. More nuanced liberal positions might avoid the catalogued problems.",
+    "novelty": 4,
+    "risk": 5
+  },
+  {
+    "id": "c12",
+    "short": "Moral convergence dismissal",
+    "category": "Scope limitations",
+    "rationale": "The paper largely ignores the possibility that moral views might converge toward truth through reflection and discourse. This convergence could make eutopia more achievable than the analysis suggests.",
+    "novelty": 5,
+    "risk": 7
+  },
+  {
+    "id": "c13",
+    "short": "Population ethics overemphasis",
+    "category": "Overgeneralisations",
+    "rationale": "The argument places disproportionate weight on population ethics disagreements. Many moral catastrophes could be avoided even with imperfect population-ethical views.",
+    "novelty": 4,
+    "risk": 6
+  },
+  {
+    "id": "c14",
+    "short": "Technological determinism",
+    "category": "Questionable premises",
+    "rationale": "The paper assumes technological capabilities (like space settlement) without considering whether such developments are inevitable or desirable from various moral perspectives.",
+    "novelty": 3,
+    "risk": 5
+  },
+  {
+    "id": "c15",
+    "short": "Moral error inevitability",
+    "category": "Logical weaknesses",
+    "rationale": "The argument seems to assume moral errors are inevitable without adequately considering institutional and procedural safeguards that could minimize such errors.",
+    "novelty": 5,
+    "risk": 6
+  },
+  {
+    "id": "c16",
+    "short": "Value function completeness",
+    "category": "Questionable premises",
+    "rationale": "The requirement that moral views be complete and satisfy von Neumann-Morgenstern axioms excludes many reasonable moral frameworks that might be more easygoing about eutopia.",
+    "novelty": 6,
+    "risk": 7
+  },
+  {
+    "id": "c17",
+    "short": "Extinction baseline arbitrariness",
+    "category": "Ambiguities",
+    "rationale": "Setting extinction as the zero point for value comparisons is arbitrary and could bias the analysis. Different baselines might yield different conclusions about eutopian difficulty.",
+    "novelty": 4,
+    "risk": 6
+  },
+  {
+    "id": "c18",
+    "short": "Hedonic treadmill analogy weakness",
+    "category": "Questionable premises",
+    "rationale": "The hedonic treadmill analogy may not apply to societal-level value judgments. Collective moral progress could differ fundamentally from individual satisfaction dynamics.",
+    "novelty": 3,
+    "risk": 5
+  },
+  {
+    "id": "c19",
+    "short": "Resource allocation fatalism",
+    "category": "Gaps in argumentation",
+    "rationale": "The paper doesn't adequately consider how governance institutions and coordination mechanisms could improve resource allocation decisions, potentially making eutopia more achievable.",
+    "novelty": 5,
+    "risk": 6
+  },
+  {
+    "id": "c20",
+    "short": "Moral catastrophe definition vagueness",
+    "category": "Ambiguities",
+    "rationale": "The concept of 'moral catastrophe' remains poorly defined, making it unclear when a future truly loses 'most of its value' rather than just being imperfect.",
+    "novelty": 4,
+    "risk": 7
+  },
+  {
+    "id": "c21",
+    "short": "Empirical examples cherry-picking",
+    "category": "Empirical claims",
+    "rationale": "The examples of extreme experiences (Russell, Dostoevsky) and value distributions may be cherry-picked to support the fat-tailed hypothesis rather than representing typical cases.",
+    "novelty": 3,
+    "risk": 5
+  },
+  {
+    "id": "c22",
+    "short": "Bounded view implausibility overstated",
+    "category": "Overgeneralisations",
+    "rationale": "The dismissal of bounded views as implausible may be too hasty. The paper doesn't fully explore how bounded views might handle the identified problems through refinements.",
+    "novelty": 5,
+    "risk": 6
+  },
+  {
+    "id": "c23",
+    "short": "Future generations agency ignored",
+    "category": "Gaps in argumentation",
+    "rationale": "The analysis treats future moral errors as inevitable rather than considering how future generations might actively work to avoid the catalogued mistakes through learning and institutions.",
+    "novelty": 6,
+    "risk": 7
+  },
+  {
+    "id": "c24",
+    "short": "Meta-ethical assumptions",
+    "category": "Questionable premises",
+    "rationale": "The paper assumes moral realism and that there are objective facts about value, but on anti-realist views, the entire framework of 'getting morality right' becomes questionable.",
+    "novelty": 4,
+    "risk": 6
+  },
+  {
+    "id": "c25",
+    "short": "Coordination possibility underexplored",
+    "category": "Scope limitations",
+    "rationale": "The paper doesn't sufficiently consider how coordination mechanisms, international institutions, and value-aligned AI could help navigate moral disagreements and avoid catastrophic errors.",
+    "novelty": 6,
+    "risk": 8
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "obj-total-utilitarianism-01",
+    "target_view": "total-utilitarianism",
+    "name": "The Repugnant Conclusion",
+    "force": 95,
+    "damage": 85,
+    "difficulty_to_rebut": 80,
+    "overall": 87,
+    "reasoning": "The objection follows with logical necessity from total utilitarianism's core commitment to maximizing aggregate wellbeing—if lives barely worth living have positive value, enough of them must outweigh fewer excellent lives. This strikes at the heart of the view's aggregative logic, making it extremely damaging if one accepts the intuition as valid. While some responses exist (biting the bullet, arguing the intuition is unreliable, or adopting critical levels), decades of philosophical work have failed to produce a widely accepted solution, and most rebuttals either abandon core utilitarian commitments or require accepting other counterintuitive implications."
+  },
+  {
+    "id": "obj-total-utilitarianism-02",
+    "target_view": "total-utilitarianism",
+    "name": "The Obligation to Maximize Population",
+    "force": 72,
+    "damage": 58,
+    "difficulty_to_rebut": 45,
+    "overall": 58,
+    "reasoning": "The objection correctly identifies that total utilitarianism's aggregative structure implies strong procreative obligations, making the logical connection fairly tight. However, the damage is moderate because total utilitarians can bite this bullet or argue that resource constraints and diminishing returns naturally limit optimal population. Standard rebuttals involving satisficing versions, the distinction between positive and negative duties, or empirical claims about optimal population size provide workable responses, though each involves theoretical costs."
+  },
+  {
+    "id": "obj-total-utilitarianism-03",
+    "target_view": "total-utilitarianism",
+    "name": "The Replaceability Problem",
+    "force": 85,
+    "damage": 78,
+    "difficulty_to_rebut": 65,
+    "overall": 76,
+    "reasoning": "The objection follows logically from total utilitarianism's core commitment to maximizing aggregate wellbeing without giving special weight to existing persons—the replaceability implication is a genuine structural consequence, not a misreading. The damage is substantial because it conflicts with deeply held moral intuitions about the wrongness of killing and personal inviolability, though some utilitarians bite this bullet. Rebuttals exist (indirect utilitarianism, rule-based approaches, arguing that actual killing always has negative side-effects) but these either modify the view significantly or seem ad hoc, making the objection moderately difficult to dismiss cleanly."
+  },
+  {
+    "id": "obj-total-utilitarianism-04",
+    "target_view": "total-utilitarianism",
+    "name": "The Temporal Infinity Problem",
+    "force": 72,
+    "damage": 75,
+    "difficulty_to_rebut": 65,
+    "overall": 71,
+    "reasoning": "The objection correctly identifies a genuine mathematical problem for aggregative consequentialism when dealing with infinite populations—this is a well-recognized issue in infinite ethics literature. However, the force is limited because the empirical premise (infinite future people) is uncertain, and several responses exist: discounting, using limit-based comparisons, or adopting alternative aggregation methods like overtaking criteria. The damage is significant since it threatens the view's action-guidance, but total utilitarians can restrict scope to finite horizons without obvious arbitrariness given our epistemic situation."
+  },
+  {
+    "id": "obj-total-utilitarianism-05",
+    "target_view": "total-utilitarianism",
+    "name": "The Welfare Farming Thought Experiment",
+    "force": 72,
+    "damage": 68,
+    "difficulty_to_rebut": 55,
+    "overall": 65,
+    "reasoning": "This is a well-constructed variant of the Repugnant Conclusion that emphasizes the qualitative impoverishment of the maximally valuable outcome under total utilitarianism. The logical connection is strong—if welfare is fungible and aggregates matter, then mass-producing simple positive states could indeed dominate. However, total utilitarians have responses: they can argue that complex experiences contain more welfare than stipulated, invoke diminishing returns, or bite the bullet by claiming our intuitions against this are unreliable. The objection's force is somewhat reduced because it relies on contested assumptions about welfare comparability across radically different beings."
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-01",
+    "target_view": "critical-level-utilitarianism",
+    "name": "The Sadistic Conclusion",
+    "force": 88,
+    "damage": 82,
+    "difficulty_to_rebut": 75,
+    "overall": 82,
+    "reasoning": "The logic follows directly from CLU's structure: any positive critical level mathematically entails that sufficiently many below-threshold positive lives count as worse than fewer negative lives. This is devastating because CLU was partly designed to avoid counterintuitive implications like the Repugnant Conclusion, yet generates an arguably worse one. Rebuttals exist (e.g., adopting variable critical levels, biting the bullet, or questioning the scenario's realism), but all involve significant theoretical costs or seem ad hoc."
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-02",
+    "target_view": "critical-level-utilitarianism",
+    "name": "Arbitrary Threshold Problem",
+    "force": 72,
+    "damage": 65,
+    "difficulty_to_rebut": 68,
+    "overall": 68,
+    "reasoning": "The objection correctly identifies that CLU requires a precise threshold that seems difficult to justify non-arbitrarily, and this is a genuine structural concern. However, the force is somewhat mitigated by the fact that many moral theories face similar precision problems (e.g., where exactly does 'enough' lie in sufficientarianism?), and defenders can argue the critical level is discovered rather than invented, or that a range rather than point value suffices. The damage is significant but not fatal—the view's core insight about separating 'worth living' from 'worth adding' could survive even if the precise threshold remains uncertain."
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-03",
+    "target_view": "critical-level-utilitarianism",
+    "name": "The Discontinuity Paradox",
+    "force": 72,
+    "damage": 55,
+    "difficulty_to_rebut": 45,
+    "overall": 57,
+    "reasoning": "The objection correctly identifies a structural feature of threshold-based theories, though the 'massive moral difference' framing somewhat overstates the case—the discontinuity in contribution value is real but the absolute magnitude at the threshold is infinitesimal. Critical-level utilitarians have standard responses: they can adopt fuzzy thresholds, argue the discontinuity is a feature not a bug (similar to other threshold concepts in ethics), or note that real-world wellbeing measurement lacks the precision to make such fine distinctions actionable. The damage is moderate because the view can function practically despite this theoretical wrinkle."
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-04",
+    "target_view": "critical-level-utilitarianism",
+    "name": "The Grateful Existence Objection",
+    "force": 62,
+    "damage": 58,
+    "difficulty_to_rebut": 55,
+    "overall": 58,
+    "reasoning": "The objection has genuine intuitive pull by highlighting a tension between first-personal gratitude and impersonal evaluation, but it conflates two distinct claims: whether a life is good for the person living it versus whether adding that life improves the world impersonally. CLU proponents can respond that the critical level precisely tracks what makes additions valuable, not what makes existing lives worth continuing—the person isn't wronged because no preference of theirs is frustrated and the evaluation is prospective, not retrospective. The objection has moderate force but relies on contestable assumptions about what 'wronging' requires and whether personal perspectives should constrain impersonal axiology."
+  },
+  {
+    "id": "obj-critical-level-utilitarianism-05",
+    "target_view": "critical-level-utilitarianism",
+    "name": "The Extinction Implication",
+    "force": 72,
+    "damage": 78,
+    "difficulty_to_rebut": 58,
+    "overall": 69,
+    "reasoning": "The objection correctly identifies a genuine tension: setting the critical level high enough to avoid the Repugnant Conclusion risks implying that eliminating sub-threshold lives improves value, which does follow logically from the view's structure. The damage is substantial since CLU was explicitly designed to avoid counterintuitive conclusions, making this a self-defeating feature. However, defenders can argue that the critical level should be set at a moderate point where most actual lives exceed it, or invoke person-affecting constraints that block recommendations to eliminate existing people, though these responses require additional theoretical commitments."
+  },
+  {
+    "id": "obj-asymmetric-person-affecting-view-01",
+    "target_view": "asymmetric-person-affecting-view",
+    "name": "Unexplained Asymmetry",
+    "force": 72,
+    "damage": 78,
+    "difficulty_to_rebut": 65,
+    "overall": 72,
+    "reasoning": "The objection correctly identifies a structural tension: if non-existent beings cannot be benefited or harmed, treating the absence of pain as good while the absence of pleasure is not bad requires justification beyond mere stipulation. The damage is substantial since the asymmetry is foundational to the view, not peripheral. However, defenders have responses—appealing to phenomenological asymmetries between pleasure and pain, or arguing the asymmetry tracks common moral intuitions about procreation—though these rebuttals remain contested and may appear to simply relocate rather than resolve the explanatory burden."
+  },
+  {
+    "id": "obj-asymmetric-person-affecting-view-02",
+    "target_view": "asymmetric-person-affecting-view",
+    "name": "The Procreative Paralysis Problem",
+    "force": 78,
+    "damage": 75,
+    "difficulty_to_rebut": 65,
+    "overall": 73,
+    "reasoning": "The objection correctly identifies that the asymmetry (suffering counts negatively but happiness doesn't count positively for non-existent beings) logically generates reasons against nearly all procreation. This is a strong logical derivation from the view's core commitments. However, proponents can respond by invoking threshold views, distinguishing between pro tanto reasons and all-things-considered judgments, or arguing that the reasons against are typically weak and easily overridden by other considerations (like parental autonomy or duties to existing persons). The damage is significant but not fatal since some defenders bite this bullet or modify the view to include comparative person-affecting considerations."
+  },
+  {
+    "id": "obj-asymmetric-person-affecting-view-03",
+    "target_view": "asymmetric-person-affecting-view",
+    "name": "Non-Identity Problem Vulnerability",
+    "force": 82,
+    "damage": 75,
+    "difficulty_to_rebut": 72,
+    "overall": 76,
+    "reasoning": "This objection accurately identifies a genuine tension in the asymmetric person-affecting view: by denying that creating happy people is good while also holding that you can only wrong existing people, the view loses traction on cases involving different possible people. The logic is strong though not airtight—defenders might appeal to threshold accounts or impersonal considerations for same-number choices. The damage is significant since reproductive ethics is a central application domain, though the view could potentially be supplemented with additional principles. Rebuttals exist (e.g., appealing to virtue, parental obligations, or hybrid theories) but they often compromise the view's distinctive commitments or elegance."
+  },
+  {
+    "id": "obj-asymmetric-person-affecting-view-04",
+    "target_view": "asymmetric-person-affecting-view",
+    "name": "The Sadistic Conclusion Reversal",
+    "force": 62,
+    "damage": 68,
+    "difficulty_to_rebut": 55,
+    "overall": 62,
+    "reasoning": "The objection has merit but overstates the view's commitments—the asymmetric view typically holds that creating happy people is merely not obligatory, not that it has zero moral weight in all comparisons, and most versions don't treat suffering prevention as lexically prior to happiness. The damage is significant if the characterization holds, as it would make the view deeply counterintuitive, but defenders can distinguish between 'no positive duty to create' and 'creation has no value whatsoever.' Standard rebuttals involve clarifying that the asymmetry concerns obligations rather than absolute value rankings, though this requires careful articulation."
+  },
+  {
+    "id": "obj-asymmetric-person-affecting-view-05",
+    "target_view": "asymmetric-person-affecting-view",
+    "name": "The Rescue vs. Creation Inconsistency",
+    "force": 72,
+    "damage": 58,
+    "difficulty_to_rebut": 55,
+    "overall": 62,
+    "reasoning": "The objection effectively highlights a genuine asymmetry in the view's treatment of pleasure for existing vs. potential persons, and the framing around 'metaphysically arbitrary' temporal location is rhetorically potent. However, proponents can argue this asymmetry is precisely what the view endorses—existence is morally relevant because only existing persons have welfare that can be affected—making the 'arbitrariness' charge contestable rather than decisive. The objection has moderate force but doesn't clearly show the view is incoherent, as asymmetric views are designed to treat existence as morally significant."
+  }
+]

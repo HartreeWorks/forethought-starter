@@ -1,0 +1,10 @@
+{
+  "id": "obj-asymmetric-person-affecting-view-03",
+  "target_view": "asymmetric-person-affecting-view",
+  "name": "Non-Identity Problem Vulnerability",
+  "force": 82,
+  "damage": 75,
+  "difficulty_to_rebut": 72,
+  "overall": 76,
+  "reasoning": "This objection accurately identifies a genuine tension in the asymmetric person-affecting view: by denying that creating happy people is good while also holding that you can only wrong existing people, the view loses traction on cases involving different possible people. The logic is strong though not airtight—defenders might appeal to threshold accounts or impersonal considerations for same-number choices. The damage is significant since reproductive ethics is a central application domain, though the view could potentially be supplemented with additional principles. Rebuttals exist (e.g., appealing to virtue, parental obligations, or hybrid theories) but they often compromise the view's distinctive commitments or elegance."
+}

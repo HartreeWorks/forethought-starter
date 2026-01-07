@@ -1,0 +1,164 @@
+[
+  {
+    "view_id": "total-utilitarianism",
+    "view_name": "Total Utilitarianism",
+    "applicable_objections": [
+      {
+        "id": "repugnant-conclusion",
+        "name": "The Repugnant Conclusion",
+        "relevance": "direct",
+        "impact": 85
+      },
+      {
+        "id": "replaceability-problem",
+        "name": "The Replaceability Problem",
+        "relevance": "direct",
+        "impact": 72
+      },
+      {
+        "id": "temporal-infinity-problem",
+        "name": "The Temporal Infinity Problem",
+        "relevance": "direct",
+        "impact": 65
+      },
+      {
+        "id": "welfare-farming",
+        "name": "The Welfare Farming Thought Experiment",
+        "relevance": "direct",
+        "impact": 60
+      }
+    ],
+    "applicable_arguments": [
+      {
+        "id": "impartiality-equal-worth",
+        "name": "Impartiality and Equal Moral Worth",
+        "relevance": "direct",
+        "support": 58
+      },
+      {
+        "id": "rejecting-asymmetry-costs",
+        "name": "Rejecting the Asymmetry's Hidden Costs",
+        "relevance": "direct",
+        "support": 52
+      },
+      {
+        "id": "avoiding-arbitrary-thresholds",
+        "name": "Avoiding Arbitrary Thresholds",
+        "relevance": "direct",
+        "support": 50
+      },
+      {
+        "id": "repugnant-conclusion-moral-progress",
+        "name": "The Repugnant Conclusion as Moral Progress",
+        "relevance": "direct",
+        "support": 48
+      }
+    ],
+    "objection_damage_total": 78,
+    "argument_support_total": 52,
+    "defensibility_score": 42,
+    "assessment_summary": "Total Utilitarianism faces a formidable cluster of objections that strike at its core aggregative logic. The Repugnant Conclusion remains the most devastating challenge—it follows with logical necessity from the view's foundational commitment to maximizing total wellbeing, and decades of philosophical work have failed to produce a widely accepted solution. The Replaceability Problem compounds this by revealing troubling implications about the moral status of existing persons, while the Welfare Farming variant emphasizes how the view's logic could endorse qualitatively impoverished outcomes. The Temporal Infinity Problem, though more technical, threatens the view's action-guidance in cosmological contexts. Together, these objections create substantial cumulative damage because they all stem from the same structural feature—treating all units of wellbeing as fungible and additive.\n\nThe supporting arguments, while philosophically substantive, provide only moderate defense. The appeal to impartiality and equal moral worth is genuinely compelling but conflates equal treatment of existing persons with contestable claims about potential persons. The critique of arbitrary thresholds in competing views (like CLU) is effective as a negative argument but doesn't resolve Total Utilitarianism's own counterintuitive implications. The 'moral progress' framing of the Repugnant Conclusion is creative but speculative—it's unclear whether our intuitions against the RC represent cognitive bias or track something morally significant about flourishing lives.\n\nOverall, Total Utilitarianism remains a coherent and theoretically elegant view with genuine advantages (simplicity, impartiality, avoiding ad hoc thresholds), but its defensibility is significantly compromised by the severity of its counterintuitive implications. The view can survive these challenges only if one is willing to 'bite the bullet' on multiple fronts—accepting the Repugnant Conclusion, replaceability implications, and potential welfare farming scenarios as features rather than bugs. This requires considerable revisionary confidence in the face of strong pre-theoretical intuitions, making the view defensible but demanding."
+  },
+  {
+    "view_id": "critical-level-utilitarianism",
+    "view_name": "Critical Level Utilitarianism",
+    "applicable_objections": [
+      {
+        "id": "sadistic-conclusion",
+        "name": "The Sadistic Conclusion",
+        "relevance": "direct",
+        "impact": 82
+      },
+      {
+        "id": "extinction-implication",
+        "name": "The Extinction Implication",
+        "relevance": "direct",
+        "impact": 69
+      },
+      {
+        "id": "arbitrary-threshold",
+        "name": "Arbitrary Threshold Problem",
+        "relevance": "direct",
+        "impact": 68
+      },
+      {
+        "id": "repugnant-conclusion",
+        "name": "The Repugnant Conclusion",
+        "relevance": "indirect",
+        "impact": 35
+      }
+    ],
+    "applicable_arguments": [
+      {
+        "id": "avoiding-repugnant-conclusion-clu",
+        "name": "Avoiding the Repugnant Conclusion",
+        "relevance": "direct",
+        "support": 68
+      },
+      {
+        "id": "contribution-threshold-intuition",
+        "name": "The Contribution Threshold Intuition",
+        "relevance": "direct",
+        "support": 62
+      },
+      {
+        "id": "coherent-aggregation-despite-asymmetry",
+        "name": "Coherent Aggregation Despite Asymmetry",
+        "relevance": "direct",
+        "support": 58
+      }
+    ],
+    "objection_damage_total": 78,
+    "argument_support_total": 62,
+    "defensibility_score": 42,
+    "assessment_summary": "Critical Level Utilitarianism occupies an uncomfortable middle ground in population ethics. Its primary motivation—avoiding the Repugnant Conclusion that plagues Total Utilitarianism—is compelling and represents a genuine theoretical advance. The view also captures an important intuition that there is a meaningful distinction between a life being worth living for the individual and a life being valuable enough to constitute a positive contribution to overall value. These considerations provide moderate support, and the view's ability to maintain coherent aggregation while introducing asymmetric-like features is a structural advantage over pure person-affecting approaches.\n\nHowever, CLU faces devastating objections that significantly undermine its defensibility. The Sadistic Conclusion—that CLU can prefer outcomes with suffering people over outcomes with many people living good (but sub-threshold) lives—is arguably worse than the Repugnant Conclusion it was designed to avoid. This represents a fundamental structural problem, not a peripheral concern. The Arbitrary Threshold Problem compounds this difficulty: any specific critical level seems difficult to justify non-arbitrarily, and different threshold choices generate different problematic implications. The Extinction Implication further suggests that high critical levels could make human extinction look acceptable or even desirable if most lives fall below threshold.\n\nThe cumulative damage from these objections is severe. While CLU's supporting arguments are substantive, they largely establish the view's motivation rather than providing resources to respond to its distinctive problems. The view appears to trade one set of counterintuitive implications for another arguably worse set, without clear guidance on how to set the critical level to minimize these costs. CLU remains a serious contender in population ethics due to its structural innovations, but its current formulation faces challenges that significantly limit its defensibility as a complete theory."
+  },
+  {
+    "view_id": "asymmetric-person-affecting-view",
+    "view_name": "Asymmetric Person-Affecting View",
+    "applicable_objections": [
+      {
+        "id": "non-identity-problem-vulnerability",
+        "name": "Non-Identity Problem Vulnerability",
+        "relevance": "direct",
+        "impact": 76
+      },
+      {
+        "id": "procreative-paralysis-problem",
+        "name": "The Procreative Paralysis Problem",
+        "relevance": "direct",
+        "impact": 73
+      },
+      {
+        "id": "unexplained-asymmetry",
+        "name": "Unexplained Asymmetry",
+        "relevance": "direct",
+        "impact": 72
+      }
+    ],
+    "applicable_arguments": [
+      {
+        "id": "avoiding-repugnant-conclusion-asymmetric",
+        "name": "Avoiding the Repugnant Conclusion",
+        "relevance": "direct",
+        "support": 65
+      },
+      {
+        "id": "non-identity-benefit-problem",
+        "name": "The Non-Identity Benefit Problem",
+        "relevance": "direct",
+        "support": 62
+      },
+      {
+        "id": "phenomenological-asymmetry-suffering",
+        "name": "The Phenomenological Asymmetry of Suffering",
+        "relevance": "direct",
+        "support": 57
+      }
+    ],
+    "objection_damage_total": 74,
+    "argument_support_total": 61,
+    "defensibility_score": 42,
+    "assessment_summary": "The Asymmetric Person-Affecting View faces a formidable trio of objections that collectively threaten its coherence and applicability. The Non-Identity Problem Vulnerability (scored 76) is particularly damaging because it undermines the view's ability to guide reproductive ethics—a domain where the view should have natural application. If the view cannot explain why it's wrong to make choices that predictably lead to worse-off individuals when those individuals wouldn't exist under alternative choices, it loses significant practical relevance. The Procreative Paralysis Problem (73) compounds this by suggesting the view generates reasons against virtually all procreation, which either requires biting a significant bullet or abandoning the view's core commitments. The Unexplained Asymmetry objection (72) strikes at the foundational level, questioning why the absence of suffering is good but the absence of pleasure is not bad—a challenge that defenders have not fully resolved despite various attempts.\n\nThe supporting arguments provide meaningful but insufficient counterweight. Avoiding the Repugnant Conclusion (65) is a genuine theoretical advantage, as this is one of population ethics' most troubling puzzles, but other views also avoid it without the asymmetry's costs. The Non-Identity Benefit Problem argument (62) attempts to justify the asymmetry by appealing to the impossibility of benefiting non-existent beings, but this reasoning is vulnerable to the charge that it should apply symmetrically to harm as well. The Phenomenological Asymmetry of Suffering (57) appeals to intuitive considerations about the urgency of suffering, but the inference from phenomenology to normative priority remains contested.\n\nOverall, the Asymmetric Person-Affecting View occupies a challenging position in population ethics. While it successfully avoids some of the most troubling implications of aggregative theories, it does so at the cost of internal coherence and practical applicability. The cumulative damage from the three major objections (averaging around 74) outweighs the support from its strongest arguments (averaging around 61), leaving the view with a defensibility score of 42. The view may appeal to those who find the asymmetry between creating suffering and failing to create happiness deeply intuitive, but it requires either accepting significant theoretical costs or supplementing the view with additional principles that may compromise its distinctive character."
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "id": "arg-critical-level-utilitarianism-04",
+  "supports_view": "critical-level-utilitarianism",
+  "name": "The Sadistic Conclusion Objection is Manageable",
+  "force": 42,
+  "importance": 85,
+  "robustness": 35,
+  "overall": 54,
+  "reasoning": "The argument correctly identifies that the Sadistic Conclusion is a major objection requiring response, and the tu quoque against Total Utilitarianism has some merit. However, the defense is weak: claiming CLU 'correctly identifies' such lives as non-contributing simply restates the view rather than defending it, and the Sadistic Conclusion remains deeply counterintuitive—it implies adding suffering people could be better than adding people with lives worth living but below the threshold. The 'set the critical level thoughtfully' response doesn't resolve the structural problem that any positive critical level generates this implication."
+}

@@ -1,0 +1,10 @@
+{
+  "id": "obj-critical-level-utilitarianism-05",
+  "target_view": "critical-level-utilitarianism",
+  "name": "The Extinction Implication",
+  "force": 72,
+  "damage": 78,
+  "difficulty_to_rebut": 58,
+  "overall": 69,
+  "reasoning": "The objection correctly identifies a genuine tension: setting the critical level high enough to avoid the Repugnant Conclusion risks implying that eliminating sub-threshold lives improves value, which does follow logically from the view's structure. The damage is substantial since CLU was explicitly designed to avoid counterintuitive conclusions, making this a self-defeating feature. However, defenders can argue that the critical level should be set at a moderate point where most actual lives exceed it, or invoke person-affecting constraints that block recommendations to eliminate existing people, though these responses require additional theoretical commitments."
+}

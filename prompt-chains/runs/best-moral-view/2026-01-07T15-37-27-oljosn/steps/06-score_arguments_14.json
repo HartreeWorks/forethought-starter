@@ -1,0 +1,10 @@
+{
+  "id": "arg-asymmetric-person-affecting-view-05",
+  "supports_view": "asymmetric-person-affecting-view",
+  "name": "The Absent Beneficiary Response",
+  "force": 45,
+  "importance": 85,
+  "robustness": 35,
+  "overall": 55,
+  "reasoning": "The argument addresses a central symmetry objection but its core move—claiming preventing bad differs fundamentally from failing to create good—largely restates the asymmetry rather than justifying it. Critics can reasonably ask why the intrinsic badness of suffering makes its absence good without a beneficiary while the intrinsic goodness of happiness doesn't make its absence bad. The argument survives initial scrutiny but remains vulnerable to the charge that it assumes what it needs to prove about the metaphysical asymmetry between positive and negative states."
+}

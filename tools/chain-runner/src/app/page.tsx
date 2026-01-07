@@ -12,11 +12,11 @@ export default async function Dashboard() {
   return (
     <div className="space-y-8">
       <section>
-        <h1 className="text-xl font-bold mb-4">Chains</h1>
+        <h1 className="text-xl font-bold mb-4">Prompt chains</h1>
         {chains.length === 0 ? (
           <p className="text-gray-500">
-            No chains defined yet. Create a chain in the{" "}
-            <code className="bg-gray-100 px-1 rounded">chains/</code> directory.
+            No prompt chains defined yet. Create one in the{" "}
+            <code className="bg-gray-100 px-1 rounded">prompt-chains/chains/</code> directory.
           </p>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -42,7 +42,7 @@ export default async function Dashboard() {
       <section>
         <h2 className="text-lg font-bold mb-4">Recent runs</h2>
         {recentRuns.length === 0 ? (
-          <p className="text-gray-500 text-sm">No runs yet. Start a chain to create one.</p>
+          <p className="text-gray-500 text-sm">No runs yet. Start a prompt chain to create one.</p>
         ) : (
           <div className="space-y-2">
             {recentRuns.map((run) => (

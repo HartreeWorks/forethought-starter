@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import Handlebars from "handlebars";
-import { RunState, StepRunState, Chain, ChainStep } from "./types";
+import { RunState, StepRunState, InstanceRunState, Chain, ChainStep } from "./types";
 import { getChain, getOutputTemplate } from "./chains";
 
 // Get default runs directory path
@@ -12,8 +12,8 @@ function getDefaultRunsDir(): string {
       ? envDir
       : path.resolve(process.cwd(), envDir);
   }
-  // Default: runs/ inside chain-runner directory
-  return path.resolve(process.cwd(), "runs");
+  // Default: prompt-chains/runs/ relative to forethought-starter root
+  return path.resolve(process.cwd(), "../../prompt-chains/runs");
 }
 
 // Get runs directory for a specific chain (supports per-chain output_dir)
@@ -414,6 +414,106 @@ function formatInputsAsMarkdown(inputs: Record<string, unknown>): string {
     }
 
     lines.push("\n");
+  }
+
+  return lines.join("\n");
+}
+
+// Save for_each step output (multiple instances)
+export async function saveForEachStepOutput(
+  run: RunState,
+  stepId: string,
+  outputs: unknown[],
+  instances: InstanceRunState[],
+  step?: ChainStep
+): Promise<void> {
+  const runDir = getRunDir(run.chainId, run.id, run.outputDir);
+  const stepIndex = Object.keys(run.steps).indexOf(stepId) + 1;
+  const prefix = String(stepIndex).padStart(2, "0");
+
+  // Save combined JSON output (array of all outputs)
+  await fs.writeFile(
+    path.join(runDir, "steps", `${prefix}-${stepId}.json`),
+    JSON.stringify(outputs, null, 2),
+    "utf-8"
+  );
+
+  // Save individual instance outputs
+  for (let i = 0; i < outputs.length; i++) {
+    await fs.writeFile(
+      path.join(runDir, "steps", `${prefix}-${stepId}_${i}.json`),
+      JSON.stringify(outputs[i], null, 2),
+      "utf-8"
+    );
+  }
+
+  // Generate combined markdown
+  const markdown = formatForEachOutputAsMarkdown(stepId, outputs, instances, step);
+  await fs.writeFile(
+    path.join(runDir, "steps", `${prefix}-${stepId}.md`),
+    markdown,
+    "utf-8"
+  );
+}
+
+// Format for_each output as markdown
+function formatForEachOutputAsMarkdown(
+  stepId: string,
+  outputs: unknown[],
+  instances: InstanceRunState[],
+  step?: ChainStep
+): string {
+  const lines: string[] = [];
+  const titleCase = stepId.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  lines.push(`# ${titleCase}\n`);
+  lines.push(`*${outputs.length} instances completed*\n`);
+
+  for (let i = 0; i < outputs.length; i++) {
+    const output = outputs[i];
+    const instance = instances[i];
+    const durationSec = instance?.durationMs ? (instance.durationMs / 1000).toFixed(1) : "?";
+    const tokens = instance?.tokens
+      ? `${instance.tokens.input} in / ${instance.tokens.output} out`
+      : "";
+
+    lines.push(`## Instance ${i + 1}`);
+    if (tokens) {
+      lines.push(`*Duration: ${durationSec}s | Tokens: ${tokens}*\n`);
+    }
+
+    // Format the output
+    if (Array.isArray(output)) {
+      // If output is an array, show count and first few items
+      lines.push(`**${output.length} items generated**\n`);
+      for (let j = 0; j < Math.min(3, output.length); j++) {
+        const item = output[j] as Record<string, unknown>;
+        if (item && typeof item === "object") {
+          const preview = item.short || item.title || item.objection || item.argument || item.id || JSON.stringify(item).slice(0, 100);
+          lines.push(`- ${preview}`);
+        } else {
+          lines.push(`- ${String(item).slice(0, 100)}`);
+        }
+      }
+      if (output.length > 3) {
+        lines.push(`- ... and ${output.length - 3} more`);
+      }
+      lines.push("");
+    } else if (output && typeof output === "object") {
+      // Format object
+      for (const [key, value] of Object.entries(output)) {
+        if (typeof value === "string" && value.length > 200) {
+          lines.push(`**${formatFieldName(key)}:** ${value.slice(0, 200)}...`);
+        } else if (typeof value === "string" || typeof value === "number") {
+          lines.push(`**${formatFieldName(key)}:** ${value}`);
+        }
+      }
+      lines.push("");
+    } else {
+      lines.push(String(output).slice(0, 500));
+      lines.push("");
+    }
+
+    lines.push("---\n");
   }
 
   return lines.join("\n");

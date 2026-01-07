@@ -1,0 +1,10 @@
+{
+  "id": "obj-total-utilitarianism-04",
+  "target_view": "total-utilitarianism",
+  "name": "The Temporal Infinity Problem",
+  "force": 72,
+  "damage": 75,
+  "difficulty_to_rebut": 65,
+  "overall": 71,
+  "reasoning": "The objection correctly identifies a genuine mathematical problem for aggregative consequentialism when dealing with infinite populations—this is a well-recognized issue in infinite ethics literature. However, the force is limited because the empirical premise (infinite future people) is uncertain, and several responses exist: discounting, using limit-based comparisons, or adopting alternative aggregation methods like overtaking criteria. The damage is significant since it threatens the view's action-guidance, but total utilitarians can restrict scope to finite horizons without obvious arbitrariness given our epistemic situation."
+}

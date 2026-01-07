@@ -1,0 +1,110 @@
+meta:
+  id: best-moral-view
+  name: Best moral view (population ethics)
+  description: Systematically evaluate moral views in population ethics using generated arguments and objections
+
+inputs:
+  - id: debug
+    name: Debug mode
+    description: Run with fewer items for quick testing (3 views, 5 objections/arguments each)
+    type: boolean
+    default: false
+
+steps:
+  # Step 1: Generate 20+ moral views in population ethics
+  - id: generate_views
+    name: Generate moral views
+    model: claude-opus-4-5
+    prompt: prompts/01-generate-views.md
+    output:
+      type: json
+
+  # Step 2: Filter to top 5 most interesting/defensible views
+  - id: filter_views
+    name: Select top 5 views
+    model: claude-opus-4-5
+    prompt: prompts/02-filter-views.md
+    input:
+      views: $steps.generate_views.output
+    output:
+      type: json
+
+  # Step 3: Generate 30 objections for each of the 5 views (5 parallel calls)
+  - id: generate_objections
+    name: Generate objections for each view
+    model: claude-opus-4-5
+    for_each: $steps.filter_views.output
+    parallel: true
+    max_concurrency: 5
+    prompt: prompts/03-generate-objections.md
+    input:
+      view: $item
+      all_views: $steps.filter_views.output
+    output:
+      type: json
+
+  # Step 4: Generate 30 supporting arguments for each of the 5 views (5 parallel calls)
+  - id: generate_arguments
+    name: Generate arguments for each view
+    model: claude-opus-4-5
+    for_each: $steps.filter_views.output
+    parallel: true
+    max_concurrency: 5
+    prompt: prompts/04-generate-arguments.md
+    input:
+      view: $item
+      all_views: $steps.filter_views.output
+    output:
+      type: json
+
+  # Step 5: Score each objection individually (up to 150 parallel calls)
+  - id: score_objections
+    name: Score each objection
+    model: claude-opus-4-5
+    for_each: $steps.generate_objections.output | flatten
+    parallel: true
+    max_concurrency: 10
+    prompt: prompts/05-score-objection.md
+    input:
+      objection: $item
+    output:
+      type: json
+
+  # Step 6: Score each argument individually (up to 150 parallel calls)
+  - id: score_arguments
+    name: Score each argument
+    model: claude-opus-4-5
+    for_each: $steps.generate_arguments.output | flatten
+    parallel: true
+    max_concurrency: 10
+    prompt: prompts/06-score-argument.md
+    input:
+      argument: $item
+    output:
+      type: json
+
+  # Step 7: Evaluate each view against top objections/arguments (5 parallel calls)
+  - id: evaluate_views
+    name: Evaluate each view
+    model: claude-opus-4-5
+    for_each: $steps.filter_views.output
+    parallel: true
+    max_concurrency: 5
+    prompt: prompts/07-evaluate-view.md
+    input:
+      view: $item
+      top_objections: $steps.score_objections.output | top(10)
+      top_arguments: $steps.score_arguments.output | top(10)
+    output:
+      type: json
+
+  # Step 8: Final ranking and synthesis
+  - id: rank_and_synthesize
+    name: Rank views and synthesise
+    model: claude-opus-4-5
+    prompt: prompts/08-rank-synthesise.md
+    input:
+      evaluations: $steps.evaluate_views.output
+      views: $steps.filter_views.output
+    output:
+      type: json

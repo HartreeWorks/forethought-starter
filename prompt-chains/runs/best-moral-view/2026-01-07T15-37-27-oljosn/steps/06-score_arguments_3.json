@@ -1,0 +1,10 @@
+{
+  "id": "arg-total-utilitarianism-04",
+  "supports_view": "total-utilitarianism",
+  "name": "Clear Guidance for Existential Risk Policy",
+  "force": 45,
+  "importance": 55,
+  "robustness": 35,
+  "overall": 45,
+  "reasoning": "The argument overstates Total Utilitarianism's uniqueness—other views (person-affecting with caveats, contractualism, virtue ethics) can also justify existential risk mitigation without the same theoretical commitments. The 'practical clarity' claim is contestable since TU's guidance on existential risk depends heavily on speculative assumptions about future populations and probabilities. Moreover, this practical argument doesn't defend the view's truth, and critics note TU's existential risk guidance comes bundled with counterintuitive implications (like the Repugnant Conclusion) that undermine its overall practical appeal."
+}

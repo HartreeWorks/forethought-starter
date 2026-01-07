@@ -1,0 +1,10 @@
+{
+  "id": "arg-total-utilitarianism-02",
+  "supports_view": "total-utilitarianism",
+  "name": "Avoiding Arbitrary Thresholds",
+  "force": 62,
+  "importance": 58,
+  "robustness": 45,
+  "overall": 55,
+  "reasoning": "The argument correctly identifies a genuine problem for Critical Level Utilitarianism, but its claim that zero is uniquely non-arbitrary is contestable—the zero point itself requires a theory of what makes life 'worth living' which may be equally arbitrary. The argument is more effective as a critique of CLU than as a positive case for Total Utilitarianism, and it doesn't address the Repugnant Conclusion which motivates CLU in the first place. Standard counters include that some arbitrariness may be acceptable if it avoids worse theoretical costs, and that the neutral level might be determined by principled considerations rather than arbitrary stipulation."
+}

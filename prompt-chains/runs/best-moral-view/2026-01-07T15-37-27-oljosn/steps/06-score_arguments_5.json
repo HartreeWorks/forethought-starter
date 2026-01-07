@@ -1,0 +1,10 @@
+{
+  "id": "arg-critical-level-utilitarianism-01",
+  "supports_view": "critical-level-utilitarianism",
+  "name": "The Contribution Threshold Intuition",
+  "force": 58,
+  "importance": 85,
+  "robustness": 42,
+  "overall": 62,
+  "reasoning": "The argument articulates a genuine and widely-shared intuition that distinguishes personal worth-living from impersonal contribution to value, which is philosophically substantive and central to motivating CLU over classical utilitarianism. However, the intuition itself is contestable—total utilitarians can argue this conflates two distinct questions, and the argument doesn't explain why the threshold should be set at any particular level rather than zero. It's also vulnerable to the charge that it may reflect status quo bias or failure to properly aggregate small positive values."
+}

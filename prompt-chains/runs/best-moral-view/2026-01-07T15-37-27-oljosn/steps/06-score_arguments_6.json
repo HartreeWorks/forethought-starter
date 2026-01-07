@@ -1,0 +1,10 @@
+{
+  "id": "arg-critical-level-utilitarianism-02",
+  "supports_view": "critical-level-utilitarianism",
+  "name": "Avoiding the Repugnant Conclusion",
+  "force": 72,
+  "importance": 88,
+  "robustness": 45,
+  "overall": 68,
+  "reasoning": "The argument correctly identifies a major motivation for CLU—avoiding the Repugnant Conclusion is central to population ethics debates and the reasoning is logically sound. However, robustness suffers significantly because CLU faces its own well-known problems: it implies the 'Very Repugnant Conclusion' (preferring hellish additions to avoid sub-critical positive lives) and struggles to non-arbitrarily justify any particular critical level. The comparative advantage over Total Utilitarianism is real but comes with substantial theoretical costs."
+}

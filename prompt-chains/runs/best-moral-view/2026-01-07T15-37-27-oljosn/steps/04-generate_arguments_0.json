@@ -1,0 +1,42 @@
+[
+  {
+    "id": "arg-total-utilitarianism-01",
+    "supports_view": "total-utilitarianism",
+    "name": "Impartiality and Equal Moral Worth",
+    "argument": "Total Utilitarianism embodies a profound commitment to moral impartiality: every unit of wellbeing counts equally regardless of who experiences it, when they exist, or whether they already exist or might come into being. This reflects the core moral insight that there is nothing special about any particular person's interests that makes them count more than anyone else's. Just as we reject discrimination based on race, gender, or nationality, we should reject arbitrary discrimination against future or merely possible persons whose lives would be genuinely worth living.",
+    "type": "foundational",
+    "strength_estimate": "very_strong"
+  },
+  {
+    "id": "arg-total-utilitarianism-02",
+    "supports_view": "total-utilitarianism",
+    "name": "Avoiding Arbitrary Thresholds",
+    "argument": "Critical Level Utilitarianism faces a devastating arbitrariness problem: any critical level above zero seems impossible to justify non-arbitrarily. Why should a life with wellbeing of 50 count as adding value while a life at 49 does not, if both are genuinely worth living? Total Utilitarianism avoids this by using the only non-arbitrary threshold available—zero, the point at which a life becomes worth living at all. This makes the theory more principled and resistant to manipulation of the threshold for convenience.",
+    "type": "comparative",
+    "strength_estimate": "strong"
+  },
+  {
+    "id": "arg-total-utilitarianism-03",
+    "supports_view": "total-utilitarianism",
+    "name": "Rejecting the Asymmetry's Hidden Costs",
+    "argument": "The Asymmetric Person-Affecting View claims there's no moral reason to create happy people but strong reasons not to create suffering ones. Yet this asymmetry leads to troubling implications: it suggests that a world with no sentient beings is morally optimal, and that we have no reason to ensure humanity's continuation even if future generations would flourish. Total Utilitarianism correctly recognizes that the existence of genuinely happy lives is a positive good, not merely morally neutral, capturing our intuition that a flourishing future matters.",
+    "type": "comparative",
+    "strength_estimate": "strong"
+  },
+  {
+    "id": "arg-total-utilitarianism-04",
+    "supports_view": "total-utilitarianism",
+    "name": "Clear Guidance for Existential Risk Policy",
+    "argument": "Total Utilitarianism provides uniquely clear and compelling guidance on existential risk: preventing human extinction is among our highest priorities because it preserves the possibility of astronomical amounts of future wellbeing. Unlike views that discount future people or deny value in creating new lives, Total Utilitarianism explains why we should invest heavily in preventing catastrophic risks, why long-term flourishing matters, and how to weigh present sacrifices against future benefits. This practical clarity is essential for humanity's most important decisions.",
+    "type": "practical",
+    "strength_estimate": "very_strong"
+  },
+  {
+    "id": "arg-total-utilitarianism-05",
+    "supports_view": "total-utilitarianism",
+    "name": "The Repugnant Conclusion as Moral Progress",
+    "argument": "While the Repugnant Conclusion—that a sufficiently large population with lives barely worth living could be better than a smaller population of very happy people—initially seems counterintuitive, this intuition may reflect cognitive biases rather than moral truth. We struggle to imagine vast numbers and to appreciate that billions of lives barely worth living still contain enormous aggregate value. Just as our ancestors' intuitions about moral circles were too narrow, our intuitions about population size may be unreliable. Accepting this conclusion may represent moral progress toward truly impartial concern.",
+    "type": "defensive",
+    "strength_estimate": "moderate"
+  }
+]

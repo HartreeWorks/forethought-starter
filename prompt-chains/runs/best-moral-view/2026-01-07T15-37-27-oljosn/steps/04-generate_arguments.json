@@ -1,0 +1,128 @@
+[
+  [
+    {
+      "id": "arg-total-utilitarianism-01",
+      "supports_view": "total-utilitarianism",
+      "name": "Impartiality and Equal Moral Worth",
+      "argument": "Total Utilitarianism embodies a profound commitment to moral impartiality: every unit of wellbeing counts equally regardless of who experiences it, when they exist, or whether they already exist or might come into being. This reflects the core moral insight that there is nothing special about any particular person's interests that makes them count more than anyone else's. Just as we reject discrimination based on race, gender, or nationality, we should reject arbitrary discrimination against future or merely possible persons whose lives would be genuinely worth living.",
+      "type": "foundational",
+      "strength_estimate": "very_strong"
+    },
+    {
+      "id": "arg-total-utilitarianism-02",
+      "supports_view": "total-utilitarianism",
+      "name": "Avoiding Arbitrary Thresholds",
+      "argument": "Critical Level Utilitarianism faces a devastating arbitrariness problem: any critical level above zero seems impossible to justify non-arbitrarily. Why should a life with wellbeing of 50 count as adding value while a life at 49 does not, if both are genuinely worth living? Total Utilitarianism avoids this by using the only non-arbitrary threshold available—zero, the point at which a life becomes worth living at all. This makes the theory more principled and resistant to manipulation of the threshold for convenience.",
+      "type": "comparative",
+      "strength_estimate": "strong"
+    },
+    {
+      "id": "arg-total-utilitarianism-03",
+      "supports_view": "total-utilitarianism",
+      "name": "Rejecting the Asymmetry's Hidden Costs",
+      "argument": "The Asymmetric Person-Affecting View claims there's no moral reason to create happy people but strong reasons not to create suffering ones. Yet this asymmetry leads to troubling implications: it suggests that a world with no sentient beings is morally optimal, and that we have no reason to ensure humanity's continuation even if future generations would flourish. Total Utilitarianism correctly recognizes that the existence of genuinely happy lives is a positive good, not merely morally neutral, capturing our intuition that a flourishing future matters.",
+      "type": "comparative",
+      "strength_estimate": "strong"
+    },
+    {
+      "id": "arg-total-utilitarianism-04",
+      "supports_view": "total-utilitarianism",
+      "name": "Clear Guidance for Existential Risk Policy",
+      "argument": "Total Utilitarianism provides uniquely clear and compelling guidance on existential risk: preventing human extinction is among our highest priorities because it preserves the possibility of astronomical amounts of future wellbeing. Unlike views that discount future people or deny value in creating new lives, Total Utilitarianism explains why we should invest heavily in preventing catastrophic risks, why long-term flourishing matters, and how to weigh present sacrifices against future benefits. This practical clarity is essential for humanity's most important decisions.",
+      "type": "practical",
+      "strength_estimate": "very_strong"
+    },
+    {
+      "id": "arg-total-utilitarianism-05",
+      "supports_view": "total-utilitarianism",
+      "name": "The Repugnant Conclusion as Moral Progress",
+      "argument": "While the Repugnant Conclusion—that a sufficiently large population with lives barely worth living could be better than a smaller population of very happy people—initially seems counterintuitive, this intuition may reflect cognitive biases rather than moral truth. We struggle to imagine vast numbers and to appreciate that billions of lives barely worth living still contain enormous aggregate value. Just as our ancestors' intuitions about moral circles were too narrow, our intuitions about population size may be unreliable. Accepting this conclusion may represent moral progress toward truly impartial concern.",
+      "type": "defensive",
+      "strength_estimate": "moderate"
+    }
+  ],
+  [
+    {
+      "id": "arg-critical-level-utilitarianism-01",
+      "supports_view": "critical-level-utilitarianism",
+      "name": "The Contribution Threshold Intuition",
+      "argument": "There is a meaningful moral distinction between a life being worth living for the person living it and a life being good enough to make the world better by its existence. A person with a minimally positive life—one just barely worth living—may not regret their existence, but it seems implausible that creating such a life constitutes a positive contribution to overall value. Critical Level Utilitarianism captures this intuition by requiring that new lives clear a meaningful bar before counting as improvements, reflecting our sense that merely non-negative existence is not the same as flourishing.",
+      "type": "foundational",
+      "strength_estimate": "strong"
+    },
+    {
+      "id": "arg-critical-level-utilitarianism-02",
+      "supports_view": "critical-level-utilitarianism",
+      "name": "Avoiding the Repugnant Conclusion",
+      "argument": "Total Utilitarianism notoriously implies the Repugnant Conclusion: that a sufficiently large population of people with lives barely worth living is better than a smaller population of very happy people. Critical Level Utilitarianism avoids this by setting a threshold above zero—lives just barely worth living don't add positive value, so we cannot improve outcomes by replacing flourishing populations with vast numbers of minimally positive lives. This preserves the intuition that quality of life matters, not just aggregate quantity.",
+      "type": "comparative",
+      "strength_estimate": "very_strong"
+    },
+    {
+      "id": "arg-critical-level-utilitarianism-03",
+      "supports_view": "critical-level-utilitarianism",
+      "name": "Coherent Aggregation Despite Asymmetry",
+      "argument": "Unlike the Asymmetric Person-Affecting View, which struggles to explain why we should create very happy people at all, Critical Level Utilitarianism maintains a coherent aggregative framework that still values the creation of genuinely flourishing lives. It preserves the appealing asymmetric intuition that barely-positive lives don't demand creation while avoiding the more radical conclusion that no amount of potential happiness provides reason for procreation. This offers a principled middle ground that respects both aggregative reasoning and threshold-based intuitions.",
+      "type": "comparative",
+      "strength_estimate": "strong"
+    },
+    {
+      "id": "arg-critical-level-utilitarianism-04",
+      "supports_view": "critical-level-utilitarianism",
+      "name": "The Sadistic Conclusion Objection is Manageable",
+      "argument": "Critics argue that Critical Level Utilitarianism implies the 'Sadistic Conclusion'—that adding people with lives between zero and the critical level makes outcomes worse, potentially making it better to add suffering people instead. However, this objection can be addressed by recognizing that the view correctly identifies such lives as failing to contribute positive value, and by setting the critical level thoughtfully. Moreover, Total Utilitarianism faces its own severe counterintuitive implications that are arguably worse and less tractable than this concern.",
+      "type": "defensive",
+      "strength_estimate": "moderate"
+    },
+    {
+      "id": "arg-critical-level-utilitarianism-05",
+      "supports_view": "critical-level-utilitarianism",
+      "name": "Sensible Guidance for Population Policy",
+      "argument": "In real-world policy contexts—such as family planning, resource allocation, and development priorities—Critical Level Utilitarianism provides sensible guidance by focusing on ensuring people can live genuinely good lives rather than maximizing population size. It supports investing in quality of life improvements over mere population expansion and resists policies that would create many people destined for marginal existences. This aligns with widely-held policy intuitions that development should prioritize human flourishing, not just human numbers.",
+      "type": "practical",
+      "strength_estimate": "strong"
+    }
+  ],
+  [
+    {
+      "id": "arg-asymmetric-person-affecting-view-01",
+      "supports_view": "asymmetric-person-affecting-view",
+      "name": "The Non-Identity Benefit Problem",
+      "argument": "Creating a happy person cannot benefit that person, since they would not exist otherwise to receive any benefit—there is no one for whom existence is better than non-existence. However, creating a suffering person does harm them, because once they exist, they experience genuine suffering that is bad for them. This asymmetry in the logic of benefit and harm provides a principled foundation for treating potential happiness and potential suffering differently in our moral calculations.",
+      "type": "foundational",
+      "strength_estimate": "very_strong"
+    },
+    {
+      "id": "arg-asymmetric-person-affecting-view-02",
+      "supports_view": "asymmetric-person-affecting-view",
+      "name": "Avoiding the Repugnant Conclusion",
+      "argument": "Total Utilitarianism notoriously implies the Repugnant Conclusion: that a massive population of people with lives barely worth living is better than a smaller population with excellent lives. The Asymmetric View elegantly avoids this by denying that creating additional happy people adds moral value. Since there is no positive duty to create happiness, we cannot be morally required to expand population indefinitely, preserving our intuition that quality of life matters more than mere quantity.",
+      "type": "comparative",
+      "strength_estimate": "strong"
+    },
+    {
+      "id": "arg-asymmetric-person-affecting-view-03",
+      "supports_view": "asymmetric-person-affecting-view",
+      "name": "The Phenomenological Asymmetry of Suffering",
+      "argument": "Suffering has a demanding, urgent quality that pleasure lacks—pain screams for relief in a way that the absence of pleasure does not cry out for satisfaction. This phenomenological asymmetry suggests that preventing suffering has a moral priority that promoting happiness does not share. The Asymmetric View captures this by treating the prevention of suffering as genuinely good (even for non-existent beings) while denying equivalent status to the creation of happiness.",
+      "type": "foundational",
+      "strength_estimate": "strong"
+    },
+    {
+      "id": "arg-asymmetric-person-affecting-view-04",
+      "supports_view": "asymmetric-person-affecting-view",
+      "name": "Coherence with Procreative Liberty",
+      "argument": "The Asymmetric View provides clear, sensible guidance for reproductive ethics: prospective parents have no obligation to create children for the sake of those children's happiness, but they do have strong reasons to avoid creating children who would suffer severely. This aligns with widely-held intuitions about procreative liberty—that choosing not to have children is morally permissible—while still grounding concerns about bringing children into circumstances of predictable misery.",
+      "type": "practical",
+      "strength_estimate": "strong"
+    },
+    {
+      "id": "arg-asymmetric-person-affecting-view-05",
+      "supports_view": "asymmetric-person-affecting-view",
+      "name": "The Absent Beneficiary Response",
+      "argument": "Critics object that if the absence of suffering is good without a beneficiary, the absence of happiness should symmetrically be bad. But this misunderstands the view: the absence of suffering is good because suffering is intrinsically bad and its prevention removes something bad from the world, whereas the absence of happiness is merely neutral because there is no one who is deprived. The asymmetry lies not in arbitrary stipulation but in the different relationships between absence and the states themselves—preventing a bad differs fundamentally from failing to create a good.",
+      "type": "defensive",
+      "strength_estimate": "moderate"
+    }
+  ]
+]

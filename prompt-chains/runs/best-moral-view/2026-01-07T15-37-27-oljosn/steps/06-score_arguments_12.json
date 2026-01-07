@@ -1,0 +1,10 @@
+{
+  "id": "arg-asymmetric-person-affecting-view-03",
+  "supports_view": "asymmetric-person-affecting-view",
+  "name": "The Phenomenological Asymmetry of Suffering",
+  "force": 55,
+  "importance": 75,
+  "robustness": 40,
+  "overall": 57,
+  "reasoning": "The argument appeals to a genuine phenomenological observation about the urgency of suffering, but the inference from descriptive phenomenology to normative asymmetry is contestable—intensity of experience doesn't straightforwardly translate to moral priority. It addresses an important foundational question about why we should treat suffering and happiness asymmetrically. However, it's vulnerable to counters: peak positive experiences (flow, ecstasy, love) can be equally phenomenologically compelling, and the argument conflates the urgency of existing suffering with claims about non-existent beings."
+}

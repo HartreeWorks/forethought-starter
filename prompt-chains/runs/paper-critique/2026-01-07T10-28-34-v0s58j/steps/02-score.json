@@ -1,0 +1,208 @@
+{
+  "scores": [
+    {
+      "id": "c1",
+      "overall": 58,
+      "strength": 6,
+      "significance": 6,
+      "difficulty": 6
+    },
+    {
+      "id": "c2",
+      "overall": 73,
+      "strength": 8,
+      "significance": 7,
+      "difficulty": 8
+    },
+    {
+      "id": "c3",
+      "overall": 83,
+      "strength": 9,
+      "significance": 9,
+      "difficulty": 8
+    },
+    {
+      "id": "c4",
+      "overall": 52,
+      "strength": 6,
+      "significance": 5,
+      "difficulty": 6
+    },
+    {
+      "id": "c5",
+      "overall": 65,
+      "strength": 7,
+      "significance": 6,
+      "difficulty": 7
+    },
+    {
+      "id": "c6",
+      "overall": 60,
+      "strength": 6,
+      "significance": 6,
+      "difficulty": 6
+    },
+    {
+      "id": "c7",
+      "overall": 60,
+      "strength": 7,
+      "significance": 5,
+      "difficulty": 7
+    },
+    {
+      "id": "c8",
+      "overall": 73,
+      "strength": 8,
+      "significance": 7,
+      "difficulty": 8
+    },
+    {
+      "id": "c9",
+      "overall": 40,
+      "strength": 5,
+      "significance": 3,
+      "difficulty": 5
+    },
+    {
+      "id": "c10",
+      "overall": 60,
+      "strength": 6,
+      "significance": 6,
+      "difficulty": 6
+    },
+    {
+      "id": "c11",
+      "overall": 43,
+      "strength": 5,
+      "significance": 4,
+      "difficulty": 5
+    },
+    {
+      "id": "c12",
+      "overall": 57,
+      "strength": 7,
+      "significance": 5,
+      "difficulty": 7
+    },
+    {
+      "id": "c13",
+      "overall": 50,
+      "strength": 6,
+      "significance": 4,
+      "difficulty": 6
+    },
+    {
+      "id": "c14",
+      "overall": 37,
+      "strength": 5,
+      "significance": 3,
+      "difficulty": 5
+    },
+    {
+      "id": "c15",
+      "overall": 57,
+      "strength": 6,
+      "significance": 5,
+      "difficulty": 6
+    },
+    {
+      "id": "c16",
+      "overall": 67,
+      "strength": 7,
+      "significance": 6,
+      "difficulty": 7
+    },
+    {
+      "id": "c17",
+      "overall": 47,
+      "strength": 6,
+      "significance": 4,
+      "difficulty": 6
+    },
+    {
+      "id": "c18",
+      "overall": 37,
+      "strength": 5,
+      "significance": 3,
+      "difficulty": 5
+    },
+    {
+      "id": "c19",
+      "overall": 57,
+      "strength": 6,
+      "significance": 5,
+      "difficulty": 6
+    },
+    {
+      "id": "c20",
+      "overall": 50,
+      "strength": 7,
+      "significance": 4,
+      "difficulty": 7
+    },
+    {
+      "id": "c21",
+      "overall": 37,
+      "strength": 5,
+      "significance": 3,
+      "difficulty": 5
+    },
+    {
+      "id": "c22",
+      "overall": 53,
+      "strength": 6,
+      "significance": 5,
+      "difficulty": 6
+    },
+    {
+      "id": "c23",
+      "overall": 63,
+      "strength": 7,
+      "significance": 6,
+      "difficulty": 7
+    },
+    {
+      "id": "c24",
+      "overall": 50,
+      "strength": 6,
+      "significance": 4,
+      "difficulty": 6
+    },
+    {
+      "id": "c25",
+      "overall": 73,
+      "strength": 8,
+      "significance": 8,
+      "difficulty": 8
+    }
+  ],
+  "top5": [
+    "c3",
+    "c2",
+    "c8",
+    "c25",
+    "c16"
+  ],
+  "top5_details": [
+    {
+      "id": "c3",
+      "explanation": "This critique strikes at the mathematical foundation of the paper's fragility argument by challenging the multiplicative value assumption. The assumption that value is multiplicative across dimensions is both central to the conclusions and philosophically contentious, making this a devastating critique that would require fundamental reconceptualization of the formal framework."
+    },
+    {
+      "id": "c2",
+      "explanation": "This challenges the paper's core method for quantifying value through gambling comparisons, which underlies much of the formal analysis. The critique is strong because many moral frameworks genuinely reject risk-neutral quantification, and addressing it would require either defending this controversial approach or developing alternative measurement methods."
+    },
+    {
+      "id": "c8",
+      "explanation": "This identifies a fundamental logical problem that the paper acknowledges but fails to resolve - how to meaningfully compare across different moral theories. Since the paper's conclusions depend on aggregating judgments across theories, the inability to solve intertheoretic comparison undermines the entire project's coherence."
+    },
+    {
+      "id": "c25",
+      "explanation": "This critique points to a significant gap in the analysis by noting that coordination mechanisms and institutions could substantially alter the likelihood of moral catastrophes. The oversight is important because it suggests the paper may overestimate eutopian difficulty by ignoring key factors that could improve moral decision-making at scale."
+    },
+    {
+      "id": "c16",
+      "explanation": "This challenges the restrictive formal requirements imposed on moral views, particularly completeness and von Neumann-Morgenstern axioms. The critique is compelling because these requirements may systematically exclude more flexible moral frameworks that could be more optimistic about achieving eutopia, potentially biasing the analysis toward pessimistic conclusions."
+    }
+  ]
+}

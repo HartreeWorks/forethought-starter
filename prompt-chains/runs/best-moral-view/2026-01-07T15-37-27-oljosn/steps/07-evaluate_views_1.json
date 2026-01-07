@@ -1,0 +1,54 @@
+{
+  "view_id": "critical-level-utilitarianism",
+  "view_name": "Critical Level Utilitarianism",
+  "applicable_objections": [
+    {
+      "id": "sadistic-conclusion",
+      "name": "The Sadistic Conclusion",
+      "relevance": "direct",
+      "impact": 82
+    },
+    {
+      "id": "extinction-implication",
+      "name": "The Extinction Implication",
+      "relevance": "direct",
+      "impact": 69
+    },
+    {
+      "id": "arbitrary-threshold",
+      "name": "Arbitrary Threshold Problem",
+      "relevance": "direct",
+      "impact": 68
+    },
+    {
+      "id": "repugnant-conclusion",
+      "name": "The Repugnant Conclusion",
+      "relevance": "indirect",
+      "impact": 35
+    }
+  ],
+  "applicable_arguments": [
+    {
+      "id": "avoiding-repugnant-conclusion-clu",
+      "name": "Avoiding the Repugnant Conclusion",
+      "relevance": "direct",
+      "support": 68
+    },
+    {
+      "id": "contribution-threshold-intuition",
+      "name": "The Contribution Threshold Intuition",
+      "relevance": "direct",
+      "support": 62
+    },
+    {
+      "id": "coherent-aggregation-despite-asymmetry",
+      "name": "Coherent Aggregation Despite Asymmetry",
+      "relevance": "direct",
+      "support": 58
+    }
+  ],
+  "objection_damage_total": 78,
+  "argument_support_total": 62,
+  "defensibility_score": 42,
+  "assessment_summary": "Critical Level Utilitarianism occupies an uncomfortable middle ground in population ethics. Its primary motivation—avoiding the Repugnant Conclusion that plagues Total Utilitarianism—is compelling and represents a genuine theoretical advance. The view also captures an important intuition that there is a meaningful distinction between a life being worth living for the individual and a life being valuable enough to constitute a positive contribution to overall value. These considerations provide moderate support, and the view's ability to maintain coherent aggregation while introducing asymmetric-like features is a structural advantage over pure person-affecting approaches.\n\nHowever, CLU faces devastating objections that significantly undermine its defensibility. The Sadistic Conclusion—that CLU can prefer outcomes with suffering people over outcomes with many people living good (but sub-threshold) lives—is arguably worse than the Repugnant Conclusion it was designed to avoid. This represents a fundamental structural problem, not a peripheral concern. The Arbitrary Threshold Problem compounds this difficulty: any specific critical level seems difficult to justify non-arbitrarily, and different threshold choices generate different problematic implications. The Extinction Implication further suggests that high critical levels could make human extinction look acceptable or even desirable if most lives fall below threshold.\n\nThe cumulative damage from these objections is severe. While CLU's supporting arguments are substantive, they largely establish the view's motivation rather than providing resources to respond to its distinctive problems. The view appears to trade one set of counterintuitive implications for another arguably worse set, without clear guidance on how to set the critical level to minimize these costs. CLU remains a serious contender in population ethics due to its structural innovations, but its current formulation faces challenges that significantly limit its defensibility as a complete theory."
+}

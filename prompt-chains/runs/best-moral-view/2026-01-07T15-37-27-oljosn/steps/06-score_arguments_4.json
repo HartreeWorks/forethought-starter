@@ -1,0 +1,10 @@
+{
+  "id": "arg-total-utilitarianism-05",
+  "supports_view": "total-utilitarianism",
+  "name": "The Repugnant Conclusion as Moral Progress",
+  "force": 45,
+  "importance": 85,
+  "robustness": 35,
+  "overall": 55,
+  "reasoning": "The argument makes a legitimate point about cognitive limitations regarding large numbers and the historical unreliability of moral intuitions, but it's largely speculative about which intuitions are biased. It addresses a central challenge for total utilitarianism (the Repugnant Conclusion is perhaps THE major objection), but the 'moral progress' framing cuts both ways—critics can equally claim that rejecting the RC represents progress toward respecting individual welfare thresholds. The argument is vulnerable to the counter that our intuition against the RC may track something real (like the value of flourishing lives vs. merely positive ones) rather than mere cognitive bias."
+}

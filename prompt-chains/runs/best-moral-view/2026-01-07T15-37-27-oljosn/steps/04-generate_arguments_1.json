@@ -1,0 +1,42 @@
+[
+  {
+    "id": "arg-critical-level-utilitarianism-01",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "The Contribution Threshold Intuition",
+    "argument": "There is a meaningful moral distinction between a life being worth living for the person living it and a life being good enough to make the world better by its existence. A person with a minimally positive life—one just barely worth living—may not regret their existence, but it seems implausible that creating such a life constitutes a positive contribution to overall value. Critical Level Utilitarianism captures this intuition by requiring that new lives clear a meaningful bar before counting as improvements, reflecting our sense that merely non-negative existence is not the same as flourishing.",
+    "type": "foundational",
+    "strength_estimate": "strong"
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-02",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "Avoiding the Repugnant Conclusion",
+    "argument": "Total Utilitarianism notoriously implies the Repugnant Conclusion: that a sufficiently large population of people with lives barely worth living is better than a smaller population of very happy people. Critical Level Utilitarianism avoids this by setting a threshold above zero—lives just barely worth living don't add positive value, so we cannot improve outcomes by replacing flourishing populations with vast numbers of minimally positive lives. This preserves the intuition that quality of life matters, not just aggregate quantity.",
+    "type": "comparative",
+    "strength_estimate": "very_strong"
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-03",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "Coherent Aggregation Despite Asymmetry",
+    "argument": "Unlike the Asymmetric Person-Affecting View, which struggles to explain why we should create very happy people at all, Critical Level Utilitarianism maintains a coherent aggregative framework that still values the creation of genuinely flourishing lives. It preserves the appealing asymmetric intuition that barely-positive lives don't demand creation while avoiding the more radical conclusion that no amount of potential happiness provides reason for procreation. This offers a principled middle ground that respects both aggregative reasoning and threshold-based intuitions.",
+    "type": "comparative",
+    "strength_estimate": "strong"
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-04",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "The Sadistic Conclusion Objection is Manageable",
+    "argument": "Critics argue that Critical Level Utilitarianism implies the 'Sadistic Conclusion'—that adding people with lives between zero and the critical level makes outcomes worse, potentially making it better to add suffering people instead. However, this objection can be addressed by recognizing that the view correctly identifies such lives as failing to contribute positive value, and by setting the critical level thoughtfully. Moreover, Total Utilitarianism faces its own severe counterintuitive implications that are arguably worse and less tractable than this concern.",
+    "type": "defensive",
+    "strength_estimate": "moderate"
+  },
+  {
+    "id": "arg-critical-level-utilitarianism-05",
+    "supports_view": "critical-level-utilitarianism",
+    "name": "Sensible Guidance for Population Policy",
+    "argument": "In real-world policy contexts—such as family planning, resource allocation, and development priorities—Critical Level Utilitarianism provides sensible guidance by focusing on ensuring people can live genuinely good lives rather than maximizing population size. It supports investing in quality of life improvements over mere population expansion and resists policies that would create many people destined for marginal existences. This aligns with widely-held policy intuitions that development should prioritize human flourishing, not just human numbers.",
+    "type": "practical",
+    "strength_estimate": "strong"
+  }
+]

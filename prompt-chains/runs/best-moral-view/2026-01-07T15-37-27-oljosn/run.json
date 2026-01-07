@@ -1,0 +1,2084 @@
+{
+  "id": "2026-01-07T15-37-27-oljosn",
+  "chainId": "best-moral-view",
+  "status": "completed",
+  "startedAt": "2026-01-07T15:37:27.462Z",
+  "inputs": {
+    "debug": true
+  },
+  "steps": {
+    "generate_views": {
+      "status": "completed",
+      "startedAt": "2026-01-07T15:37:27.463Z",
+      "completedAt": "2026-01-07T15:37:41.060Z",
+      "output": [
+        {
+          "id": "total-utilitarianism",
+          "name": "Total Utilitarianism",
+          "summary": "The best outcome is the one with the greatest total sum of wellbeing across all individuals. Creating new happy people adds value, and larger populations with positive lives are better than smaller ones.",
+          "key_intuition": "Every unit of wellbeing matters equally, regardless of who experiences it or when they come into existence."
+        },
+        {
+          "id": "average-utilitarianism",
+          "name": "Average Utilitarianism",
+          "summary": "The best outcome is the one with the highest average level of wellbeing per person. Population size itself has no intrinsic value; what matters is how well off people are on average.",
+          "key_intuition": "Adding people with lives worth living but below the current average makes things worse, as it dilutes the quality of existence."
+        },
+        {
+          "id": "critical-level-utilitarianism",
+          "name": "Critical Level Utilitarianism",
+          "summary": "The best outcome maximizes the sum of wellbeing above a specified critical level (which is above zero). Creating a new person only adds value if their wellbeing exceeds this threshold, not merely if their life is worth living.",
+          "key_intuition": "There is a meaningful difference between a life being worth living and a life being good enough to constitute a positive contribution to the world's value."
+        },
+        {
+          "id": "person-affecting-necessitarianism",
+          "name": "Person-Affecting Necessitarianism",
+          "summary": "An outcome can only be better or worse than another if it is better or worse for someone who exists in both outcomes. Merely possible people generate no moral reasons, so creating happy people has no intrinsic value.",
+          "key_intuition": "Morality is fundamentally about benefiting and not harming actual individuals; we cannot have obligations to bring people into existence since non-existent beings cannot be benefited."
+        },
+        {
+          "id": "asymmetric-person-affecting-view",
+          "name": "Asymmetric Person-Affecting View",
+          "summary": "While there is no moral reason to create happy people (since this benefits no one who otherwise would have existed), there is a strong moral reason not to create people who would suffer. The absence of suffering is good even if there is no one to enjoy that absence.",
+          "key_intuition": "There is a fundamental asymmetry between pleasure and pain: failing to create happiness is not bad, but creating suffering is bad, even when the sufferer would not otherwise exist."
+        }
+      ],
+      "outputText": "```json\n[\n  {\n    \"id\": \"total-utilitarianism\",\n    \"name\": \"Total Utilitarianism\",\n    \"summary\": \"The best outcome is the one with the greatest total sum of wellbeing across all individuals. Creating new happy people adds value, and larger populations with positive lives are better than smaller ones.\",\n    \"key_intuition\": \"Every unit of wellbeing matters equally, regardless of who experiences it or when they come into existence.\"\n  },\n  {\n    \"id\": \"average-utilitarianism\",\n    \"name\": \"Average Utilitarianism\",\n    \"summary\": \"The best outcome is the one with the highest average level of wellbeing per person. Population size itself has no intrinsic value; what matters is how well off people are on average.\",\n    \"key_intuition\": \"Adding people with lives worth living but below the current average makes things worse, as it dilutes the quality of existence.\"\n  },\n  {\n    \"id\": \"critical-level-utilitarianism\",\n    \"name\": \"Critical Level Utilitarianism\",\n    \"summary\": \"The best outcome maximizes the sum of wellbeing above a specified critical level (which is above zero). Creating a new person only adds value if their wellbeing exceeds this threshold, not merely if their life is worth living.\",\n    \"key_intuition\": \"There is a meaningful difference between a life being worth living and a life being good enough to constitute a positive contribution to the world's value.\"\n  },\n  {\n    \"id\": \"person-affecting-necessitarianism\",\n    \"name\": \"Person-Affecting Necessitarianism\",\n    \"summary\": \"An outcome can only be better or worse than another if it is better or worse for someone who exists in both outcomes. Merely possible people generate no moral reasons, so creating happy people has no intrinsic value.\",\n    \"key_intuition\": \"Morality is fundamentally about benefiting and not harming actual individuals; we cannot have obligations to bring people into existence since non-existent beings cannot be benefited.\"\n  },\n  {\n    \"id\": \"asymmetric-person-affecting-view\",\n    \"name\": \"Asymmetric Person-Affecting View\",\n    \"summary\": \"While there is no moral reason to create happy people (since this benefits no one who otherwise would have existed), there is a strong moral reason not to create people who would suffer. The absence of suffering is good even if there is no one to enjoy that absence.\",\n    \"key_intuition\": \"There is a fundamental asymmetry between pleasure and pain: failing to create happiness is not bad, but creating suffering is bad, even when the sufferer would not otherwise exist.\"\n  }\n]\n```",
+      "durationMs": 13596,
+      "tokens": {
+        "input": 354,
+        "output": 627
+      }
+    },
+    "filter_views": {
+      "status": "completed",
+      "startedAt": "2026-01-07T15:37:41.062Z",
+      "completedAt": "2026-01-07T15:37:53.673Z",
+      "output": [
+        {
+          "id": "total-utilitarianism",
+          "name": "Total Utilitarianism",
+          "summary": "The best outcome is the one with the greatest total sum of wellbeing across all individuals. Creating new happy people adds value, and larger populations with positive lives are better than smaller ones.",
+          "key_intuition": "Every unit of wellbeing matters equally, regardless of who experiences it or when they come into existence.",
+          "selection_reason": "Total utilitarianism is the foundational view in population ethics and the primary target of Parfit's Repugnant Conclusion. Its theoretical elegance and consistency make it highly defensible, yet it generates deeply counterintuitive implications. It serves as the essential baseline against which all other views position themselves, and remains seriously defended by philosophers like Huemer and Tännsjö despite its challenges."
+        },
+        {
+          "id": "critical-level-utilitarianism",
+          "name": "Critical Level Utilitarianism",
+          "summary": "The best outcome maximizes the sum of wellbeing above a specified critical level (which is above zero). Creating a new person only adds value if their wellbeing exceeds this threshold, not merely if their life is worth living.",
+          "key_intuition": "There is a meaningful difference between a life being worth living and a life being good enough to constitute a positive contribution to the world's value.",
+          "selection_reason": "Developed by Charles Blackorby and colleagues, this view represents a sophisticated attempt to preserve aggregative consequentialist structure while avoiding the Repugnant Conclusion. It introduces genuine theoretical innovation but faces the 'Sadistic Conclusion' objection. It exemplifies how population ethics forces trade-offs between different counterintuitive results, making it ideal for exploring the impossibility theorems in the field."
+        },
+        {
+          "id": "asymmetric-person-affecting-view",
+          "name": "Asymmetric Person-Affecting View",
+          "summary": "While there is no moral reason to create happy people (since this benefits no one who otherwise would have existed), there is a strong moral reason not to create people who would suffer. The absence of suffering is good even if there is no one to enjoy that absence.",
+          "key_intuition": "There is a fundamental asymmetry between pleasure and pain: failing to create happiness is not bad, but creating suffering is bad, even when the sufferer would not otherwise exist.",
+          "selection_reason": "This view, associated with Benatar and refined by others, captures a powerful pre-theoretical intuition about the asymmetry of procreative reasons. It diverges radically from aggregative approaches by grounding ethics in harm-prevention rather than welfare-maximization. Its implications for antinatalism and its challenge to symmetrical treatment of pleasure and pain make it philosophically provocative and generate rich debate about the foundations of population ethics."
+        }
+      ],
+      "outputText": "```json\n[\n  {\n    \"id\": \"total-utilitarianism\",\n    \"name\": \"Total Utilitarianism\",\n    \"summary\": \"The best outcome is the one with the greatest total sum of wellbeing across all individuals. Creating new happy people adds value, and larger populations with positive lives are better than smaller ones.\",\n    \"key_intuition\": \"Every unit of wellbeing matters equally, regardless of who experiences it or when they come into existence.\",\n    \"selection_reason\": \"Total utilitarianism is the foundational view in population ethics and the primary target of Parfit's Repugnant Conclusion. Its theoretical elegance and consistency make it highly defensible, yet it generates deeply counterintuitive implications. It serves as the essential baseline against which all other views position themselves, and remains seriously defended by philosophers like Huemer and Tännsjö despite its challenges.\"\n  },\n  {\n    \"id\": \"critical-level-utilitarianism\",\n    \"name\": \"Critical Level Utilitarianism\",\n    \"summary\": \"The best outcome maximizes the sum of wellbeing above a specified critical level (which is above zero). Creating a new person only adds value if their wellbeing exceeds this threshold, not merely if their life is worth living.\",\n    \"key_intuition\": \"There is a meaningful difference between a life being worth living and a life being good enough to constitute a positive contribution to the world's value.\",\n    \"selection_reason\": \"Developed by Charles Blackorby and colleagues, this view represents a sophisticated attempt to preserve aggregative consequentialist structure while avoiding the Repugnant Conclusion. It introduces genuine theoretical innovation but faces the 'Sadistic Conclusion' objection. It exemplifies how population ethics forces trade-offs between different counterintuitive results, making it ideal for exploring the impossibility theorems in the field.\"\n  },\n  {\n    \"id\": \"asymmetric-person-affecting-view\",\n    \"name\": \"Asymmetric Person-Affecting View\",\n    \"summary\": \"While there is no moral reason to create happy people (since this benefits no one who otherwise would have existed), there is a strong moral reason not to create people who would suffer. The absence of suffering is good even if there is no one to enjoy that absence.\",\n    \"key_intuition\": \"There is a fundamental asymmetry between pleasure and pain: failing to create happiness is not bad, but creating suffering is bad, even when the sufferer would not otherwise exist.\",\n    \"selection_reason\": \"This view, associated with Benatar and refined by others, captures a powerful pre-theoretical intuition about the asymmetry of procreative reasons. It diverges radically from aggregative approaches by grounding ethics in harm-prevention rather than welfare-maximization. Its implications for antinatalism and its challenge to symmetrical treatment of pleasure and pain make it philosophically provocative and generate rich debate about the foundations of population ethics.\"\n  }\n]\n```",
+      "durationMs": 12610,
+      "tokens": {
+        "input": 732,
+        "output": 672
+      }
+    },
+    "generate_objections": {
+      "status": "completed",
+      "startedAt": "2026-01-07T15:37:53.675Z",
+      "isForEach": true,
+      "instances": [
+        {
+          "index": 0,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:37:53.676Z",
+          "completedAt": "2026-01-07T15:38:14.205Z",
+          "output": [
+            {
+              "id": "obj-total-utilitarianism-01",
+              "target_view": "total-utilitarianism",
+              "name": "The Repugnant Conclusion",
+              "objection": "Total Utilitarianism implies that for any population of 10 billion people living wonderful, flourishing lives, there is a better outcome consisting of a vastly larger population (say, 100 trillion people) whose lives are barely worth living—perhaps spent in tedious, monotonous labor with only minimal pleasures. This follows necessarily from aggregating total wellbeing, yet the conclusion that we should prefer a world of countless people with lives barely worth living over a world of genuine human flourishing strikes most as deeply counterintuitive and morally repugnant.",
+              "type": "classic",
+              "severity_estimate": "devastating"
+            },
+            {
+              "id": "obj-total-utilitarianism-02",
+              "target_view": "total-utilitarianism",
+              "name": "The Obligation to Maximize Population",
+              "objection": "Total Utilitarianism generates an extremely demanding obligation to procreate: if creating new happy people adds value, then failing to have children when one could (or failing to support policies that maximize population growth) is morally equivalent to allowing existing people to suffer. This means individuals who choose to remain childless, or societies that stabilize their populations, are acting wrongly—even if this choice allows them to provide better lives for existing people or pursue other valuable projects. The view effectively condemns most reproductive choices as immoral.",
+              "type": "structural",
+              "severity_estimate": "very_strong"
+            },
+            {
+              "id": "obj-total-utilitarianism-03",
+              "target_view": "total-utilitarianism",
+              "name": "The Replaceability Problem",
+              "objection": "If what matters is only total wellbeing, then killing a happy person is not intrinsically wrong—it is only wrong if it reduces total wellbeing. This means that killing someone and replacing them with an equally happy person (or two slightly less happy people whose combined wellbeing exceeds the original) would be morally permissible or even required. This 'replaceability' implication treats persons as mere vessels for wellbeing rather than as individuals with their own claims to continued existence, violating deep intuitions about the wrongness of killing.",
+              "type": "structural",
+              "severity_estimate": "very_strong"
+            },
+            {
+              "id": "obj-total-utilitarianism-04",
+              "target_view": "total-utilitarianism",
+              "name": "The Temporal Infinity Problem",
+              "objection": "If the future contains infinitely many people (as it might, given cosmic timescales), then any finite action we take now contributes zero percent to the total sum of wellbeing across all time. Total Utilitarianism thus either renders all our choices morally equivalent (since finite differences divided by infinity equal zero), or requires us to compare infinite quantities in ways that lead to paradoxes—such as being unable to say whether a world with infinite happiness plus one unit is better than one with infinite happiness alone. The view becomes action-guiding only by arbitrarily restricting its scope.",
+              "type": "novel",
+              "severity_estimate": "strong"
+            },
+            {
+              "id": "obj-total-utilitarianism-05",
+              "target_view": "total-utilitarianism",
+              "name": "The Welfare Farming Thought Experiment",
+              "objection": "Consider a proposal to create billions of genetically engineered beings—perhaps simple organisms or digital minds—capable of experiencing mild contentment but nothing else: no relationships, no achievements, no complex experiences. Total Utilitarianism implies we should devote enormous resources to 'farming' such beings, since their aggregate mild contentment could exceed the total wellbeing of all humans pursuing rich, meaningful lives. This reduces morality to a kind of hedonic factory farming and suggests we should sacrifice the depth and variety of human experience for the mass production of simple positive states.",
+              "type": "novel",
+              "severity_estimate": "strong"
+            }
+          ],
+          "durationMs": 20529,
+          "tokens": {
+            "input": 631,
+            "output": 986
+          }
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:37:53.676Z",
+          "completedAt": "2026-01-07T15:38:12.431Z",
+          "output": [
+            {
+              "id": "obj-critical-level-utilitarianism-01",
+              "target_view": "critical-level-utilitarianism",
+              "name": "The Sadistic Conclusion",
+              "objection": "Critical Level Utilitarianism implies that it can be better to create people with negative wellbeing (suffering lives) than to create a larger number of people with positive but below-threshold wellbeing. If we must choose between adding one person at wellbeing -1 or adding a million people at wellbeing +5 (where the critical level is +10), the view counts the million people as contributing -5 million to total value, making the single suffering person preferable. This seems deeply perverse—actively choosing suffering over happiness.",
+              "type": "classic",
+              "severity_estimate": "devastating"
+            },
+            {
+              "id": "obj-critical-level-utilitarianism-02",
+              "target_view": "critical-level-utilitarianism",
+              "name": "Arbitrary Threshold Problem",
+              "objection": "The view requires specifying a precise critical level, but there appears to be no principled, non-arbitrary way to determine what this level should be. Any specific number seems unmotivated—why should the threshold be at wellbeing level 50 rather than 49 or 51? This arbitrariness undermines the theory's action-guiding capacity and suggests the distinction between 'worth living' and 'good enough to add value' may be a philosopher's invention rather than a genuine moral boundary.",
+              "type": "structural",
+              "severity_estimate": "very_strong"
+            },
+            {
+              "id": "obj-critical-level-utilitarianism-03",
+              "target_view": "critical-level-utilitarianism",
+              "name": "The Discontinuity Paradox",
+              "objection": "The view creates a sharp discontinuity where a life at wellbeing level 49.99 (just below threshold) contributes negatively to world value, while a life at 50.01 (just above) contributes positively. This means that slightly improving someone's life from 49.99 to 50.01 would swing their contribution from negative to positive—a massive moral difference from a trivial wellbeing change. This violates the intuition that small changes in wellbeing should produce proportionally small changes in moral evaluation.",
+              "type": "structural",
+              "severity_estimate": "strong"
+            },
+            {
+              "id": "obj-critical-level-utilitarianism-04",
+              "target_view": "critical-level-utilitarianism",
+              "name": "The Grateful Existence Objection",
+              "objection": "Consider someone whose life is genuinely worth living (wellbeing +30) but below the critical level (+50). They are grateful to exist, would not prefer non-existence, and their life contains genuine goods. Yet Critical Level Utilitarianism says the world would be better if they had never existed—their very existence makes things worse. This seems to wrong them by denying the value of their existence from their own reasonable perspective, treating their grateful, meaningful life as a net negative.",
+              "type": "novel",
+              "severity_estimate": "very_strong"
+            },
+            {
+              "id": "obj-critical-level-utilitarianism-05",
+              "target_view": "critical-level-utilitarianism",
+              "name": "The Extinction Implication",
+              "objection": "If most human lives fall below the critical level (as might be plausible if the threshold is set high enough to avoid the Repugnant Conclusion), then Critical Level Utilitarianism would recommend human extinction or at least dramatic population reduction. A world with only a small elite of extremely flourishing individuals would be better than our current world with billions of people living decent but sub-threshold lives. This transforms a theory meant to avoid counterintuitive conclusions into one that endorses potentially the most counterintuitive conclusion of all.",
+              "type": "novel",
+              "severity_estimate": "strong"
+            }
+          ],
+          "durationMs": 18755,
+          "tokens": {
+            "input": 658,
+            "output": 971
+          }
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:37:53.676Z",
+          "completedAt": "2026-01-07T15:38:15.268Z",
+          "output": [
+            {
+              "id": "obj-asymmetric-person-affecting-view-01",
+              "target_view": "asymmetric-person-affecting-view",
+              "name": "Unexplained Asymmetry",
+              "objection": "The view posits a fundamental asymmetry between pleasure and pain but provides no principled explanation for why the absence of suffering is good when no one exists to benefit from that absence, while the absence of pleasure is not bad despite no one existing to be deprived. If we accept that non-existent beings cannot be benefited, it seems equally true that they cannot be harmed—yet the view treats these cases differently without adequate justification. This makes the asymmetry appear ad hoc rather than grounded in a coherent metaphysics of value.",
+              "type": "structural",
+              "severity_estimate": "very_strong"
+            },
+            {
+              "id": "obj-asymmetric-person-affecting-view-02",
+              "target_view": "asymmetric-person-affecting-view",
+              "name": "The Procreative Paralysis Problem",
+              "objection": "Since virtually every possible person will experience some suffering during their life, the view implies we have strong moral reasons against creating almost anyone. Even a person whose life would contain overwhelming happiness and minimal suffering still generates a moral reason against their creation (the suffering) with no countervailing moral reason for their creation (the happiness). This leads to the implausible conclusion that procreation is almost always morally problematic, effectively endorsing voluntary human extinction as the morally optimal outcome.",
+              "type": "novel",
+              "severity_estimate": "devastating"
+            },
+            {
+              "id": "obj-asymmetric-person-affecting-view-03",
+              "target_view": "asymmetric-person-affecting-view",
+              "name": "Non-Identity Problem Vulnerability",
+              "objection": "Consider a couple who can either conceive now (creating child A with a minor disability) or wait three months (creating different child B who would be perfectly healthy). The asymmetric view struggles to explain why conceiving now is wrong: Child A is not harmed by being created since they wouldn't otherwise exist, and the view denies that failing to create the happier Child B is bad. The view's person-affecting component undermines its ability to guide choices between creating different possible people with different welfare levels.",
+              "type": "classic",
+              "severity_estimate": "strong"
+            },
+            {
+              "id": "obj-asymmetric-person-affecting-view-04",
+              "target_view": "asymmetric-person-affecting-view",
+              "name": "The Sadistic Conclusion Reversal",
+              "objection": "The view implies that a world with one billion supremely happy people is not better than an empty world (since creating happy people has no positive moral weight), but an empty world is better than a world with even one person experiencing mild, temporary suffering. This means we should prefer preventing the existence of a trillion flourishing lives containing trivial frustrations over allowing them to exist. The view thus generates its own form of sadistic conclusion by treating the prevention of any suffering as lexically prior to any amount of foregone happiness.",
+              "type": "structural",
+              "severity_estimate": "very_strong"
+            },
+            {
+              "id": "obj-asymmetric-person-affecting-view-05",
+              "target_view": "asymmetric-person-affecting-view",
+              "name": "The Rescue vs. Creation Inconsistency",
+              "objection": "The view creates a puzzling inconsistency between our obligations to existing and potential people. If a child already exists and is suffering, we have strong reasons to help them experience pleasure instead. But if we could create that same child in identical circumstances, we have no reason to do so (creating pleasure has no moral weight) and only reasons against (they might suffer). This means the moral status of providing someone a wonderful life depends entirely on the metaphysically arbitrary fact of whether they already exist, making temporal location do implausible moral work.",
+              "type": "novel",
+              "severity_estimate": "strong"
+            }
+          ],
+          "durationMs": 21592,
+          "tokens": {
+            "input": 673,
+            "output": 970
+          }
+        }
+      ],
+      "completedInstances": 3,
+      "totalInstances": 3,
+      "completedAt": "2026-01-07T15:38:15.269Z",
+      "output": [
+        [
+          {
+            "id": "obj-total-utilitarianism-01",
+            "target_view": "total-utilitarianism",
+            "name": "The Repugnant Conclusion",
+            "objection": "Total Utilitarianism implies that for any population of 10 billion people living wonderful, flourishing lives, there is a better outcome consisting of a vastly larger population (say, 100 trillion people) whose lives are barely worth living—perhaps spent in tedious, monotonous labor with only minimal pleasures. This follows necessarily from aggregating total wellbeing, yet the conclusion that we should prefer a world of countless people with lives barely worth living over a world of genuine human flourishing strikes most as deeply counterintuitive and morally repugnant.",
+            "type": "classic",
+            "severity_estimate": "devastating"
+          },
+          {
+            "id": "obj-total-utilitarianism-02",
+            "target_view": "total-utilitarianism",
+            "name": "The Obligation to Maximize Population",
+            "objection": "Total Utilitarianism generates an extremely demanding obligation to procreate: if creating new happy people adds value, then failing to have children when one could (or failing to support policies that maximize population growth) is morally equivalent to allowing existing people to suffer. This means individuals who choose to remain childless, or societies that stabilize their populations, are acting wrongly—even if this choice allows them to provide better lives for existing people or pursue other valuable projects. The view effectively condemns most reproductive choices as immoral.",
+            "type": "structural",
+            "severity_estimate": "very_strong"
+          },
+          {
+            "id": "obj-total-utilitarianism-03",
+            "target_view": "total-utilitarianism",
+            "name": "The Replaceability Problem",
+            "objection": "If what matters is only total wellbeing, then killing a happy person is not intrinsically wrong—it is only wrong if it reduces total wellbeing. This means that killing someone and replacing them with an equally happy person (or two slightly less happy people whose combined wellbeing exceeds the original) would be morally permissible or even required. This 'replaceability' implication treats persons as mere vessels for wellbeing rather than as individuals with their own claims to continued existence, violating deep intuitions about the wrongness of killing.",
+            "type": "structural",
+            "severity_estimate": "very_strong"
+          },
+          {
+            "id": "obj-total-utilitarianism-04",
+            "target_view": "total-utilitarianism",
+            "name": "The Temporal Infinity Problem",
+            "objection": "If the future contains infinitely many people (as it might, given cosmic timescales), then any finite action we take now contributes zero percent to the total sum of wellbeing across all time. Total Utilitarianism thus either renders all our choices morally equivalent (since finite differences divided by infinity equal zero), or requires us to compare infinite quantities in ways that lead to paradoxes—such as being unable to say whether a world with infinite happiness plus one unit is better than one with infinite happiness alone. The view becomes action-guiding only by arbitrarily restricting its scope.",
+            "type": "novel",
+            "severity_estimate": "strong"
+          },
+          {
+            "id": "obj-total-utilitarianism-05",
+            "target_view": "total-utilitarianism",
+            "name": "The Welfare Farming Thought Experiment",
+            "objection": "Consider a proposal to create billions of genetically engineered beings—perhaps simple organisms or digital minds—capable of experiencing mild contentment but nothing else: no relationships, no achievements, no complex experiences. Total Utilitarianism implies we should devote enormous resources to 'farming' such beings, since their aggregate mild contentment could exceed the total wellbeing of all humans pursuing rich, meaningful lives. This reduces morality to a kind of hedonic factory farming and suggests we should sacrifice the depth and variety of human experience for the mass production of simple positive states.",
+            "type": "novel",
+            "severity_estimate": "strong"
+          }
+        ],
+        [
+          {
+            "id": "obj-critical-level-utilitarianism-01",
+            "target_view": "critical-level-utilitarianism",
+            "name": "The Sadistic Conclusion",
+            "objection": "Critical Level Utilitarianism implies that it can be better to create people with negative wellbeing (suffering lives) than to create a larger number of people with positive but below-threshold wellbeing. If we must choose between adding one person at wellbeing -1 or adding a million people at wellbeing +5 (where the critical level is +10), the view counts the million people as contributing -5 million to total value, making the single suffering person preferable. This seems deeply perverse—actively choosing suffering over happiness.",
+            "type": "classic",
+            "severity_estimate": "devastating"
+          },
+          {
+            "id": "obj-critical-level-utilitarianism-02",
+            "target_view": "critical-level-utilitarianism",
+            "name": "Arbitrary Threshold Problem",
+            "objection": "The view requires specifying a precise critical level, but there appears to be no principled, non-arbitrary way to determine what this level should be. Any specific number seems unmotivated—why should the threshold be at wellbeing level 50 rather than 49 or 51? This arbitrariness undermines the theory's action-guiding capacity and suggests the distinction between 'worth living' and 'good enough to add value' may be a philosopher's invention rather than a genuine moral boundary.",
+            "type": "structural",
+            "severity_estimate": "very_strong"
+          },
+          {
+            "id": "obj-critical-level-utilitarianism-03",
+            "target_view": "critical-level-utilitarianism",
+            "name": "The Discontinuity Paradox",
+            "objection": "The view creates a sharp discontinuity where a life at wellbeing level 49.99 (just below threshold) contributes negatively to world value, while a life at 50.01 (just above) contributes positively. This means that slightly improving someone's life from 49.99 to 50.01 would swing their contribution from negative to positive—a massive moral difference from a trivial wellbeing change. This violates the intuition that small changes in wellbeing should produce proportionally small changes in moral evaluation.",
+            "type": "structural",
+            "severity_estimate": "strong"
+          },
+          {
+            "id": "obj-critical-level-utilitarianism-04",
+            "target_view": "critical-level-utilitarianism",
+            "name": "The Grateful Existence Objection",
+            "objection": "Consider someone whose life is genuinely worth living (wellbeing +30) but below the critical level (+50). They are grateful to exist, would not prefer non-existence, and their life contains genuine goods. Yet Critical Level Utilitarianism says the world would be better if they had never existed—their very existence makes things worse. This seems to wrong them by denying the value of their existence from their own reasonable perspective, treating their grateful, meaningful life as a net negative.",
+            "type": "novel",
+            "severity_estimate": "very_strong"
+          },
+          {
+            "id": "obj-critical-level-utilitarianism-05",
+            "target_view": "critical-level-utilitarianism",
+            "name": "The Extinction Implication",
+            "objection": "If most human lives fall below the critical level (as might be plausible if the threshold is set high enough to avoid the Repugnant Conclusion), then Critical Level Utilitarianism would recommend human extinction or at least dramatic population reduction. A world with only a small elite of extremely flourishing individuals would be better than our current world with billions of people living decent but sub-threshold lives. This transforms a theory meant to avoid counterintuitive conclusions into one that endorses potentially the most counterintuitive conclusion of all.",
+            "type": "novel",
+            "severity_estimate": "strong"
+          }
+        ],
+        [
+          {
+            "id": "obj-asymmetric-person-affecting-view-01",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "Unexplained Asymmetry",
+            "objection": "The view posits a fundamental asymmetry between pleasure and pain but provides no principled explanation for why the absence of suffering is good when no one exists to benefit from that absence, while the absence of pleasure is not bad despite no one existing to be deprived. If we accept that non-existent beings cannot be benefited, it seems equally true that they cannot be harmed—yet the view treats these cases differently without adequate justification. This makes the asymmetry appear ad hoc rather than grounded in a coherent metaphysics of value.",
+            "type": "structural",
+            "severity_estimate": "very_strong"
+          },
+          {
+            "id": "obj-asymmetric-person-affecting-view-02",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "The Procreative Paralysis Problem",
+            "objection": "Since virtually every possible person will experience some suffering during their life, the view implies we have strong moral reasons against creating almost anyone. Even a person whose life would contain overwhelming happiness and minimal suffering still generates a moral reason against their creation (the suffering) with no countervailing moral reason for their creation (the happiness). This leads to the implausible conclusion that procreation is almost always morally problematic, effectively endorsing voluntary human extinction as the morally optimal outcome.",
+            "type": "novel",
+            "severity_estimate": "devastating"
+          },
+          {
+            "id": "obj-asymmetric-person-affecting-view-03",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "Non-Identity Problem Vulnerability",
+            "objection": "Consider a couple who can either conceive now (creating child A with a minor disability) or wait three months (creating different child B who would be perfectly healthy). The asymmetric view struggles to explain why conceiving now is wrong: Child A is not harmed by being created since they wouldn't otherwise exist, and the view denies that failing to create the happier Child B is bad. The view's person-affecting component undermines its ability to guide choices between creating different possible people with different welfare levels.",
+            "type": "classic",
+            "severity_estimate": "strong"
+          },
+          {
+            "id": "obj-asymmetric-person-affecting-view-04",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "The Sadistic Conclusion Reversal",
+            "objection": "The view implies that a world with one billion supremely happy people is not better than an empty world (since creating happy people has no positive moral weight), but an empty world is better than a world with even one person experiencing mild, temporary suffering. This means we should prefer preventing the existence of a trillion flourishing lives containing trivial frustrations over allowing them to exist. The view thus generates its own form of sadistic conclusion by treating the prevention of any suffering as lexically prior to any amount of foregone happiness.",
+            "type": "structural",
+            "severity_estimate": "very_strong"
+          },
+          {
+            "id": "obj-asymmetric-person-affecting-view-05",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "The Rescue vs. Creation Inconsistency",
+            "objection": "The view creates a puzzling inconsistency between our obligations to existing and potential people. If a child already exists and is suffering, we have strong reasons to help them experience pleasure instead. But if we could create that same child in identical circumstances, we have no reason to do so (creating pleasure has no moral weight) and only reasons against (they might suffer). This means the moral status of providing someone a wonderful life depends entirely on the metaphysically arbitrary fact of whether they already exist, making temporal location do implausible moral work.",
+            "type": "novel",
+            "severity_estimate": "strong"
+          }
+        ]
+      ],
+      "tokens": {
+        "input": 1962,
+        "output": 2927
+      },
+      "durationMs": 21594
+    },
+    "generate_arguments": {
+      "status": "completed",
+      "startedAt": "2026-01-07T15:38:15.271Z",
+      "isForEach": true,
+      "instances": [
+        {
+          "index": 0,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:15.272Z",
+          "completedAt": "2026-01-07T15:38:35.885Z",
+          "output": [
+            {
+              "id": "arg-total-utilitarianism-01",
+              "supports_view": "total-utilitarianism",
+              "name": "Impartiality and Equal Moral Worth",
+              "argument": "Total Utilitarianism embodies a profound commitment to moral impartiality: every unit of wellbeing counts equally regardless of who experiences it, when they exist, or whether they already exist or might come into being. This reflects the core moral insight that there is nothing special about any particular person's interests that makes them count more than anyone else's. Just as we reject discrimination based on race, gender, or nationality, we should reject arbitrary discrimination against future or merely possible persons whose lives would be genuinely worth living.",
+              "type": "foundational",
+              "strength_estimate": "very_strong"
+            },
+            {
+              "id": "arg-total-utilitarianism-02",
+              "supports_view": "total-utilitarianism",
+              "name": "Avoiding Arbitrary Thresholds",
+              "argument": "Critical Level Utilitarianism faces a devastating arbitrariness problem: any critical level above zero seems impossible to justify non-arbitrarily. Why should a life with wellbeing of 50 count as adding value while a life at 49 does not, if both are genuinely worth living? Total Utilitarianism avoids this by using the only non-arbitrary threshold available—zero, the point at which a life becomes worth living at all. This makes the theory more principled and resistant to manipulation of the threshold for convenience.",
+              "type": "comparative",
+              "strength_estimate": "strong"
+            },
+            {
+              "id": "arg-total-utilitarianism-03",
+              "supports_view": "total-utilitarianism",
+              "name": "Rejecting the Asymmetry's Hidden Costs",
+              "argument": "The Asymmetric Person-Affecting View claims there's no moral reason to create happy people but strong reasons not to create suffering ones. Yet this asymmetry leads to troubling implications: it suggests that a world with no sentient beings is morally optimal, and that we have no reason to ensure humanity's continuation even if future generations would flourish. Total Utilitarianism correctly recognizes that the existence of genuinely happy lives is a positive good, not merely morally neutral, capturing our intuition that a flourishing future matters.",
+              "type": "comparative",
+              "strength_estimate": "strong"
+            },
+            {
+              "id": "arg-total-utilitarianism-04",
+              "supports_view": "total-utilitarianism",
+              "name": "Clear Guidance for Existential Risk Policy",
+              "argument": "Total Utilitarianism provides uniquely clear and compelling guidance on existential risk: preventing human extinction is among our highest priorities because it preserves the possibility of astronomical amounts of future wellbeing. Unlike views that discount future people or deny value in creating new lives, Total Utilitarianism explains why we should invest heavily in preventing catastrophic risks, why long-term flourishing matters, and how to weigh present sacrifices against future benefits. This practical clarity is essential for humanity's most important decisions.",
+              "type": "practical",
+              "strength_estimate": "very_strong"
+            },
+            {
+              "id": "arg-total-utilitarianism-05",
+              "supports_view": "total-utilitarianism",
+              "name": "The Repugnant Conclusion as Moral Progress",
+              "argument": "While the Repugnant Conclusion—that a sufficiently large population with lives barely worth living could be better than a smaller population of very happy people—initially seems counterintuitive, this intuition may reflect cognitive biases rather than moral truth. We struggle to imagine vast numbers and to appreciate that billions of lives barely worth living still contain enormous aggregate value. Just as our ancestors' intuitions about moral circles were too narrow, our intuitions about population size may be unreliable. Accepting this conclusion may represent moral progress toward truly impartial concern.",
+              "type": "defensive",
+              "strength_estimate": "moderate"
+            }
+          ],
+          "durationMs": 20613,
+          "tokens": {
+            "input": 662,
+            "output": 968
+          }
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:15.272Z",
+          "completedAt": "2026-01-07T15:38:36.522Z",
+          "output": [
+            {
+              "id": "arg-critical-level-utilitarianism-01",
+              "supports_view": "critical-level-utilitarianism",
+              "name": "The Contribution Threshold Intuition",
+              "argument": "There is a meaningful moral distinction between a life being worth living for the person living it and a life being good enough to make the world better by its existence. A person with a minimally positive life—one just barely worth living—may not regret their existence, but it seems implausible that creating such a life constitutes a positive contribution to overall value. Critical Level Utilitarianism captures this intuition by requiring that new lives clear a meaningful bar before counting as improvements, reflecting our sense that merely non-negative existence is not the same as flourishing.",
+              "type": "foundational",
+              "strength_estimate": "strong"
+            },
+            {
+              "id": "arg-critical-level-utilitarianism-02",
+              "supports_view": "critical-level-utilitarianism",
+              "name": "Avoiding the Repugnant Conclusion",
+              "argument": "Total Utilitarianism notoriously implies the Repugnant Conclusion: that a sufficiently large population of people with lives barely worth living is better than a smaller population of very happy people. Critical Level Utilitarianism avoids this by setting a threshold above zero—lives just barely worth living don't add positive value, so we cannot improve outcomes by replacing flourishing populations with vast numbers of minimally positive lives. This preserves the intuition that quality of life matters, not just aggregate quantity.",
+              "type": "comparative",
+              "strength_estimate": "very_strong"
+            },
+            {
+              "id": "arg-critical-level-utilitarianism-03",
+              "supports_view": "critical-level-utilitarianism",
+              "name": "Coherent Aggregation Despite Asymmetry",
+              "argument": "Unlike the Asymmetric Person-Affecting View, which struggles to explain why we should create very happy people at all, Critical Level Utilitarianism maintains a coherent aggregative framework that still values the creation of genuinely flourishing lives. It preserves the appealing asymmetric intuition that barely-positive lives don't demand creation while avoiding the more radical conclusion that no amount of potential happiness provides reason for procreation. This offers a principled middle ground that respects both aggregative reasoning and threshold-based intuitions.",
+              "type": "comparative",
+              "strength_estimate": "strong"
+            },
+            {
+              "id": "arg-critical-level-utilitarianism-04",
+              "supports_view": "critical-level-utilitarianism",
+              "name": "The Sadistic Conclusion Objection is Manageable",
+              "argument": "Critics argue that Critical Level Utilitarianism implies the 'Sadistic Conclusion'—that adding people with lives between zero and the critical level makes outcomes worse, potentially making it better to add suffering people instead. However, this objection can be addressed by recognizing that the view correctly identifies such lives as failing to contribute positive value, and by setting the critical level thoughtfully. Moreover, Total Utilitarianism faces its own severe counterintuitive implications that are arguably worse and less tractable than this concern.",
+              "type": "defensive",
+              "strength_estimate": "moderate"
+            },
+            {
+              "id": "arg-critical-level-utilitarianism-05",
+              "supports_view": "critical-level-utilitarianism",
+              "name": "Sensible Guidance for Population Policy",
+              "argument": "In real-world policy contexts—such as family planning, resource allocation, and development priorities—Critical Level Utilitarianism provides sensible guidance by focusing on ensuring people can live genuinely good lives rather than maximizing population size. It supports investing in quality of life improvements over mere population expansion and resists policies that would create many people destined for marginal existences. This aligns with widely-held policy intuitions that development should prioritize human flourishing, not just human numbers.",
+              "type": "practical",
+              "strength_estimate": "strong"
+            }
+          ],
+          "durationMs": 21250,
+          "tokens": {
+            "input": 689,
+            "output": 974
+          }
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:15.272Z",
+          "completedAt": "2026-01-07T15:38:34.919Z",
+          "output": [
+            {
+              "id": "arg-asymmetric-person-affecting-view-01",
+              "supports_view": "asymmetric-person-affecting-view",
+              "name": "The Non-Identity Benefit Problem",
+              "argument": "Creating a happy person cannot benefit that person, since they would not exist otherwise to receive any benefit—there is no one for whom existence is better than non-existence. However, creating a suffering person does harm them, because once they exist, they experience genuine suffering that is bad for them. This asymmetry in the logic of benefit and harm provides a principled foundation for treating potential happiness and potential suffering differently in our moral calculations.",
+              "type": "foundational",
+              "strength_estimate": "very_strong"
+            },
+            {
+              "id": "arg-asymmetric-person-affecting-view-02",
+              "supports_view": "asymmetric-person-affecting-view",
+              "name": "Avoiding the Repugnant Conclusion",
+              "argument": "Total Utilitarianism notoriously implies the Repugnant Conclusion: that a massive population of people with lives barely worth living is better than a smaller population with excellent lives. The Asymmetric View elegantly avoids this by denying that creating additional happy people adds moral value. Since there is no positive duty to create happiness, we cannot be morally required to expand population indefinitely, preserving our intuition that quality of life matters more than mere quantity.",
+              "type": "comparative",
+              "strength_estimate": "strong"
+            },
+            {
+              "id": "arg-asymmetric-person-affecting-view-03",
+              "supports_view": "asymmetric-person-affecting-view",
+              "name": "The Phenomenological Asymmetry of Suffering",
+              "argument": "Suffering has a demanding, urgent quality that pleasure lacks—pain screams for relief in a way that the absence of pleasure does not cry out for satisfaction. This phenomenological asymmetry suggests that preventing suffering has a moral priority that promoting happiness does not share. The Asymmetric View captures this by treating the prevention of suffering as genuinely good (even for non-existent beings) while denying equivalent status to the creation of happiness.",
+              "type": "foundational",
+              "strength_estimate": "strong"
+            },
+            {
+              "id": "arg-asymmetric-person-affecting-view-04",
+              "supports_view": "asymmetric-person-affecting-view",
+              "name": "Coherence with Procreative Liberty",
+              "argument": "The Asymmetric View provides clear, sensible guidance for reproductive ethics: prospective parents have no obligation to create children for the sake of those children's happiness, but they do have strong reasons to avoid creating children who would suffer severely. This aligns with widely-held intuitions about procreative liberty—that choosing not to have children is morally permissible—while still grounding concerns about bringing children into circumstances of predictable misery.",
+              "type": "practical",
+              "strength_estimate": "strong"
+            },
+            {
+              "id": "arg-asymmetric-person-affecting-view-05",
+              "supports_view": "asymmetric-person-affecting-view",
+              "name": "The Absent Beneficiary Response",
+              "argument": "Critics object that if the absence of suffering is good without a beneficiary, the absence of happiness should symmetrically be bad. But this misunderstands the view: the absence of suffering is good because suffering is intrinsically bad and its prevention removes something bad from the world, whereas the absence of happiness is merely neutral because there is no one who is deprived. The asymmetry lies not in arbitrary stipulation but in the different relationships between absence and the states themselves—preventing a bad differs fundamentally from failing to create a good.",
+              "type": "defensive",
+              "strength_estimate": "moderate"
+            }
+          ],
+          "durationMs": 19647,
+          "tokens": {
+            "input": 704,
+            "output": 918
+          }
+        }
+      ],
+      "completedInstances": 3,
+      "totalInstances": 3,
+      "completedAt": "2026-01-07T15:38:36.526Z",
+      "output": [
+        [
+          {
+            "id": "arg-total-utilitarianism-01",
+            "supports_view": "total-utilitarianism",
+            "name": "Impartiality and Equal Moral Worth",
+            "argument": "Total Utilitarianism embodies a profound commitment to moral impartiality: every unit of wellbeing counts equally regardless of who experiences it, when they exist, or whether they already exist or might come into being. This reflects the core moral insight that there is nothing special about any particular person's interests that makes them count more than anyone else's. Just as we reject discrimination based on race, gender, or nationality, we should reject arbitrary discrimination against future or merely possible persons whose lives would be genuinely worth living.",
+            "type": "foundational",
+            "strength_estimate": "very_strong"
+          },
+          {
+            "id": "arg-total-utilitarianism-02",
+            "supports_view": "total-utilitarianism",
+            "name": "Avoiding Arbitrary Thresholds",
+            "argument": "Critical Level Utilitarianism faces a devastating arbitrariness problem: any critical level above zero seems impossible to justify non-arbitrarily. Why should a life with wellbeing of 50 count as adding value while a life at 49 does not, if both are genuinely worth living? Total Utilitarianism avoids this by using the only non-arbitrary threshold available—zero, the point at which a life becomes worth living at all. This makes the theory more principled and resistant to manipulation of the threshold for convenience.",
+            "type": "comparative",
+            "strength_estimate": "strong"
+          },
+          {
+            "id": "arg-total-utilitarianism-03",
+            "supports_view": "total-utilitarianism",
+            "name": "Rejecting the Asymmetry's Hidden Costs",
+            "argument": "The Asymmetric Person-Affecting View claims there's no moral reason to create happy people but strong reasons not to create suffering ones. Yet this asymmetry leads to troubling implications: it suggests that a world with no sentient beings is morally optimal, and that we have no reason to ensure humanity's continuation even if future generations would flourish. Total Utilitarianism correctly recognizes that the existence of genuinely happy lives is a positive good, not merely morally neutral, capturing our intuition that a flourishing future matters.",
+            "type": "comparative",
+            "strength_estimate": "strong"
+          },
+          {
+            "id": "arg-total-utilitarianism-04",
+            "supports_view": "total-utilitarianism",
+            "name": "Clear Guidance for Existential Risk Policy",
+            "argument": "Total Utilitarianism provides uniquely clear and compelling guidance on existential risk: preventing human extinction is among our highest priorities because it preserves the possibility of astronomical amounts of future wellbeing. Unlike views that discount future people or deny value in creating new lives, Total Utilitarianism explains why we should invest heavily in preventing catastrophic risks, why long-term flourishing matters, and how to weigh present sacrifices against future benefits. This practical clarity is essential for humanity's most important decisions.",
+            "type": "practical",
+            "strength_estimate": "very_strong"
+          },
+          {
+            "id": "arg-total-utilitarianism-05",
+            "supports_view": "total-utilitarianism",
+            "name": "The Repugnant Conclusion as Moral Progress",
+            "argument": "While the Repugnant Conclusion—that a sufficiently large population with lives barely worth living could be better than a smaller population of very happy people—initially seems counterintuitive, this intuition may reflect cognitive biases rather than moral truth. We struggle to imagine vast numbers and to appreciate that billions of lives barely worth living still contain enormous aggregate value. Just as our ancestors' intuitions about moral circles were too narrow, our intuitions about population size may be unreliable. Accepting this conclusion may represent moral progress toward truly impartial concern.",
+            "type": "defensive",
+            "strength_estimate": "moderate"
+          }
+        ],
+        [
+          {
+            "id": "arg-critical-level-utilitarianism-01",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "The Contribution Threshold Intuition",
+            "argument": "There is a meaningful moral distinction between a life being worth living for the person living it and a life being good enough to make the world better by its existence. A person with a minimally positive life—one just barely worth living—may not regret their existence, but it seems implausible that creating such a life constitutes a positive contribution to overall value. Critical Level Utilitarianism captures this intuition by requiring that new lives clear a meaningful bar before counting as improvements, reflecting our sense that merely non-negative existence is not the same as flourishing.",
+            "type": "foundational",
+            "strength_estimate": "strong"
+          },
+          {
+            "id": "arg-critical-level-utilitarianism-02",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "Avoiding the Repugnant Conclusion",
+            "argument": "Total Utilitarianism notoriously implies the Repugnant Conclusion: that a sufficiently large population of people with lives barely worth living is better than a smaller population of very happy people. Critical Level Utilitarianism avoids this by setting a threshold above zero—lives just barely worth living don't add positive value, so we cannot improve outcomes by replacing flourishing populations with vast numbers of minimally positive lives. This preserves the intuition that quality of life matters, not just aggregate quantity.",
+            "type": "comparative",
+            "strength_estimate": "very_strong"
+          },
+          {
+            "id": "arg-critical-level-utilitarianism-03",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "Coherent Aggregation Despite Asymmetry",
+            "argument": "Unlike the Asymmetric Person-Affecting View, which struggles to explain why we should create very happy people at all, Critical Level Utilitarianism maintains a coherent aggregative framework that still values the creation of genuinely flourishing lives. It preserves the appealing asymmetric intuition that barely-positive lives don't demand creation while avoiding the more radical conclusion that no amount of potential happiness provides reason for procreation. This offers a principled middle ground that respects both aggregative reasoning and threshold-based intuitions.",
+            "type": "comparative",
+            "strength_estimate": "strong"
+          },
+          {
+            "id": "arg-critical-level-utilitarianism-04",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "The Sadistic Conclusion Objection is Manageable",
+            "argument": "Critics argue that Critical Level Utilitarianism implies the 'Sadistic Conclusion'—that adding people with lives between zero and the critical level makes outcomes worse, potentially making it better to add suffering people instead. However, this objection can be addressed by recognizing that the view correctly identifies such lives as failing to contribute positive value, and by setting the critical level thoughtfully. Moreover, Total Utilitarianism faces its own severe counterintuitive implications that are arguably worse and less tractable than this concern.",
+            "type": "defensive",
+            "strength_estimate": "moderate"
+          },
+          {
+            "id": "arg-critical-level-utilitarianism-05",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "Sensible Guidance for Population Policy",
+            "argument": "In real-world policy contexts—such as family planning, resource allocation, and development priorities—Critical Level Utilitarianism provides sensible guidance by focusing on ensuring people can live genuinely good lives rather than maximizing population size. It supports investing in quality of life improvements over mere population expansion and resists policies that would create many people destined for marginal existences. This aligns with widely-held policy intuitions that development should prioritize human flourishing, not just human numbers.",
+            "type": "practical",
+            "strength_estimate": "strong"
+          }
+        ],
+        [
+          {
+            "id": "arg-asymmetric-person-affecting-view-01",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "The Non-Identity Benefit Problem",
+            "argument": "Creating a happy person cannot benefit that person, since they would not exist otherwise to receive any benefit—there is no one for whom existence is better than non-existence. However, creating a suffering person does harm them, because once they exist, they experience genuine suffering that is bad for them. This asymmetry in the logic of benefit and harm provides a principled foundation for treating potential happiness and potential suffering differently in our moral calculations.",
+            "type": "foundational",
+            "strength_estimate": "very_strong"
+          },
+          {
+            "id": "arg-asymmetric-person-affecting-view-02",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "Avoiding the Repugnant Conclusion",
+            "argument": "Total Utilitarianism notoriously implies the Repugnant Conclusion: that a massive population of people with lives barely worth living is better than a smaller population with excellent lives. The Asymmetric View elegantly avoids this by denying that creating additional happy people adds moral value. Since there is no positive duty to create happiness, we cannot be morally required to expand population indefinitely, preserving our intuition that quality of life matters more than mere quantity.",
+            "type": "comparative",
+            "strength_estimate": "strong"
+          },
+          {
+            "id": "arg-asymmetric-person-affecting-view-03",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "The Phenomenological Asymmetry of Suffering",
+            "argument": "Suffering has a demanding, urgent quality that pleasure lacks—pain screams for relief in a way that the absence of pleasure does not cry out for satisfaction. This phenomenological asymmetry suggests that preventing suffering has a moral priority that promoting happiness does not share. The Asymmetric View captures this by treating the prevention of suffering as genuinely good (even for non-existent beings) while denying equivalent status to the creation of happiness.",
+            "type": "foundational",
+            "strength_estimate": "strong"
+          },
+          {
+            "id": "arg-asymmetric-person-affecting-view-04",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "Coherence with Procreative Liberty",
+            "argument": "The Asymmetric View provides clear, sensible guidance for reproductive ethics: prospective parents have no obligation to create children for the sake of those children's happiness, but they do have strong reasons to avoid creating children who would suffer severely. This aligns with widely-held intuitions about procreative liberty—that choosing not to have children is morally permissible—while still grounding concerns about bringing children into circumstances of predictable misery.",
+            "type": "practical",
+            "strength_estimate": "strong"
+          },
+          {
+            "id": "arg-asymmetric-person-affecting-view-05",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "The Absent Beneficiary Response",
+            "argument": "Critics object that if the absence of suffering is good without a beneficiary, the absence of happiness should symmetrically be bad. But this misunderstands the view: the absence of suffering is good because suffering is intrinsically bad and its prevention removes something bad from the world, whereas the absence of happiness is merely neutral because there is no one who is deprived. The asymmetry lies not in arbitrary stipulation but in the different relationships between absence and the states themselves—preventing a bad differs fundamentally from failing to create a good.",
+            "type": "defensive",
+            "strength_estimate": "moderate"
+          }
+        ]
+      ],
+      "tokens": {
+        "input": 2055,
+        "output": 2860
+      },
+      "durationMs": 21255
+    },
+    "score_objections": {
+      "status": "completed",
+      "startedAt": "2026-01-07T15:38:36.529Z",
+      "isForEach": true,
+      "instances": [
+        {
+          "index": 0,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:47.314Z",
+          "output": {
+            "id": "obj-total-utilitarianism-01",
+            "target_view": "total-utilitarianism",
+            "name": "The Repugnant Conclusion",
+            "force": 95,
+            "damage": 85,
+            "difficulty_to_rebut": 80,
+            "overall": 87,
+            "reasoning": "The objection follows with logical necessity from total utilitarianism's core commitment to maximizing aggregate wellbeing—if lives barely worth living have positive value, enough of them must outweigh fewer excellent lives. This strikes at the heart of the view's aggregative logic, making it extremely damaging if one accepts the intuition as valid. While some responses exist (biting the bullet, arguing the intuition is unreliable, or adopting critical levels), decades of philosophical work have failed to produce a widely accepted solution, and most rebuttals either abandon core utilitarian commitments or require accepting other counterintuitive implications."
+          },
+          "durationMs": 10784,
+          "tokens": {
+            "input": 688,
+            "output": 232
+          }
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:42.610Z",
+          "output": {
+            "id": "obj-total-utilitarianism-02",
+            "target_view": "total-utilitarianism",
+            "name": "The Obligation to Maximize Population",
+            "force": 72,
+            "damage": 58,
+            "difficulty_to_rebut": 45,
+            "overall": 58,
+            "reasoning": "The objection correctly identifies that total utilitarianism's aggregative structure implies strong procreative obligations, making the logical connection fairly tight. However, the damage is moderate because total utilitarians can bite this bullet or argue that resource constraints and diminishing returns naturally limit optimal population. Standard rebuttals involving satisficing versions, the distinction between positive and negative duties, or empirical claims about optimal population size provide workable responses, though each involves theoretical costs."
+          },
+          "durationMs": 6080,
+          "tokens": {
+            "input": 674,
+            "output": 194
+          }
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:43.569Z",
+          "output": {
+            "id": "obj-total-utilitarianism-03",
+            "target_view": "total-utilitarianism",
+            "name": "The Replaceability Problem",
+            "force": 85,
+            "damage": 78,
+            "difficulty_to_rebut": 65,
+            "overall": 76,
+            "reasoning": "The objection follows logically from total utilitarianism's core commitment to maximizing aggregate wellbeing without giving special weight to existing persons—the replaceability implication is a genuine structural consequence, not a misreading. The damage is substantial because it conflicts with deeply held moral intuitions about the wrongness of killing and personal inviolability, though some utilitarians bite this bullet. Rebuttals exist (indirect utilitarianism, rule-based approaches, arguing that actual killing always has negative side-effects) but these either modify the view significantly or seem ad hoc, making the objection moderately difficult to dismiss cleanly."
+          },
+          "durationMs": 7039,
+          "tokens": {
+            "input": 687,
+            "output": 234
+          }
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:42.620Z",
+          "output": {
+            "id": "obj-total-utilitarianism-04",
+            "target_view": "total-utilitarianism",
+            "name": "The Temporal Infinity Problem",
+            "force": 72,
+            "damage": 75,
+            "difficulty_to_rebut": 65,
+            "overall": 71,
+            "reasoning": "The objection correctly identifies a genuine mathematical problem for aggregative consequentialism when dealing with infinite populations—this is a well-recognized issue in infinite ethics literature. However, the force is limited because the empirical premise (infinite future people) is uncertain, and several responses exist: discounting, using limit-based comparisons, or adopting alternative aggregation methods like overtaking criteria. The damage is significant since it threatens the view's action-guidance, but total utilitarians can restrict scope to finite horizons without obvious arbitrariness given our epistemic situation."
+          },
+          "durationMs": 6090,
+          "tokens": {
+            "input": 688,
+            "output": 215
+          }
+        },
+        {
+          "index": 4,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:43.108Z",
+          "output": {
+            "id": "obj-total-utilitarianism-05",
+            "target_view": "total-utilitarianism",
+            "name": "The Welfare Farming Thought Experiment",
+            "force": 72,
+            "damage": 68,
+            "difficulty_to_rebut": 55,
+            "overall": 65,
+            "reasoning": "This is a well-constructed variant of the Repugnant Conclusion that emphasizes the qualitative impoverishment of the maximally valuable outcome under total utilitarianism. The logical connection is strong—if welfare is fungible and aggregates matter, then mass-producing simple positive states could indeed dominate. However, total utilitarians have responses: they can argue that complex experiences contain more welfare than stipulated, invoke diminishing returns, or bite the bullet by claiming our intuitions against this are unreliable. The objection's force is somewhat reduced because it relies on contested assumptions about welfare comparability across radically different beings."
+          },
+          "durationMs": 6578,
+          "tokens": {
+            "input": 692,
+            "output": 235
+          }
+        },
+        {
+          "index": 5,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:42.876Z",
+          "output": {
+            "id": "obj-critical-level-utilitarianism-01",
+            "target_view": "critical-level-utilitarianism",
+            "name": "The Sadistic Conclusion",
+            "force": 88,
+            "damage": 82,
+            "difficulty_to_rebut": 75,
+            "overall": 82,
+            "reasoning": "The logic follows directly from CLU's structure: any positive critical level mathematically entails that sufficiently many below-threshold positive lives count as worse than fewer negative lives. This is devastating because CLU was partly designed to avoid counterintuitive implications like the Repugnant Conclusion, yet generates an arguably worse one. Rebuttals exist (e.g., adopting variable critical levels, biting the bullet, or questioning the scenario's realism), but all involve significant theoretical costs or seem ad hoc."
+          },
+          "durationMs": 6346,
+          "tokens": {
+            "input": 685,
+            "output": 212
+          }
+        },
+        {
+          "index": 6,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:44.898Z",
+          "output": {
+            "id": "obj-critical-level-utilitarianism-02",
+            "target_view": "critical-level-utilitarianism",
+            "name": "Arbitrary Threshold Problem",
+            "force": 72,
+            "damage": 65,
+            "difficulty_to_rebut": 68,
+            "overall": 68,
+            "reasoning": "The objection correctly identifies that CLU requires a precise threshold that seems difficult to justify non-arbitrarily, and this is a genuine structural concern. However, the force is somewhat mitigated by the fact that many moral theories face similar precision problems (e.g., where exactly does 'enough' lie in sufficientarianism?), and defenders can argue the critical level is discovered rather than invented, or that a range rather than point value suffices. The damage is significant but not fatal—the view's core insight about separating 'worth living' from 'worth adding' could survive even if the precise threshold remains uncertain."
+          },
+          "durationMs": 8368,
+          "tokens": {
+            "input": 696,
+            "output": 235
+          }
+        },
+        {
+          "index": 7,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:43.073Z",
+          "output": {
+            "id": "obj-critical-level-utilitarianism-03",
+            "target_view": "critical-level-utilitarianism",
+            "name": "The Discontinuity Paradox",
+            "force": 72,
+            "damage": 55,
+            "difficulty_to_rebut": 45,
+            "overall": 57,
+            "reasoning": "The objection correctly identifies a structural feature of threshold-based theories, though the 'massive moral difference' framing somewhat overstates the case—the discontinuity in contribution value is real but the absolute magnitude at the threshold is infinitesimal. Critical-level utilitarians have standard responses: they can adopt fuzzy thresholds, argue the discontinuity is a feature not a bug (similar to other threshold concepts in ethics), or note that real-world wellbeing measurement lacks the precision to make such fine distinctions actionable. The damage is moderate because the view can function practically despite this theoretical wrinkle."
+          },
+          "durationMs": 6543,
+          "tokens": {
+            "input": 695,
+            "output": 236
+          }
+        },
+        {
+          "index": 8,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:43.550Z",
+          "output": {
+            "id": "obj-critical-level-utilitarianism-04",
+            "target_view": "critical-level-utilitarianism",
+            "name": "The Grateful Existence Objection",
+            "force": 62,
+            "damage": 58,
+            "difficulty_to_rebut": 55,
+            "overall": 58,
+            "reasoning": "The objection has genuine intuitive pull by highlighting a tension between first-personal gratitude and impersonal evaluation, but it conflates two distinct claims: whether a life is good for the person living it versus whether adding that life improves the world impersonally. CLU proponents can respond that the critical level precisely tracks what makes additions valuable, not what makes existing lives worth continuing—the person isn't wronged because no preference of theirs is frustrated and the evaluation is prospective, not retrospective. The objection has moderate force but relies on contestable assumptions about what 'wronging' requires and whether personal perspectives should constrain impersonal axiology."
+          },
+          "durationMs": 7020,
+          "tokens": {
+            "input": 675,
+            "output": 243
+          }
+        },
+        {
+          "index": 9,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:36.530Z",
+          "completedAt": "2026-01-07T15:38:46.678Z",
+          "output": {
+            "id": "obj-critical-level-utilitarianism-05",
+            "target_view": "critical-level-utilitarianism",
+            "name": "The Extinction Implication",
+            "force": 72,
+            "damage": 78,
+            "difficulty_to_rebut": 58,
+            "overall": 69,
+            "reasoning": "The objection correctly identifies a genuine tension: setting the critical level high enough to avoid the Repugnant Conclusion risks implying that eliminating sub-threshold lives improves value, which does follow logically from the view's structure. The damage is substantial since CLU was explicitly designed to avoid counterintuitive conclusions, making this a self-defeating feature. However, defenders can argue that the critical level should be set at a moderate point where most actual lives exceed it, or invoke person-affecting constraints that block recommendations to eliminate existing people, though these responses require additional theoretical commitments."
+          },
+          "durationMs": 10148,
+          "tokens": {
+            "input": 682,
+            "output": 225
+          }
+        },
+        {
+          "index": 10,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:47.315Z",
+          "completedAt": "2026-01-07T15:38:54.270Z",
+          "output": {
+            "id": "obj-asymmetric-person-affecting-view-01",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "Unexplained Asymmetry",
+            "force": 72,
+            "damage": 78,
+            "difficulty_to_rebut": 65,
+            "overall": 72,
+            "reasoning": "The objection correctly identifies a structural tension: if non-existent beings cannot be benefited or harmed, treating the absence of pain as good while the absence of pleasure is not bad requires justification beyond mere stipulation. The damage is substantial since the asymmetry is foundational to the view, not peripheral. However, defenders have responses—appealing to phenomenological asymmetries between pleasure and pain, or arguing the asymmetry tracks common moral intuitions about procreation—though these rebuttals remain contested and may appear to simply relocate rather than resolve the explanatory burden."
+          },
+          "durationMs": 6955,
+          "tokens": {
+            "input": 693,
+            "output": 229
+          }
+        },
+        {
+          "index": 11,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:47.315Z",
+          "completedAt": "2026-01-07T15:38:53.877Z",
+          "output": {
+            "id": "obj-asymmetric-person-affecting-view-02",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "The Procreative Paralysis Problem",
+            "force": 78,
+            "damage": 75,
+            "difficulty_to_rebut": 65,
+            "overall": 73,
+            "reasoning": "The objection correctly identifies that the asymmetry (suffering counts negatively but happiness doesn't count positively for non-existent beings) logically generates reasons against nearly all procreation. This is a strong logical derivation from the view's core commitments. However, proponents can respond by invoking threshold views, distinguishing between pro tanto reasons and all-things-considered judgments, or arguing that the reasons against are typically weak and easily overridden by other considerations (like parental autonomy or duties to existing persons). The damage is significant but not fatal since some defenders bite this bullet or modify the view to include comparative person-affecting considerations."
+          },
+          "durationMs": 6562,
+          "tokens": {
+            "input": 676,
+            "output": 244
+          }
+        },
+        {
+          "index": 12,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:47.315Z",
+          "completedAt": "2026-01-07T15:38:54.629Z",
+          "output": {
+            "id": "obj-asymmetric-person-affecting-view-03",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "Non-Identity Problem Vulnerability",
+            "force": 82,
+            "damage": 75,
+            "difficulty_to_rebut": 72,
+            "overall": 76,
+            "reasoning": "This objection accurately identifies a genuine tension in the asymmetric person-affecting view: by denying that creating happy people is good while also holding that you can only wrong existing people, the view loses traction on cases involving different possible people. The logic is strong though not airtight—defenders might appeal to threshold accounts or impersonal considerations for same-number choices. The damage is significant since reproductive ethics is a central application domain, though the view could potentially be supplemented with additional principles. Rebuttals exist (e.g., appealing to virtue, parental obligations, or hybrid theories) but they often compromise the view's distinctive commitments or elegance."
+          },
+          "durationMs": 7314,
+          "tokens": {
+            "input": 686,
+            "output": 244
+          }
+        },
+        {
+          "index": 13,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:47.315Z",
+          "completedAt": "2026-01-07T15:38:53.765Z",
+          "output": {
+            "id": "obj-asymmetric-person-affecting-view-04",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "The Sadistic Conclusion Reversal",
+            "force": 62,
+            "damage": 68,
+            "difficulty_to_rebut": 55,
+            "overall": 62,
+            "reasoning": "The objection has merit but overstates the view's commitments—the asymmetric view typically holds that creating happy people is merely not obligatory, not that it has zero moral weight in all comparisons, and most versions don't treat suffering prevention as lexically prior to happiness. The damage is significant if the characterization holds, as it would make the view deeply counterintuitive, but defenders can distinguish between 'no positive duty to create' and 'creation has no value whatsoever.' Standard rebuttals involve clarifying that the asymmetry concerns obligations rather than absolute value rankings, though this requires careful articulation."
+          },
+          "durationMs": 6450,
+          "tokens": {
+            "input": 684,
+            "output": 240
+          }
+        },
+        {
+          "index": 14,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:47.316Z",
+          "completedAt": "2026-01-07T15:38:53.331Z",
+          "output": {
+            "id": "obj-asymmetric-person-affecting-view-05",
+            "target_view": "asymmetric-person-affecting-view",
+            "name": "The Rescue vs. Creation Inconsistency",
+            "force": 72,
+            "damage": 58,
+            "difficulty_to_rebut": 55,
+            "overall": 62,
+            "reasoning": "The objection effectively highlights a genuine asymmetry in the view's treatment of pleasure for existing vs. potential persons, and the framing around 'metaphysically arbitrary' temporal location is rhetorically potent. However, proponents can argue this asymmetry is precisely what the view endorses—existence is morally relevant because only existing persons have welfare that can be affected—making the 'arbitrariness' charge contestable rather than decisive. The objection has moderate force but doesn't clearly show the view is incoherent, as asymmetric views are designed to treat existence as morally significant."
+          },
+          "durationMs": 6015,
+          "tokens": {
+            "input": 691,
+            "output": 237
+          }
+        }
+      ],
+      "completedInstances": 15,
+      "totalInstances": 15,
+      "completedAt": "2026-01-07T15:38:54.631Z",
+      "output": [
+        {
+          "id": "obj-total-utilitarianism-01",
+          "target_view": "total-utilitarianism",
+          "name": "The Repugnant Conclusion",
+          "force": 95,
+          "damage": 85,
+          "difficulty_to_rebut": 80,
+          "overall": 87,
+          "reasoning": "The objection follows with logical necessity from total utilitarianism's core commitment to maximizing aggregate wellbeing—if lives barely worth living have positive value, enough of them must outweigh fewer excellent lives. This strikes at the heart of the view's aggregative logic, making it extremely damaging if one accepts the intuition as valid. While some responses exist (biting the bullet, arguing the intuition is unreliable, or adopting critical levels), decades of philosophical work have failed to produce a widely accepted solution, and most rebuttals either abandon core utilitarian commitments or require accepting other counterintuitive implications."
+        },
+        {
+          "id": "obj-total-utilitarianism-02",
+          "target_view": "total-utilitarianism",
+          "name": "The Obligation to Maximize Population",
+          "force": 72,
+          "damage": 58,
+          "difficulty_to_rebut": 45,
+          "overall": 58,
+          "reasoning": "The objection correctly identifies that total utilitarianism's aggregative structure implies strong procreative obligations, making the logical connection fairly tight. However, the damage is moderate because total utilitarians can bite this bullet or argue that resource constraints and diminishing returns naturally limit optimal population. Standard rebuttals involving satisficing versions, the distinction between positive and negative duties, or empirical claims about optimal population size provide workable responses, though each involves theoretical costs."
+        },
+        {
+          "id": "obj-total-utilitarianism-03",
+          "target_view": "total-utilitarianism",
+          "name": "The Replaceability Problem",
+          "force": 85,
+          "damage": 78,
+          "difficulty_to_rebut": 65,
+          "overall": 76,
+          "reasoning": "The objection follows logically from total utilitarianism's core commitment to maximizing aggregate wellbeing without giving special weight to existing persons—the replaceability implication is a genuine structural consequence, not a misreading. The damage is substantial because it conflicts with deeply held moral intuitions about the wrongness of killing and personal inviolability, though some utilitarians bite this bullet. Rebuttals exist (indirect utilitarianism, rule-based approaches, arguing that actual killing always has negative side-effects) but these either modify the view significantly or seem ad hoc, making the objection moderately difficult to dismiss cleanly."
+        },
+        {
+          "id": "obj-total-utilitarianism-04",
+          "target_view": "total-utilitarianism",
+          "name": "The Temporal Infinity Problem",
+          "force": 72,
+          "damage": 75,
+          "difficulty_to_rebut": 65,
+          "overall": 71,
+          "reasoning": "The objection correctly identifies a genuine mathematical problem for aggregative consequentialism when dealing with infinite populations—this is a well-recognized issue in infinite ethics literature. However, the force is limited because the empirical premise (infinite future people) is uncertain, and several responses exist: discounting, using limit-based comparisons, or adopting alternative aggregation methods like overtaking criteria. The damage is significant since it threatens the view's action-guidance, but total utilitarians can restrict scope to finite horizons without obvious arbitrariness given our epistemic situation."
+        },
+        {
+          "id": "obj-total-utilitarianism-05",
+          "target_view": "total-utilitarianism",
+          "name": "The Welfare Farming Thought Experiment",
+          "force": 72,
+          "damage": 68,
+          "difficulty_to_rebut": 55,
+          "overall": 65,
+          "reasoning": "This is a well-constructed variant of the Repugnant Conclusion that emphasizes the qualitative impoverishment of the maximally valuable outcome under total utilitarianism. The logical connection is strong—if welfare is fungible and aggregates matter, then mass-producing simple positive states could indeed dominate. However, total utilitarians have responses: they can argue that complex experiences contain more welfare than stipulated, invoke diminishing returns, or bite the bullet by claiming our intuitions against this are unreliable. The objection's force is somewhat reduced because it relies on contested assumptions about welfare comparability across radically different beings."
+        },
+        {
+          "id": "obj-critical-level-utilitarianism-01",
+          "target_view": "critical-level-utilitarianism",
+          "name": "The Sadistic Conclusion",
+          "force": 88,
+          "damage": 82,
+          "difficulty_to_rebut": 75,
+          "overall": 82,
+          "reasoning": "The logic follows directly from CLU's structure: any positive critical level mathematically entails that sufficiently many below-threshold positive lives count as worse than fewer negative lives. This is devastating because CLU was partly designed to avoid counterintuitive implications like the Repugnant Conclusion, yet generates an arguably worse one. Rebuttals exist (e.g., adopting variable critical levels, biting the bullet, or questioning the scenario's realism), but all involve significant theoretical costs or seem ad hoc."
+        },
+        {
+          "id": "obj-critical-level-utilitarianism-02",
+          "target_view": "critical-level-utilitarianism",
+          "name": "Arbitrary Threshold Problem",
+          "force": 72,
+          "damage": 65,
+          "difficulty_to_rebut": 68,
+          "overall": 68,
+          "reasoning": "The objection correctly identifies that CLU requires a precise threshold that seems difficult to justify non-arbitrarily, and this is a genuine structural concern. However, the force is somewhat mitigated by the fact that many moral theories face similar precision problems (e.g., where exactly does 'enough' lie in sufficientarianism?), and defenders can argue the critical level is discovered rather than invented, or that a range rather than point value suffices. The damage is significant but not fatal—the view's core insight about separating 'worth living' from 'worth adding' could survive even if the precise threshold remains uncertain."
+        },
+        {
+          "id": "obj-critical-level-utilitarianism-03",
+          "target_view": "critical-level-utilitarianism",
+          "name": "The Discontinuity Paradox",
+          "force": 72,
+          "damage": 55,
+          "difficulty_to_rebut": 45,
+          "overall": 57,
+          "reasoning": "The objection correctly identifies a structural feature of threshold-based theories, though the 'massive moral difference' framing somewhat overstates the case—the discontinuity in contribution value is real but the absolute magnitude at the threshold is infinitesimal. Critical-level utilitarians have standard responses: they can adopt fuzzy thresholds, argue the discontinuity is a feature not a bug (similar to other threshold concepts in ethics), or note that real-world wellbeing measurement lacks the precision to make such fine distinctions actionable. The damage is moderate because the view can function practically despite this theoretical wrinkle."
+        },
+        {
+          "id": "obj-critical-level-utilitarianism-04",
+          "target_view": "critical-level-utilitarianism",
+          "name": "The Grateful Existence Objection",
+          "force": 62,
+          "damage": 58,
+          "difficulty_to_rebut": 55,
+          "overall": 58,
+          "reasoning": "The objection has genuine intuitive pull by highlighting a tension between first-personal gratitude and impersonal evaluation, but it conflates two distinct claims: whether a life is good for the person living it versus whether adding that life improves the world impersonally. CLU proponents can respond that the critical level precisely tracks what makes additions valuable, not what makes existing lives worth continuing—the person isn't wronged because no preference of theirs is frustrated and the evaluation is prospective, not retrospective. The objection has moderate force but relies on contestable assumptions about what 'wronging' requires and whether personal perspectives should constrain impersonal axiology."
+        },
+        {
+          "id": "obj-critical-level-utilitarianism-05",
+          "target_view": "critical-level-utilitarianism",
+          "name": "The Extinction Implication",
+          "force": 72,
+          "damage": 78,
+          "difficulty_to_rebut": 58,
+          "overall": 69,
+          "reasoning": "The objection correctly identifies a genuine tension: setting the critical level high enough to avoid the Repugnant Conclusion risks implying that eliminating sub-threshold lives improves value, which does follow logically from the view's structure. The damage is substantial since CLU was explicitly designed to avoid counterintuitive conclusions, making this a self-defeating feature. However, defenders can argue that the critical level should be set at a moderate point where most actual lives exceed it, or invoke person-affecting constraints that block recommendations to eliminate existing people, though these responses require additional theoretical commitments."
+        },
+        {
+          "id": "obj-asymmetric-person-affecting-view-01",
+          "target_view": "asymmetric-person-affecting-view",
+          "name": "Unexplained Asymmetry",
+          "force": 72,
+          "damage": 78,
+          "difficulty_to_rebut": 65,
+          "overall": 72,
+          "reasoning": "The objection correctly identifies a structural tension: if non-existent beings cannot be benefited or harmed, treating the absence of pain as good while the absence of pleasure is not bad requires justification beyond mere stipulation. The damage is substantial since the asymmetry is foundational to the view, not peripheral. However, defenders have responses—appealing to phenomenological asymmetries between pleasure and pain, or arguing the asymmetry tracks common moral intuitions about procreation—though these rebuttals remain contested and may appear to simply relocate rather than resolve the explanatory burden."
+        },
+        {
+          "id": "obj-asymmetric-person-affecting-view-02",
+          "target_view": "asymmetric-person-affecting-view",
+          "name": "The Procreative Paralysis Problem",
+          "force": 78,
+          "damage": 75,
+          "difficulty_to_rebut": 65,
+          "overall": 73,
+          "reasoning": "The objection correctly identifies that the asymmetry (suffering counts negatively but happiness doesn't count positively for non-existent beings) logically generates reasons against nearly all procreation. This is a strong logical derivation from the view's core commitments. However, proponents can respond by invoking threshold views, distinguishing between pro tanto reasons and all-things-considered judgments, or arguing that the reasons against are typically weak and easily overridden by other considerations (like parental autonomy or duties to existing persons). The damage is significant but not fatal since some defenders bite this bullet or modify the view to include comparative person-affecting considerations."
+        },
+        {
+          "id": "obj-asymmetric-person-affecting-view-03",
+          "target_view": "asymmetric-person-affecting-view",
+          "name": "Non-Identity Problem Vulnerability",
+          "force": 82,
+          "damage": 75,
+          "difficulty_to_rebut": 72,
+          "overall": 76,
+          "reasoning": "This objection accurately identifies a genuine tension in the asymmetric person-affecting view: by denying that creating happy people is good while also holding that you can only wrong existing people, the view loses traction on cases involving different possible people. The logic is strong though not airtight—defenders might appeal to threshold accounts or impersonal considerations for same-number choices. The damage is significant since reproductive ethics is a central application domain, though the view could potentially be supplemented with additional principles. Rebuttals exist (e.g., appealing to virtue, parental obligations, or hybrid theories) but they often compromise the view's distinctive commitments or elegance."
+        },
+        {
+          "id": "obj-asymmetric-person-affecting-view-04",
+          "target_view": "asymmetric-person-affecting-view",
+          "name": "The Sadistic Conclusion Reversal",
+          "force": 62,
+          "damage": 68,
+          "difficulty_to_rebut": 55,
+          "overall": 62,
+          "reasoning": "The objection has merit but overstates the view's commitments—the asymmetric view typically holds that creating happy people is merely not obligatory, not that it has zero moral weight in all comparisons, and most versions don't treat suffering prevention as lexically prior to happiness. The damage is significant if the characterization holds, as it would make the view deeply counterintuitive, but defenders can distinguish between 'no positive duty to create' and 'creation has no value whatsoever.' Standard rebuttals involve clarifying that the asymmetry concerns obligations rather than absolute value rankings, though this requires careful articulation."
+        },
+        {
+          "id": "obj-asymmetric-person-affecting-view-05",
+          "target_view": "asymmetric-person-affecting-view",
+          "name": "The Rescue vs. Creation Inconsistency",
+          "force": 72,
+          "damage": 58,
+          "difficulty_to_rebut": 55,
+          "overall": 62,
+          "reasoning": "The objection effectively highlights a genuine asymmetry in the view's treatment of pleasure for existing vs. potential persons, and the framing around 'metaphysically arbitrary' temporal location is rhetorically potent. However, proponents can argue this asymmetry is precisely what the view endorses—existence is morally relevant because only existing persons have welfare that can be affected—making the 'arbitrariness' charge contestable rather than decisive. The objection has moderate force but doesn't clearly show the view is incoherent, as asymmetric views are designed to treat existence as morally significant."
+        }
+      ],
+      "tokens": {
+        "input": 10292,
+        "output": 3455
+      },
+      "durationMs": 18102
+    },
+    "score_arguments": {
+      "status": "completed",
+      "startedAt": "2026-01-07T15:38:54.639Z",
+      "isForEach": true,
+      "instances": [
+        {
+          "index": 0,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:00.342Z",
+          "output": {
+            "id": "arg-total-utilitarianism-01",
+            "supports_view": "total-utilitarianism",
+            "name": "Impartiality and Equal Moral Worth",
+            "force": 58,
+            "importance": 85,
+            "robustness": 42,
+            "overall": 62,
+            "reasoning": "The argument correctly identifies impartiality as a foundational moral commitment and draws a plausible analogy to anti-discrimination principles. However, it conflates equal moral worth of existing persons with the contestable claim that potential persons have equal claims to existence—a significant logical gap. The argument is vulnerable to person-affecting objections (we can be impartial among actual people without thinking we must create more), and the analogy to race/gender discrimination is imperfect since those involve existing persons with interests."
+          },
+          "durationMs": 5702,
+          "tokens": {
+            "input": 653,
+            "output": 206
+          }
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:00.943Z",
+          "output": {
+            "id": "arg-total-utilitarianism-02",
+            "supports_view": "total-utilitarianism",
+            "name": "Avoiding Arbitrary Thresholds",
+            "force": 62,
+            "importance": 58,
+            "robustness": 45,
+            "overall": 55,
+            "reasoning": "The argument correctly identifies a genuine problem for Critical Level Utilitarianism, but its claim that zero is uniquely non-arbitrary is contestable—the zero point itself requires a theory of what makes life 'worth living' which may be equally arbitrary. The argument is more effective as a critique of CLU than as a positive case for Total Utilitarianism, and it doesn't address the Repugnant Conclusion which motivates CLU in the first place. Standard counters include that some arbitrariness may be acceptable if it avoids worse theoretical costs, and that the neutral level might be determined by principled considerations rather than arbitrary stipulation."
+          },
+          "durationMs": 6303,
+          "tokens": {
+            "input": 646,
+            "output": 236
+          }
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:00.730Z",
+          "output": {
+            "id": "arg-total-utilitarianism-03",
+            "supports_view": "total-utilitarianism",
+            "name": "Rejecting the Asymmetry's Hidden Costs",
+            "force": 58,
+            "importance": 75,
+            "robustness": 45,
+            "overall": 59,
+            "reasoning": "The argument correctly identifies genuine tensions in asymmetric views, particularly regarding extinction and empty worlds, which are real costs that asymmetry proponents must address. However, the force is limited because asymmetry defenders have developed responses (e.g., distinguishing between creating no one and letting existing people die, or accepting the empty world implication as not actually counterintuitive). The robustness is weakened because the argument doesn't address why total utilitarianism's own counterintuitive implications (like the Repugnant Conclusion) are preferable to the asymmetry's costs."
+          },
+          "durationMs": 6090,
+          "tokens": {
+            "input": 669,
+            "output": 228
+          }
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:00.943Z",
+          "output": {
+            "id": "arg-total-utilitarianism-04",
+            "supports_view": "total-utilitarianism",
+            "name": "Clear Guidance for Existential Risk Policy",
+            "force": 45,
+            "importance": 55,
+            "robustness": 35,
+            "overall": 45,
+            "reasoning": "The argument overstates Total Utilitarianism's uniqueness—other views (person-affecting with caveats, contractualism, virtue ethics) can also justify existential risk mitigation without the same theoretical commitments. The 'practical clarity' claim is contestable since TU's guidance on existential risk depends heavily on speculative assumptions about future populations and probabilities. Moreover, this practical argument doesn't defend the view's truth, and critics note TU's existential risk guidance comes bundled with counterintuitive implications (like the Repugnant Conclusion) that undermine its overall practical appeal."
+          },
+          "durationMs": 6303,
+          "tokens": {
+            "input": 643,
+            "output": 230
+          }
+        },
+        {
+          "index": 4,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:01.589Z",
+          "output": {
+            "id": "arg-total-utilitarianism-05",
+            "supports_view": "total-utilitarianism",
+            "name": "The Repugnant Conclusion as Moral Progress",
+            "force": 45,
+            "importance": 85,
+            "robustness": 35,
+            "overall": 55,
+            "reasoning": "The argument makes a legitimate point about cognitive limitations regarding large numbers and the historical unreliability of moral intuitions, but it's largely speculative about which intuitions are biased. It addresses a central challenge for total utilitarianism (the Repugnant Conclusion is perhaps THE major objection), but the 'moral progress' framing cuts both ways—critics can equally claim that rejecting the RC represents progress toward respecting individual welfare thresholds. The argument is vulnerable to the counter that our intuition against the RC may track something real (like the value of flourishing lives vs. merely positive ones) rather than mere cognitive bias."
+          },
+          "durationMs": 6949,
+          "tokens": {
+            "input": 659,
+            "output": 237
+          }
+        },
+        {
+          "index": 5,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:04.037Z",
+          "output": {
+            "id": "arg-critical-level-utilitarianism-01",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "The Contribution Threshold Intuition",
+            "force": 58,
+            "importance": 85,
+            "robustness": 42,
+            "overall": 62,
+            "reasoning": "The argument articulates a genuine and widely-shared intuition that distinguishes personal worth-living from impersonal contribution to value, which is philosophically substantive and central to motivating CLU over classical utilitarianism. However, the intuition itself is contestable—total utilitarians can argue this conflates two distinct questions, and the argument doesn't explain why the threshold should be set at any particular level rather than zero. It's also vulnerable to the charge that it may reflect status quo bias or failure to properly aggregate small positive values."
+          },
+          "durationMs": 9397,
+          "tokens": {
+            "input": 655,
+            "output": 215
+          }
+        },
+        {
+          "index": 6,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:09.132Z",
+          "output": {
+            "id": "arg-critical-level-utilitarianism-02",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "Avoiding the Repugnant Conclusion",
+            "force": 72,
+            "importance": 88,
+            "robustness": 45,
+            "overall": 68,
+            "reasoning": "The argument correctly identifies a major motivation for CLU—avoiding the Repugnant Conclusion is central to population ethics debates and the reasoning is logically sound. However, robustness suffers significantly because CLU faces its own well-known problems: it implies the 'Very Repugnant Conclusion' (preferring hellish additions to avoid sub-critical positive lives) and struggles to non-arbitrarily justify any particular critical level. The comparative advantage over Total Utilitarianism is real but comes with substantial theoretical costs."
+          },
+          "durationMs": 14492,
+          "tokens": {
+            "input": 653,
+            "output": 218
+          }
+        },
+        {
+          "index": 7,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:13.913Z",
+          "output": {
+            "id": "arg-critical-level-utilitarianism-03",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "Coherent Aggregation Despite Asymmetry",
+            "force": 58,
+            "importance": 72,
+            "robustness": 45,
+            "overall": 58,
+            "reasoning": "The argument correctly identifies a genuine advantage of CLU over asymmetric person-affecting views in maintaining coherent aggregation, but overstates how 'principled' this middle ground is—critics argue the critical level is arbitrary and that CLU faces its own problems (like the Very Repugnant Conclusion for high thresholds). The comparative framing addresses an important structural question about population ethics, but the claim that CLU 'preserves' asymmetric intuitions is contestable since it still counts sub-threshold lives negatively rather than neutrally."
+          },
+          "durationMs": 19273,
+          "tokens": {
+            "input": 660,
+            "output": 224
+          }
+        },
+        {
+          "index": 8,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:00.631Z",
+          "output": {
+            "id": "arg-critical-level-utilitarianism-04",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "The Sadistic Conclusion Objection is Manageable",
+            "force": 42,
+            "importance": 85,
+            "robustness": 35,
+            "overall": 54,
+            "reasoning": "The argument correctly identifies that the Sadistic Conclusion is a major objection requiring response, and the tu quoque against Total Utilitarianism has some merit. However, the defense is weak: claiming CLU 'correctly identifies' such lives as non-contributing simply restates the view rather than defending it, and the Sadistic Conclusion remains deeply counterintuitive—it implies adding suffering people could be better than adding people with lives worth living but below the threshold. The 'set the critical level thoughtfully' response doesn't resolve the structural problem that any positive critical level generates this implication."
+          },
+          "durationMs": 5991,
+          "tokens": {
+            "input": 663,
+            "output": 234
+          }
+        },
+        {
+          "index": 9,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:38:54.640Z",
+          "completedAt": "2026-01-07T15:39:04.630Z",
+          "output": {
+            "id": "arg-critical-level-utilitarianism-05",
+            "supports_view": "critical-level-utilitarianism",
+            "name": "Sensible Guidance for Population Policy",
+            "force": 45,
+            "importance": 50,
+            "robustness": 35,
+            "overall": 43,
+            "reasoning": "The argument appeals to practical alignment with policy intuitions, but this is philosophically weak—matching intuitions doesn't establish theoretical correctness, and total utilitarianism could also claim to provide clear guidance. The importance is moderate since practical applicability matters but doesn't address the core theoretical question of why the critical level should be set where it is. The argument is vulnerable to counters: critics can note that CLU's guidance depends entirely on the contested critical level choice, and that prioritizing 'quality over quantity' begs the question against views that count all positive lives as valuable."
+          },
+          "durationMs": 9990,
+          "tokens": {
+            "input": 639,
+            "output": 222
+          }
+        },
+        {
+          "index": 10,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:39:13.914Z",
+          "completedAt": "2026-01-07T15:39:19.911Z",
+          "output": {
+            "id": "arg-asymmetric-person-affecting-view-01",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "The Non-Identity Benefit Problem",
+            "force": 55,
+            "importance": 90,
+            "robustness": 40,
+            "overall": 62,
+            "reasoning": "The argument addresses the central challenge for asymmetric views—providing a principled basis for treating potential happiness and suffering differently—making it highly important. However, the reasoning relies on a contested asymmetry: critics argue that if we cannot benefit someone by creating them (no comparator state), the same logic should apply to harm, since the suffering person also had no prior existence to compare against. The argument is vulnerable to charges of special pleading and to impersonal value theories that bypass the comparative framework entirely."
+          },
+          "durationMs": 5997,
+          "tokens": {
+            "input": 628,
+            "output": 207
+          }
+        },
+        {
+          "index": 11,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:39:13.914Z",
+          "completedAt": "2026-01-07T15:39:20.766Z",
+          "output": {
+            "id": "arg-asymmetric-person-affecting-view-02",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "Avoiding the Repugnant Conclusion",
+            "force": 65,
+            "importance": 85,
+            "robustness": 45,
+            "overall": 65,
+            "reasoning": "The argument correctly identifies that the Asymmetric View avoids the Repugnant Conclusion, which is a major theoretical advantage and addresses a central problem in population ethics. However, the reasoning is incomplete—avoiding one counterintuitive conclusion doesn't establish the view is correct, and the Asymmetric View faces its own serious challenges (the Non-Identity Problem, counterintuitive implications about extinction being morally neutral). The robustness is limited because critics can argue it trades one bullet for another, and other views (like Variable Value or Critical Level theories) also avoid the Repugnant Conclusion without the asymmetry's costs."
+          },
+          "durationMs": 6852,
+          "tokens": {
+            "input": 645,
+            "output": 243
+          }
+        },
+        {
+          "index": 12,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:39:13.914Z",
+          "completedAt": "2026-01-07T15:39:20.436Z",
+          "output": {
+            "id": "arg-asymmetric-person-affecting-view-03",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "The Phenomenological Asymmetry of Suffering",
+            "force": 55,
+            "importance": 75,
+            "robustness": 40,
+            "overall": 57,
+            "reasoning": "The argument appeals to a genuine phenomenological observation about the urgency of suffering, but the inference from descriptive phenomenology to normative asymmetry is contestable—intensity of experience doesn't straightforwardly translate to moral priority. It addresses an important foundational question about why we should treat suffering and happiness asymmetrically. However, it's vulnerable to counters: peak positive experiences (flow, ecstasy, love) can be equally phenomenologically compelling, and the argument conflates the urgency of existing suffering with claims about non-existent beings."
+          },
+          "durationMs": 6522,
+          "tokens": {
+            "input": 639,
+            "output": 223
+          }
+        },
+        {
+          "index": 13,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:39:13.914Z",
+          "completedAt": "2026-01-07T15:39:20.243Z",
+          "output": {
+            "id": "arg-asymmetric-person-affecting-view-04",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "Coherence with Procreative Liberty",
+            "force": 52,
+            "importance": 45,
+            "robustness": 40,
+            "overall": 46,
+            "reasoning": "The argument shows that the Asymmetric View aligns with common intuitions about procreative liberty, but this is primarily an appeal to intuition coherence rather than independent philosophical justification—the intuitions themselves may be mistaken or inconsistent. As a practical argument, it addresses application rather than the fundamental metaphysical or ethical questions at stake in population ethics. Critics can readily counter that many ethical views can be made consistent with procreative liberty through different framings, and that coherence with existing intuitions doesn't establish truth, especially when those intuitions may themselves reflect the asymmetry being defended (circularity concern)."
+          },
+          "durationMs": 6329,
+          "tokens": {
+            "input": 640,
+            "output": 237
+          }
+        },
+        {
+          "index": 14,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:39:13.914Z",
+          "completedAt": "2026-01-07T15:39:20.409Z",
+          "output": {
+            "id": "arg-asymmetric-person-affecting-view-05",
+            "supports_view": "asymmetric-person-affecting-view",
+            "name": "The Absent Beneficiary Response",
+            "force": 45,
+            "importance": 85,
+            "robustness": 35,
+            "overall": 55,
+            "reasoning": "The argument addresses a central symmetry objection but its core move—claiming preventing bad differs fundamentally from failing to create good—largely restates the asymmetry rather than justifying it. Critics can reasonably ask why the intrinsic badness of suffering makes its absence good without a beneficiary while the intrinsic goodness of happiness doesn't make its absence bad. The argument survives initial scrutiny but remains vulnerable to the charge that it assumes what it needs to prove about the metaphysical asymmetry between positive and negative states."
+          },
+          "durationMs": 6495,
+          "tokens": {
+            "input": 651,
+            "output": 215
+          }
+        }
+      ],
+      "completedInstances": 15,
+      "totalInstances": 15,
+      "completedAt": "2026-01-07T15:39:20.767Z",
+      "output": [
+        {
+          "id": "arg-total-utilitarianism-01",
+          "supports_view": "total-utilitarianism",
+          "name": "Impartiality and Equal Moral Worth",
+          "force": 58,
+          "importance": 85,
+          "robustness": 42,
+          "overall": 62,
+          "reasoning": "The argument correctly identifies impartiality as a foundational moral commitment and draws a plausible analogy to anti-discrimination principles. However, it conflates equal moral worth of existing persons with the contestable claim that potential persons have equal claims to existence—a significant logical gap. The argument is vulnerable to person-affecting objections (we can be impartial among actual people without thinking we must create more), and the analogy to race/gender discrimination is imperfect since those involve existing persons with interests."
+        },
+        {
+          "id": "arg-total-utilitarianism-02",
+          "supports_view": "total-utilitarianism",
+          "name": "Avoiding Arbitrary Thresholds",
+          "force": 62,
+          "importance": 58,
+          "robustness": 45,
+          "overall": 55,
+          "reasoning": "The argument correctly identifies a genuine problem for Critical Level Utilitarianism, but its claim that zero is uniquely non-arbitrary is contestable—the zero point itself requires a theory of what makes life 'worth living' which may be equally arbitrary. The argument is more effective as a critique of CLU than as a positive case for Total Utilitarianism, and it doesn't address the Repugnant Conclusion which motivates CLU in the first place. Standard counters include that some arbitrariness may be acceptable if it avoids worse theoretical costs, and that the neutral level might be determined by principled considerations rather than arbitrary stipulation."
+        },
+        {
+          "id": "arg-total-utilitarianism-03",
+          "supports_view": "total-utilitarianism",
+          "name": "Rejecting the Asymmetry's Hidden Costs",
+          "force": 58,
+          "importance": 75,
+          "robustness": 45,
+          "overall": 59,
+          "reasoning": "The argument correctly identifies genuine tensions in asymmetric views, particularly regarding extinction and empty worlds, which are real costs that asymmetry proponents must address. However, the force is limited because asymmetry defenders have developed responses (e.g., distinguishing between creating no one and letting existing people die, or accepting the empty world implication as not actually counterintuitive). The robustness is weakened because the argument doesn't address why total utilitarianism's own counterintuitive implications (like the Repugnant Conclusion) are preferable to the asymmetry's costs."
+        },
+        {
+          "id": "arg-total-utilitarianism-04",
+          "supports_view": "total-utilitarianism",
+          "name": "Clear Guidance for Existential Risk Policy",
+          "force": 45,
+          "importance": 55,
+          "robustness": 35,
+          "overall": 45,
+          "reasoning": "The argument overstates Total Utilitarianism's uniqueness—other views (person-affecting with caveats, contractualism, virtue ethics) can also justify existential risk mitigation without the same theoretical commitments. The 'practical clarity' claim is contestable since TU's guidance on existential risk depends heavily on speculative assumptions about future populations and probabilities. Moreover, this practical argument doesn't defend the view's truth, and critics note TU's existential risk guidance comes bundled with counterintuitive implications (like the Repugnant Conclusion) that undermine its overall practical appeal."
+        },
+        {
+          "id": "arg-total-utilitarianism-05",
+          "supports_view": "total-utilitarianism",
+          "name": "The Repugnant Conclusion as Moral Progress",
+          "force": 45,
+          "importance": 85,
+          "robustness": 35,
+          "overall": 55,
+          "reasoning": "The argument makes a legitimate point about cognitive limitations regarding large numbers and the historical unreliability of moral intuitions, but it's largely speculative about which intuitions are biased. It addresses a central challenge for total utilitarianism (the Repugnant Conclusion is perhaps THE major objection), but the 'moral progress' framing cuts both ways—critics can equally claim that rejecting the RC represents progress toward respecting individual welfare thresholds. The argument is vulnerable to the counter that our intuition against the RC may track something real (like the value of flourishing lives vs. merely positive ones) rather than mere cognitive bias."
+        },
+        {
+          "id": "arg-critical-level-utilitarianism-01",
+          "supports_view": "critical-level-utilitarianism",
+          "name": "The Contribution Threshold Intuition",
+          "force": 58,
+          "importance": 85,
+          "robustness": 42,
+          "overall": 62,
+          "reasoning": "The argument articulates a genuine and widely-shared intuition that distinguishes personal worth-living from impersonal contribution to value, which is philosophically substantive and central to motivating CLU over classical utilitarianism. However, the intuition itself is contestable—total utilitarians can argue this conflates two distinct questions, and the argument doesn't explain why the threshold should be set at any particular level rather than zero. It's also vulnerable to the charge that it may reflect status quo bias or failure to properly aggregate small positive values."
+        },
+        {
+          "id": "arg-critical-level-utilitarianism-02",
+          "supports_view": "critical-level-utilitarianism",
+          "name": "Avoiding the Repugnant Conclusion",
+          "force": 72,
+          "importance": 88,
+          "robustness": 45,
+          "overall": 68,
+          "reasoning": "The argument correctly identifies a major motivation for CLU—avoiding the Repugnant Conclusion is central to population ethics debates and the reasoning is logically sound. However, robustness suffers significantly because CLU faces its own well-known problems: it implies the 'Very Repugnant Conclusion' (preferring hellish additions to avoid sub-critical positive lives) and struggles to non-arbitrarily justify any particular critical level. The comparative advantage over Total Utilitarianism is real but comes with substantial theoretical costs."
+        },
+        {
+          "id": "arg-critical-level-utilitarianism-03",
+          "supports_view": "critical-level-utilitarianism",
+          "name": "Coherent Aggregation Despite Asymmetry",
+          "force": 58,
+          "importance": 72,
+          "robustness": 45,
+          "overall": 58,
+          "reasoning": "The argument correctly identifies a genuine advantage of CLU over asymmetric person-affecting views in maintaining coherent aggregation, but overstates how 'principled' this middle ground is—critics argue the critical level is arbitrary and that CLU faces its own problems (like the Very Repugnant Conclusion for high thresholds). The comparative framing addresses an important structural question about population ethics, but the claim that CLU 'preserves' asymmetric intuitions is contestable since it still counts sub-threshold lives negatively rather than neutrally."
+        },
+        {
+          "id": "arg-critical-level-utilitarianism-04",
+          "supports_view": "critical-level-utilitarianism",
+          "name": "The Sadistic Conclusion Objection is Manageable",
+          "force": 42,
+          "importance": 85,
+          "robustness": 35,
+          "overall": 54,
+          "reasoning": "The argument correctly identifies that the Sadistic Conclusion is a major objection requiring response, and the tu quoque against Total Utilitarianism has some merit. However, the defense is weak: claiming CLU 'correctly identifies' such lives as non-contributing simply restates the view rather than defending it, and the Sadistic Conclusion remains deeply counterintuitive—it implies adding suffering people could be better than adding people with lives worth living but below the threshold. The 'set the critical level thoughtfully' response doesn't resolve the structural problem that any positive critical level generates this implication."
+        },
+        {
+          "id": "arg-critical-level-utilitarianism-05",
+          "supports_view": "critical-level-utilitarianism",
+          "name": "Sensible Guidance for Population Policy",
+          "force": 45,
+          "importance": 50,
+          "robustness": 35,
+          "overall": 43,
+          "reasoning": "The argument appeals to practical alignment with policy intuitions, but this is philosophically weak—matching intuitions doesn't establish theoretical correctness, and total utilitarianism could also claim to provide clear guidance. The importance is moderate since practical applicability matters but doesn't address the core theoretical question of why the critical level should be set where it is. The argument is vulnerable to counters: critics can note that CLU's guidance depends entirely on the contested critical level choice, and that prioritizing 'quality over quantity' begs the question against views that count all positive lives as valuable."
+        },
+        {
+          "id": "arg-asymmetric-person-affecting-view-01",
+          "supports_view": "asymmetric-person-affecting-view",
+          "name": "The Non-Identity Benefit Problem",
+          "force": 55,
+          "importance": 90,
+          "robustness": 40,
+          "overall": 62,
+          "reasoning": "The argument addresses the central challenge for asymmetric views—providing a principled basis for treating potential happiness and suffering differently—making it highly important. However, the reasoning relies on a contested asymmetry: critics argue that if we cannot benefit someone by creating them (no comparator state), the same logic should apply to harm, since the suffering person also had no prior existence to compare against. The argument is vulnerable to charges of special pleading and to impersonal value theories that bypass the comparative framework entirely."
+        },
+        {
+          "id": "arg-asymmetric-person-affecting-view-02",
+          "supports_view": "asymmetric-person-affecting-view",
+          "name": "Avoiding the Repugnant Conclusion",
+          "force": 65,
+          "importance": 85,
+          "robustness": 45,
+          "overall": 65,
+          "reasoning": "The argument correctly identifies that the Asymmetric View avoids the Repugnant Conclusion, which is a major theoretical advantage and addresses a central problem in population ethics. However, the reasoning is incomplete—avoiding one counterintuitive conclusion doesn't establish the view is correct, and the Asymmetric View faces its own serious challenges (the Non-Identity Problem, counterintuitive implications about extinction being morally neutral). The robustness is limited because critics can argue it trades one bullet for another, and other views (like Variable Value or Critical Level theories) also avoid the Repugnant Conclusion without the asymmetry's costs."
+        },
+        {
+          "id": "arg-asymmetric-person-affecting-view-03",
+          "supports_view": "asymmetric-person-affecting-view",
+          "name": "The Phenomenological Asymmetry of Suffering",
+          "force": 55,
+          "importance": 75,
+          "robustness": 40,
+          "overall": 57,
+          "reasoning": "The argument appeals to a genuine phenomenological observation about the urgency of suffering, but the inference from descriptive phenomenology to normative asymmetry is contestable—intensity of experience doesn't straightforwardly translate to moral priority. It addresses an important foundational question about why we should treat suffering and happiness asymmetrically. However, it's vulnerable to counters: peak positive experiences (flow, ecstasy, love) can be equally phenomenologically compelling, and the argument conflates the urgency of existing suffering with claims about non-existent beings."
+        },
+        {
+          "id": "arg-asymmetric-person-affecting-view-04",
+          "supports_view": "asymmetric-person-affecting-view",
+          "name": "Coherence with Procreative Liberty",
+          "force": 52,
+          "importance": 45,
+          "robustness": 40,
+          "overall": 46,
+          "reasoning": "The argument shows that the Asymmetric View aligns with common intuitions about procreative liberty, but this is primarily an appeal to intuition coherence rather than independent philosophical justification—the intuitions themselves may be mistaken or inconsistent. As a practical argument, it addresses application rather than the fundamental metaphysical or ethical questions at stake in population ethics. Critics can readily counter that many ethical views can be made consistent with procreative liberty through different framings, and that coherence with existing intuitions doesn't establish truth, especially when those intuitions may themselves reflect the asymmetry being defended (circularity concern)."
+        },
+        {
+          "id": "arg-asymmetric-person-affecting-view-05",
+          "supports_view": "asymmetric-person-affecting-view",
+          "name": "The Absent Beneficiary Response",
+          "force": 45,
+          "importance": 85,
+          "robustness": 35,
+          "overall": 55,
+          "reasoning": "The argument addresses a central symmetry objection but its core move—claiming preventing bad differs fundamentally from failing to create good—largely restates the asymmetry rather than justifying it. Critics can reasonably ask why the intrinsic badness of suffering makes its absence good without a beneficiary while the intrinsic goodness of happiness doesn't make its absence bad. The argument survives initial scrutiny but remains vulnerable to the charge that it assumes what it needs to prove about the metaphysical asymmetry between positive and negative states."
+        }
+      ],
+      "tokens": {
+        "input": 9743,
+        "output": 3375
+      },
+      "durationMs": 26128
+    },
+    "evaluate_views": {
+      "status": "completed",
+      "startedAt": "2026-01-07T15:39:20.774Z",
+      "isForEach": true,
+      "instances": [
+        {
+          "index": 0,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:39:20.775Z",
+          "completedAt": "2026-01-07T15:39:58.586Z",
+          "output": {
+            "view_id": "total-utilitarianism",
+            "view_name": "Total Utilitarianism",
+            "applicable_objections": [
+              {
+                "id": "repugnant-conclusion",
+                "name": "The Repugnant Conclusion",
+                "relevance": "direct",
+                "impact": 85
+              },
+              {
+                "id": "replaceability-problem",
+                "name": "The Replaceability Problem",
+                "relevance": "direct",
+                "impact": 72
+              },
+              {
+                "id": "temporal-infinity-problem",
+                "name": "The Temporal Infinity Problem",
+                "relevance": "direct",
+                "impact": 65
+              },
+              {
+                "id": "welfare-farming",
+                "name": "The Welfare Farming Thought Experiment",
+                "relevance": "direct",
+                "impact": 60
+              }
+            ],
+            "applicable_arguments": [
+              {
+                "id": "impartiality-equal-worth",
+                "name": "Impartiality and Equal Moral Worth",
+                "relevance": "direct",
+                "support": 58
+              },
+              {
+                "id": "rejecting-asymmetry-costs",
+                "name": "Rejecting the Asymmetry's Hidden Costs",
+                "relevance": "direct",
+                "support": 52
+              },
+              {
+                "id": "avoiding-arbitrary-thresholds",
+                "name": "Avoiding Arbitrary Thresholds",
+                "relevance": "direct",
+                "support": 50
+              },
+              {
+                "id": "repugnant-conclusion-moral-progress",
+                "name": "The Repugnant Conclusion as Moral Progress",
+                "relevance": "direct",
+                "support": 48
+              }
+            ],
+            "objection_damage_total": 78,
+            "argument_support_total": 52,
+            "defensibility_score": 42,
+            "assessment_summary": "Total Utilitarianism faces a formidable cluster of objections that strike at its core aggregative logic. The Repugnant Conclusion remains the most devastating challenge—it follows with logical necessity from the view's foundational commitment to maximizing total wellbeing, and decades of philosophical work have failed to produce a widely accepted solution. The Replaceability Problem compounds this by revealing troubling implications about the moral status of existing persons, while the Welfare Farming variant emphasizes how the view's logic could endorse qualitatively impoverished outcomes. The Temporal Infinity Problem, though more technical, threatens the view's action-guidance in cosmological contexts. Together, these objections create substantial cumulative damage because they all stem from the same structural feature—treating all units of wellbeing as fungible and additive.\n\nThe supporting arguments, while philosophically substantive, provide only moderate defense. The appeal to impartiality and equal moral worth is genuinely compelling but conflates equal treatment of existing persons with contestable claims about potential persons. The critique of arbitrary thresholds in competing views (like CLU) is effective as a negative argument but doesn't resolve Total Utilitarianism's own counterintuitive implications. The 'moral progress' framing of the Repugnant Conclusion is creative but speculative—it's unclear whether our intuitions against the RC represent cognitive bias or track something morally significant about flourishing lives.\n\nOverall, Total Utilitarianism remains a coherent and theoretically elegant view with genuine advantages (simplicity, impartiality, avoiding ad hoc thresholds), but its defensibility is significantly compromised by the severity of its counterintuitive implications. The view can survive these challenges only if one is willing to 'bite the bullet' on multiple fronts—accepting the Repugnant Conclusion, replaceability implications, and potential welfare farming scenarios as features rather than bugs. This requires considerable revisionary confidence in the face of strong pre-theoretical intuitions, making the view defensible but demanding."
+          },
+          "durationMs": 37811,
+          "tokens": {
+            "input": 3766,
+            "output": 875
+          }
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:39:20.775Z",
+          "completedAt": "2026-01-07T15:39:34.597Z",
+          "output": {
+            "view_id": "critical-level-utilitarianism",
+            "view_name": "Critical Level Utilitarianism",
+            "applicable_objections": [
+              {
+                "id": "sadistic-conclusion",
+                "name": "The Sadistic Conclusion",
+                "relevance": "direct",
+                "impact": 82
+              },
+              {
+                "id": "extinction-implication",
+                "name": "The Extinction Implication",
+                "relevance": "direct",
+                "impact": 69
+              },
+              {
+                "id": "arbitrary-threshold",
+                "name": "Arbitrary Threshold Problem",
+                "relevance": "direct",
+                "impact": 68
+              },
+              {
+                "id": "repugnant-conclusion",
+                "name": "The Repugnant Conclusion",
+                "relevance": "indirect",
+                "impact": 35
+              }
+            ],
+            "applicable_arguments": [
+              {
+                "id": "avoiding-repugnant-conclusion-clu",
+                "name": "Avoiding the Repugnant Conclusion",
+                "relevance": "direct",
+                "support": 68
+              },
+              {
+                "id": "contribution-threshold-intuition",
+                "name": "The Contribution Threshold Intuition",
+                "relevance": "direct",
+                "support": 62
+              },
+              {
+                "id": "coherent-aggregation-despite-asymmetry",
+                "name": "Coherent Aggregation Despite Asymmetry",
+                "relevance": "direct",
+                "support": 58
+              }
+            ],
+            "objection_damage_total": 78,
+            "argument_support_total": 62,
+            "defensibility_score": 42,
+            "assessment_summary": "Critical Level Utilitarianism occupies an uncomfortable middle ground in population ethics. Its primary motivation—avoiding the Repugnant Conclusion that plagues Total Utilitarianism—is compelling and represents a genuine theoretical advance. The view also captures an important intuition that there is a meaningful distinction between a life being worth living for the individual and a life being valuable enough to constitute a positive contribution to overall value. These considerations provide moderate support, and the view's ability to maintain coherent aggregation while introducing asymmetric-like features is a structural advantage over pure person-affecting approaches.\n\nHowever, CLU faces devastating objections that significantly undermine its defensibility. The Sadistic Conclusion—that CLU can prefer outcomes with suffering people over outcomes with many people living good (but sub-threshold) lives—is arguably worse than the Repugnant Conclusion it was designed to avoid. This represents a fundamental structural problem, not a peripheral concern. The Arbitrary Threshold Problem compounds this difficulty: any specific critical level seems difficult to justify non-arbitrarily, and different threshold choices generate different problematic implications. The Extinction Implication further suggests that high critical levels could make human extinction look acceptable or even desirable if most lives fall below threshold.\n\nThe cumulative damage from these objections is severe. While CLU's supporting arguments are substantive, they largely establish the view's motivation rather than providing resources to respond to its distinctive problems. The view appears to trade one set of counterintuitive implications for another arguably worse set, without clear guidance on how to set the critical level to minimize these costs. CLU remains a serious contender in population ethics due to its structural innovations, but its current formulation faces challenges that significantly limit its defensibility as a complete theory."
+          },
+          "durationMs": 13822,
+          "tokens": {
+            "input": 3794,
+            "output": 763
+          }
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "startedAt": "2026-01-07T15:39:20.775Z",
+          "completedAt": "2026-01-07T15:39:36.480Z",
+          "output": {
+            "view_id": "asymmetric-person-affecting-view",
+            "view_name": "Asymmetric Person-Affecting View",
+            "applicable_objections": [
+              {
+                "id": "non-identity-problem-vulnerability",
+                "name": "Non-Identity Problem Vulnerability",
+                "relevance": "direct",
+                "impact": 76
+              },
+              {
+                "id": "procreative-paralysis-problem",
+                "name": "The Procreative Paralysis Problem",
+                "relevance": "direct",
+                "impact": 73
+              },
+              {
+                "id": "unexplained-asymmetry",
+                "name": "Unexplained Asymmetry",
+                "relevance": "direct",
+                "impact": 72
+              }
+            ],
+            "applicable_arguments": [
+              {
+                "id": "avoiding-repugnant-conclusion-asymmetric",
+                "name": "Avoiding the Repugnant Conclusion",
+                "relevance": "direct",
+                "support": 65
+              },
+              {
+                "id": "non-identity-benefit-problem",
+                "name": "The Non-Identity Benefit Problem",
+                "relevance": "direct",
+                "support": 62
+              },
+              {
+                "id": "phenomenological-asymmetry-suffering",
+                "name": "The Phenomenological Asymmetry of Suffering",
+                "relevance": "direct",
+                "support": 57
+              }
+            ],
+            "objection_damage_total": 74,
+            "argument_support_total": 61,
+            "defensibility_score": 42,
+            "assessment_summary": "The Asymmetric Person-Affecting View faces a formidable trio of objections that collectively threaten its coherence and applicability. The Non-Identity Problem Vulnerability (scored 76) is particularly damaging because it undermines the view's ability to guide reproductive ethics—a domain where the view should have natural application. If the view cannot explain why it's wrong to make choices that predictably lead to worse-off individuals when those individuals wouldn't exist under alternative choices, it loses significant practical relevance. The Procreative Paralysis Problem (73) compounds this by suggesting the view generates reasons against virtually all procreation, which either requires biting a significant bullet or abandoning the view's core commitments. The Unexplained Asymmetry objection (72) strikes at the foundational level, questioning why the absence of suffering is good but the absence of pleasure is not bad—a challenge that defenders have not fully resolved despite various attempts.\n\nThe supporting arguments provide meaningful but insufficient counterweight. Avoiding the Repugnant Conclusion (65) is a genuine theoretical advantage, as this is one of population ethics' most troubling puzzles, but other views also avoid it without the asymmetry's costs. The Non-Identity Benefit Problem argument (62) attempts to justify the asymmetry by appealing to the impossibility of benefiting non-existent beings, but this reasoning is vulnerable to the charge that it should apply symmetrically to harm as well. The Phenomenological Asymmetry of Suffering (57) appeals to intuitive considerations about the urgency of suffering, but the inference from phenomenology to normative priority remains contested.\n\nOverall, the Asymmetric Person-Affecting View occupies a challenging position in population ethics. While it successfully avoids some of the most troubling implications of aggregative theories, it does so at the cost of internal coherence and practical applicability. The cumulative damage from the three major objections (averaging around 74) outweighs the support from its strongest arguments (averaging around 61), leaving the view with a defensibility score of 42. The view may appeal to those who find the asymmetry between creating suffering and failing to create happiness deeply intuitive, but it requires either accepting significant theoretical costs or supplementing the view with additional principles that may compromise its distinctive character."
+          },
+          "durationMs": 15705,
+          "tokens": {
+            "input": 3811,
+            "output": 867
+          }
+        }
+      ],
+      "completedInstances": 3,
+      "totalInstances": 3,
+      "completedAt": "2026-01-07T15:39:58.587Z",
+      "output": [
+        {
+          "view_id": "total-utilitarianism",
+          "view_name": "Total Utilitarianism",
+          "applicable_objections": [
+            {
+              "id": "repugnant-conclusion",
+              "name": "The Repugnant Conclusion",
+              "relevance": "direct",
+              "impact": 85
+            },
+            {
+              "id": "replaceability-problem",
+              "name": "The Replaceability Problem",
+              "relevance": "direct",
+              "impact": 72
+            },
+            {
+              "id": "temporal-infinity-problem",
+              "name": "The Temporal Infinity Problem",
+              "relevance": "direct",
+              "impact": 65
+            },
+            {
+              "id": "welfare-farming",
+              "name": "The Welfare Farming Thought Experiment",
+              "relevance": "direct",
+              "impact": 60
+            }
+          ],
+          "applicable_arguments": [
+            {
+              "id": "impartiality-equal-worth",
+              "name": "Impartiality and Equal Moral Worth",
+              "relevance": "direct",
+              "support": 58
+            },
+            {
+              "id": "rejecting-asymmetry-costs",
+              "name": "Rejecting the Asymmetry's Hidden Costs",
+              "relevance": "direct",
+              "support": 52
+            },
+            {
+              "id": "avoiding-arbitrary-thresholds",
+              "name": "Avoiding Arbitrary Thresholds",
+              "relevance": "direct",
+              "support": 50
+            },
+            {
+              "id": "repugnant-conclusion-moral-progress",
+              "name": "The Repugnant Conclusion as Moral Progress",
+              "relevance": "direct",
+              "support": 48
+            }
+          ],
+          "objection_damage_total": 78,
+          "argument_support_total": 52,
+          "defensibility_score": 42,
+          "assessment_summary": "Total Utilitarianism faces a formidable cluster of objections that strike at its core aggregative logic. The Repugnant Conclusion remains the most devastating challenge—it follows with logical necessity from the view's foundational commitment to maximizing total wellbeing, and decades of philosophical work have failed to produce a widely accepted solution. The Replaceability Problem compounds this by revealing troubling implications about the moral status of existing persons, while the Welfare Farming variant emphasizes how the view's logic could endorse qualitatively impoverished outcomes. The Temporal Infinity Problem, though more technical, threatens the view's action-guidance in cosmological contexts. Together, these objections create substantial cumulative damage because they all stem from the same structural feature—treating all units of wellbeing as fungible and additive.\n\nThe supporting arguments, while philosophically substantive, provide only moderate defense. The appeal to impartiality and equal moral worth is genuinely compelling but conflates equal treatment of existing persons with contestable claims about potential persons. The critique of arbitrary thresholds in competing views (like CLU) is effective as a negative argument but doesn't resolve Total Utilitarianism's own counterintuitive implications. The 'moral progress' framing of the Repugnant Conclusion is creative but speculative—it's unclear whether our intuitions against the RC represent cognitive bias or track something morally significant about flourishing lives.\n\nOverall, Total Utilitarianism remains a coherent and theoretically elegant view with genuine advantages (simplicity, impartiality, avoiding ad hoc thresholds), but its defensibility is significantly compromised by the severity of its counterintuitive implications. The view can survive these challenges only if one is willing to 'bite the bullet' on multiple fronts—accepting the Repugnant Conclusion, replaceability implications, and potential welfare farming scenarios as features rather than bugs. This requires considerable revisionary confidence in the face of strong pre-theoretical intuitions, making the view defensible but demanding."
+        },
+        {
+          "view_id": "critical-level-utilitarianism",
+          "view_name": "Critical Level Utilitarianism",
+          "applicable_objections": [
+            {
+              "id": "sadistic-conclusion",
+              "name": "The Sadistic Conclusion",
+              "relevance": "direct",
+              "impact": 82
+            },
+            {
+              "id": "extinction-implication",
+              "name": "The Extinction Implication",
+              "relevance": "direct",
+              "impact": 69
+            },
+            {
+              "id": "arbitrary-threshold",
+              "name": "Arbitrary Threshold Problem",
+              "relevance": "direct",
+              "impact": 68
+            },
+            {
+              "id": "repugnant-conclusion",
+              "name": "The Repugnant Conclusion",
+              "relevance": "indirect",
+              "impact": 35
+            }
+          ],
+          "applicable_arguments": [
+            {
+              "id": "avoiding-repugnant-conclusion-clu",
+              "name": "Avoiding the Repugnant Conclusion",
+              "relevance": "direct",
+              "support": 68
+            },
+            {
+              "id": "contribution-threshold-intuition",
+              "name": "The Contribution Threshold Intuition",
+              "relevance": "direct",
+              "support": 62
+            },
+            {
+              "id": "coherent-aggregation-despite-asymmetry",
+              "name": "Coherent Aggregation Despite Asymmetry",
+              "relevance": "direct",
+              "support": 58
+            }
+          ],
+          "objection_damage_total": 78,
+          "argument_support_total": 62,
+          "defensibility_score": 42,
+          "assessment_summary": "Critical Level Utilitarianism occupies an uncomfortable middle ground in population ethics. Its primary motivation—avoiding the Repugnant Conclusion that plagues Total Utilitarianism—is compelling and represents a genuine theoretical advance. The view also captures an important intuition that there is a meaningful distinction between a life being worth living for the individual and a life being valuable enough to constitute a positive contribution to overall value. These considerations provide moderate support, and the view's ability to maintain coherent aggregation while introducing asymmetric-like features is a structural advantage over pure person-affecting approaches.\n\nHowever, CLU faces devastating objections that significantly undermine its defensibility. The Sadistic Conclusion—that CLU can prefer outcomes with suffering people over outcomes with many people living good (but sub-threshold) lives—is arguably worse than the Repugnant Conclusion it was designed to avoid. This represents a fundamental structural problem, not a peripheral concern. The Arbitrary Threshold Problem compounds this difficulty: any specific critical level seems difficult to justify non-arbitrarily, and different threshold choices generate different problematic implications. The Extinction Implication further suggests that high critical levels could make human extinction look acceptable or even desirable if most lives fall below threshold.\n\nThe cumulative damage from these objections is severe. While CLU's supporting arguments are substantive, they largely establish the view's motivation rather than providing resources to respond to its distinctive problems. The view appears to trade one set of counterintuitive implications for another arguably worse set, without clear guidance on how to set the critical level to minimize these costs. CLU remains a serious contender in population ethics due to its structural innovations, but its current formulation faces challenges that significantly limit its defensibility as a complete theory."
+        },
+        {
+          "view_id": "asymmetric-person-affecting-view",
+          "view_name": "Asymmetric Person-Affecting View",
+          "applicable_objections": [
+            {
+              "id": "non-identity-problem-vulnerability",
+              "name": "Non-Identity Problem Vulnerability",
+              "relevance": "direct",
+              "impact": 76
+            },
+            {
+              "id": "procreative-paralysis-problem",
+              "name": "The Procreative Paralysis Problem",
+              "relevance": "direct",
+              "impact": 73
+            },
+            {
+              "id": "unexplained-asymmetry",
+              "name": "Unexplained Asymmetry",
+              "relevance": "direct",
+              "impact": 72
+            }
+          ],
+          "applicable_arguments": [
+            {
+              "id": "avoiding-repugnant-conclusion-asymmetric",
+              "name": "Avoiding the Repugnant Conclusion",
+              "relevance": "direct",
+              "support": 65
+            },
+            {
+              "id": "non-identity-benefit-problem",
+              "name": "The Non-Identity Benefit Problem",
+              "relevance": "direct",
+              "support": 62
+            },
+            {
+              "id": "phenomenological-asymmetry-suffering",
+              "name": "The Phenomenological Asymmetry of Suffering",
+              "relevance": "direct",
+              "support": 57
+            }
+          ],
+          "objection_damage_total": 74,
+          "argument_support_total": 61,
+          "defensibility_score": 42,
+          "assessment_summary": "The Asymmetric Person-Affecting View faces a formidable trio of objections that collectively threaten its coherence and applicability. The Non-Identity Problem Vulnerability (scored 76) is particularly damaging because it undermines the view's ability to guide reproductive ethics—a domain where the view should have natural application. If the view cannot explain why it's wrong to make choices that predictably lead to worse-off individuals when those individuals wouldn't exist under alternative choices, it loses significant practical relevance. The Procreative Paralysis Problem (73) compounds this by suggesting the view generates reasons against virtually all procreation, which either requires biting a significant bullet or abandoning the view's core commitments. The Unexplained Asymmetry objection (72) strikes at the foundational level, questioning why the absence of suffering is good but the absence of pleasure is not bad—a challenge that defenders have not fully resolved despite various attempts.\n\nThe supporting arguments provide meaningful but insufficient counterweight. Avoiding the Repugnant Conclusion (65) is a genuine theoretical advantage, as this is one of population ethics' most troubling puzzles, but other views also avoid it without the asymmetry's costs. The Non-Identity Benefit Problem argument (62) attempts to justify the asymmetry by appealing to the impossibility of benefiting non-existent beings, but this reasoning is vulnerable to the charge that it should apply symmetrically to harm as well. The Phenomenological Asymmetry of Suffering (57) appeals to intuitive considerations about the urgency of suffering, but the inference from phenomenology to normative priority remains contested.\n\nOverall, the Asymmetric Person-Affecting View occupies a challenging position in population ethics. While it successfully avoids some of the most troubling implications of aggregative theories, it does so at the cost of internal coherence and practical applicability. The cumulative damage from the three major objections (averaging around 74) outweighs the support from its strongest arguments (averaging around 61), leaving the view with a defensibility score of 42. The view may appeal to those who find the asymmetry between creating suffering and failing to create happiness deeply intuitive, but it requires either accepting significant theoretical costs or supplementing the view with additional principles that may compromise its distinctive character."
+        }
+      ],
+      "tokens": {
+        "input": 11371,
+        "output": 2505
+      },
+      "durationMs": 37813
+    },
+    "rank_and_synthesize": {
+      "status": "completed",
+      "startedAt": "2026-01-07T15:39:58.589Z",
+      "completedAt": "2026-01-07T15:40:32.487Z",
+      "output": {
+        "ranked_views": [
+          {
+            "rank": 1,
+            "view_id": "critical-level-utilitarianism",
+            "view_name": "Critical Level Utilitarianism",
+            "defensibility_score": 42,
+            "ranking_rationale": "Despite sharing the same defensibility score as the other views, CLU edges ahead due to its higher argument support score (62 vs 52-61). The view's structural innovation—maintaining aggregative reasoning while introducing asymmetric-like features—represents a genuine theoretical advance. While the Sadistic Conclusion is deeply troubling, CLU retains more flexibility for theoretical refinement (e.g., variable thresholds, context-sensitivity) than its competitors. Its problems, though severe, appear more amenable to modification than the foundational issues facing the other views."
+          },
+          {
+            "rank": 2,
+            "view_id": "asymmetric-person-affecting-view",
+            "view_name": "Asymmetric Person-Affecting View",
+            "defensibility_score": 42,
+            "ranking_rationale": "The Asymmetric View ranks second due to its lower objection damage (74 vs 78) and strong intuitive appeal regarding the moral urgency of preventing suffering. While the unexplained asymmetry remains a significant theoretical burden, the view captures something important about our moral psychology—we do seem to treat the prevention of suffering as more urgent than the creation of happiness. However, the Non-Identity Problem and Procreative Paralysis concerns significantly limit its practical applicability, preventing it from claiming the top position."
+          },
+          {
+            "rank": 3,
+            "view_id": "total-utilitarianism",
+            "view_name": "Total Utilitarianism",
+            "defensibility_score": 42,
+            "ranking_rationale": "Total Utilitarianism ranks last despite its theoretical elegance and simplicity. The Repugnant Conclusion, after decades of philosophical scrutiny, remains unresolved and follows necessarily from the view's core commitments. The combination of high objection damage (78), lowest argument support (52), and the particularly troubling nature of its implications—including replaceability and welfare farming concerns—make the required 'bullet-biting' more demanding than for competing views. The view's problems stem from its foundational structure rather than peripheral features, making modification difficult without abandoning its distinctive character."
+          }
+        ],
+        "synthesis": "This analysis reveals a striking convergence in defensibility among the three major approaches to population ethics, with all views receiving identical scores of 42. This result is itself philosophically significant: it suggests that population ethics remains a domain where no existing theory has achieved clear superiority, and where choosing among views requires weighing incommensurable theoretical virtues against different sets of counterintuitive implications. The marginal differences that determined the final ranking—CLU's greater argument support, the Asymmetric View's lower objection damage, and Total Utilitarianism's more fundamental structural problems—reflect genuine but modest distinctions in overall defensibility.\n\nPerhaps the most surprising finding is Total Utilitarianism's last-place finish despite being the most theoretically simple and historically influential view. The analysis reveals that simplicity and elegance provide insufficient protection against severe counterintuitive implications. The Repugnant Conclusion's persistence as an unsolved problem after decades of philosophical attention suggests it may represent a genuine reductio rather than a mere intuition to be revised. Conversely, Critical Level Utilitarianism performed better than might be expected given the severity of the Sadistic Conclusion, largely because its framework offers more resources for theoretical modification and refinement.\n\nThe analysis illuminates a fundamental tension in population ethics between avoiding counterintuitive conclusions and maintaining theoretical coherence. Total Utilitarianism achieves coherence at the cost of the Repugnant Conclusion; CLU avoids that conclusion but generates the arguably worse Sadistic Conclusion; the Asymmetric View avoids both but struggles to explain its foundational asymmetry and faces the Non-Identity Problem. This suggests that population ethics may require either accepting some deeply counterintuitive implications, embracing theoretical complexity that resists simple formulation, or reconceptualizing the problem space entirely. The convergent defensibility scores indicate we may be at an impasse requiring new theoretical frameworks rather than refinements of existing approaches.\n\nThe state of population ethics revealed here is one of genuine theoretical difficulty rather than mere disagreement. Each view captures important moral intuitions while generating serious problems, and the analysis suggests these tradeoffs may be structural features of the problem space rather than contingent failures of existing theories. The field appears to need either breakthrough innovations in how we think about potential persons and their moral status, or a more explicit methodology for adjudicating between different types of theoretical costs.",
+        "uncertainties": [
+          "The scoring methodology may not adequately capture qualitative differences between types of objections—a single devastating objection might be worse than multiple moderate ones, but this isn't fully reflected in aggregated scores.",
+          "The analysis focused on three prominent views but omitted other serious contenders (Average Utilitarianism, Variable Value approaches, Necessitarianism) that might perform better under similar scrutiny.",
+          "Defensibility scores are sensitive to which objections and arguments are included; different selections could yield different rankings.",
+          "The analysis may underweight practical applicability—a view that provides clearer action-guidance might be preferable even with lower theoretical defensibility.",
+          "Intuition-based objections (like the Repugnant Conclusion) may reflect cognitive biases rather than genuine moral insight, but the analysis treats them as significant evidence.",
+          "The relative severity of different counterintuitive conclusions (Repugnant vs. Sadistic vs. Procreative Paralysis) involves contested value judgments that reasonable people may weigh differently."
+        ],
+        "recommendations": [
+          "Investigate hybrid approaches that combine elements of multiple views—for instance, person-affecting constraints on aggregative frameworks, or context-sensitive critical levels that vary with population characteristics.",
+          "Develop more rigorous methods for distinguishing intuitions that track genuine moral truths from those reflecting cognitive limitations or evolutionary biases.",
+          "Explore whether the Non-Identity Problem admits of solutions that could rehabilitate person-affecting approaches without abandoning their core insights.",
+          "Examine whether population ethics problems might be partially dissolved by reconceptualizing personal identity, welfare, or the metaphysics of potential persons.",
+          "Conduct empirical research on how different population ethical views perform in practical policy contexts, as theoretical defensibility may not track decision-guidance quality.",
+          "Investigate whether formal impossibility results (analogous to Arrow's theorem) constrain what any adequate population ethics can achieve, which would reframe the debate around which impossibility to accept."
+        ]
+      },
+      "outputText": "```json\n{\n  \"ranked_views\": [\n    {\n      \"rank\": 1,\n      \"view_id\": \"critical-level-utilitarianism\",\n      \"view_name\": \"Critical Level Utilitarianism\",\n      \"defensibility_score\": 42,\n      \"ranking_rationale\": \"Despite sharing the same defensibility score as the other views, CLU edges ahead due to its higher argument support score (62 vs 52-61). The view's structural innovation—maintaining aggregative reasoning while introducing asymmetric-like features—represents a genuine theoretical advance. While the Sadistic Conclusion is deeply troubling, CLU retains more flexibility for theoretical refinement (e.g., variable thresholds, context-sensitivity) than its competitors. Its problems, though severe, appear more amenable to modification than the foundational issues facing the other views.\"\n    },\n    {\n      \"rank\": 2,\n      \"view_id\": \"asymmetric-person-affecting-view\",\n      \"view_name\": \"Asymmetric Person-Affecting View\",\n      \"defensibility_score\": 42,\n      \"ranking_rationale\": \"The Asymmetric View ranks second due to its lower objection damage (74 vs 78) and strong intuitive appeal regarding the moral urgency of preventing suffering. While the unexplained asymmetry remains a significant theoretical burden, the view captures something important about our moral psychology—we do seem to treat the prevention of suffering as more urgent than the creation of happiness. However, the Non-Identity Problem and Procreative Paralysis concerns significantly limit its practical applicability, preventing it from claiming the top position.\"\n    },\n    {\n      \"rank\": 3,\n      \"view_id\": \"total-utilitarianism\",\n      \"view_name\": \"Total Utilitarianism\",\n      \"defensibility_score\": 42,\n      \"ranking_rationale\": \"Total Utilitarianism ranks last despite its theoretical elegance and simplicity. The Repugnant Conclusion, after decades of philosophical scrutiny, remains unresolved and follows necessarily from the view's core commitments. The combination of high objection damage (78), lowest argument support (52), and the particularly troubling nature of its implications—including replaceability and welfare farming concerns—make the required 'bullet-biting' more demanding than for competing views. The view's problems stem from its foundational structure rather than peripheral features, making modification difficult without abandoning its distinctive character.\"\n    }\n  ],\n  \"synthesis\": \"This analysis reveals a striking convergence in defensibility among the three major approaches to population ethics, with all views receiving identical scores of 42. This result is itself philosophically significant: it suggests that population ethics remains a domain where no existing theory has achieved clear superiority, and where choosing among views requires weighing incommensurable theoretical virtues against different sets of counterintuitive implications. The marginal differences that determined the final ranking—CLU's greater argument support, the Asymmetric View's lower objection damage, and Total Utilitarianism's more fundamental structural problems—reflect genuine but modest distinctions in overall defensibility.\\n\\nPerhaps the most surprising finding is Total Utilitarianism's last-place finish despite being the most theoretically simple and historically influential view. The analysis reveals that simplicity and elegance provide insufficient protection against severe counterintuitive implications. The Repugnant Conclusion's persistence as an unsolved problem after decades of philosophical attention suggests it may represent a genuine reductio rather than a mere intuition to be revised. Conversely, Critical Level Utilitarianism performed better than might be expected given the severity of the Sadistic Conclusion, largely because its framework offers more resources for theoretical modification and refinement.\\n\\nThe analysis illuminates a fundamental tension in population ethics between avoiding counterintuitive conclusions and maintaining theoretical coherence. Total Utilitarianism achieves coherence at the cost of the Repugnant Conclusion; CLU avoids that conclusion but generates the arguably worse Sadistic Conclusion; the Asymmetric View avoids both but struggles to explain its foundational asymmetry and faces the Non-Identity Problem. This suggests that population ethics may require either accepting some deeply counterintuitive implications, embracing theoretical complexity that resists simple formulation, or reconceptualizing the problem space entirely. The convergent defensibility scores indicate we may be at an impasse requiring new theoretical frameworks rather than refinements of existing approaches.\\n\\nThe state of population ethics revealed here is one of genuine theoretical difficulty rather than mere disagreement. Each view captures important moral intuitions while generating serious problems, and the analysis suggests these tradeoffs may be structural features of the problem space rather than contingent failures of existing theories. The field appears to need either breakthrough innovations in how we think about potential persons and their moral status, or a more explicit methodology for adjudicating between different types of theoretical costs.\",\n  \"uncertainties\": [\n    \"The scoring methodology may not adequately capture qualitative differences between types of objections—a single devastating objection might be worse than multiple moderate ones, but this isn't fully reflected in aggregated scores.\",\n    \"The analysis focused on three prominent views but omitted other serious contenders (Average Utilitarianism, Variable Value approaches, Necessitarianism) that might perform better under similar scrutiny.\",\n    \"Defensibility scores are sensitive to which objections and arguments are included; different selections could yield different rankings.\",\n    \"The analysis may underweight practical applicability—a view that provides clearer action-guidance might be preferable even with lower theoretical defensibility.\",\n    \"Intuition-based objections (like the Repugnant Conclusion) may reflect cognitive biases rather than genuine moral insight, but the analysis treats them as significant evidence.\",\n    \"The relative severity of different counterintuitive conclusions (Repugnant vs. Sadistic vs. Procreative Paralysis) involves contested value judgments that reasonable people may weigh differently.\"\n  ],\n  \"recommendations\": [\n    \"Investigate hybrid approaches that combine elements of multiple views—for instance, person-affecting constraints on aggregative frameworks, or context-sensitive critical levels that vary with population characteristics.\",\n    \"Develop more rigorous methods for distinguishing intuitions that track genuine moral truths from those reflecting cognitive limitations or evolutionary biases.\",\n    \"Explore whether the Non-Identity Problem admits of solutions that could rehabilitate person-affecting approaches without abandoning their core insights.\",\n    \"Examine whether population ethics problems might be partially dissolved by reconceptualizing personal identity, welfare, or the metaphysics of potential persons.\",\n    \"Conduct empirical research on how different population ethical views perform in practical policy contexts, as theoretical defensibility may not track decision-guidance quality.\",\n    \"Investigate whether formal impossibility results (analogous to Arrow's theorem) constrain what any adequate population ethics can achieve, which would reframe the debate around which impossibility to accept.\"\n  ]\n}\n```",
+      "durationMs": 33897,
+      "tokens": {
+        "input": 2039,
+        "output": 1557
+      }
+    }
+  },
+  "completedAt": "2026-01-07T15:40:32.490Z"
+}

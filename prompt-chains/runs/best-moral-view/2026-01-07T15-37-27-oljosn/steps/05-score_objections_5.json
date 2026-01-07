@@ -1,0 +1,10 @@
+{
+  "id": "obj-critical-level-utilitarianism-01",
+  "target_view": "critical-level-utilitarianism",
+  "name": "The Sadistic Conclusion",
+  "force": 88,
+  "damage": 82,
+  "difficulty_to_rebut": 75,
+  "overall": 82,
+  "reasoning": "The logic follows directly from CLU's structure: any positive critical level mathematically entails that sufficiently many below-threshold positive lives count as worse than fewer negative lives. This is devastating because CLU was partly designed to avoid counterintuitive implications like the Repugnant Conclusion, yet generates an arguably worse one. Rebuttals exist (e.g., adopting variable critical levels, biting the bullet, or questioning the scenario's realism), but all involve significant theoretical costs or seem ad hoc."
+}

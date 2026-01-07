@@ -1,0 +1,48 @@
+{
+  "view_id": "asymmetric-person-affecting-view",
+  "view_name": "Asymmetric Person-Affecting View",
+  "applicable_objections": [
+    {
+      "id": "non-identity-problem-vulnerability",
+      "name": "Non-Identity Problem Vulnerability",
+      "relevance": "direct",
+      "impact": 76
+    },
+    {
+      "id": "procreative-paralysis-problem",
+      "name": "The Procreative Paralysis Problem",
+      "relevance": "direct",
+      "impact": 73
+    },
+    {
+      "id": "unexplained-asymmetry",
+      "name": "Unexplained Asymmetry",
+      "relevance": "direct",
+      "impact": 72
+    }
+  ],
+  "applicable_arguments": [
+    {
+      "id": "avoiding-repugnant-conclusion-asymmetric",
+      "name": "Avoiding the Repugnant Conclusion",
+      "relevance": "direct",
+      "support": 65
+    },
+    {
+      "id": "non-identity-benefit-problem",
+      "name": "The Non-Identity Benefit Problem",
+      "relevance": "direct",
+      "support": 62
+    },
+    {
+      "id": "phenomenological-asymmetry-suffering",
+      "name": "The Phenomenological Asymmetry of Suffering",
+      "relevance": "direct",
+      "support": 57
+    }
+  ],
+  "objection_damage_total": 74,
+  "argument_support_total": 61,
+  "defensibility_score": 42,
+  "assessment_summary": "The Asymmetric Person-Affecting View faces a formidable trio of objections that collectively threaten its coherence and applicability. The Non-Identity Problem Vulnerability (scored 76) is particularly damaging because it undermines the view's ability to guide reproductive ethics—a domain where the view should have natural application. If the view cannot explain why it's wrong to make choices that predictably lead to worse-off individuals when those individuals wouldn't exist under alternative choices, it loses significant practical relevance. The Procreative Paralysis Problem (73) compounds this by suggesting the view generates reasons against virtually all procreation, which either requires biting a significant bullet or abandoning the view's core commitments. The Unexplained Asymmetry objection (72) strikes at the foundational level, questioning why the absence of suffering is good but the absence of pleasure is not bad—a challenge that defenders have not fully resolved despite various attempts.\n\nThe supporting arguments provide meaningful but insufficient counterweight. Avoiding the Repugnant Conclusion (65) is a genuine theoretical advantage, as this is one of population ethics' most troubling puzzles, but other views also avoid it without the asymmetry's costs. The Non-Identity Benefit Problem argument (62) attempts to justify the asymmetry by appealing to the impossibility of benefiting non-existent beings, but this reasoning is vulnerable to the charge that it should apply symmetrically to harm as well. The Phenomenological Asymmetry of Suffering (57) appeals to intuitive considerations about the urgency of suffering, but the inference from phenomenology to normative priority remains contested.\n\nOverall, the Asymmetric Person-Affecting View occupies a challenging position in population ethics. While it successfully avoids some of the most troubling implications of aggregative theories, it does so at the cost of internal coherence and practical applicability. The cumulative damage from the three major objections (averaging around 74) outweighs the support from its strongest arguments (averaging around 61), leaving the view with a defensibility score of 42. The view may appeal to those who find the asymmetry between creating suffering and failing to create happiness deeply intuitive, but it requires either accepting significant theoretical costs or supplementing the view with additional principles that may compromise its distinctive character."
+}

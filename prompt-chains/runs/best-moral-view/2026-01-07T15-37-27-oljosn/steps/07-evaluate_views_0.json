@@ -1,0 +1,60 @@
+{
+  "view_id": "total-utilitarianism",
+  "view_name": "Total Utilitarianism",
+  "applicable_objections": [
+    {
+      "id": "repugnant-conclusion",
+      "name": "The Repugnant Conclusion",
+      "relevance": "direct",
+      "impact": 85
+    },
+    {
+      "id": "replaceability-problem",
+      "name": "The Replaceability Problem",
+      "relevance": "direct",
+      "impact": 72
+    },
+    {
+      "id": "temporal-infinity-problem",
+      "name": "The Temporal Infinity Problem",
+      "relevance": "direct",
+      "impact": 65
+    },
+    {
+      "id": "welfare-farming",
+      "name": "The Welfare Farming Thought Experiment",
+      "relevance": "direct",
+      "impact": 60
+    }
+  ],
+  "applicable_arguments": [
+    {
+      "id": "impartiality-equal-worth",
+      "name": "Impartiality and Equal Moral Worth",
+      "relevance": "direct",
+      "support": 58
+    },
+    {
+      "id": "rejecting-asymmetry-costs",
+      "name": "Rejecting the Asymmetry's Hidden Costs",
+      "relevance": "direct",
+      "support": 52
+    },
+    {
+      "id": "avoiding-arbitrary-thresholds",
+      "name": "Avoiding Arbitrary Thresholds",
+      "relevance": "direct",
+      "support": 50
+    },
+    {
+      "id": "repugnant-conclusion-moral-progress",
+      "name": "The Repugnant Conclusion as Moral Progress",
+      "relevance": "direct",
+      "support": 48
+    }
+  ],
+  "objection_damage_total": 78,
+  "argument_support_total": 52,
+  "defensibility_score": 42,
+  "assessment_summary": "Total Utilitarianism faces a formidable cluster of objections that strike at its core aggregative logic. The Repugnant Conclusion remains the most devastating challenge—it follows with logical necessity from the view's foundational commitment to maximizing total wellbeing, and decades of philosophical work have failed to produce a widely accepted solution. The Replaceability Problem compounds this by revealing troubling implications about the moral status of existing persons, while the Welfare Farming variant emphasizes how the view's logic could endorse qualitatively impoverished outcomes. The Temporal Infinity Problem, though more technical, threatens the view's action-guidance in cosmological contexts. Together, these objections create substantial cumulative damage because they all stem from the same structural feature—treating all units of wellbeing as fungible and additive.\n\nThe supporting arguments, while philosophically substantive, provide only moderate defense. The appeal to impartiality and equal moral worth is genuinely compelling but conflates equal treatment of existing persons with contestable claims about potential persons. The critique of arbitrary thresholds in competing views (like CLU) is effective as a negative argument but doesn't resolve Total Utilitarianism's own counterintuitive implications. The 'moral progress' framing of the Repugnant Conclusion is creative but speculative—it's unclear whether our intuitions against the RC represent cognitive bias or track something morally significant about flourishing lives.\n\nOverall, Total Utilitarianism remains a coherent and theoretically elegant view with genuine advantages (simplicity, impartiality, avoiding ad hoc thresholds), but its defensibility is significantly compromised by the severity of its counterintuitive implications. The view can survive these challenges only if one is willing to 'bite the bullet' on multiple fronts—accepting the Repugnant Conclusion, replaceability implications, and potential welfare farming scenarios as features rather than bugs. This requires considerable revisionary confidence in the face of strong pre-theoretical intuitions, making the view defensible but demanding."
+}

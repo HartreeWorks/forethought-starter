@@ -1,0 +1,10 @@
+{
+  "id": "arg-total-utilitarianism-01",
+  "supports_view": "total-utilitarianism",
+  "name": "Impartiality and Equal Moral Worth",
+  "force": 58,
+  "importance": 85,
+  "robustness": 42,
+  "overall": 62,
+  "reasoning": "The argument correctly identifies impartiality as a foundational moral commitment and draws a plausible analogy to anti-discrimination principles. However, it conflates equal moral worth of existing persons with the contestable claim that potential persons have equal claims to existence—a significant logical gap. The argument is vulnerable to person-affecting objections (we can be impartial among actual people without thinking we must create more), and the analogy to race/gender discrimination is imperfect since those involve existing persons with interests."
+}

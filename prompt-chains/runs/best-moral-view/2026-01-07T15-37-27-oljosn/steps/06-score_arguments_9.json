@@ -1,0 +1,10 @@
+{
+  "id": "arg-critical-level-utilitarianism-05",
+  "supports_view": "critical-level-utilitarianism",
+  "name": "Sensible Guidance for Population Policy",
+  "force": 45,
+  "importance": 50,
+  "robustness": 35,
+  "overall": 43,
+  "reasoning": "The argument appeals to practical alignment with policy intuitions, but this is philosophically weak—matching intuitions doesn't establish theoretical correctness, and total utilitarianism could also claim to provide clear guidance. The importance is moderate since practical applicability matters but doesn't address the core theoretical question of why the critical level should be set where it is. The argument is vulnerable to counters: critics can note that CLU's guidance depends entirely on the contested critical level choice, and that prioritizing 'quality over quantity' begs the question against views that count all positive lives as valuable."
+}
