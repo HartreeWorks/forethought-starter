@@ -82,6 +82,23 @@ export async function getPromptTemplate(
   return fs.readFile(fullPath, "utf-8");
 }
 
+// Load output template for a step (returns null if not found)
+export async function getOutputTemplate(
+  chainId: string,
+  templatePath: string
+): Promise<string | null> {
+  const chainsDir = getChainsDir();
+  const fullPath = path.join(chainsDir, chainId, templatePath);
+  try {
+    return await fs.readFile(fullPath, "utf-8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return null;
+    }
+    throw error;
+  }
+}
+
 // Get chain directory path
 export function getChainDir(chainId: string): string {
   return path.join(getChainsDir(), chainId);

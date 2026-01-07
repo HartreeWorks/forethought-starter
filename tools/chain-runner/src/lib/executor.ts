@@ -184,7 +184,7 @@ async function executeStep(
     stepState.tokens = result.usage;
 
     await saveRunState(run);
-    await saveStepOutput(run, step.id, result.output, result.text);
+    await saveStepOutput(run, step.id, result.output, step);
 
     emitEvent(run.id, "step:completed", {
       stepId: step.id,

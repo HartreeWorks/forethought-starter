@@ -39,6 +39,7 @@ steps:
       columns: [short, category, novelty, risk]
       sort_by: novelty
       sort_order: desc
+      template: templates/brainstorm.md
 
   - id: score
     name: Score and select top five
@@ -73,7 +74,7 @@ steps:
                 explanation: { type: string }
     display:
       type: cards
-      group_by: null
+      template: templates/score.md
 
   - id: develop
     name: Develop top critiques
@@ -93,6 +94,7 @@ steps:
             expanded: { type: string }
     display:
       type: cards
+      template: templates/develop.md
 
   - id: counter
     name: Critique the critiques
@@ -111,6 +113,7 @@ steps:
             counter: { type: string }
     display:
       type: cards
+      template: templates/counter.md
 
   - id: revise
     name: Revise critiques
@@ -130,6 +133,7 @@ steps:
             revised: { type: string }
     display:
       type: cards
+      template: templates/revise.md
 
   - id: final
     name: Final selection and expansion
@@ -150,3 +154,4 @@ steps:
             conversational_title: { type: string }
     display:
       type: cards
+      template: templates/final.md

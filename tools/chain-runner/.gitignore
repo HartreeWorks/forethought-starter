@@ -29,5 +29,5 @@ Thumbs.db
 *.tsbuildinfo
 next-env.d.ts
 
-# Run outputs
-runs/
+# Run outputs (top-level only)
+/runs/

@@ -43,6 +43,7 @@ export const StepDisplaySchema = z.object({
   sort_by: z.string().optional(),
   sort_order: z.enum(["asc", "desc"]).optional(),
   group_by: z.string().optional(),
+  template: z.string().optional(), // Path to Handlebars template for markdown output
 });
 
 // Chain step definition
