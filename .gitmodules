@@ -22,3 +22,6 @@
 [submodule "skills/lesswrong-and-ea-forum"]
 	path = skills/lesswrong-and-ea-forum
 	url = https://github.com/HartreeWorks/claude-skill--lesswrong-and-ea-forum.git
+[submodule "skills/proofread"]
+	path = skills/proofread
+	url = https://github.com/HartreeWorks/skill--proofread.git
