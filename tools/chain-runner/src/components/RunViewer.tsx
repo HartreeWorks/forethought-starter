@@ -170,6 +170,7 @@ export function RunViewer({ runId, chainId, initialRun, steps }: Props) {
           <StepOutput
             step={steps.find((s) => s.id === selectedStep)!}
             stepState={run.steps[selectedStep]}
+            allSteps={run.steps}
           />
         ) : (
           <div className="p-8 border rounded text-center text-gray-500">

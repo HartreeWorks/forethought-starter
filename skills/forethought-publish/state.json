@@ -30,7 +30,8 @@
         "lw_forum": "both",
         "forum_content": "custom_summary",
         "forum_title": "question_style",
-        "link_strategy": "social_substack_website"
+        "link_strategy": "social_substack_website",
+        "arxiv": "yes"
       },
       "generated": {
         "abstract": "Could space debris lock humanity out of the cosmos? As launch rates accelerate, runaway Kessler syndrome looks increasingly plausible \u2014 but even severe debris buildup is unlikely to block transit through orbit to outer space. The real concern is deliberate dispersal: a bad actor could seed tens of thousands of tons of optimised debris to raise launch costs dramatically. Yet shielding scales favourably, inspection regimes are feasible, and sealing the sky remains hard to do quickly or covertly. Access to orbit is more resilient than it might seem.",

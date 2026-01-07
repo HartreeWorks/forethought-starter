@@ -5,12 +5,16 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { ChainStep, StepRunState } from "@/lib/types";
 
+// Critique lookup type for resolving IDs to human-readable titles
+type CritiqueLookup = Map<string, { title: string; category?: string }>;
+
 interface Props {
   step: ChainStep;
   stepState?: StepRunState;
+  allSteps?: Record<string, StepRunState>;
 }
 
-export function StepOutput({ step, stepState }: Props) {
+export function StepOutput({ step, stepState, allSteps }: Props) {
   if (!stepState) {
     return (
       <div className="p-8 border rounded text-center text-gray-500">
@@ -39,8 +43,22 @@ export function StepOutput({ step, stepState }: Props) {
     );
   }
 
+  // Build critique lookup from brainstorm step if available
+  const critiqueLookup = buildCritiqueLookup(allSteps);
+
   const output = stepState.output;
   const displayType = step.display?.type;
+  const stepId = step.id;
+
+  // Special handling for brainstorm step (step 1)
+  if (stepId === "brainstorm" && Array.isArray(output)) {
+    return <BrainstormRenderer data={output as Record<string, unknown>[]} />;
+  }
+
+  // Special handling for score step (step 2)
+  if (stepId === "score" && typeof output === "object" && output !== null) {
+    return <ScoreStepRenderer data={output as Record<string, unknown>} critiqueLookup={critiqueLookup} />;
+  }
 
   // Handle arrays
   if (Array.isArray(output)) {
@@ -48,7 +66,7 @@ export function StepOutput({ step, stepState }: Props) {
     const hasLongContent = output.length > 0 && hasLongTextFields(output[0]);
 
     if (hasLongContent || displayType === "cards") {
-      return <ExpandableListRenderer data={output} displayHints={step.display} />;
+      return <ExpandableListRenderer data={output} displayHints={step.display} critiqueLookup={critiqueLookup} />;
     }
 
     if (displayType === "table" || hasTableableItems(output)) {
@@ -58,13 +76,37 @@ export function StepOutput({ step, stepState }: Props) {
     return <ArrayRenderer data={output} />;
   }
 
-  // Handle objects with nested arrays (like score step)
+  // Handle objects with nested arrays
   if (typeof output === "object" && output !== null) {
-    return <StructuredObjectRenderer data={output as Record<string, unknown>} />;
+    return <StructuredObjectRenderer data={output as Record<string, unknown>} critiqueLookup={critiqueLookup} />;
   }
 
   // Fallback: render as prose
   return <ProseRenderer content={String(output)} />;
+}
+
+// Build lookup from brainstorm step output
+function buildCritiqueLookup(allSteps?: Record<string, StepRunState>): CritiqueLookup {
+  const lookup: CritiqueLookup = new Map();
+  if (!allSteps) return lookup;
+
+  // Look for brainstorm step
+  const brainstormState = allSteps["brainstorm"];
+  if (brainstormState?.status === "completed" && Array.isArray(brainstormState.output)) {
+    for (const item of brainstormState.output) {
+      if (typeof item === "object" && item !== null) {
+        const record = item as Record<string, unknown>;
+        const id = record.id as string;
+        const title = (record.short || record.title || record.conversational_title) as string;
+        const category = record.category as string | undefined;
+        if (id && title) {
+          lookup.set(id, { title, category });
+        }
+      }
+    }
+  }
+
+  return lookup;
 }
 
 // Check if an object has fields with long text content
@@ -86,18 +128,208 @@ function hasTableableItems(arr: unknown[]): boolean {
 // Prose/markdown renderer
 function ProseRenderer({ content }: { content: string }) {
   return (
-    <div className="prose prose-sm max-w-none p-4 border rounded">
+    <div className="prose prose-sm max-w-none p-4 border rounded [&_h2]:text-base [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-sm [&_h3]:mt-3 [&_h3]:mb-1">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
     </div>
   );
 }
 
-// Inline markdown for shorter text
-function InlineMarkdown({ content }: { content: string }) {
+// Brainstorm step - custom layout with category pills
+function BrainstormRenderer({ data }: { data: Record<string, unknown>[] }) {
   return (
-    <span className="prose prose-sm max-w-none [&>p]:inline [&>p]:m-0">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
-    </span>
+    <div className="space-y-3">
+      {data.map((item, idx) => (
+        <BrainstormCard key={idx} item={item} />
+      ))}
+    </div>
+  );
+}
+
+function BrainstormCard({ item }: { item: Record<string, unknown> }) {
+  const title = (item.short || item.title) as string;
+  const category = item.category as string | undefined;
+  const rationale = item.rationale as string | undefined;
+  const novelty = item.novelty as number | undefined;
+  const risk = item.risk as number | undefined;
+
+  return (
+    <div className="border rounded p-4">
+      {/* Header with title and category pill */}
+      <div className="flex items-start justify-between gap-3 mb-2">
+        <h4 className="font-semibold text-gray-900">{title}</h4>
+        {category && (
+          <span className="flex-shrink-0 px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-600 rounded">
+            {category}
+          </span>
+        )}
+      </div>
+
+      {/* Rationale - directly beneath title */}
+      {rationale && (
+        <p className="text-sm text-gray-800 mb-3">{rationale}</p>
+      )}
+
+      {/* Novelty and Risk - smaller, muted */}
+      {(novelty !== undefined || risk !== undefined) && (
+        <div className="flex gap-4 text-xs text-gray-500">
+          {novelty !== undefined && (
+            <span>Novelty: <span className="font-medium text-gray-600">{novelty}</span></span>
+          )}
+          {risk !== undefined && (
+            <span>Risk: <span className="font-medium text-gray-600">{risk}</span></span>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Score step - custom renderer with critique title lookup
+function ScoreStepRenderer({
+  data,
+  critiqueLookup
+}: {
+  data: Record<string, unknown>;
+  critiqueLookup: CritiqueLookup;
+}) {
+  const scores = data.scores as Record<string, unknown>[] | undefined;
+  const top5 = data.top5 as string[] | undefined;
+  const top5Details = data.top5_details as Record<string, unknown>[] | undefined;
+
+  return (
+    <div className="p-4 border rounded space-y-6">
+      {/* Scores table */}
+      {scores && scores.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+            Scores
+          </h3>
+          <ScoresTableWithTitles data={scores} critiqueLookup={critiqueLookup} />
+        </div>
+      )}
+
+      {/* Top 5 selections */}
+      {(top5Details || top5) && (
+        <div>
+          <h3 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
+            Top 5
+          </h3>
+          {top5Details ? (
+            <TopSelectionsWithTitles data={top5Details} critiqueLookup={critiqueLookup} />
+          ) : top5 ? (
+            <TopSelectionsSimple ids={top5} critiqueLookup={critiqueLookup} />
+          ) : null}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Scores table with critique titles
+function ScoresTableWithTitles({
+  data,
+  critiqueLookup
+}: {
+  data: Record<string, unknown>[];
+  critiqueLookup: CritiqueLookup;
+}) {
+  if (data.length === 0) return null;
+
+  const columns = Object.keys(data[0]).filter((k) => k !== "id");
+
+  return (
+    <div className="border rounded overflow-hidden">
+      <table className="w-full text-sm">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-3 py-2 text-left font-medium text-gray-700">Critique</th>
+            {columns.map((col) => (
+              <th key={col} className="px-3 py-2 text-left font-medium text-gray-700">
+                {formatColumnName(col)}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y">
+          {data.map((row, idx) => {
+            const id = String(row.id);
+            const critique = critiqueLookup.get(id);
+            return (
+              <tr key={idx} className="hover:bg-gray-50">
+                <td className="px-3 py-2">
+                  <span className="text-gray-900">{critique?.title || id}</span>
+                </td>
+                {columns.map((col) => (
+                  <td key={col} className="px-3 py-2 text-gray-700">
+                    {typeof row[col] === "number" ? row[col] : String(row[col] ?? "—")}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+// Top selections with critique titles (from top5_details)
+function TopSelectionsWithTitles({
+  data,
+  critiqueLookup
+}: {
+  data: Record<string, unknown>[];
+  critiqueLookup: CritiqueLookup;
+}) {
+  return (
+    <ol className="space-y-2">
+      {data.map((item, idx) => {
+        const id = String(item.id);
+        const critique = critiqueLookup.get(id);
+        return (
+          <li key={idx} className="flex gap-3 p-3 bg-gray-50 rounded">
+            <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+              {idx + 1}
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="font-medium text-sm text-gray-900">
+                {critique?.title || id}
+              </div>
+              {item.explanation && (
+                <p className="mt-1 text-sm text-gray-600">{String(item.explanation)}</p>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+// Simple top5 list (just IDs)
+function TopSelectionsSimple({
+  ids,
+  critiqueLookup
+}: {
+  ids: string[];
+  critiqueLookup: CritiqueLookup;
+}) {
+  return (
+    <ol className="space-y-2">
+      {ids.map((id, idx) => {
+        const critique = critiqueLookup.get(id);
+        return (
+          <li key={idx} className="flex gap-3 p-3 bg-gray-50 rounded">
+            <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+              {idx + 1}
+            </span>
+            <div className="font-medium text-sm text-gray-900">
+              {critique?.title || id}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
   );
 }
 
@@ -169,7 +401,7 @@ function ExpandableTableRenderer({
                   </td>
                 )}
                 {columns.map((col) => (
-                  <td key={col} className="px-4 py-3 text-sm">
+                  <td key={col} className="px-4 py-3 text-sm text-gray-800">
                     <CellValue value={row[col]} />
                   </td>
                 ))}
@@ -180,10 +412,10 @@ function ExpandableTableRenderer({
                     <div className="space-y-3">
                       {expandableFields.map((field) => (
                         <div key={field}>
-                          <div className="text-xs font-medium text-gray-500 uppercase mb-1">
+                          <div className="text-xs font-medium text-gray-600 uppercase mb-1">
                             {formatColumnName(field)}
                           </div>
-                          <div className="text-sm prose prose-sm max-w-none">
+                          <div className="text-sm prose prose-sm max-w-none text-gray-800">
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                               {String(row[field])}
                             </ReactMarkdown>
@@ -206,9 +438,11 @@ function ExpandableTableRenderer({
 function ExpandableListRenderer({
   data,
   displayHints,
+  critiqueLookup,
 }: {
   data: Record<string, unknown>[];
   displayHints?: { sort_by?: string; sort_order?: string };
+  critiqueLookup?: CritiqueLookup;
 }) {
   const [expandedItems, setExpandedItems] = useState<Set<number>>(new Set());
 
@@ -245,6 +479,7 @@ function ExpandableListRenderer({
           item={item}
           isExpanded={expandedItems.has(idx)}
           onToggle={() => toggleExpand(idx)}
+          critiqueLookup={critiqueLookup}
         />
       ))}
     </div>
@@ -255,13 +490,23 @@ function ExpandableCard({
   item,
   isExpanded,
   onToggle,
+  critiqueLookup,
 }: {
   item: Record<string, unknown>;
   isExpanded: boolean;
   onToggle: () => void;
+  critiqueLookup?: CritiqueLookup;
 }) {
-  // Determine title and summary fields
-  const title = item.title || item.short || item.conversational_title || item.id || "Item";
+  // Determine title - look up from critiqueLookup if we have an id/parentId
+  let title: string;
+  const id = (item.id || item.parentId) as string | undefined;
+
+  if (id && critiqueLookup?.has(id)) {
+    title = critiqueLookup.get(id)!.title;
+  } else {
+    title = (item.title || item.short || item.conversational_title || id || "Item") as string;
+  }
+
   const summary = item.summary as string | undefined;
 
   // Long content fields (shown when expanded)
@@ -289,20 +534,20 @@ function ExpandableCard({
       >
         <div className="flex items-start gap-3">
           {hasExpandableContent && (
-            <span className={`text-gray-400 mt-1 transition-transform ${isExpanded ? "rotate-90" : ""}`}>
+            <span className={`text-gray-500 mt-1 transition-transform ${isExpanded ? "rotate-90" : ""}`}>
               ›
             </span>
           )}
           <div className="flex-1 min-w-0">
-            <h4 className="font-medium text-gray-900">{String(title)}</h4>
+            <h4 className="font-semibold text-gray-900">{String(title)}</h4>
             {summary && (
-              <p className="mt-1 text-sm text-gray-600">{summary}</p>
+              <p className="mt-1 text-sm text-gray-700">{summary}</p>
             )}
             {metaFields.length > 0 && (
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-500">
                 {metaFields.map(([key, value]) => (
                   <span key={key}>
-                    <span className="font-medium">{formatColumnName(key)}:</span>{" "}
+                    <span className="font-medium text-gray-600">{formatColumnName(key)}:</span>{" "}
                     {typeof value === "number" ? value : String(value)}
                   </span>
                 ))}
@@ -316,7 +561,7 @@ function ExpandableCard({
       {isExpanded && expandableContent.length > 0 && (
         <div className="border-t bg-gray-50 p-4">
           {expandableContent.map(({ field, content }) => (
-            <div key={field} className="prose prose-sm max-w-none">
+            <div key={field} className="prose prose-sm max-w-none text-gray-800 [&_h2]:text-base [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-sm [&_h3]:mt-3 [&_h3]:mb-1">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
             </div>
           ))}
@@ -327,7 +572,13 @@ function ExpandableCard({
 }
 
 // Renderer for structured objects (like score step with scores array + top5)
-function StructuredObjectRenderer({ data }: { data: Record<string, unknown> }) {
+function StructuredObjectRenderer({
+  data,
+  critiqueLookup
+}: {
+  data: Record<string, unknown>;
+  critiqueLookup?: CritiqueLookup;
+}) {
   const sections: JSX.Element[] = [];
 
   for (const [key, value] of Object.entries(data)) {
@@ -341,17 +592,19 @@ function StructuredObjectRenderer({ data }: { data: Record<string, unknown> }) {
           </h3>
           {isTableable ? (
             key.includes("top") || key.includes("detail") ? (
-              // Top selections - show as a nice list
-              <TopSelectionsRenderer data={value as Record<string, unknown>[]} />
+              <TopSelectionsWithTitles data={value as Record<string, unknown>[]} critiqueLookup={critiqueLookup || new Map()} />
             ) : (
-              // Scores - show as table
-              <ScoresTableRenderer data={value as Record<string, unknown>[]} />
+              <ScoresTableWithTitles data={value as Record<string, unknown>[]} critiqueLookup={critiqueLookup || new Map()} />
             )
           ) : (
-            <ul className="list-disc list-inside text-sm">
-              {value.map((item, i) => (
-                <li key={i}>{String(item)}</li>
-              ))}
+            <ul className="list-disc list-inside text-sm text-gray-800">
+              {value.map((item, i) => {
+                const itemStr = String(item);
+                const critique = critiqueLookup?.get(itemStr);
+                return (
+                  <li key={i}>{critique?.title || itemStr}</li>
+                );
+              })}
             </ul>
           )}
         </div>
@@ -359,8 +612,8 @@ function StructuredObjectRenderer({ data }: { data: Record<string, unknown> }) {
     } else if (typeof value === "string" || typeof value === "number") {
       sections.push(
         <div key={key} className="mb-4">
-          <span className="text-sm font-medium text-gray-500">{formatColumnName(key)}:</span>{" "}
-          <span className="text-sm">{String(value)}</span>
+          <span className="text-sm font-medium text-gray-600">{formatColumnName(key)}:</span>{" "}
+          <span className="text-sm text-gray-800">{String(value)}</span>
         </div>
       );
     }
@@ -369,72 +622,13 @@ function StructuredObjectRenderer({ data }: { data: Record<string, unknown> }) {
   return <div className="p-4 border rounded">{sections}</div>;
 }
 
-// Compact scores table
-function ScoresTableRenderer({ data }: { data: Record<string, unknown>[] }) {
-  if (data.length === 0) return null;
-
-  const columns = Object.keys(data[0]).filter((k) => k !== "id");
-
-  return (
-    <div className="border rounded overflow-hidden">
-      <table className="w-full text-sm">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-3 py-2 text-left font-medium text-gray-600">ID</th>
-            {columns.map((col) => (
-              <th key={col} className="px-3 py-2 text-left font-medium text-gray-600">
-                {formatColumnName(col)}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody className="divide-y">
-          {data.map((row, idx) => (
-            <tr key={idx} className="hover:bg-gray-50">
-              <td className="px-3 py-2 font-mono text-xs">{String(row.id)}</td>
-              {columns.map((col) => (
-                <td key={col} className="px-3 py-2">
-                  {typeof row[col] === "number" ? row[col] : String(row[col] ?? "—")}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-// Top selections (like top5_details)
-function TopSelectionsRenderer({ data }: { data: Record<string, unknown>[] }) {
-  return (
-    <ol className="space-y-2">
-      {data.map((item, idx) => (
-        <li key={idx} className="flex gap-3 p-3 bg-gray-50 rounded">
-          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-            {idx + 1}
-          </span>
-          <div className="flex-1 min-w-0">
-            <div className="font-medium text-sm">
-              {String(item.id || item.title || `Item ${idx + 1}`)}
-            </div>
-            {item.explanation && (
-              <p className="mt-1 text-sm text-gray-600">{String(item.explanation)}</p>
-            )}
-          </div>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
 function ArrayRenderer({ data }: { data: unknown[] }) {
   return (
     <ul className="p-4 border rounded space-y-2">
       {data.map((item, idx) => (
         <li key={idx} className="flex gap-2">
-          <span className="text-gray-400">{idx + 1}.</span>
-          <span>{typeof item === "object" ? JSON.stringify(item) : String(item)}</span>
+          <span className="text-gray-500">{idx + 1}.</span>
+          <span className="text-gray-800">{typeof item === "object" ? JSON.stringify(item) : String(item)}</span>
         </li>
       ))}
     </ul>
@@ -455,6 +649,15 @@ function CellValue({ value }: { value: unknown }) {
     return <InlineMarkdown content={str} />;
   }
   return <span>{str}</span>;
+}
+
+// Inline markdown for shorter text
+function InlineMarkdown({ content }: { content: string }) {
+  return (
+    <span className="prose prose-sm max-w-none [&>p]:inline [&>p]:m-0 text-gray-800">
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+    </span>
+  );
 }
 
 function formatColumnName(name: string): string {
