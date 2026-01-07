@@ -589,7 +589,7 @@ function ExpandableCard({
       >
         <div className="flex items-start gap-3">
           {hasExpandableContent && (
-            <span className={`text-gray-500 text-lg leading-none transition-transform ${isExpanded ? "rotate-90" : ""}`}>
+            <span className={`text-gray-500 text-lg leading-none mt-px transition-transform ${isExpanded ? "rotate-90" : ""}`}>
               ›
             </span>
           )}

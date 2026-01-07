@@ -31,22 +31,27 @@ export default async function RunDetailPage({ params }: Props) {
         </Link>
       </div>
 
-      <header className="flex items-start justify-between">
-        <div>
-          {/* Primary: Show the main input (e.g., paper title) */}
-          <h1 className="text-2xl font-bold mb-1">
+      <header className="flex items-center justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-xl font-bold truncate">
             {getRunTitle(run.inputs) || chain?.meta.name || run.chainId}
           </h1>
-          {/* Secondary: Chain name (only if we have a specific run title) */}
-          {getRunTitle(run.inputs) && (
-            <p className="text-sm text-gray-600 mb-1">
-              {chain?.meta.name || run.chainId}
-            </p>
-          )}
-          <p className="text-xs text-gray-400 font-mono">{run.id}</p>
-          <p className="text-xs text-gray-400">
-            Started {new Date(run.startedAt).toLocaleString()}
-          </p>
+          <div className="flex items-center gap-3 text-sm text-gray-500 mt-0.5">
+            {getRunTitle(run.inputs) && (
+              <span>{chain?.meta.name || run.chainId}</span>
+            )}
+            <span>{formatDateTime(run.startedAt)}</span>
+            {getInputUrl(run.inputs) && (
+              <a
+                href={getInputUrl(run.inputs)!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                View source
+              </a>
+            )}
+          </div>
         </div>
         <StatusBadge status={run.status} />
       </header>
@@ -80,9 +85,8 @@ function StatusBadge({ status }: { status: string }) {
 
 // Extract a human-readable title from run inputs
 function getRunTitle(inputs: Record<string, unknown>): string | null {
-  // Common field names for the primary subject of a run
+  // Check explicit title fields first
   const titleFields = ["title", "paper_title", "name", "subject", "topic"];
-
   for (const field of titleFields) {
     const value = inputs[field];
     if (typeof value === "string" && value.trim()) {
@@ -90,5 +94,42 @@ function getRunTitle(inputs: Record<string, unknown>): string | null {
     }
   }
 
+  // Try to extract title from markdown content (look for first H1)
+  const contentFields = ["paper", "content", "text", "markdown"];
+  for (const field of contentFields) {
+    const value = inputs[field];
+    if (typeof value === "string") {
+      // Match # Title at start of line
+      const match = value.match(/^#\s+(.+?)(?:\n|$)/m);
+      if (match) {
+        return match[1].trim();
+      }
+    }
+  }
+
   return null;
+}
+
+// Extract URL from inputs if available
+function getInputUrl(inputs: Record<string, unknown>): string | null {
+  const urlFields = ["url", "source_url", "paper_url", "link"];
+  for (const field of urlFields) {
+    const value = inputs[field];
+    if (typeof value === "string" && value.startsWith("http")) {
+      return value;
+    }
+  }
+  return null;
+}
+
+// Format datetime in a compact, readable way
+function formatDateTime(isoString: string): string {
+  const date = new Date(isoString);
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }
