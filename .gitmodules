@@ -19,6 +19,6 @@
 [submodule "skills/transcribe-audio"]
 	path = skills/transcribe-audio
 	url = https://github.com/HartreeWorks/skill--transcribe-audio
-[submodule "skills/forum-digest"]
-	path = skills/forum-digest
-	url = https://github.com/HartreeWorks/claude-skill--forum-digest
+[submodule "skills/lesswrong-and-ea-forum"]
+	path = skills/lesswrong-and-ea-forum
+	url = https://github.com/HartreeWorks/claude-skill--lesswrong-and-ea-forum.git
