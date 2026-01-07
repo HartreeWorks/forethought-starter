@@ -1,0 +1,42 @@
+{
+  "publications": {
+    "pub-001": {
+      "title": "Space debris and launch denial",
+      "type": "paper",
+      "doc_url": "local:/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/papers/space-debris-and-launch-denial.md",
+      "created": "2026-01-07T11:34:09.785110",
+      "stage": "0",
+      "completed": [
+        "0.setup",
+        "0.type",
+        "decisions.podcast",
+        "decisions.lw_forum",
+        "decisions.content",
+        "decisions.titles",
+        "decisions.links",
+        "1b.abstract",
+        "2b.adversarial",
+        "0.deadline",
+        "1a.max_review",
+        "1a.collaborators",
+        "1a.external",
+        "1a.justis_early",
+        "1a.fact_check",
+        "1a.finalise"
+      ],
+      "skipped": [],
+      "decisions": {
+        "podcast": "yes_same_day",
+        "lw_forum": "both",
+        "forum_content": "custom_summary",
+        "forum_title": "question_style",
+        "link_strategy": "social_substack_website"
+      },
+      "generated": {
+        "abstract": "Could space debris lock humanity out of the cosmos? As launch rates accelerate, runaway Kessler syndrome looks increasingly plausible \u2014 but even severe debris buildup is unlikely to block transit through orbit to outer space. The real concern is deliberate dispersal: a bad actor could seed tens of thousands of tons of optimised debris to raise launch costs dramatically. Yet shielding scales favourably, inspection regimes are feasible, and sealing the sky remains hard to do quickly or covertly. Access to orbit is more resilient than it might seem.",
+        "adversarial_check": "FLAGGED PASSAGES:\n\n1. \"Rogue state\" language (line 210): \"But it could remain a concern for an isolated rogue state like DPRK.\" \u2014 Risk: Could seem like singling out countries.\n\n2. \"Seize outer space\" framing (lines 214-221): Discussion of locking in exclusive access to outer space \u2014 Risk: Out of context, could sound like a how-to guide.\n\n3. Cost estimates (line 166): \"$60bn... $1.8 billion\" calculations \u2014 Risk: Could be quoted as \"Forethought calculated how cheaply you could seal off space.\"\n\n4. \"Surprisingly affordable\" (line 166) \u2014 Risk: Could sound like endorsing feasibility of hostile acts.\n\nOVERALL: Moderate risk. Paper is clearly analytical. Cost calculations most quotable but essential to argument.\n"
+      }
+    }
+  },
+  "active": "pub-001"
+}
