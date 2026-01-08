@@ -1,7 +1,7 @@
 import { getChains } from "@/lib/chains";
 import { getRecentRuns } from "@/lib/persistence";
 import Link from "next/link";
-import { StatusBadge } from "@/components/StatusBadge";
+import { RunListItem } from "@/components/RunListItem";
 
 export const dynamic = "force-dynamic";
 
@@ -46,20 +46,14 @@ export default async function Dashboard() {
         ) : (
           <div className="space-y-2">
             {recentRuns.map((run) => (
-              <Link
+              <RunListItem
                 key={run.id}
-                href={`/runs/${run.id}`}
-                className="flex items-center justify-between p-3 border rounded hover:border-blue-500 transition-colors"
-              >
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="font-medium text-gray-900">{run.chainId}</span>
-                  <span className="text-gray-300">·</span>
-                  <span className="text-gray-500">
-                    {formatDateTime(run.startedAt)}
-                  </span>
-                </div>
-                <StatusBadge status={run.status} />
-              </Link>
+                runId={run.id}
+                chainId={run.chainId}
+                title={run.chainId}
+                dateTime={formatDateTime(run.startedAt)}
+                status={run.status}
+              />
             ))}
           </div>
         )}

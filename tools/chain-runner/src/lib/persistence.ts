@@ -398,6 +398,35 @@ export async function getChainRuns(
   }
 }
 
+// Delete a run by ID
+export async function deleteRun(runId: string): Promise<boolean> {
+  const runsDir = getRunsDir();
+
+  try {
+    const chainDirs = await fs.readdir(runsDir, { withFileTypes: true });
+
+    for (const chainDir of chainDirs) {
+      if (!chainDir.isDirectory()) continue;
+
+      const runPath = path.join(runsDir, chainDir.name, runId);
+      try {
+        await fs.access(runPath);
+        // Run directory exists, delete it
+        await fs.rm(runPath, { recursive: true, force: true });
+        return true;
+      } catch {
+        // Run not in this chain directory
+        continue;
+      }
+    }
+
+    return false; // Run not found
+  } catch (error) {
+    console.error("Error deleting run:", error);
+    return false;
+  }
+}
+
 // Format inputs as markdown
 function formatInputsAsMarkdown(inputs: Record<string, unknown>): string {
   const lines = ["# Run Inputs\n"];

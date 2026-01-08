@@ -1,11 +1,10 @@
 import { getChain, getPromptTemplate } from "@/lib/chains";
 import { getChainRuns } from "@/lib/persistence";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { ChainInputForm } from "@/components/ChainInputForm";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { StatusBadge } from "@/components/StatusBadge";
 import { StepViewer } from "@/components/StepViewer";
+import { RunListItem } from "@/components/RunListItem";
 
 export const dynamic = "force-dynamic";
 
@@ -63,20 +62,14 @@ export default async function ChainDetailPage({ params }: Props) {
             ) : (
               <div className="space-y-2">
                 {runs.map((run) => (
-                  <Link
+                  <RunListItem
                     key={run.id}
-                    href={`/runs/${run.id}`}
-                    className="flex items-center justify-between p-3 border rounded hover:border-blue-500 transition-colors"
-                  >
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="text-gray-900">{extractRunTitle(run) || run.id}</span>
-                      <span className="text-gray-300">·</span>
-                      <span className="text-gray-500">
-                        {formatDateTime(run.startedAt)}
-                      </span>
-                    </div>
-                    <StatusBadge status={run.status} />
-                  </Link>
+                    runId={run.id}
+                    chainId={run.chainId}
+                    title={extractRunTitle(run) || run.id}
+                    dateTime={formatDateTime(run.startedAt)}
+                    status={run.status}
+                  />
                 ))}
               </div>
             )}

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { RunViewer } from "@/components/RunViewer";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { StatusBadge } from "@/components/StatusBadge";
+import { DeleteRunButton } from "@/components/DeleteRunButton";
 
 export const dynamic = "force-dynamic";
 
@@ -58,7 +59,10 @@ export default async function RunDetailPage({ params }: Props) {
             )}
           </div>
         </div>
-        <StatusBadge status={run.status} size="md" />
+        <div className="flex items-center gap-3">
+          <StatusBadge status={run.status} size="md" />
+          <DeleteRunButton runId={run.id} chainId={run.chainId} />
+        </div>
       </header>
 
       <RunViewer
