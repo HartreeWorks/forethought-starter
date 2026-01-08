@@ -15,7 +15,7 @@ interface Props {
 
 export function RunListItem({ runId, chainId, title, dateTime, status, showDelete = true }: Props) {
   return (
-    <div className="flex items-center justify-between p-3 border rounded hover:border-blue-500 transition-colors group">
+    <div className="flex items-center justify-between p-3 border rounded hover:border-blue-500 transition-colors">
       <Link
         href={`/runs/${runId}`}
         className="flex-1 min-w-0 flex items-center gap-2 text-sm"
@@ -27,9 +27,7 @@ export function RunListItem({ runId, chainId, title, dateTime, status, showDelet
       <div className="flex items-center gap-2 ml-2">
         <StatusBadge status={status} />
         {showDelete && (
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-            <DeleteRunButton runId={runId} chainId={chainId} variant="icon" />
-          </div>
+          <DeleteRunButton runId={runId} chainId={chainId} variant="icon" />
         )}
       </div>
     </div>
