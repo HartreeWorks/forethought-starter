@@ -10,10 +10,12 @@ Guide researchers through the full publication process — from draft to publish
 ## Quick start
 
 **New publication:**
-1. Ask for publication title, document source (Google Doc URL or local markdown path), and type
-2. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL or path"`
-3. Ingest the document (see Document ingestion section below)
-4. Present Stage 0 steps
+1. Extract the doc ID from the URL (the part after `/d/` and before `/edit`)
+2. Get document metadata (title) using `get_drive_file_permissions` — this is lightweight (~500 bytes)
+3. Ask user to confirm title and specify type (paper/research note/blog post)
+4. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL"`
+5. Spawn sub-agent to ingest full document (can run in background)
+6. Present Stage 0 steps — you can proceed while ingestion runs
 
 **Resume existing:**
 1. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py status`
@@ -26,7 +28,25 @@ python .claude/skills/forethought-publish/scripts/publication_manager.py active
 
 ## Document ingestion
 
-To avoid filling context with large documents, use a sub-agent for Google Docs ingestion.
+**⚠️ CRITICAL: Never call `get_doc_content` or `get_drive_file_content` directly from the main conversation.** These documents can be 15,000+ tokens. Use `get_drive_file_permissions` to get the title (lightweight), then use the sub-agent pattern below for full content.
+
+### Getting document metadata (lightweight)
+
+To get the document title without loading full content:
+
+```
+mcp__google_workspace__get_drive_file_permissions
+  user_google_email: pete.hartree@gmail.com
+  file_id: {doc_id}
+```
+
+Returns title, size, sharing status (~500 bytes vs 15,000+ tokens for full content). Use this to set up the publication before ingesting.
+
+### Ingesting full content
+
+Use a sub-agent to fetch and store the document. The full content stays in the sub-agent's context (discarded after), keeping the main conversation lean.
+
+**⚠️ CRITICAL: Use absolute paths when spawning sub-agents.** Sub-agents don't inherit the working directory, so relative paths like `.claude/skills/...` will fail. Always substitute `{PROJECT_ROOT}` with the actual project path (e.g. `/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift`).
 
 **For Google Docs:**
 
@@ -41,18 +61,16 @@ Task tool:
     2. Fetch content: use mcp__google_workspace__get_doc_content with:
        - file_id: {doc_id}
        - user_google_email: pete.hartree@gmail.com
-    3. Create directory: .claude/skills/forethought-publish/docs/{pub_id}/
-    4. Write content to: .claude/skills/forethought-publish/docs/{pub_id}/source.md
-    5. Run: python .claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}
+    3. Create directory: {PROJECT_ROOT}/.claude/skills/forethought-publish/docs/{pub_id}/
+    4. Write content to: {PROJECT_ROOT}/.claude/skills/forethought-publish/docs/{pub_id}/source.md
+    5. Run: python {PROJECT_ROOT}/.claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}
     6. Return ONLY the manifest JSON output (not the document content)
 ```
 
-The full document stays in the sub-agent's context (discarded after), keeping the main conversation lean.
-
 **For local markdown files:**
 
-1. Read the file and write to `.claude/skills/forethought-publish/docs/{pub_id}/source.md`
-2. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}`
+1. Read the file and write to `{PROJECT_ROOT}/.claude/skills/forethought-publish/docs/{pub_id}/source.md`
+2. Run: `python {PROJECT_ROOT}/.claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}`
 
 **Refreshing a document:**
 
@@ -182,7 +200,7 @@ echo "content" | python .claude/skills/forethought-publish/scripts/publication_m
 
 **Before generating any content**, read the style guide and relevant examples:
 ```
-/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/writing-style-examples/
+{PROJECT_ROOT}/assets/writing-style-examples/
 ├── style-guide.md          # Comprehensive instructions for each content type
 ├── abstracts/              # 10 example abstracts
 ├── substack/               # 7 example Substack posts
@@ -296,8 +314,8 @@ When a step involves messaging someone:
 
 4. **Send using the Slack skill:**
    ```bash
-   SCRIPT=~/.claude/skills/slack/scripts/slack_client.py
-   python3 $SCRIPT send "CHANNEL_ID" "Message content"
+   # Use {PROJECT_ROOT} - the absolute path to the project directory
+   python3 {PROJECT_ROOT}/.claude/skills/slack/scripts/slack_client.py send "CHANNEL_ID" "Message content"
    ```
 
 ### Key Slack channels
@@ -394,7 +412,7 @@ python .claude/skills/forethought-publish/scripts/publication_manager.py archive
 ## Additional resources
 
 ### Style examples (for content generation)
-Located at `/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/writing-style-examples/`:
+Located at `{PROJECT_ROOT}/assets/writing-style-examples/`:
 - **`style-guide.md`** — Comprehensive writing guide derived from real examples
 - **`abstracts/`** — 10 example abstracts from forethought.org/research
 - **`substack/`** — 7 example posts from newsletter.forethought.org
