@@ -63,7 +63,7 @@ export function ChainInputForm({ chain }: Props) {
             name="input"
             value={inputs.input || ""}
             onChange={(e) => setInputs({ ...inputs, input: e.target.value })}
-            className="w-full p-3 border rounded font-mono text-sm min-h-[200px]"
+            className="w-full p-3 border rounded bg-white font-mono text-sm min-h-[200px]"
             placeholder="Enter your input here..."
           />
         </div>
@@ -104,7 +104,7 @@ export function ChainInputForm({ chain }: Props) {
               onChange={(e) =>
                 setInputs({ ...inputs, [input.id]: e.target.value })
               }
-              className="w-full p-3 border rounded font-mono text-sm min-h-[150px]"
+              className="w-full p-3 border rounded bg-white font-mono text-sm min-h-[150px]"
               placeholder={input.placeholder}
               required={input.required}
             />
@@ -115,7 +115,7 @@ export function ChainInputForm({ chain }: Props) {
               {input.options.map((option) => (
                 <label
                   key={option.id}
-                  className="flex items-center gap-2 p-2 border rounded hover:bg-gray-50 cursor-pointer"
+                  className="flex items-center gap-2 p-2 border rounded bg-white hover:bg-gray-50 cursor-pointer"
                 >
                   <input
                     type={input.multiple ? "checkbox" : "radio"}
@@ -155,7 +155,7 @@ export function ChainInputForm({ chain }: Props) {
               onChange={(e) =>
                 setInputs({ ...inputs, [input.id]: e.target.value })
               }
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-white"
               placeholder={input.placeholder}
               required={input.required}
             />
@@ -187,7 +187,7 @@ export function ChainInputForm({ chain }: Props) {
               onChange={(e) =>
                 setInputs({ ...inputs, [input.id]: e.target.value })
               }
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-white"
               placeholder={input.placeholder || "https://..."}
               required={input.required}
             />

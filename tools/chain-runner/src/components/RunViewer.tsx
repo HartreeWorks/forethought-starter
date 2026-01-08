@@ -130,7 +130,7 @@ export function RunViewer({ runId, chainId, initialRun, steps }: Props) {
                 className={`w-full flex items-center gap-3 p-3 border rounded text-left transition-colors ${
                   isSelected
                     ? "border-blue-500 bg-blue-50"
-                    : "hover:border-gray-300"
+                    : "bg-white hover:border-gray-300"
                 }`}
               >
                 <StepIndicator
@@ -173,7 +173,7 @@ export function RunViewer({ runId, chainId, initialRun, steps }: Props) {
             allSteps={run.steps}
           />
         ) : (
-          <div className="p-8 border rounded text-center text-gray-500">
+          <div className="p-8 border rounded bg-white text-center text-gray-500">
             Select a step to view its output
           </div>
         )}

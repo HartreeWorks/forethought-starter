@@ -24,7 +24,7 @@ export default async function Dashboard() {
               <Link
                 key={chain.meta.id}
                 href={`/chains/${chain.meta.id}`}
-                className="block p-4 border rounded-lg hover:border-blue-500 hover:shadow-sm transition-all"
+                className="block p-4 border rounded-lg bg-white hover:border-blue-500 hover:shadow-sm transition-all"
               >
                 <h2 className="font-semibold mb-1">{chain.meta.name}</h2>
                 <p className="text-sm text-gray-600 mb-2">

@@ -15,7 +15,7 @@ interface Props {
 
 export function RunListItem({ runId, chainId, title, dateTime, status, showDelete = true }: Props) {
   return (
-    <div className="flex items-center justify-between p-3 border rounded hover:border-blue-500 transition-colors">
+    <div className="flex items-center justify-between p-3 border rounded bg-white hover:border-blue-500 transition-colors">
       <Link
         href={`/runs/${runId}`}
         className="flex-1 min-w-0 flex items-center gap-2 text-sm"

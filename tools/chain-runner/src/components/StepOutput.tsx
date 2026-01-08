@@ -17,7 +17,7 @@ interface Props {
 export function StepOutput({ step, stepState, allSteps }: Props) {
   if (!stepState) {
     return (
-      <div className="p-8 border rounded text-center text-gray-500">
+      <div className="p-8 border rounded bg-white text-center text-gray-500">
         Step not yet started
       </div>
     );
@@ -25,7 +25,7 @@ export function StepOutput({ step, stepState, allSteps }: Props) {
 
   if (stepState.status === "running") {
     return (
-      <div className="p-8 border rounded text-center">
+      <div className="p-8 border rounded bg-white text-center">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mb-4"></div>
         <p className="text-gray-600">Running {step.name}...</p>
       </div>
@@ -146,7 +146,7 @@ function hasTableableItems(arr: unknown[]): boolean {
 // Prose/markdown renderer
 function ProseRenderer({ content }: { content: string }) {
   return (
-    <div className="prose prose-sm max-w-none p-4 border rounded [&_h2]:text-base [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-sm [&_h3]:mt-3 [&_h3]:mb-1">
+    <div className="prose prose-sm max-w-none p-4 border rounded bg-white [&_h2]:text-base [&_h2]:mt-4 [&_h2]:mb-2 [&_h3]:text-sm [&_h3]:mt-3 [&_h3]:mb-1">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
     </div>
   );
@@ -171,7 +171,7 @@ function BrainstormCard({ item }: { item: Record<string, unknown> }) {
   const risk = item.risk as number | undefined;
 
   return (
-    <div className="border rounded p-4">
+    <div className="border rounded p-4 bg-white">
       {/* Header with title and category pill */}
       <div className="flex items-start justify-between gap-3 mb-2">
         <h4 className="font-semibold text-gray-900">{title}</h4>
@@ -215,7 +215,7 @@ function ScoreStepRenderer({
   const top5Details = data.top5_details as Record<string, unknown>[] | undefined;
 
   return (
-    <div className="p-4 border rounded space-y-6">
+    <div className="p-4 border rounded bg-white space-y-6">
       {/* Scores table */}
       {scores && scores.length > 0 && (
         <div>
@@ -302,12 +302,12 @@ function ScoresTableWithTitles({
   };
 
   return (
-    <div className="border rounded overflow-hidden">
+    <div className="border rounded overflow-hidden bg-white">
       <table className="w-full text-sm">
-        <thead className="bg-gray-50">
-          <tr>
+        <thead>
+          <tr className="border-b">
             <th
-              className="px-3 py-2 text-left font-medium text-gray-700 cursor-pointer hover:bg-gray-100 select-none"
+              className="px-3 py-2 text-left font-medium text-gray-700 cursor-pointer hover:bg-gray-50 select-none"
               onClick={() => handleSort("_title")}
             >
               Critique <SortIndicator col="_title" />
@@ -315,7 +315,7 @@ function ScoresTableWithTitles({
             {columns.map((col) => (
               <th
                 key={col}
-                className="px-3 py-2 text-left font-medium text-gray-700 cursor-pointer hover:bg-gray-100 select-none"
+                className="px-3 py-2 text-left font-medium text-gray-700 cursor-pointer hover:bg-gray-50 select-none"
                 onClick={() => handleSort(col)}
               >
                 {formatColumnName(col)} <SortIndicator col={col} />
@@ -328,7 +328,7 @@ function ScoresTableWithTitles({
             const id = String(row.id);
             const critique = critiqueLookup.get(id);
             return (
-              <tr key={idx} className="hover:bg-gray-50">
+              <tr key={idx} className="bg-white hover:bg-gray-50">
                 <td className="px-3 py-2">
                   <span className="text-gray-900">{critique?.title || id}</span>
                 </td>
@@ -417,7 +417,7 @@ function ExpandableTableRenderer({
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
 
   if (data.length === 0) {
-    return <div className="p-4 border rounded text-gray-500">No data</div>;
+    return <div className="p-4 border rounded bg-white text-gray-500">No data</div>;
   }
 
   // Get columns from hints or infer from first item
@@ -452,10 +452,10 @@ function ExpandableTableRenderer({
   }
 
   return (
-    <div className="border rounded overflow-hidden">
+    <div className="border rounded overflow-hidden bg-white">
       <table className="w-full">
-        <thead className="bg-gray-50">
-          <tr>
+        <thead>
+          <tr className="border-b">
             {expandableFields.length > 0 && <th className="w-8"></th>}
             {columns.map((col) => (
               <th
@@ -473,7 +473,7 @@ function ExpandableTableRenderer({
               <tr
                 key={idx}
                 onClick={() => expandableFields.length > 0 && setExpandedRow(expandedRow === idx ? null : idx)}
-                className={`${expandableFields.length > 0 ? "cursor-pointer" : ""} hover:bg-gray-50`}
+                className={`${expandableFields.length > 0 ? "cursor-pointer" : ""} bg-white hover:bg-gray-50`}
               >
                 {expandableFields.length > 0 && (
                   <td className="px-2 py-3 text-gray-400">
@@ -613,7 +613,7 @@ function ExpandableCard({
   const hasExpandableContent = expandableContent.length > 0;
 
   return (
-    <div className="border rounded overflow-hidden">
+    <div className="border rounded overflow-hidden bg-white">
       {/* Header - always visible */}
       <div
         onClick={hasExpandableContent ? onToggle : undefined}
@@ -706,12 +706,12 @@ function StructuredObjectRenderer({
     }
   }
 
-  return <div className="p-4 border rounded">{sections}</div>;
+  return <div className="p-4 border rounded bg-white">{sections}</div>;
 }
 
 function ArrayRenderer({ data }: { data: unknown[] }) {
   return (
-    <ul className="p-4 border rounded space-y-2">
+    <ul className="p-4 border rounded bg-white space-y-2">
       {data.map((item, idx) => (
         <li key={idx} className="flex gap-2">
           <span className="text-gray-500">{idx + 1}.</span>

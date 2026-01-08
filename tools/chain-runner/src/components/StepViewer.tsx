@@ -21,7 +21,7 @@ export function StepViewer({ steps, defaultModel }: Props) {
         const isExpanded = expandedStep === step.id;
 
         return (
-          <div key={step.id} className="border rounded overflow-hidden">
+          <div key={step.id} className="border rounded overflow-hidden bg-white">
             {/* Step header - always visible */}
             <button
               onClick={() => setExpandedStep(isExpanded ? null : step.id)}
