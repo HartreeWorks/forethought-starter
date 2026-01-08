@@ -13,11 +13,15 @@ Commands:
     resume      Set active publication
     active      Show active publication
     archive     Archive a completed publication
+    ingest      Ingest document content and generate manifest
+    refresh     Re-ingest document from source
 """
 
 import argparse
 import json
 import os
+import re
+import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -25,6 +29,7 @@ from pathlib import Path
 # State file location (same directory as script's parent)
 SCRIPT_DIR = Path(__file__).parent.parent
 STATE_FILE = SCRIPT_DIR / "state.json"
+DOCS_DIR = SCRIPT_DIR / "docs"
 
 # Publication types
 TYPES = ["blog_post", "research_note", "paper"]
@@ -35,7 +40,7 @@ BLOG_POST_STEPS = [
     {"id": "0.type", "name": "Decide publication type", "required": True},
     {"id": "review.max", "name": "Send to Max for review & signoff", "required": False},
     {"id": "review.revise", "name": "Revise based on comments", "required": False},
-    {"id": "prep.spellcheck", "name": "Run spellcheck", "required": False},
+    {"id": "prep.proofread", "name": "Proofread with /proofread skill", "required": False},
     {"id": "prep.social", "name": "Draft social media thread (optional)", "required": False},
     {"id": "prep.lw_forum", "name": "Decide LW/Forum version (optional)", "required": False},
     {"id": "prep.diagrams", "name": "Finalise diagrams", "required": False},
@@ -81,7 +86,7 @@ PAPER_STEPS = [
     # Stage 2: Final checks
     {"id": "2a.max_signoff", "name": "Get Max final signoff", "required": True},
     {"id": "2a.will_tom_signoff", "name": "Get Will/Tom signoff (Papers only)", "required": False},
-    {"id": "2b.spellcheck", "name": "Run spellcheck", "required": True},
+    {"id": "2b.proofread", "name": "Proofread with /proofread skill", "required": True},
     {"id": "2b.justis_proofread", "name": "Send to Justis for proofread", "required": False},
     {"id": "2b.adversarial", "name": "Check adversarial quoting with LLM", "required": False},
     # Stage 2c: Pass to contractors
@@ -413,6 +418,159 @@ def cmd_archive(args):
     print(f"Archived: {pub_id}")
 
 
+def parse_markdown_sections(content: str) -> list:
+    """Parse markdown content into sections based on headings.
+
+    Detects:
+    - Markdown headings: # Heading, ## Subheading, etc.
+    - Numbered headings: 1. Introduction, 2.1. Background, etc.
+    """
+    lines = content.split("\n")
+    sections = []
+    current_section = None
+
+    # Markdown heading pattern: # Heading
+    md_heading_pattern = re.compile(r"^(#{1,6})\s+(.+)$")
+    # Numbered heading pattern: 1. Title, 2.1. Title, 3.2.1. Title, etc.
+    # Must be at start of line, followed by a title (not just a list item)
+    numbered_heading_pattern = re.compile(r"^(\d+(?:\.\d+)*)\.\s+([A-Z].{2,})$")
+
+    def get_numbered_level(num_str: str) -> int:
+        """Convert '2.1' to level 2, '3.2.1' to level 3, etc."""
+        return num_str.count(".") + 1
+
+    for i, line in enumerate(lines):
+        heading = None
+        level = None
+
+        # Try markdown heading first
+        md_match = md_heading_pattern.match(line)
+        if md_match:
+            level = len(md_match.group(1))
+            heading = md_match.group(2).strip()
+        else:
+            # Try numbered heading
+            num_match = numbered_heading_pattern.match(line)
+            if num_match:
+                level = get_numbered_level(num_match.group(1))
+                heading = f"{num_match.group(1)}. {num_match.group(2).strip()}"
+
+        if heading:
+            # Save previous section if exists
+            if current_section is not None:
+                current_section["end_line"] = i
+                current_section["chars"] = sum(
+                    len(lines[j]) + 1 for j in range(current_section["start_line"] - 1, i)
+                )
+                sections.append(current_section)
+
+            # Start new section
+            current_section = {
+                "heading": heading,
+                "level": level,
+                "start_line": i + 1,  # 1-indexed for Read tool
+            }
+
+    # Handle last section
+    if current_section is not None:
+        current_section["end_line"] = len(lines)
+        current_section["chars"] = sum(
+            len(lines[j]) + 1 for j in range(current_section["start_line"] - 1, len(lines))
+        )
+        sections.append(current_section)
+
+    # If no headings found, treat entire document as one section
+    if not sections:
+        sections.append({
+            "heading": "(document)",
+            "level": 0,
+            "start_line": 1,
+            "end_line": len(lines),
+            "chars": len(content),
+        })
+
+    return sections
+
+
+def cmd_generate_manifest(args):
+    """Generate manifest from existing markdown file."""
+    state = load_state()
+    pub_id = args.id or state.get("active")
+
+    if not pub_id:
+        print("No publication specified and no active publication.")
+        sys.exit(1)
+
+    pub = state.get("publications", {}).get(pub_id)
+    if not pub:
+        print(f"Publication '{pub_id}' not found.")
+        sys.exit(1)
+
+    # Check for source file
+    doc_dir = DOCS_DIR / pub_id
+    source_file = doc_dir / "source.md"
+
+    if not source_file.exists():
+        print(f"Error: Source file not found: {source_file}")
+        print(f"Write the document content to this path first.")
+        sys.exit(1)
+
+    # Read and parse the document
+    content = source_file.read_text(encoding="utf-8")
+    sections = parse_markdown_sections(content)
+
+    # Create manifest
+    manifest = {
+        "source_url": pub.get("doc_url", ""),
+        "ingested_at": datetime.now().isoformat(),
+        "total_chars": len(content),
+        "total_lines": content.count("\n") + 1,
+        "sections": sections,
+    }
+
+    # Write manifest
+    manifest_file = doc_dir / "manifest.json"
+    with open(manifest_file, "w") as f:
+        json.dump(manifest, f, indent=2)
+
+    # Update state with document info
+    pub["document"] = {
+        "path": str(source_file.relative_to(SCRIPT_DIR)),
+        "manifest_path": str(manifest_file.relative_to(SCRIPT_DIR)),
+        "ingested_at": manifest["ingested_at"],
+    }
+    save_state(state)
+
+    # Output manifest for sub-agent to return
+    print(json.dumps(manifest, indent=2))
+
+
+def cmd_refresh(args):
+    """Re-ingest document from source (for use after source document is updated)."""
+    state = load_state()
+    pub_id = args.id or state.get("active")
+
+    if not pub_id:
+        print("No publication specified and no active publication.")
+        sys.exit(1)
+
+    pub = state.get("publications", {}).get(pub_id)
+    if not pub:
+        print(f"Publication '{pub_id}' not found.")
+        sys.exit(1)
+
+    doc_url = pub.get("doc_url", "")
+    if not doc_url:
+        print("No document URL stored for this publication.")
+        sys.exit(1)
+
+    # Just output instructions - actual refresh requires Claude to fetch again
+    print(f"To refresh document for {pub_id}:")
+    print(f"1. Fetch document from: {doc_url}")
+    print(f"2. Write to: {DOCS_DIR / pub_id / 'source.md'}")
+    print(f"3. Run: python publication_manager.py generate-manifest --id {pub_id}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Publication workflow manager")
     subparsers = parser.add_subparsers(dest="command", help="Commands")
@@ -459,6 +617,14 @@ def main():
     p_archive = subparsers.add_parser("archive", help="Archive a publication")
     p_archive.add_argument("--id", "-i", help="Publication ID (default: active)")
 
+    # generate-manifest
+    p_manifest = subparsers.add_parser("generate-manifest", help="Generate manifest from source.md")
+    p_manifest.add_argument("--id", "-i", help="Publication ID (default: active)")
+
+    # refresh
+    p_refresh = subparsers.add_parser("refresh", help="Show instructions to refresh document")
+    p_refresh.add_argument("--id", "-i", help="Publication ID (default: active)")
+
     args = parser.parse_args()
 
     if not args.command:
@@ -476,6 +642,8 @@ def main():
         "resume": cmd_resume,
         "active": cmd_active,
         "archive": cmd_archive,
+        "generate-manifest": cmd_generate_manifest,
+        "refresh": cmd_refresh,
     }
 
     commands[args.command](args)

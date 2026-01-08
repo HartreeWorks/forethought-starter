@@ -173,8 +173,9 @@ Contact Amrit if access issues.
 
 ## Stage 2b: Proofread/spellcheck
 
-### Spellcheck
-- At minimum: Google Docs spellcheck
+### Proofread
+- Invoke `/proofread` with the ingested markdown file (`docs/{pub_id}/source.md`)
+- Choose engine (spellcheck or LLM) and level based on needs
 - Can skip if Justis proofreads
 
 ### Send to Justis for proofread

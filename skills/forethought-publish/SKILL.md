@@ -10,17 +10,88 @@ Guide researchers through the full publication process — from draft to publish
 ## Quick start
 
 **New publication:**
-1. Ask for publication title, Google Doc URL, and type
-2. Run: `python scripts/publication_manager.py new --title "Title" --type paper --doc "URL"`
-3. Present Stage 0 steps
+1. Ask for publication title, document source (Google Doc URL or local markdown path), and type
+2. Run: `python ~/.claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL or path"`
+3. Ingest the document (see Document ingestion section below)
+4. Present Stage 0 steps
 
 **Resume existing:**
-1. Run: `python scripts/publication_manager.py status`
+1. Run: `python ~/.claude/skills/forethought-publish/scripts/publication_manager.py status`
 2. Show current progress and next step
 
 **Check active publication:**
 ```bash
-python scripts/publication_manager.py active
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py active
+```
+
+## Document ingestion
+
+To avoid filling context with large documents, use a sub-agent for Google Docs ingestion.
+
+**For Google Docs:**
+
+Spawn a haiku sub-agent to fetch and store the document:
+```
+Task tool:
+  subagent_type: "general-purpose"
+  model: "haiku"
+  prompt: |
+    Ingest Google Doc for publication {pub_id}:
+    1. Extract doc ID from URL (the part after /d/ and before /edit)
+    2. Fetch content: use mcp__google_workspace__get_doc_content with:
+       - file_id: {doc_id}
+       - user_google_email: pete.hartree@gmail.com
+    3. Create directory: ~/.claude/skills/forethought-publish/docs/{pub_id}/
+    4. Write content to: ~/.claude/skills/forethought-publish/docs/{pub_id}/source.md
+    5. Run: python ~/.claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}
+    6. Return ONLY the manifest JSON output (not the document content)
+```
+
+The full document stays in the sub-agent's context (discarded after), keeping the main conversation lean.
+
+**For local markdown files:**
+
+1. Read the file and write to `~/.claude/skills/forethought-publish/docs/{pub_id}/source.md`
+2. Run: `python ~/.claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}`
+
+**Refreshing a document:**
+
+If the source document has been edited:
+```bash
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py refresh --id {pub_id}
+```
+This shows instructions for re-ingesting. Use the same sub-agent pattern as above.
+
+## Working with ingested documents
+
+The manifest at `docs/{pub_id}/manifest.json` contains section info:
+```json
+{
+  "total_chars": 85000,
+  "total_lines": 1200,
+  "sections": [
+    {"heading": "Introduction", "level": 1, "start_line": 1, "end_line": 45, "chars": 3200},
+    {"heading": "Background", "level": 2, "start_line": 46, "end_line": 120, "chars": 5800}
+  ]
+}
+```
+
+**Task-specific loading strategies:**
+
+| Task | Strategy |
+|------|----------|
+| Proofreading | Invoke `/proofread` with the source.md path |
+| Abstract generation | Read manifest, then use Read tool with offset/limit for intro + conclusion sections |
+| Forum/Substack summary | Read manifest for structure, selectively load key sections |
+| Adversarial check | Process sections sequentially using manifest |
+| Social thread | Work from already-generated abstract + key sections |
+
+**Loading specific sections:**
+```
+Read the manifest first, then use Read tool:
+  file_path: ~/.claude/skills/forethought-publish/docs/{pub_id}/source.md
+  offset: {section.start_line}
+  limit: {section.end_line - section.start_line}
 ```
 
 ## Publication types
@@ -70,23 +141,23 @@ When done with #research-collaborators, say "done" or "skip".
 
 Mark steps complete:
 ```bash
-python scripts/publication_manager.py complete --step "1a.collaborators"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py complete --step "1a.collaborators"
 ```
 
 Skip optional steps:
 ```bash
-python scripts/publication_manager.py skip --step "1a.external"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py skip --step "1a.external"
 ```
 
 ## Decisions to record
 
 For papers/research notes, record these decisions:
 ```bash
-python scripts/publication_manager.py decision --key podcast --value "no"
-python scripts/publication_manager.py decision --key lw_forum --value "yes"
-python scripts/publication_manager.py decision --key forum_content --value "custom_summary"
-python scripts/publication_manager.py decision --key forum_title --value "question_style"
-python scripts/publication_manager.py decision --key link_strategy --value "social_substack_website"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key podcast --value "no"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key lw_forum --value "yes"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key forum_content --value "custom_summary"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key forum_title --value "question_style"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key link_strategy --value "social_substack_website"
 ```
 
 **Content strategy options:**
@@ -106,27 +177,87 @@ python scripts/publication_manager.py decision --key link_strategy --value "soci
 
 Generate content at any point in the workflow. Save with:
 ```bash
-echo "content" | python scripts/publication_manager.py save --type abstract --content -
+echo "content" | python ~/.claude/skills/forethought-publish/scripts/publication_manager.py save --type abstract --content -
 ```
 
-### Abstract (~80 words)
+**Before generating any content**, read the style guide and relevant examples:
+```
+/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/writing-style-examples/
+├── style-guide.md          # Comprehensive instructions for each content type
+├── abstracts/              # 10 example abstracts
+├── substack/               # 7 example Substack posts
+└── tweets/                 # 15 example tweet threads
+```
+
+### Abstract (~80-150 words)
+
+**Read first:** `style-guide.md` § Abstracts + 2-3 files from `abstracts/`
+
 Read the Google Doc content, then generate an abstract:
-- Short and punchy, not academic
+- **Structure:** ~40% hook/context, ~60% key findings
+- Open with a punchy claim or question (often in quotes)
 - Several short paragraphs better than one block
-- ~Half context/hook, ~half key results
+- Use specific numbers and concrete scenarios
+- Active voice, confident tone
 - Use US English
 
-### Social media thread
-Generate based on the doc and link strategy decision:
-- Can be as short as one sentence + link
-- Or a proper thread summarising key points
-- Link to Substack or website per strategy
+**Example opening lines from real abstracts:**
+- "AI that can accelerate research could drive a century of technological progress over just a few years."
+- "Once AI systems can design and build increasingly capable AI systems, we could witness an intelligence explosion..."
 
-### Forum/LW summary
+**Don't:** Start with "This paper examines..." or similar academic throat-clearing.
+
+### Social media thread (6-12 tweets)
+
+**Read first:** `style-guide.md` § Tweet threads + 2-3 files from `tweets/`
+
+Generate based on the doc and link strategy decision:
+- **Tweet 1:** Hook question or provocative claim + 🧵
+- **Middle tweets:** Walk through argument with numbered points, include images
+- **Final tweet:** Link to full piece
+- Number explicitly: "1/11:", "2/11:" etc.
+- Each tweet should be interesting on its own
+- Include your actual opinion, acknowledge uncertainty
+
+**Example hooks from real threads:**
+- "Could one country (or company!) outgrow the rest of the world during an AI-powered growth explosion?"
+- "📄New paper! Once we automate AI R&D, there could be an intelligence explosion..."
+
+### Uploading to Typefully
+
+After generating and saving the social thread, offer to upload it to Typefully:
+
+> "Would you like me to upload this draft to Typefully?"
+
+**If yes, check MCP availability:**
+1. Try using any Typefully MCP tool (e.g. list drafts)
+2. If it fails or isn't found, guide user through installation
+
+**MCP installation (if needed):**
+```bash
+claude mcp add typefully --transport http --url "https://mcp.typefully.com/mcp?TYPEFULLY_API_KEY=<API_KEY>" --scope user
+```
+
+Tell the user:
+- Get your API key from Typefully → Settings → Integrations
+- The `--scope user` flag makes it available across all projects
+
+**Creating the draft:**
+- Use the Typefully MCP to create a draft
+- Upload as draft (not scheduled) so the user can review before posting
+- Select all platforms (Twitter, LinkedIn, Bluesky, Threads) by default
+
+### Forum/LW summary (500-1500 words)
+
+**Read first:** `style-guide.md` § Forum/Substack posts + 2-3 files from `substack/`
+
 If `forum_content` is `custom_summary`:
 - More informal than the paper
-- Different title than website version
-- Include link per strategy
+- Title as a question (different from paper title)
+- Subheaded sections walking through key arguments
+- Use bold for key terms, bullet points for lists
+- Include direct quotes from the paper
+- Link to full paper at end
 
 ### Adversarial quoting check
 Paste the article and flag passages that could be twisted to make Forethought look bad:
@@ -152,43 +283,51 @@ Generate 3 image prompts for Gemini based on the paper content. The researcher p
 
 ```bash
 # Create new publication
-python scripts/publication_manager.py new --title "Title" --type paper --doc "URL"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL"
 
 # List all publications
-python scripts/publication_manager.py list
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py list
 
 # Show status (current or specific)
-python scripts/publication_manager.py status
-python scripts/publication_manager.py status --id pub-001
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py status
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py status --id pub-001
 
 # Mark step complete
-python scripts/publication_manager.py complete --step "1a.max_review"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py complete --step "1a.max_review"
 
 # Skip optional step
-python scripts/publication_manager.py skip --step "1a.external"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py skip --step "1a.external"
 
 # Record decision
-python scripts/publication_manager.py decision --key podcast --value "no"
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key podcast --value "no"
 
 # Save generated content
-echo "Abstract text" | python scripts/publication_manager.py save --type abstract --content -
+echo "Abstract text" | python ~/.claude/skills/forethought-publish/scripts/publication_manager.py save --type abstract --content -
 
 # Switch active publication
-python scripts/publication_manager.py resume --id pub-002
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py resume --id pub-002
 
 # Show active
-python scripts/publication_manager.py active
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py active
 
 # Archive completed publication
-python scripts/publication_manager.py archive
+python ~/.claude/skills/forethought-publish/scripts/publication_manager.py archive
 ```
 
 ## Additional resources
+
+### Style examples (for content generation)
+Located at `/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/writing-style-examples/`:
+- **`style-guide.md`** — Comprehensive writing guide derived from real examples
+- **`abstracts/`** — 10 example abstracts from forethought.org/research
+- **`substack/`** — 7 example posts from newsletter.forethought.org
+- **`tweets/`** — 15 example announcement threads from Forethought researchers
 
 ### Reference files
 - **`references/blog-post-checklist.md`** — Detailed blog post steps
 - **`references/paper-checklist.md`** — Full paper/research note checklist
 - **`references/platforms-and-tools.md`** — Contentful, Typefully, Substack, LW, Forum guides
+- **`references/social-media-accounts.md`** — Usernames, profile links, login info for all platforms
 - **`references/contractors.md`** — Working with Lorie and Justis
 
 ### Source documentation
