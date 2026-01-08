@@ -11,17 +11,17 @@ Guide researchers through the full publication process — from draft to publish
 
 **New publication:**
 1. Ask for publication title, document source (Google Doc URL or local markdown path), and type
-2. Run: `python ~/.claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL or path"`
+2. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL or path"`
 3. Ingest the document (see Document ingestion section below)
 4. Present Stage 0 steps
 
 **Resume existing:**
-1. Run: `python ~/.claude/skills/forethought-publish/scripts/publication_manager.py status`
+1. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py status`
 2. Show current progress and next step
 
 **Check active publication:**
 ```bash
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py active
+python .claude/skills/forethought-publish/scripts/publication_manager.py active
 ```
 
 ## Document ingestion
@@ -41,9 +41,9 @@ Task tool:
     2. Fetch content: use mcp__google_workspace__get_doc_content with:
        - file_id: {doc_id}
        - user_google_email: pete.hartree@gmail.com
-    3. Create directory: ~/.claude/skills/forethought-publish/docs/{pub_id}/
-    4. Write content to: ~/.claude/skills/forethought-publish/docs/{pub_id}/source.md
-    5. Run: python ~/.claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}
+    3. Create directory: .claude/skills/forethought-publish/docs/{pub_id}/
+    4. Write content to: .claude/skills/forethought-publish/docs/{pub_id}/source.md
+    5. Run: python .claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}
     6. Return ONLY the manifest JSON output (not the document content)
 ```
 
@@ -51,14 +51,14 @@ The full document stays in the sub-agent's context (discarded after), keeping th
 
 **For local markdown files:**
 
-1. Read the file and write to `~/.claude/skills/forethought-publish/docs/{pub_id}/source.md`
-2. Run: `python ~/.claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}`
+1. Read the file and write to `.claude/skills/forethought-publish/docs/{pub_id}/source.md`
+2. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}`
 
 **Refreshing a document:**
 
 If the source document has been edited:
 ```bash
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py refresh --id {pub_id}
+python .claude/skills/forethought-publish/scripts/publication_manager.py refresh --id {pub_id}
 ```
 This shows instructions for re-ingesting. Use the same sub-agent pattern as above.
 
@@ -89,7 +89,7 @@ The manifest at `docs/{pub_id}/manifest.json` contains section info:
 **Loading specific sections:**
 ```
 Read the manifest first, then use Read tool:
-  file_path: ~/.claude/skills/forethought-publish/docs/{pub_id}/source.md
+  file_path: .claude/skills/forethought-publish/docs/{pub_id}/source.md
   offset: {section.start_line}
   limit: {section.end_line - section.start_line}
 ```
@@ -141,23 +141,23 @@ When done with #research-collaborators, say "done" or "skip".
 
 Mark steps complete:
 ```bash
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py complete --step "1a.collaborators"
+python .claude/skills/forethought-publish/scripts/publication_manager.py complete --step "1a.collaborators"
 ```
 
 Skip optional steps:
 ```bash
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py skip --step "1a.external"
+python .claude/skills/forethought-publish/scripts/publication_manager.py skip --step "1a.external"
 ```
 
 ## Decisions to record
 
 For papers/research notes, record these decisions:
 ```bash
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key podcast --value "no"
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key lw_forum --value "yes"
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key forum_content --value "custom_summary"
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key forum_title --value "question_style"
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key link_strategy --value "social_substack_website"
+python .claude/skills/forethought-publish/scripts/publication_manager.py decision --key podcast --value "no"
+python .claude/skills/forethought-publish/scripts/publication_manager.py decision --key lw_forum --value "yes"
+python .claude/skills/forethought-publish/scripts/publication_manager.py decision --key forum_content --value "custom_summary"
+python .claude/skills/forethought-publish/scripts/publication_manager.py decision --key forum_title --value "question_style"
+python .claude/skills/forethought-publish/scripts/publication_manager.py decision --key link_strategy --value "social_substack_website"
 ```
 
 **Content strategy options:**
@@ -177,7 +177,7 @@ python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decis
 
 Generate content at any point in the workflow. Save with:
 ```bash
-echo "content" | python ~/.claude/skills/forethought-publish/scripts/publication_manager.py save --type abstract --content -
+echo "content" | python .claude/skills/forethought-publish/scripts/publication_manager.py save --type abstract --content -
 ```
 
 **Before generating any content**, read the style guide and relevant examples:
@@ -360,35 +360,35 @@ When a step involves messaging someone:
 
 ```bash
 # Create new publication
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL"
+python .claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL"
 
 # List all publications
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py list
+python .claude/skills/forethought-publish/scripts/publication_manager.py list
 
 # Show status (current or specific)
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py status
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py status --id pub-001
+python .claude/skills/forethought-publish/scripts/publication_manager.py status
+python .claude/skills/forethought-publish/scripts/publication_manager.py status --id pub-001
 
 # Mark step complete
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py complete --step "1a.max_review"
+python .claude/skills/forethought-publish/scripts/publication_manager.py complete --step "1a.max_review"
 
 # Skip optional step
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py skip --step "1a.external"
+python .claude/skills/forethought-publish/scripts/publication_manager.py skip --step "1a.external"
 
 # Record decision
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py decision --key podcast --value "no"
+python .claude/skills/forethought-publish/scripts/publication_manager.py decision --key podcast --value "no"
 
 # Save generated content
-echo "Abstract text" | python ~/.claude/skills/forethought-publish/scripts/publication_manager.py save --type abstract --content -
+echo "Abstract text" | python .claude/skills/forethought-publish/scripts/publication_manager.py save --type abstract --content -
 
 # Switch active publication
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py resume --id pub-002
+python .claude/skills/forethought-publish/scripts/publication_manager.py resume --id pub-002
 
 # Show active
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py active
+python .claude/skills/forethought-publish/scripts/publication_manager.py active
 
 # Archive completed publication
-python ~/.claude/skills/forethought-publish/scripts/publication_manager.py archive
+python .claude/skills/forethought-publish/scripts/publication_manager.py archive
 ```
 
 ## Additional resources
