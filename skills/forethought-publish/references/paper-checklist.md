@@ -69,10 +69,12 @@ Record: `decision --key link_strategy --value social_substack_website`
 - Default step
 - Max will clarify if any comments are blocking
 - Default outcome: "approval subject to looking at comments"
+- **Slack:** Offer to draft and send a message to Max (show draft, confirm before sending)
 
 ### Share with #forethought-research-collaborators
 - Default for papers, optional for research notes
 - Good norm but case-by-case
+- **Slack:** Offer to draft and post to channel (show draft, confirm before sending)
 
 ### Consider external expert review (optional)
 - Who in the world really knows about this topic?
@@ -83,6 +85,7 @@ Record: `decision --key link_strategy --value social_substack_website`
 - Active in AI safety, staff have found his comments useful
 - Contact: Tag in #open-dms-support-team or DM on Slack
 - Turnaround: usually 1-3 days
+- **Slack:** Offer to draft a DM to Justis (show draft, confirm before sending)
 
 ### Send for fact-checking (optional)
 - No standard fact-checker currently
@@ -166,10 +169,12 @@ Contact Amrit if access issues.
 
 ### Get Max final signoff
 - Required for all pieces
+- **Slack:** Offer to draft a message to Max (show draft, confirm before sending)
 
 ### Get Will/Tom signoff
 - Default for papers only
 - Optional for research notes
+- **Slack:** Offer to draft a message to Will/Tom (show draft, confirm before sending)
 
 ## Stage 2b: Proofread/spellcheck
 
@@ -183,6 +188,7 @@ Contact Amrit if access issues.
 - Especially if he didn't review earlier
 - Can send social threads and abstract too
 - Turnaround: usually 1-3 days
+- **Slack:** Offer to draft a DM to Justis (show draft, confirm before sending)
 
 ### Adversarial quoting check
 - Paste into Claude project or use prompt
@@ -201,6 +207,7 @@ Contact Amrit if access issues.
 - Share GDoc with eirol1221@gmail.com
 - Tag Lorie in Slack, cc Amrit and Justis
 - Use existing channel or #open-dms-support-team
+- **Slack:** Offer to draft a message tagging Lorie, Amrit, and Justis (show draft, confirm before sending)
 
 **What to send:**
 - GDoc with at least comment access
@@ -286,3 +293,5 @@ Post to:
 - Constellation Slack — default
 
 Default content: paper link + Twitter link + LW link (highlight LW as best for comments)
+
+**Slack:** Offer to draft announcement messages for each channel (show draft, confirm before sending each)

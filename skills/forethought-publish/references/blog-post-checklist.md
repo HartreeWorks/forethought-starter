@@ -9,6 +9,7 @@ The blog post process is designed to be completable in ~20 minutes once Max give
 - If he doesn't explicitly say something is blocking, proceed
 - Can share a Substack draft directly with Max
 - If Max is away: Will, Tom, or Stefan can substitute
+- **Slack:** Offer to draft and send a message to Max (show draft, confirm before sending)
 
 ### Revise based on comments
 - Address comments to the extent desired
@@ -83,6 +84,7 @@ Send to Lorie:
 - Provide images as separate PNG files
 - Decision on preview image
 - If uploading to LW: your LessWrong login details
+- **Slack:** Offer to draft a message tagging Lorie, Amrit, and Justis (show draft, confirm before sending)
 
 ## Posting
 
@@ -123,3 +125,5 @@ Post to:
 - Constellation Slack
 
 Default content: paper link + Twitter link + LW link (mention LW is best for comments)
+
+**Slack:** Offer to draft announcement messages for each channel (show draft, confirm before sending each)

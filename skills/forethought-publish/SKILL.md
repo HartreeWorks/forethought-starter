@@ -270,6 +270,83 @@ Prompt: "Read this article. Which bits, if quoted out of context, could be twist
 ### Preview image prompts
 Generate 3 image prompts for Gemini based on the paper content. The researcher picks one and generates the image.
 
+## Slack integration
+
+The Slack skill is available for communication steps in the publication workflow. Use it to draft and send messages to people or channels.
+
+**Critical rule:** Never send a Slack message without showing the draft first and getting explicit user confirmation.
+
+### Workflow pattern
+
+When a step involves messaging someone:
+
+1. **Offer to help:**
+   > "Would you like me to draft a Slack message to [person/channel]?"
+
+2. **If yes, draft and show:**
+   > "Here's a draft message:
+   >
+   > ---
+   > [Draft message content]
+   > ---
+   >
+   > Ready to send this?"
+
+3. **Only send on explicit confirmation** (e.g., "yes", "send it", "looks good")
+
+4. **Send using the Slack skill:**
+   ```bash
+   SCRIPT=~/.claude/skills/slack/scripts/slack_client.py
+   python3 $SCRIPT send "CHANNEL_ID" "Message content"
+   ```
+
+### Key Slack channels
+
+| Channel | Workspace | Purpose |
+|---------|-----------|---------|
+| #forethought-research-collaborators | Forethought | Share drafts for feedback |
+| #forethought-and-friends | Forethought | Announce publications |
+| #open-dms-support-team | Forethought | Tag Lorie, Justis, Amrit |
+
+### Key people on Slack
+
+| Person | When to message |
+|--------|-----------------|
+| Max | Initial review, final signoff |
+| Will/Tom | Paper signoff |
+| Lorie | Upload requests (cc Amrit, Justis) |
+| Justis | Copyediting, proofreading |
+| Amrit | Ops support, access issues |
+| Fin | Podcast coordination |
+
+### Example messages
+
+**Requesting review from Max:**
+> Hi Max, I have a new [paper/research note/blog post] ready for your review: "[Title]"
+>
+> [Google Doc link]
+>
+> Let me know if anything is blocking or if you have feedback.
+
+**Sharing with #forethought-research-collaborators:**
+> New draft for feedback: "[Title]"
+>
+> [Google Doc link]
+>
+> Would appreciate any input, especially on [specific areas if relevant].
+
+**Requesting upload from Lorie:**
+> Hi Lorie, this piece is ready for upload: "[Title]"
+>
+> • Doc: [Google Doc link]
+> • Type: [Paper/Research note]
+> • Platforms: [Website, Substack, Forum, LW]
+> • Images: [Attached/in doc]
+> • Abstract: [Included/separate]
+> • Preview image: [Decision]
+>
+> cc @Amrit @Justis
+
 ## Key people
 
 - **Max**: Reviews all pieces, gives final signoff
