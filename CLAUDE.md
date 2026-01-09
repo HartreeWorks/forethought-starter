@@ -27,6 +27,7 @@ If the file doesn't exist, create it:
     "skills_symlinked": {"complete": false},
     "official_plugins": {"complete": false},
     "forethought_plugin": {"complete": false},
+    "whitelist_safe_skills": {"complete": false, "skipped": false},
     "global_claude_md": {"complete": false},
     "slack_skill": {"complete": false, "skipped": false},
     "google_workspace_mcp": {"complete": false, "skipped": false}
@@ -246,6 +247,37 @@ After installation, these commands will be available:
 - `/publish` — Start or continue a publication workflow
 - `/diagram` — Create a Forethought-branded diagram
 - `/proofread` — Check a document against style guidelines
+
+### Step 11b: Whitelist safe skills (optional)
+
+**Check:** Read `~/.claude/settings.json` and check if `permissions.allow` contains `Skill(proofreader:*)`
+
+This step is optional but recommended. Ask the user:
+
+> "Would you like to whitelist the safe skills? This means Claude won't ask for permission each time you use these — they'll run automatically:
+>
+> - **Proofreading** — `/proofread` and proofreader skill
+> - **Project management** — creating and managing project folders
+> - **Transcription** — YouTube transcription, audio transcription, YouTube download
+>
+> This is recommended because these skills only read files or create local outputs."
+
+**If yes:**
+
+Merge these entries into the `permissions.allow` array in `~/.claude/settings.json`. The file may already have existing permissions — preserve them and add these:
+
+```json
+"Skill(proofreader:*)",
+"Skill(forethought-research:*)",
+"Skill(project-management:*)",
+"Skill(youtube-download)",
+"Skill(youtube-transcribe)",
+"Skill(transcribe-audio)"
+```
+
+If the `permissions` key or `allow` array doesn't exist, create them.
+
+**If no:** Mark as skipped and continue.
 
 ### Step 12: Global CLAUDE.md guidelines
 
