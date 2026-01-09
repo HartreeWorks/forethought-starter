@@ -14,7 +14,7 @@ If the file doesn't exist, create it:
 
 ```json
 {
-  "version": "1.1",
+  "version": "1.2",
   "steps": {
     "homebrew": {"complete": false},
     "git": {"complete": false},
@@ -26,7 +26,8 @@ If the file doesn't exist, create it:
     "notification_hooks": {"complete": false},
     "skills_symlinked": {"complete": false},
     "official_plugins": {"complete": false},
-    "forethought_plugin": {"complete": false},
+    "commands_symlinked": {"complete": false},
+    "agents_symlinked": {"complete": false},
     "whitelist_safe_skills": {"complete": false, "skipped": false},
     "global_claude_md": {"complete": false},
     "slack_skill": {"complete": false, "skipped": false},
@@ -230,25 +231,48 @@ These provide:
 - **plugin-dev**: Guided workflows for creating skills, commands, and agents
 - **frontend-design**: Tools for designing and building user interfaces
 
-### Step 11: Forethought Research plugin
+### Step 11: Commands symlinked
 
-Install the *Forethought Research* plugin from GitHub:
+**Check:** List all files in `commands/` and verify each has a corresponding symlink in `~/.claude/commands/`.
+
+**If any are missing:**
+
+Run from the forethought-starter directory:
 
 ```bash
-/plugin install forethought-research --from https://github.com/HartreeWorks/forethought-research
+mkdir -p ~/.claude/commands
+
+for cmd in commands/*.md; do
+  cmd_name=$(basename "$cmd")
+  ln -sfn "$(pwd)/commands/$cmd_name" ~/.claude/commands/"$cmd_name"
+done
 ```
 
-This provides:
-- **Commands:** `/publish`, `/diagram`, `/proofread`
-- **Skills:** Publication workflow, branded diagrams, writing style guide
-- **Agent:** Style reviewer for checking documents
-
-After installation, these commands will be available:
+This makes these commands available:
 - `/publish` — Start or continue a publication workflow
 - `/diagram` — Create a Forethought-branded diagram
 - `/proofread` — Check a document against style guidelines
 
-### Step 11b: Whitelist safe skills (optional)
+### Step 12: Agents symlinked
+
+**Check:** List all files in `agents/` and verify each has a corresponding symlink in `~/.claude/agents/`.
+
+**If any are missing:**
+
+Run from the forethought-starter directory:
+
+```bash
+mkdir -p ~/.claude/agents
+
+for agent in agents/*.md; do
+  agent_name=$(basename "$agent")
+  ln -sfn "$(pwd)/agents/$agent_name" ~/.claude/agents/"$agent_name"
+done
+```
+
+This makes the style-reviewer agent available for checking documents against Forethought style guidelines.
+
+### Step 13: Whitelist safe skills (optional)
 
 **Check:** Read `~/.claude/settings.json` and check if `permissions.allow` contains `Skill(proofreader:*)`
 
@@ -268,7 +292,9 @@ Merge these entries into the `permissions.allow` array in `~/.claude/settings.js
 
 ```json
 "Skill(proofreader:*)",
-"Skill(forethought-research:*)",
+"Skill(forethought-style:*)",
+"Skill(forethought-publish:*)",
+"Skill(forethought-diagrams:*)",
 "Skill(project-management:*)",
 "Skill(youtube-download)",
 "Skill(youtube-transcribe)",
@@ -279,7 +305,7 @@ If the `permissions` key or `allow` array doesn't exist, create them.
 
 **If no:** Mark as skipped and continue.
 
-### Step 12: Global CLAUDE.md guidelines
+### Step 14: Global CLAUDE.md guidelines
 
 **Check:** Read `~/.claude/CLAUDE.md` and check if it contains a "Skill creation" section.
 
@@ -305,7 +331,7 @@ This ensures the guided skill development workflow is used consistently.
 
 These steps are optional. Offer them to the user after the core setup is complete.
 
-### Step 13: Slack integration (optional, ~5 minutes)
+### Step 15: Slack integration (optional, ~5 minutes)
 
 **Check:** Check if `~/.claude/skills/slack/config.json` exists
 
@@ -324,7 +350,7 @@ Guide them through the setup in `skills/slack/SKILL.md`:
 
 **If no:** Mark as skipped and continue.
 
-### Step 14: Google Workspace integration (optional, ~10-20 minutes)
+### Step 16: Google Workspace integration (optional, ~10-20 minutes)
 
 **Check:** Read `~/.claude.json` and check if `mcpServers` contains a `google_workspace` or `google-workspace` entry
 
@@ -363,7 +389,7 @@ Once all steps are complete, welcome the user:
 > **1. Start a research project:**
 > Say "new project" and we can setup a new project with context, memory, and more.
 >
-> **2. Try the Forethought plugin commands:**
+> **2. Try the Forethought commands:**
 > - `/publish` — Start or continue a publication workflow
 > - `/diagram` — Create a Forethought-branded diagram
 > - `/proofread` — Check a document against style guidelines
