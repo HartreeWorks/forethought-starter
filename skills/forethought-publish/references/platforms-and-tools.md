@@ -79,7 +79,14 @@ https://forethoughtnewsletter.substack.com/publish/posts/drafts
 - Can't retweet natively — only quote-tweet
 
 **Alternative for Twitter retweets:**
-Log in to Forethought Twitter directly (details in Social media & Forum accounts doc)
+Log in to Forethought Twitter directly (details in `social-media-accounts.md`)
+
+**MCP integration:**
+Claude can upload drafts directly via the Typefully MCP server. Install with:
+```bash
+claude mcp add typefully --transport http --url "https://mcp.typefully.com/mcp?TYPEFULLY_API_KEY=<KEY>" --scope user
+```
+Get the API key from Typefully → Settings → Integrations.
 
 ## EA Forum
 
