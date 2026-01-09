@@ -25,7 +25,7 @@ Log in when prompted.
 
 Ask Claude:
 
-> "Please install Homebrew, Git, and GitHub CLI if they're not already installed, then clone https://github.com/HartreeWorks/forethought-starter and walk me through the setup."
+> "Please install Homebrew, Git, and GitHub CLI if they're not already installed. Then clone https://github.com/HartreeWorks/forethought-starter and walk me through the setup."
 
 ## What's included
 
