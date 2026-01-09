@@ -56,6 +56,10 @@ export const ChainStepSchema = z.object({
   output: StepOutputSchema.optional(),
   display: StepDisplaySchema.optional(),
   config: StepConfigSchema.optional(),
+  // For-each iteration support
+  for_each: z.string().optional(), // Variable reference to iterate over, e.g. "$steps.filter.output"
+  parallel: z.boolean().optional(), // Run iterations concurrently (default: false)
+  max_concurrency: z.number().min(1).max(50).optional(), // Limit concurrent executions (default: 5)
 });
 
 // Chain metadata
@@ -94,6 +98,21 @@ export type Chain = z.infer<typeof ChainSchema>;
 // Run status
 export type RunStatus = "pending" | "running" | "completed" | "failed";
 
+// Instance run state (for for_each steps)
+export interface InstanceRunState {
+  index: number;
+  status: RunStatus;
+  startedAt?: string;
+  completedAt?: string;
+  output?: unknown;
+  error?: string;
+  tokens?: {
+    input: number;
+    output: number;
+  };
+  durationMs?: number;
+}
+
 // Step run state
 export interface StepRunState {
   status: RunStatus;
@@ -107,6 +126,11 @@ export interface StepRunState {
     output: number;
   };
   durationMs?: number;
+  // For for_each steps
+  isForEach?: boolean;
+  instances?: InstanceRunState[];
+  completedInstances?: number;
+  totalInstances?: number;
 }
 
 // Full run state
@@ -130,6 +154,9 @@ export type SSEEventType =
   | "step:progress"
   | "step:completed"
   | "step:failed"
+  | "step:instance:started"   // Instance within for_each started
+  | "step:instance:completed" // Instance within for_each completed
+  | "step:instance:failed"    // Instance within for_each failed
   | "run:completed"
   | "run:failed"
   | "ping";

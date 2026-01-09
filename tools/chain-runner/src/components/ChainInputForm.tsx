@@ -85,9 +85,13 @@ export function ChainInputForm({ chain }: Props) {
     );
   }
 
+  // Separate boolean inputs (shown as compact toggles below submit)
+  const booleanInputs = chainInputs.filter((input) => input.type === "boolean");
+  const otherInputs = chainInputs.filter((input) => input.type !== "boolean");
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {chainInputs.map((input) => (
+      {otherInputs.map((input) => (
         <div key={input.id}>
           <label className="block text-sm font-medium mb-1">
             {input.name || input.id}
@@ -161,24 +165,6 @@ export function ChainInputForm({ chain }: Props) {
             />
           )}
 
-          {input.type === "boolean" && (
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                name={input.id}
-                checked={inputs[input.id] === "true"}
-                onChange={(e) =>
-                  setInputs({
-                    ...inputs,
-                    [input.id]: e.target.checked ? "true" : "false",
-                  })
-                }
-                className="rounded"
-              />
-              <span className="text-sm">Enable</span>
-            </label>
-          )}
-
           {input.type === "url" && (
             <input
               type="url"
@@ -199,13 +185,34 @@ export function ChainInputForm({ chain }: Props) {
         <div className="p-3 bg-red-50 text-red-700 rounded text-sm">{error}</div>
       )}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
-      >
-        {isSubmitting ? "Starting..." : "Start run"}
-      </button>
+      <div>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+        >
+          {isSubmitting ? "Starting..." : "Start run"}
+        </button>
+
+        {/* Boolean toggles as compact inline options */}
+        {booleanInputs.map((input) => (
+          <label key={input.id} className="flex items-center gap-2 mt-2 text-xs text-gray-500 cursor-pointer">
+            <input
+              type="checkbox"
+              name={input.id}
+              checked={inputs[input.id] === "true"}
+              onChange={(e) =>
+                setInputs({
+                  ...inputs,
+                  [input.id]: e.target.checked ? "true" : "false",
+                })
+              }
+              className="rounded"
+            />
+            <span>{input.name || input.id}{input.description && ` — ${input.description}`}</span>
+          </label>
+        ))}
+      </div>
     </form>
   );
 }

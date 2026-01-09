@@ -17,7 +17,7 @@ export function StatusBadge({ status, size = "sm" }: Props) {
 
   return (
     <span
-      className={`font-medium rounded ${sizeClasses} ${styles[status] || styles.pending}`}
+      className={`font-medium rounded uppercase ${sizeClasses} ${styles[status] || styles.pending}`}
     >
       {status}
     </span>

@@ -7,7 +7,7 @@ import { z } from "zod";
 // Model aliases for convenience
 const MODEL_ALIASES: Record<string, string> = {
   // Claude models
-  "claude-opus-4-5": "anthropic:claude-opus-4-5-20250514",
+  "claude-opus-4-5": "anthropic:claude-opus-4-5-20251101",
   "claude-sonnet-4": "anthropic:claude-sonnet-4-20250514",
   "claude-sonnet-3-5": "anthropic:claude-3-5-sonnet-20241022",
   "claude-haiku-3-5": "anthropic:claude-3-5-haiku-20241022",
