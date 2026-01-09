@@ -348,7 +348,7 @@ Once all steps are complete, welcome the user:
 > ## ⚠️ You must restart Claude Code before continuing ⚠️
 >
 > The new skills won't be available until you restart. To restart:
-> 1. Press **Ctrl+C** to exit Claude Code
+> 1. Press **Ctrl+C** (**Ctrl**, not Command) to exit Claude Code
 > 2. Run `claude` again in your terminal
 
 ---
