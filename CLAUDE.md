@@ -2,6 +2,14 @@
 
 This repository helps Forethought researchers get started with Claude Code. It provides curated skills and guided setup for a powerful AI-assisted research environment.
 
+## Getting started
+
+To begin setup, say this to Claude:
+
+> "Please install GitHub CLI, then clone https://github.com/HartreeWorks/forethought-starter and walk me through the setup."
+
+---
+
 ## On conversation start
 
 1. Read `setup-state.json` in this directory (create if missing — see template below)
