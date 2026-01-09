@@ -25,7 +25,7 @@ Log in when prompted.
 
 Ask Claude:
 
-> "Please clone https://github.com/HartreeWorks/forethought-starter and walk me through the setup."
+> "Please install GitHub CLI, then clone https://github.com/HartreeWorks/forethought-starter and walk me through the setup."
 
 ## What's included
 
