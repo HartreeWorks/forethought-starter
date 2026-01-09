@@ -132,6 +132,12 @@ Generate content at any point in the workflow. Save with:
 echo "content" | python .claude/skills/forethought-publish/scripts/publication_manager.py save --type abstract --content -
 ```
 
+This saves content to both:
+1. **state.json** — in the `generated` field for the active publication
+2. **drafts/** folder — as a markdown file with frontmatter (e.g., `drafts/pub-001-title-abstract.md`)
+
+The markdown files include YAML frontmatter with publication metadata and are useful for reviewing, editing, or sharing drafts outside of Claude.
+
 **Before generating any content**, read the style guide and relevant examples:
 ```
 {PROJECT_ROOT}/assets/writing-style-examples/

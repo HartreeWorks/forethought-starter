@@ -24,6 +24,7 @@ from pathlib import Path
 # State file location (same directory as script's parent)
 SCRIPT_DIR = Path(__file__).parent.parent
 STATE_FILE = SCRIPT_DIR / "state.json"
+DRAFTS_DIR = SCRIPT_DIR / "drafts"
 
 # Publication types
 TYPES = ["blog_post", "research_note", "paper"]
@@ -336,8 +337,16 @@ def cmd_decision(args):
     print(f"Recorded decision: {args.key} = {args.value}")
 
 
+def slugify(text):
+    """Convert text to a URL-safe slug."""
+    import re
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9]+', '-', text)
+    return text.strip('-')
+
+
 def cmd_save(args):
-    """Save generated content."""
+    """Save generated content to state.json and a markdown file."""
     state = load_state()
     pub_id = state.get("active")
 
@@ -352,9 +361,43 @@ def cmd_save(args):
     if content == "-":
         content = sys.stdin.read()
 
+    # Save to state.json
     pub["generated"][args.type] = content
     save_state(state)
+
+    # Save to markdown file
+    DRAFTS_DIR.mkdir(exist_ok=True)
+
+    title_slug = slugify(pub["title"])[:50]  # Limit slug length
+    filename = f"{pub_id}-{title_slug}-{args.type}.md"
+    filepath = DRAFTS_DIR / filename
+
+    # Create markdown with frontmatter
+    content_type_names = {
+        "abstract": "Abstract",
+        "social_thread": "Social media thread",
+        "forum_draft": "Forum/LW post",
+        "substack_draft": "Substack post",
+    }
+    type_display = content_type_names.get(args.type, args.type.replace("_", " ").title())
+
+    markdown_content = f"""---
+publication_id: {pub_id}
+title: "{pub['title']}"
+type: {pub['type']}
+content_type: {args.type}
+created: {datetime.now().isoformat()}
+---
+
+# {type_display}: {pub['title']}
+
+{content}
+"""
+
+    filepath.write_text(markdown_content)
+
     print(f"Saved generated content: {args.type} ({len(content)} chars)")
+    print(f"Markdown file: {filepath}")
 
 
 def cmd_resume(args):
