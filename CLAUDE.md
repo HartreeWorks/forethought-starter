@@ -231,11 +231,7 @@ These provide:
 
 ### Step 11: Forethought Research plugin
 
-**Check:** Run `/plugin` and check if `forethought-research` appears in the Installed tab.
-
-**If missing:**
-
-Install the Forethought-specific plugin from GitHub:
+Install the *Forethought Research* plugin from GitHub:
 
 ```bash
 /plugin install forethought-research --from https://github.com/HartreeWorks/forethought-research
