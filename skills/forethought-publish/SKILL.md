@@ -7,12 +7,38 @@ description: This skill should be used when the user says "start publication", "
 
 Guide researchers through the full publication process — from draft to published piece. The workflow branches based on publication type and tracks progress across sessions.
 
+## Interaction style
+
+Use the **AskUserQuestion tool** where appropriate to gather decisions interactively. This makes the workflow more conversational and helps researchers make decisions without typing long responses. Good opportunities include:
+
+- Publication type selection (paper/research note/blog post)
+- Content strategy (intro only / custom summary / full text)
+- Title strategy (summary prefix / question style)
+- Whether to proceed with optional steps (external review, podcast, Forum post)
+- Whether to upload generated content to Typefully
+- Confirming next steps after completing a stage
+
+Not every decision needs AskUserQuestion — use judgement. Simple yes/no confirmations or when the user has already indicated their preference don't need it.
+
+**Prefer numbered lists** when presenting options, steps, or items the user might want to reference. This lets users say things like "just 3 and 4" or "skip 2" instead of retyping item names. For example, when asking about outstanding reviews:
+
+```
+Which reviews are still needed?
+1. Max review
+2. #research-collaborators feedback
+3. External expert review
+4. Justis copyedit
+5. Fact-checking
+```
+
+The user can then respond "just 4 and 5" rather than typing out the full names.
+
 ## Quick start
 
 **New publication:**
 1. Ask for the document (Google Doc URL or local markdown path)
 2. Load document content directly into conversation (see "Loading documents" below)
-3. Ask user to confirm title and specify type (paper/research note/blog post)
+3. Use AskUserQuestion to confirm title and specify type (paper/research note/blog post)
 4. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL"`
 5. Present Stage 0 steps
 
