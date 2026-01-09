@@ -14,7 +14,7 @@ If the file doesn't exist, create it:
 
 ```json
 {
-  "version": "1.0",
+  "version": "1.1",
   "steps": {
     "homebrew": {"complete": false},
     "git": {"complete": false},
@@ -26,6 +26,7 @@ If the file doesn't exist, create it:
     "notification_hooks": {"complete": false},
     "skills_symlinked": {"complete": false},
     "official_plugins": {"complete": false},
+    "forethought_plugin": {"complete": false},
     "global_claude_md": {"complete": false},
     "slack_skill": {"complete": false, "skipped": false},
     "google_workspace_mcp": {"complete": false, "skipped": false}
@@ -228,7 +229,29 @@ These provide:
 - **plugin-dev**: Guided workflows for creating skills, commands, and agents
 - **frontend-design**: Tools for designing and building user interfaces
 
-### Step 11: Global CLAUDE.md guidelines
+### Step 11: Forethought Research plugin
+
+**Check:** Run `/plugin` and check if `forethought-research` appears in the Installed tab.
+
+**If missing:**
+
+Install the Forethought-specific plugin from GitHub:
+
+```bash
+/plugin install forethought-research --from https://github.com/HartreeWorks/forethought-research
+```
+
+This provides:
+- **Commands:** `/publish`, `/diagram`, `/proofread`
+- **Skills:** Publication workflow, branded diagrams, writing style guide
+- **Agent:** Style reviewer for checking documents
+
+After installation, these commands will be available:
+- `/publish` — Start or continue a publication workflow
+- `/diagram` — Create a Forethought-branded diagram
+- `/proofread` — Check a document against style guidelines
+
+### Step 12: Global CLAUDE.md guidelines
 
 **Check:** Read `~/.claude/CLAUDE.md` and check if it contains a "Skill creation" section.
 
@@ -254,7 +277,7 @@ This ensures the guided skill development workflow is used consistently.
 
 These steps are optional. Offer them to the user after the core setup is complete.
 
-### Step 12: Slack integration (optional, ~5 minutes)
+### Step 13: Slack integration (optional, ~5 minutes)
 
 **Check:** Check if `~/.claude/skills/slack/config.json` exists
 
@@ -273,7 +296,7 @@ Guide them through the setup in `skills/slack/SKILL.md`:
 
 **If no:** Mark as skipped and continue.
 
-### Step 13: Google Workspace integration (optional, ~10-20 minutes)
+### Step 14: Google Workspace integration (optional, ~10-20 minutes)
 
 **Check:** Read `~/.claude.json` and check if `mcpServers` contains a `google_workspace` or `google-workspace` entry
 
@@ -312,13 +335,18 @@ Once all steps are complete, welcome the user:
 > **1. Start a research project:**
 > Say "new project" and we can setup a new project with context, memory, and more.
 >
-> **2. Try one of your skills:**
+> **2. Try the Forethought plugin commands:**
+> - `/publish` — Start or continue a publication workflow
+> - `/diagram` — Create a Forethought-branded diagram
+> - `/proofread` — Check a document against style guidelines
+>
+> **3. Try other skills:**
 > - `/youtube-transcribe` — Transcribe a YouTube video
 > - `/forum-digest` — Track users/topics on LessWrong, EA Forum, Alignment Forum
 > - `/slack` — Send or read Slack messages
 > - `/schedule-task` — Schedule recurring tasks
 >
-> **3. Create a new skill:**
+> **4. Create a new skill:**
 > See `guides/creating-a-skill.md` for a quick tutorial, or just tell me what you want to automate and we'll build it together.
 >
 > ## ⚠️ You must restart Claude Code before continuing ⚠️
