@@ -10,12 +10,11 @@ Guide researchers through the full publication process — from draft to publish
 ## Quick start
 
 **New publication:**
-1. Extract the doc ID from the URL (the part after `/d/` and before `/edit`)
-2. Get document metadata (title) using `get_drive_file_permissions` — this is lightweight (~500 bytes)
+1. Ask for the document (Google Doc URL or local markdown path)
+2. Load document content directly into conversation (see "Loading documents" below)
 3. Ask user to confirm title and specify type (paper/research note/blog post)
 4. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py new --title "Title" --type paper --doc "URL"`
-5. Spawn sub-agent to ingest full document (can run in background)
-6. Present Stage 0 steps — you can proceed while ingestion runs
+5. Present Stage 0 steps
 
 **Resume existing:**
 1. Run: `python .claude/skills/forethought-publish/scripts/publication_manager.py status`
@@ -26,91 +25,26 @@ Guide researchers through the full publication process — from draft to publish
 python .claude/skills/forethought-publish/scripts/publication_manager.py active
 ```
 
-## Document ingestion
+## Loading documents
 
-**⚠️ CRITICAL: Never call `get_doc_content` or `get_drive_file_content` directly from the main conversation.** These documents can be 15,000+ tokens. Use `get_drive_file_permissions` to get the title (lightweight), then use the sub-agent pattern below for full content.
+Load documents directly into the conversation. Even long papers (100+ pages, ~50K tokens) fit comfortably in Claude's context.
 
-### Getting document metadata (lightweight)
+**Google Doc URL:**
+1. Extract doc ID from URL (the part after `/d/` and before `/edit`)
+2. Fetch content using `mcp__google_workspace__get_doc_content`:
+   ```
+   mcp__google_workspace__get_doc_content
+     user_google_email: pete.hartree@gmail.com
+     document_id: {doc_id}
+   ```
+3. The content is now in conversation context for the entire workflow
 
-To get the document title without loading full content:
+**Local markdown file:**
+1. User provides file path
+2. Read with Read tool
+3. The content is now in conversation context for the entire workflow
 
-```
-mcp__google_workspace__get_drive_file_permissions
-  user_google_email: pete.hartree@gmail.com
-  file_id: {doc_id}
-```
-
-Returns title, size, sharing status (~500 bytes vs 15,000+ tokens for full content). Use this to set up the publication before ingesting.
-
-### Ingesting full content
-
-Use a sub-agent to fetch and store the document. The full content stays in the sub-agent's context (discarded after), keeping the main conversation lean.
-
-**⚠️ CRITICAL: Use absolute paths when spawning sub-agents.** Sub-agents don't inherit the working directory, so relative paths like `.claude/skills/...` will fail. Always substitute `{PROJECT_ROOT}` with the actual project path (e.g. `/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift`).
-
-**For Google Docs:**
-
-Spawn a haiku sub-agent to fetch and store the document:
-```
-Task tool:
-  subagent_type: "general-purpose"
-  model: "haiku"
-  prompt: |
-    Ingest Google Doc for publication {pub_id}:
-    1. Extract doc ID from URL (the part after /d/ and before /edit)
-    2. Fetch content: use mcp__google_workspace__get_doc_content with:
-       - file_id: {doc_id}
-       - user_google_email: pete.hartree@gmail.com
-    3. Create directory: {PROJECT_ROOT}/.claude/skills/forethought-publish/docs/{pub_id}/
-    4. Write content to: {PROJECT_ROOT}/.claude/skills/forethought-publish/docs/{pub_id}/source.md
-    5. Run: python {PROJECT_ROOT}/.claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}
-    6. Return ONLY the manifest JSON output (not the document content)
-```
-
-**For local markdown files:**
-
-1. Read the file and write to `{PROJECT_ROOT}/.claude/skills/forethought-publish/docs/{pub_id}/source.md`
-2. Run: `python {PROJECT_ROOT}/.claude/skills/forethought-publish/scripts/publication_manager.py generate-manifest --id {pub_id}`
-
-**Refreshing a document:**
-
-If the source document has been edited:
-```bash
-python .claude/skills/forethought-publish/scripts/publication_manager.py refresh --id {pub_id}
-```
-This shows instructions for re-ingesting. Use the same sub-agent pattern as above.
-
-## Working with ingested documents
-
-The manifest at `docs/{pub_id}/manifest.json` contains section info:
-```json
-{
-  "total_chars": 85000,
-  "total_lines": 1200,
-  "sections": [
-    {"heading": "Introduction", "level": 1, "start_line": 1, "end_line": 45, "chars": 3200},
-    {"heading": "Background", "level": 2, "start_line": 46, "end_line": 120, "chars": 5800}
-  ]
-}
-```
-
-**Task-specific loading strategies:**
-
-| Task | Strategy |
-|------|----------|
-| Proofreading | Invoke `/proofread` with the source.md path |
-| Abstract generation | Read manifest, then use Read tool with offset/limit for intro + conclusion sections |
-| Forum/Substack summary | Read manifest for structure, selectively load key sections |
-| Adversarial check | Process sections sequentially using manifest |
-| Social thread | Work from already-generated abstract + key sections |
-
-**Loading specific sections:**
-```
-Read the manifest first, then use Read tool:
-  file_path: .claude/skills/forethought-publish/docs/{pub_id}/source.md
-  offset: {section.start_line}
-  limit: {section.end_line - section.start_line}
-```
+The document stays in context throughout the publication workflow, available for abstract generation, proofreading, adversarial checks, and other content tasks.
 
 ## Publication types
 
