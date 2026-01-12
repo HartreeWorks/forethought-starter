@@ -35,7 +35,7 @@ Ask Claude:
 |-------|---------|
 | [forethought-diagrams](skills/forethought-diagrams) | Create Forethought-branded diagrams and flowcharts |
 | [forethought-publish](skills/forethought-publish) | Guide papers through the full publication process |
-| [forethought-style](skills/forethought-style) | Review content against Forethought style guidelines |
+| [forethought-style](skills/forethought-style) | Review content against Forethought style guidelines and writing examples |
 | [prompt-chain-orchestrator](skills/prompt-chain-orchestrator) | Create and run multi-prompt AI workflows |
 
 ### General-purpose skills
