@@ -25,3 +25,21 @@
 [submodule "skills/proofread"]
 	path = skills/proofread
 	url = https://github.com/HartreeWorks/skill--proofread.git
+[submodule "skills/ask-many-models"]
+	path = skills/ask-many-models
+	url = https://github.com/HartreeWorks/skill--ask-many-models.git
+[submodule "skills/make-image"]
+	path = skills/make-image
+	url = https://github.com/HartreeWorks/skill--make-image.git
+[submodule "skills/mochi-srs"]
+	path = skills/mochi-srs
+	url = https://github.com/HartreeWorks/skill--mochi-srs.git
+[submodule "skills/save-conversation"]
+	path = skills/save-conversation
+	url = https://github.com/HartreeWorks/skill--save-conversation.git
+[submodule "skills/send-email"]
+	path = skills/send-email
+	url = https://github.com/HartreeWorks/skill--send-email.git
+[submodule "skills/summarise-granola"]
+	path = skills/summarise-granola
+	url = https://github.com/HartreeWorks/skill--summarise-granola.git
