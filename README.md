@@ -46,7 +46,7 @@ Ask Claude:
 | [lesswrong-and-ea-forum](https://github.com/HartreeWorks/claude-skill--lesswrong-and-ea-forum) | Track users/topics on LessWrong, EA Forum, Alignment Forum |
 | [make-image](https://github.com/HartreeWorks/skill--make-image) | Generate, edit, or upscale images using Krea AI |
 | [mochi-srs](https://github.com/HartreeWorks/skill--mochi-srs) | Create and review spaced repetition flashcards |
-| [project-management](https://github.com/HartreeWorks/skill--project-management) | Create and manage research projects |
+| [project-management](https://github.com/HartreeWorks/skill--project-management) | Create and manage local projects |
 | [proofread](https://github.com/HartreeWorks/skill--proofread) | Check spelling, grammar, and style |
 | [save-conversation](https://github.com/HartreeWorks/skill--save-conversation) | Export conversations to readable markdown |
 | [schedule-task](https://github.com/HartreeWorks/skill--schedule-task) | macOS scheduled task management via launchd |
