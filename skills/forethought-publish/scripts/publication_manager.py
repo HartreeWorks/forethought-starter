@@ -9,10 +9,11 @@ Commands:
     complete    Mark a step as completed
     skip        Skip a step
     decision    Record a decision
-    save        Save generated content
+    save        Save generated content (markdown is source of truth)
     resume      Set active publication
     active      Show active publication
     archive     Archive a completed publication
+    migrate     Migrate old state format to new format (content → filenames)
 """
 
 import argparse
@@ -253,12 +254,22 @@ def cmd_status(args):
         for key, value in decisions.items():
             print(f"  {key}: {value}")
 
-    # Show generated content
+    # Show generated content (markdown files)
     generated = pub.get("generated", {})
     if generated:
-        print("\nGenerated content saved:")
-        for key in generated:
-            print(f"  {key}")
+        print("\nGenerated drafts:")
+        for content_type, value in generated.items():
+            # Handle both old format (content) and new format (filename)
+            # Old format: long strings with newlines
+            # New format: short strings ending in .md
+            if value.endswith(".md") and len(value) < 200:
+                # New format - filename
+                filepath = DRAFTS_DIR / value
+                exists = "✓" if filepath.exists() else "✗"
+                print(f"  {exists} {content_type}: {value}")
+            else:
+                # Old format - content stored directly
+                print(f"  ! {content_type}: [stored in state.json - needs migration]")
 
 
 def cmd_complete(args):
@@ -345,8 +356,34 @@ def slugify(text):
     return text.strip('-')
 
 
+def load_generated_content(pub_id, content_type):
+    """Load generated content from markdown file (or old format if not migrated)."""
+    state = load_state()
+    pub = state.get("publications", {}).get(pub_id)
+
+    if not pub:
+        return None
+
+    generated = pub.get("generated", {})
+    value = generated.get(content_type)
+
+    if not value:
+        return None
+
+    # Check if this is new format (filename) or old format (content)
+    if value.endswith(".md") and len(value) < 200:
+        # New format - read from file
+        filepath = DRAFTS_DIR / value
+        if not filepath.exists():
+            return None
+        return filepath.read_text()
+    else:
+        # Old format - return content directly (backwards compatibility)
+        return value
+
+
 def cmd_save(args):
-    """Save generated content to state.json and a markdown file."""
+    """Save generated content to a markdown file (source of truth)."""
     state = load_state()
     pub_id = state.get("active")
 
@@ -360,10 +397,6 @@ def cmd_save(args):
     content = args.content
     if content == "-":
         content = sys.stdin.read()
-
-    # Save to state.json
-    pub["generated"][args.type] = content
-    save_state(state)
 
     # Save to markdown file
     DRAFTS_DIR.mkdir(exist_ok=True)
@@ -395,6 +428,10 @@ created: {datetime.now().isoformat()}
 """
 
     filepath.write_text(markdown_content)
+
+    # Save only the filename reference to state.json (not the content)
+    pub["generated"][args.type] = filename
+    save_state(state)
 
     print(f"Saved generated content: {args.type} ({len(content)} chars)")
     print(f"Markdown file: {filepath}")
@@ -455,6 +492,73 @@ def cmd_archive(args):
     print(f"Archived: {pub_id}")
 
 
+def cmd_migrate(args):
+    """Migrate old state format (content in JSON) to new format (filenames only)."""
+    state = load_state()
+    pub_id = args.id or state.get("active")
+
+    if not pub_id:
+        print("No publication specified and no active publication.")
+        sys.exit(1)
+
+    pub = state.get("publications", {}).get(pub_id)
+    if not pub:
+        print(f"Publication '{pub_id}' not found.")
+        sys.exit(1)
+
+    generated = pub.get("generated", {})
+    if not generated:
+        print("No generated content to migrate.")
+        return
+
+    migrated = []
+    for content_type, value in list(generated.items()):
+        # Check if this is old format (content stored directly)
+        if not (value.endswith(".md") and len(value) < 200):
+            # Old format - create markdown file
+            DRAFTS_DIR.mkdir(exist_ok=True)
+
+            title_slug = slugify(pub["title"])[:50]
+            filename = f"{pub_id}-{title_slug}-{content_type}.md"
+            filepath = DRAFTS_DIR / filename
+
+            # Create markdown with frontmatter
+            content_type_names = {
+                "abstract": "Abstract",
+                "social_thread": "Social media thread",
+                "forum_draft": "Forum/LW post",
+                "substack_draft": "Substack post",
+            }
+            type_display = content_type_names.get(content_type, content_type.replace("_", " ").title())
+
+            markdown_content = f"""---
+publication_id: {pub_id}
+title: "{pub['title']}"
+type: {pub['type']}
+content_type: {content_type}
+created: {datetime.now().isoformat()}
+---
+
+# {type_display}: {pub['title']}
+
+{value}
+"""
+
+            filepath.write_text(markdown_content)
+
+            # Update state.json to store filename instead of content
+            pub["generated"][content_type] = filename
+            migrated.append((content_type, filename))
+
+    if migrated:
+        save_state(state)
+        print(f"Migrated {len(migrated)} item(s):")
+        for content_type, filename in migrated:
+            print(f"  ✓ {content_type} → {filename}")
+    else:
+        print("No old-format content found. Already using new format.")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Publication workflow manager")
     subparsers = parser.add_subparsers(dest="command", help="Commands")
@@ -501,6 +605,10 @@ def main():
     p_archive = subparsers.add_parser("archive", help="Archive a publication")
     p_archive.add_argument("--id", "-i", help="Publication ID (default: active)")
 
+    # migrate
+    p_migrate = subparsers.add_parser("migrate", help="Migrate old state format to new format")
+    p_migrate.add_argument("--id", "-i", help="Publication ID (default: active)")
+
     args = parser.parse_args()
 
     if not args.command:
@@ -518,6 +626,7 @@ def main():
         "resume": cmd_resume,
         "active": cmd_active,
         "archive": cmd_archive,
+        "migrate": cmd_migrate,
     }
 
     commands[args.command](args)
