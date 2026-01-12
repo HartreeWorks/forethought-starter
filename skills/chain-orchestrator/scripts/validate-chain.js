@@ -4,16 +4,16 @@
  * Validate a chain definition and its prompt files
  * Usage: node validate-chain.js <chain-id>
  *
- * Run from forethought-starter/tools/chain-runner to use its yaml dependency:
+ * Run from forethought-starter/tools/prompt-chain-runner to use its yaml dependency:
  *   node ../../skills/chain-orchestrator/scripts/validate-chain.js paper-critique
  */
 
 const fs = require("fs");
 const path = require("path");
 
-// Try to load yaml from chain-runner's node_modules
+// Try to load yaml from prompt-chain-runner's node_modules
 let yaml;
-const chainRunnerYaml = path.resolve(__dirname, "../../../tools/chain-runner/node_modules/yaml");
+const chainRunnerYaml = path.resolve(__dirname, "../../../tools/prompt-chain-runner/node_modules/yaml");
 try {
   yaml = require(chainRunnerYaml);
 } catch {
@@ -21,7 +21,7 @@ try {
     yaml = require("yaml");
   } catch {
     console.error("Error: yaml module not found.");
-    console.error("Run 'yarn install' in tools/chain-runner first.");
+    console.error("Run 'yarn install' in tools/prompt-chain-runner first.");
     process.exit(1);
   }
 }
@@ -135,7 +135,7 @@ function validateChain(chainId) {
     process.exit(1);
   } else {
     console.log(`✓ Chain "${chainId}" is valid`);
-    console.log(`\nTo run: cd tools/chain-runner && yarn dev`);
+    console.log(`\nTo run: cd tools/prompt-chain-runner && yarn dev`);
   }
 }
 

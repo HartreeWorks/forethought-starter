@@ -1,11 +1,11 @@
 ---
 name: chain-orchestrator
-description: This skill should be used when the user asks to "run a chain", "create a chain", "define a chain", "execute a chain", "chain run", "start chain-runner", "view chain results", or mentions multi-step AI workflows, prompt chains, or multi-model orchestration. Manages the creation, execution, and viewing of multi-prompt AI chains.
+description: This skill should be used when the user asks to "run a chain", "create a chain", "define a chain", "execute a chain", "chain run", "start prompt-chain-runner", "view chain results", or mentions multi-step AI workflows, prompt chains, or multi-model orchestration. Manages the creation, execution, and viewing of multi-prompt AI chains.
 ---
 
 # Chain orchestrator
 
-Orchestrate multi-prompt AI workflows using the chain-runner application. This skill helps you create, run, and monitor chains of AI model calls.
+Orchestrate multi-prompt AI workflows using the prompt-chain-runner application. This skill helps you create, run, and monitor chains of AI model calls.
 
 ## Core concepts
 
@@ -22,7 +22,7 @@ forethought-starter/
 │       ├── chain.yaml   # Chain configuration
 │       └── prompts/     # Prompt templates (Handlebars)
 └── tools/
-    └── chain-runner/    # Next.js web application
+    └── prompt-chain-runner/    # Next.js web application
         └── runs/        # Default execution outputs (gitignored)
 ```
 
@@ -80,10 +80,10 @@ steps:
 ```
 
 **Output directory options**:
-- Default: `tools/chain-runner/runs/` (inside chain-runner)
+- Default: `tools/prompt-chain-runner/runs/` (inside prompt-chain-runner)
 - Custom: Set `config.output_dir` in chain.yaml to save runs elsewhere
 - Absolute paths work: `/Users/you/project/runs`
-- Relative paths resolve from chain-runner directory
+- Relative paths resolve from prompt-chain-runner directory
 
 **Available models**:
 - `claude-opus-4-5` — Anthropic Claude Opus 4.5
@@ -100,9 +100,9 @@ steps:
 
 To execute a chain:
 
-1. **Start the chain-runner server** (if not already running):
+1. **Start the prompt-chain-runner server** (if not already running):
    ```bash
-   cd /path/to/forethought-starter/tools/chain-runner
+   cd /path/to/forethought-starter/tools/prompt-chain-runner
    yarn dev
    ```
    The server runs on port 3456.
@@ -127,13 +127,13 @@ To execute a chain:
 **Via filesystem**:
 ```bash
 # List recent runs (default location)
-ls -la tools/chain-runner/runs/paper-critique/
+ls -la tools/prompt-chain-runner/runs/paper-critique/
 
 # View run metadata
-cat tools/chain-runner/runs/paper-critique/run_xxx/run.json
+cat tools/prompt-chain-runner/runs/paper-critique/run_xxx/run.json
 
 # View step outputs
-cat tools/chain-runner/runs/paper-critique/run_xxx/steps/brainstorm.md
+cat tools/prompt-chain-runner/runs/paper-critique/run_xxx/steps/brainstorm.md
 ```
 
 If the chain uses a custom `output_dir`, look there instead.
@@ -157,7 +157,7 @@ If the chain uses a custom `output_dir`, look there instead.
 
 ## Environment setup
 
-The chain-runner needs API keys in `tools/chain-runner/.env`:
+The prompt-chain-runner needs API keys in `tools/prompt-chain-runner/.env`:
 
 ```
 ANTHROPIC_API_KEY=sk-ant-...
@@ -179,7 +179,7 @@ Current chains in this project:
 
 **Server won't start**:
 ```bash
-cd forethought-starter/tools/chain-runner
+cd forethought-starter/tools/prompt-chain-runner
 yarn install
 yarn dev
 ```

@@ -41,22 +41,22 @@ Ask Claude:
 
 | Skill | Purpose |
 |-------|---------|
-| [ask-many-models](skills/ask-many-models) | Query multiple AI models and synthesise responses |
+| [ask-many-models](https://github.com/HartreeWorks/skill--ask-many-models) | Query multiple AI models and synthesise responses |
 | [chain-orchestrator](skills/chain-orchestrator) | Create and run multi-prompt AI workflows |
-| [lesswrong-and-ea-forum](skills/lesswrong-and-ea-forum) | Track users/topics on LessWrong, EA Forum, Alignment Forum |
-| [make-image](skills/make-image) | Generate, edit, or upscale images using Krea AI |
-| [mochi-srs](skills/mochi-srs) | Create and review spaced repetition flashcards |
-| [project-management](skills/project-management) | Create and manage research projects |
-| [proofread](skills/proofread) | Check spelling, grammar, and style |
-| [save-conversation](skills/save-conversation) | Export conversations to readable markdown |
-| [schedule-task](skills/schedule-task) | macOS scheduled task management via launchd |
-| [secure-mcp-install](skills/secure-mcp-install) | Security-focused MCP server installation |
-| [send-email](skills/send-email) | Send emails via Gmail with preview and confirmation |
-| [slack](skills/slack) | Multi-workspace Slack messaging |
-| [summarise-granola](skills/summarise-granola) | Summarise calls from Granola transcripts |
-| [transcribe-audio](skills/transcribe-audio) | Transcribe audio files using Parakeet MLX |
-| [youtube-download](skills/youtube-download) | Download YouTube videos and audio using yt-dlp |
-| [youtube-transcribe](skills/youtube-transcribe) | Transcribe YouTube videos using Parakeet MLX |
+| [lesswrong-and-ea-forum](https://github.com/HartreeWorks/claude-skill--lesswrong-and-ea-forum) | Track users/topics on LessWrong, EA Forum, Alignment Forum |
+| [make-image](https://github.com/HartreeWorks/skill--make-image) | Generate, edit, or upscale images using Krea AI |
+| [mochi-srs](https://github.com/HartreeWorks/skill--mochi-srs) | Create and review spaced repetition flashcards |
+| [project-management](https://github.com/HartreeWorks/skill--project-management) | Create and manage research projects |
+| [proofread](https://github.com/HartreeWorks/skill--proofread) | Check spelling, grammar, and style |
+| [save-conversation](https://github.com/HartreeWorks/skill--save-conversation) | Export conversations to readable markdown |
+| [schedule-task](https://github.com/HartreeWorks/skill--schedule-task) | macOS scheduled task management via launchd |
+| [secure-mcp-install](https://github.com/HartreeWorks/skill--secure-mcp-install) | Security-focused MCP server installation |
+| [send-email](https://github.com/HartreeWorks/skill--send-email) | Send emails via Gmail SMTP (no Google Cloud Console project required) |
+| [slack](https://github.com/HartreeWorks/skill--slack) | Multi-workspace Slack messaging |
+| [summarise-granola](https://github.com/HartreeWorks/skill--summarise-granola) | Summarise calls from Granola transcripts |
+| [transcribe-audio](https://github.com/HartreeWorks/skill--transcribe-audio) | Transcribe audio files using Parakeet MLX |
+| [youtube-download](https://github.com/HartreeWorks/skill--youtube-download) | Download YouTube videos and audio using yt-dlp |
+| [youtube-transcribe](https://github.com/HartreeWorks/skill--youtube-transcribe) | Transcribe YouTube videos using Parakeet MLX |
 
 ### Tools
 
@@ -64,7 +64,7 @@ Ask Claude:
 |------|---------|
 | prompt-chain-runner | Next.js app for executing multi-step AI chains with real-time UI |
 
-To start the prompt-chain-runner: `cd tools/chain-runner && yarn dev` (runs on port 3456)
+To start the prompt-chain-runner: `cd tools/prompt-chain-runner && yarn dev` (runs on port 3456)
 
 ### Guides
 

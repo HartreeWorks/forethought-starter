@@ -78,7 +78,7 @@ export const ChainConfigSchema = z.object({
   timeout_minutes: z.number().default(30),
   notify_on_complete: z.boolean().default(true),
   persist_intermediate: z.boolean().default(true),
-  output_dir: z.string().optional(), // Custom runs directory (relative to chain-runner or absolute)
+  output_dir: z.string().optional(), // Custom runs directory (relative to prompt-chain-runner or absolute)
 });
 
 // Full chain definition
