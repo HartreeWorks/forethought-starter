@@ -29,15 +29,20 @@ Ask Claude:
 
 ## What's included
 
-### Skills
+### Forethought-specific skills
+
+| Skill | Purpose |
+|-------|---------|
+| [forethought-diagrams](skills/forethought-diagrams) | Create Forethought-branded diagrams and flowcharts |
+| [forethought-publish](skills/forethought-publish) | Guide papers through the full publication process |
+| [forethought-style](skills/forethought-style) | Review content against Forethought style guidelines |
+
+### General-purpose skills
 
 | Skill | Purpose |
 |-------|---------|
 | [ask-many-models](skills/ask-many-models) | Query multiple AI models and synthesise responses |
 | [chain-orchestrator](skills/chain-orchestrator) | Create and run multi-prompt AI workflows |
-| [forethought-diagrams](skills/forethought-diagrams) | Create Forethought-branded diagrams and flowcharts |
-| [forethought-publish](skills/forethought-publish) | Guide papers through the full publication process |
-| [forethought-style](skills/forethought-style) | Review content against Forethought style guidelines |
 | [lesswrong-and-ea-forum](skills/lesswrong-and-ea-forum) | Track users/topics on LessWrong, EA Forum, Alignment Forum |
 | [make-image](skills/make-image) | Generate, edit, or upscale images using Krea AI |
 | [mochi-srs](skills/mochi-srs) | Create and review spaced repetition flashcards |
@@ -57,9 +62,9 @@ Ask Claude:
 
 | Tool | Purpose |
 |------|---------|
-| chain-runner | Next.js app for executing multi-step AI chains with real-time UI |
+| prompt-chain-runner | Next.js app for executing multi-step AI chains with real-time UI |
 
-To start the chain-runner: `cd tools/chain-runner && yarn dev` (runs on port 3456)
+To start the prompt-chain-runner: `cd tools/chain-runner && yarn dev` (runs on port 3456)
 
 ### Guides
 
