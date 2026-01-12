@@ -60,7 +60,7 @@ Load documents directly into the conversation. Even long papers (100+ pages, ~50
 2. Fetch content using `mcp__google_workspace__get_doc_content`:
    ```
    mcp__google_workspace__get_doc_content
-     user_google_email: pete.hartree@gmail.com
+     user_google_email: your-email@example.com
      document_id: {doc_id}
    ```
 3. The content is now in conversation context for the entire workflow
