@@ -36,13 +36,13 @@ Ask Claude:
 | [forethought-diagrams](skills/forethought-diagrams) | Create Forethought-branded diagrams and flowcharts |
 | [forethought-publish](skills/forethought-publish) | Guide papers through the full publication process |
 | [forethought-style](skills/forethought-style) | Review content against Forethought style guidelines |
+| [prompt-chain-orchestrator](skills/prompt-chain-orchestrator) | Create and run multi-prompt AI workflows |
 
 ### General-purpose skills
 
 | Skill | Purpose |
 |-------|---------|
 | [ask-many-models](https://github.com/HartreeWorks/skill--ask-many-models) | Query multiple AI models and synthesise responses |
-| [chain-orchestrator](skills/chain-orchestrator) | Create and run multi-prompt AI workflows |
 | [lesswrong-and-ea-forum](https://github.com/HartreeWorks/claude-skill--lesswrong-and-ea-forum) | Track users/topics on LessWrong, EA Forum, Alignment Forum |
 | [make-image](https://github.com/HartreeWorks/skill--make-image) | Generate, edit, or upscale images using Krea AI |
 | [mochi-srs](https://github.com/HartreeWorks/skill--mochi-srs) | Create and review spaced repetition flashcards |

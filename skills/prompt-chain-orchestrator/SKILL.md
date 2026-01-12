@@ -1,9 +1,9 @@
 ---
-name: chain-orchestrator
-description: This skill should be used when the user asks to "run a chain", "create a chain", "define a chain", "execute a chain", "chain run", "start prompt-chain-runner", "view chain results", or mentions multi-step AI workflows, prompt chains, or multi-model orchestration. Manages the creation, execution, and viewing of multi-prompt AI chains.
+name: prompt-chain-orchestrator
+description: This skill should be used when the user asks to "run a prompt chain", "create a prompt chain", "define a chain", "execute a chain", "chain run", "start prompt-chain-runner", "view chain results", or mentions multi-step AI workflows, prompt chains, or multi-model orchestration. Manages the creation, execution, and viewing of multi-prompt AI chains.
 ---
 
-# Chain orchestrator
+# Prompt chain orchestrator
 
 Orchestrate multi-prompt AI workflows using the prompt-chain-runner application. This skill helps you create, run, and monitor chains of AI model calls.
 

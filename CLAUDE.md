@@ -396,7 +396,7 @@ Once all steps are complete, welcome the user:
 >
 > **3. Try other skills:**
 > - `/youtube-transcribe` — Transcribe a YouTube video
-> - `/forum-digest` — Track users/topics on LessWrong, EA Forum, Alignment Forum
+> - `/lesswrong-and-ea-forum` — Track users/topics on LessWrong, EA Forum, Alignment Forum
 > - `/slack` — Send or read Slack messages
 > - `/schedule-task` — Schedule recurring tasks
 >

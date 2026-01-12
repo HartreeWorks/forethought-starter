@@ -1,4 +1,4 @@
-# Chain orchestrator skill
+# Prompt chain orchestrator skill
 
 Claude Code skill for managing multi-prompt AI chains in the Forethought research workflow.
 

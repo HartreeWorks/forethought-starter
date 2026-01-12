@@ -5,7 +5,7 @@
  * Usage: node validate-chain.js <chain-id>
  *
  * Run from forethought-starter/tools/prompt-chain-runner to use its yaml dependency:
- *   node ../../skills/chain-orchestrator/scripts/validate-chain.js paper-critique
+ *   node ../../skills/prompt-chain-orchestrator/scripts/validate-chain.js paper-critique
  */
 
 const fs = require("fs");
