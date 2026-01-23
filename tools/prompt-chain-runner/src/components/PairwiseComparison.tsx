@@ -217,18 +217,32 @@ export default function PairwiseComparison() {
   if (showResults && stats) {
     const evalStats = stats.evaluatorStats;
     const pct = (evalStats.agreementRate * 100).toFixed(0);
+    const remaining = progress?.remaining ?? 0;
+    const isComplete = remaining === 0;
 
     return (
       <div className="max-w-4xl mx-auto">
-        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold text-green-800 mb-2">
-            Comparison complete!
-          </h2>
-          <p className="text-green-700">
-            You've completed all available comparisons. Thank you for helping validate
-            the ACORN grader!
-          </p>
-        </div>
+        {isComplete ? (
+          <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+            <h2 className="text-xl font-semibold text-green-800 mb-2">
+              All comparisons complete!
+            </h2>
+            <p className="text-green-700">
+              You've completed all available comparisons. Thank you for helping validate
+              the ACORN grader!
+            </p>
+          </div>
+        ) : (
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+            <h2 className="text-xl font-semibold text-blue-800 mb-2">
+              Your progress so far
+            </h2>
+            <p className="text-blue-700">
+              You've completed {evalStats.totalComparisons} comparisons.{" "}
+              {remaining} pairs remaining.
+            </p>
+          </div>
+        )}
 
         <div className="bg-white border rounded-lg p-6">
           <h3 className="text-lg font-semibold mb-4">Your results</h3>
@@ -279,12 +293,21 @@ export default function PairwiseComparison() {
           </div>
         </div>
 
-        <button
-          onClick={() => setShowResults(false)}
-          className="mt-6 text-blue-600 hover:underline"
-        >
-          ← Back to comparison (check for new pairs)
-        </button>
+        {remaining > 0 ? (
+          <button
+            onClick={() => setShowResults(false)}
+            className="mt-6 w-full bg-blue-600 text-white rounded-md py-3 font-medium hover:bg-blue-700 transition-all"
+          >
+            Continue comparing ({remaining} remaining)
+          </button>
+        ) : (
+          <button
+            onClick={() => setShowResults(false)}
+            className="mt-6 text-blue-600 hover:underline"
+          >
+            ← Back to comparison
+          </button>
+        )}
       </div>
     );
   }
@@ -369,7 +392,7 @@ export default function PairwiseComparison() {
       </div>
 
       {/* Side-by-side critiques - wider on large screens for optimal line length */}
-      <div className="grid md:grid-cols-2 gap-6 mb-6 lg:-mx-12">
+      <div className="grid md:grid-cols-2 gap-6 mb-6 lg:-mx-[50px]">
         {/* Critique A */}
         <div
           className={`border rounded-lg p-4 cursor-pointer transition-all ${
@@ -507,16 +530,16 @@ export default function PairwiseComparison() {
         {isSubmitting ? "Submitting..." : "Submit & Next"}
       </button>
 
-      {/* View results link */}
+      {/* Finish & view results button */}
       {progress && progress.completed > 0 && (
         <button
           onClick={() => {
             setShowResults(true);
             loadStats();
           }}
-          className="mt-4 text-sm text-gray-500 hover:text-gray-700 w-full text-center"
+          className="mt-4 w-full border border-gray-300 text-gray-700 rounded-md py-2 font-medium hover:bg-gray-50 transition-all"
         >
-          View your results so far
+          Finish & view results
         </button>
       )}
     </div>
