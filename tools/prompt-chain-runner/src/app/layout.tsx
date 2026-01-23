@@ -29,6 +29,15 @@ export default function RootLayout({
             <a href="/" className="text-sm font-medium text-gray-600 hover:text-gray-900">
               Prompt chains
             </a>
+            <a href="/experiments" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+              Experiments
+            </a>
+            <a href="/assets" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+              Assets
+            </a>
+            <a href="/pairwise" className="text-sm font-medium text-gray-600 hover:text-gray-900">
+              Pairwise
+            </a>
           </div>
         </nav>
         <div className="max-w-6xl mx-auto px-4 py-8">
