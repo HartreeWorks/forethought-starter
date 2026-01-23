@@ -134,22 +134,30 @@ export default function RunCard({ run, onExecute, onDelete, isExecuting, lastChe
         </div>
       </div>
 
-      {/* Progress bar */}
+      {/* Progress */}
       <div className="mb-3">
-        <div className="flex justify-between text-sm text-gray-600 mb-1">
-          <span>Progress</span>
-          <span>
-            {run.completedCount} / {run.targetCount} ({progressPercent}%)
-          </span>
-        </div>
-        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-          <div
-            className={`h-full transition-all ${
-              run.status === "failed" ? "bg-red-500" : "bg-blue-600"
-            }`}
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
+        {isAI ? (
+          <>
+            <div className="flex justify-between text-sm text-gray-600 mb-1">
+              <span>Progress</span>
+              <span>
+                {run.completedCount} / {run.targetCount} ({progressPercent}%)
+              </span>
+            </div>
+            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div
+                className={`h-full transition-all ${
+                  run.status === "failed" ? "bg-red-500" : "bg-blue-600"
+                }`}
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="text-sm text-gray-600">
+            {run.completedCount} pairs compared
+          </div>
+        )}
         {run.completedCount > 0 && run.agreementRate !== undefined && (
           <div className="text-sm text-gray-600 mt-2">
             ACORN agreement: <span className="font-medium">{Math.round(run.agreementRate * 100)}%</span>

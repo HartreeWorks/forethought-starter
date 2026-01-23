@@ -62,7 +62,9 @@ export default function NewRunModal({
     try {
       const body: Record<string, unknown> = {
         evaluatorType,
-        targetCount,
+        // Human runs don't have a target - they go until Finish is clicked
+        // Use a high number so the run doesn't auto-complete
+        targetCount: evaluatorType === "human" ? 9999 : targetCount,
       };
 
       if (evaluatorType === "human") {
@@ -217,23 +219,25 @@ export default function NewRunModal({
             </div>
           )}
 
-          {/* Target Count */}
-          <div>
-            <label className="block text-sm font-medium mb-2">
-              Number of pairs to evaluate
-            </label>
-            <input
-              type="number"
-              value={targetCount}
-              onChange={(e) => setTargetCount(parseInt(e.target.value) || 1)}
-              min={1}
-              max={totalPairs}
-              className="w-full border rounded-md px-3 py-2"
-            />
-            <p className="text-sm text-gray-500 mt-1">
-              {totalPairs} pairs available in total
-            </p>
-          </div>
+          {/* Target Count - only for AI runs */}
+          {evaluatorType === "ai" && (
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Number of pairs to evaluate
+              </label>
+              <input
+                type="number"
+                value={targetCount}
+                onChange={(e) => setTargetCount(parseInt(e.target.value) || 1)}
+                min={1}
+                max={totalPairs}
+                className="w-full border rounded-md px-3 py-2"
+              />
+              <p className="text-sm text-gray-500 mt-1">
+                {totalPairs} pairs available in total
+              </p>
+            </div>
+          )}
 
           {/* Error */}
           {error && (
