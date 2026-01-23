@@ -46,6 +46,8 @@ interface CreateRunInput {
   evaluator: string;
   evaluatorType: EvaluatorType;
   aiModel?: string;
+  paperSlug?: string;
+  paperName?: string;
   targetCount: number;
 }
 
@@ -91,6 +93,8 @@ export async function POST(request: Request) {
       evaluator: input.evaluator,
       evaluatorType: input.evaluatorType,
       aiModel: input.aiModel,
+      paperSlug: input.paperSlug,
+      paperName: input.paperName,
       targetCount: input.targetCount,
     });
 

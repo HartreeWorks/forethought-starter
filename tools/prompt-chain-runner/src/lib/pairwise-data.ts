@@ -312,3 +312,10 @@ export function getPaperSlugs(): string[] {
 export function getPaperName(paperSlug: string): string {
   return PAPER_NAMES[paperSlug] || paperSlug;
 }
+
+/**
+ * Get all available papers with their slugs and names.
+ */
+export function getAvailablePapers(): { slug: string; name: string }[] {
+  return Object.entries(PAPER_NAMES).map(([slug, name]) => ({ slug, name }));
+}

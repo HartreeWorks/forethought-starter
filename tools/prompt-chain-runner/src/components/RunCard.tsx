@@ -9,6 +9,8 @@ interface RunCardProps {
     evaluator: string;
     evaluatorType: "human" | "ai";
     aiModel?: string;
+    paperSlug?: string;
+    paperName?: string;
     targetCount: number;
     completedCount: number;
     status: "pending" | "in_progress" | "completed" | "failed";
@@ -100,7 +102,12 @@ export default function RunCard({ run, onExecute, onDelete, isExecuting, lastChe
     <div className="border rounded-lg p-4 bg-white hover:border-gray-300 transition-all">
       <div className="flex justify-between items-start mb-3">
         <div>
-          <h3 className="font-semibold text-lg">{run.evaluator}</h3>
+          <div className="flex items-center gap-2">
+            <h3 className="font-semibold text-lg">{run.evaluator}</h3>
+            {run.paperName && (
+              <span className="text-sm text-gray-500">• {run.paperName}</span>
+            )}
+          </div>
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <span className="capitalize">{run.evaluatorType}</span>
             {isAI && run.aiModel && (

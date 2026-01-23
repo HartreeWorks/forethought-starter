@@ -44,7 +44,13 @@ interface StatsResponse {
   overall: AgreementStats;
 }
 
-export default function PairwiseComparison() {
+interface PairwiseComparisonProps {
+  runId?: string;
+  evaluator?: string;
+  paperSlug?: string;
+}
+
+export default function PairwiseComparison({ runId, evaluator: initialEvaluator, paperSlug }: PairwiseComparisonProps = {}) {
   // Evaluator state
   const [evaluator, setEvaluator] = useState<string | null>(null);
   const [nameInput, setNameInput] = useState("");
@@ -66,8 +72,13 @@ export default function PairwiseComparison() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Check localStorage for existing evaluator name
+  // Check localStorage for existing evaluator name (or use prop if provided)
   useEffect(() => {
+    if (initialEvaluator) {
+      setEvaluator(initialEvaluator);
+      setIsLoading(false);
+      return;
+    }
     const storedName = localStorage.getItem("pairwise-evaluator");
     if (storedName) {
       setEvaluator(storedName);
@@ -75,7 +86,7 @@ export default function PairwiseComparison() {
       setShowNameModal(true);
     }
     setIsLoading(false);
-  }, []);
+  }, [initialEvaluator]);
 
   // Load next pair when evaluator is set
   const loadNextPair = useCallback(async () => {
@@ -85,9 +96,11 @@ export default function PairwiseComparison() {
     setError(null);
 
     try {
-      const res = await fetch(
-        `/api/pairwise/next?evaluator=${encodeURIComponent(evaluator)}`
-      );
+      let url = `/api/pairwise/next?evaluator=${encodeURIComponent(evaluator)}`;
+      if (paperSlug) {
+        url += `&paper=${encodeURIComponent(paperSlug)}`;
+      }
+      const res = await fetch(url);
       const data = await res.json();
 
       if (!res.ok) {
@@ -107,7 +120,7 @@ export default function PairwiseComparison() {
     } finally {
       setIsLoading(false);
     }
-  }, [evaluator]);
+  }, [evaluator, paperSlug]);
 
   useEffect(() => {
     if (evaluator && !showResults) {
@@ -160,6 +173,7 @@ export default function PairwiseComparison() {
           notes: notes || undefined,
           rankA: currentPair._meta.rankA,
           rankB: currentPair._meta.rankB,
+          runId: runId || undefined,
         }),
       });
 

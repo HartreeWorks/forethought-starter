@@ -9,6 +9,8 @@ interface Run {
   evaluator: string;
   evaluatorType: "human" | "ai";
   aiModel?: string;
+  paperSlug?: string;
+  paperName?: string;
   targetCount: number;
   completedCount: number;
   status: "pending" | "in_progress" | "completed" | "failed";

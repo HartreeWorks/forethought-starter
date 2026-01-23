@@ -6,9 +6,31 @@ import { v4 as uuidv4 } from "uuid";
 // Use process.cwd() since that's where Next.js runs from
 const PAIRWISE_DIR = path.join(process.cwd(), "pairwise-comparisons");
 const COMPARISONS_FILE = path.join(PAIRWISE_DIR, "comparisons.json");
+const RUNS_FILE = path.join(PAIRWISE_DIR, "runs.json");
 
 export type Winner = "A" | "B" | "tie" | "unclear";
 export type Confidence = "high" | "medium" | "low";
+export type EvaluatorType = "human" | "ai";
+export type RunStatus = "pending" | "in_progress" | "completed" | "failed";
+
+export interface ComparisonRun {
+  id: string;
+  evaluator: string;           // Display name (e.g., "Peter Hartree" or "GPT-5.2 Pro")
+  evaluatorType: EvaluatorType;
+  aiModel?: string;            // e.g., "gpt-5.2-pro"
+  paperSlug?: string;          // Filter to specific paper (e.g., "convergence")
+  paperName?: string;          // Display name of paper
+  targetCount: number;         // How many pairs to evaluate
+  completedCount: number;
+  status: RunStatus;
+  startedAt: string;
+  completedAt?: string;
+  error?: string;              // Error message if failed
+}
+
+export interface RunsData {
+  runs: ComparisonRun[];
+}
 
 export interface Comparison {
   id: string;
@@ -22,6 +44,9 @@ export interface Comparison {
   // Store the ranks at time of comparison for analysis
   rankA: number;
   rankB: number;
+  // Run tracking
+  runId?: string;              // Link to run (optional for backwards compat)
+  aiReasoning?: string;        // AI's explanation (for AI evaluations)
 }
 
 export interface ComparisonsData {
@@ -115,6 +140,163 @@ export async function getEvaluators(): Promise<string[]> {
   const data = await loadComparisons();
   const evaluators = new Set(data.comparisons.map((c) => c.evaluator));
   return Array.from(evaluators);
+}
+
+// ============================================================================
+// Run Management
+// ============================================================================
+
+/**
+ * Load all runs from disk.
+ */
+export async function loadRuns(): Promise<RunsData> {
+  await ensureDir();
+
+  try {
+    const content = await fs.readFile(RUNS_FILE, "utf-8");
+    return JSON.parse(content);
+  } catch (error) {
+    // File doesn't exist yet
+    return { runs: [] };
+  }
+}
+
+/**
+ * Save runs to disk.
+ */
+async function saveRuns(data: RunsData): Promise<void> {
+  await ensureDir();
+  await fs.writeFile(RUNS_FILE, JSON.stringify(data, null, 2), "utf-8");
+}
+
+/**
+ * Create a new run.
+ */
+export async function createRun(
+  run: Omit<ComparisonRun, "id" | "completedCount" | "status" | "startedAt">
+): Promise<ComparisonRun> {
+  const data = await loadRuns();
+
+  const newRun: ComparisonRun = {
+    ...run,
+    id: uuidv4(),
+    completedCount: 0,
+    status: "pending",
+    startedAt: new Date().toISOString(),
+  };
+
+  data.runs.push(newRun);
+  await saveRuns(data);
+
+  return newRun;
+}
+
+/**
+ * Get a run by ID.
+ */
+export async function getRun(runId: string): Promise<ComparisonRun | null> {
+  const data = await loadRuns();
+  return data.runs.find((r) => r.id === runId) || null;
+}
+
+/**
+ * Update a run.
+ */
+export async function updateRun(
+  runId: string,
+  updates: Partial<Omit<ComparisonRun, "id">>
+): Promise<ComparisonRun | null> {
+  const data = await loadRuns();
+  const index = data.runs.findIndex((r) => r.id === runId);
+
+  if (index === -1) return null;
+
+  data.runs[index] = { ...data.runs[index], ...updates };
+  await saveRuns(data);
+
+  return data.runs[index];
+}
+
+/**
+ * Get all runs.
+ */
+export async function getAllRuns(): Promise<ComparisonRun[]> {
+  const data = await loadRuns();
+  return data.runs;
+}
+
+/**
+ * Delete a run and its comparisons.
+ */
+export async function deleteRun(runId: string): Promise<boolean> {
+  // Delete run
+  const runsData = await loadRuns();
+  const runIndex = runsData.runs.findIndex((r) => r.id === runId);
+  if (runIndex === -1) return false;
+
+  runsData.runs.splice(runIndex, 1);
+  await saveRuns(runsData);
+
+  // Delete associated comparisons
+  const comparisonsData = await loadComparisons();
+  comparisonsData.comparisons = comparisonsData.comparisons.filter(
+    (c) => c.runId !== runId
+  );
+  await saveComparisons(comparisonsData);
+
+  return true;
+}
+
+/**
+ * Get comparisons for a specific run.
+ */
+export async function getRunComparisons(runId: string): Promise<Comparison[]> {
+  const data = await loadComparisons();
+  return data.comparisons.filter((c) => c.runId === runId);
+}
+
+/**
+ * Get set of pair IDs completed for a specific run.
+ */
+export async function getRunCompletedPairIds(runId: string): Promise<Set<string>> {
+  const comparisons = await getRunComparisons(runId);
+  const pairIds = new Set<string>();
+
+  for (const c of comparisons) {
+    // Create order-independent pair ID
+    const sorted = [c.critiqueA, c.critiqueB].sort();
+    pairIds.add(`${sorted[0]}:${sorted[1]}`);
+  }
+
+  return pairIds;
+}
+
+/**
+ * Add a comparison with run tracking.
+ */
+export async function addComparisonToRun(
+  runId: string,
+  comparison: Omit<Comparison, "id" | "timestamp" | "runId">
+): Promise<Comparison> {
+  const data = await loadComparisons();
+
+  const newComparison: Comparison = {
+    ...comparison,
+    id: uuidv4(),
+    timestamp: new Date().toISOString(),
+    runId,
+  };
+
+  data.comparisons.push(newComparison);
+  await saveComparisons(data);
+
+  // Update run's completed count
+  const run = await getRun(runId);
+  if (run) {
+    await updateRun(runId, { completedCount: run.completedCount + 1 });
+  }
+
+  return newComparison;
 }
 
 /**

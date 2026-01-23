@@ -4,7 +4,9 @@ import {
   sortByOverallScore,
   generatePairs,
   getNextPair,
+  getAvailablePapers,
   CritiqueWithGrade,
+  PairSelection,
 } from "@/lib/pairwise-data";
 import { getCompletedPairIds } from "@/lib/pairwise-persistence";
 
@@ -34,24 +36,35 @@ interface NextPairResponse {
 
 // Cache loaded data to avoid re-reading files on every request
 let cachedCritiques: CritiqueWithGrade[] | null = null;
-let cachedPairs: ReturnType<typeof generatePairs> | null = null;
+// Cache pairs by paper slug (empty string = all papers)
+const cachedPairsByPaper = new Map<string, PairSelection[]>();
 
-async function getCritiquesAndPairs() {
-  if (!cachedCritiques || !cachedPairs) {
+async function getCritiquesAndPairs(paperSlug?: string) {
+  if (!cachedCritiques) {
     const critiques = await loadAllCritiques();
-    const sorted = sortByOverallScore(critiques);
-    const pairs = generatePairs(sorted);
-    cachedCritiques = sorted;
-    cachedPairs = pairs;
+    cachedCritiques = sortByOverallScore(critiques);
   }
-  return { critiques: cachedCritiques, pairs: cachedPairs };
+
+  const cacheKey = paperSlug || "";
+  if (!cachedPairsByPaper.has(cacheKey)) {
+    // Filter critiques by paper if specified
+    const critiquesToUse = paperSlug
+      ? cachedCritiques.filter((c) => c.paperSlug === paperSlug)
+      : cachedCritiques;
+    const sorted = sortByOverallScore(critiquesToUse);
+    const pairs = generatePairs(sorted);
+    cachedPairsByPaper.set(cacheKey, pairs);
+  }
+
+  return { critiques: cachedCritiques, pairs: cachedPairsByPaper.get(cacheKey)! };
 }
 
-// GET /api/pairwise/next?evaluator=Peter
+// GET /api/pairwise/next?evaluator=Peter&paper=convergence
 export async function GET(request: Request) {
   try {
     const url = new URL(request.url);
     const evaluator = url.searchParams.get("evaluator");
+    const paperSlug = url.searchParams.get("paper") || undefined;
 
     if (!evaluator) {
       return NextResponse.json(
@@ -60,7 +73,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const { pairs } = await getCritiquesAndPairs();
+    const { pairs } = await getCritiquesAndPairs(paperSlug);
     const completedPairIds = await getCompletedPairIds(evaluator);
 
     const nextPair = getNextPair(pairs, completedPairIds);

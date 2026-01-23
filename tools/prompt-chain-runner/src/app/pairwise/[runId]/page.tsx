@@ -10,6 +10,8 @@ interface Run {
   evaluator: string;
   evaluatorType: "human" | "ai";
   aiModel?: string;
+  paperSlug?: string;
+  paperName?: string;
   targetCount: number;
   completedCount: number;
   status: "pending" | "in_progress" | "completed" | "failed";
@@ -223,7 +225,7 @@ export default function RunDetailPage({ params }: PageProps) {
             ← Back to runs
           </Link>
         </div>
-        <PairwiseComparison runId={runId} evaluator={run.evaluator} />
+        <PairwiseComparison runId={runId} evaluator={run.evaluator} paperSlug={run.paperSlug} />
       </div>
     );
   }
