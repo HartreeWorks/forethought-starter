@@ -7,6 +7,14 @@ const CRITIQUES_DIR =
 const GRADES_DIR =
   "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/work/research/critique-prompt-experiment/results";
 
+// Paper file paths
+const PAPER_PATHS: Record<string, string> = {
+  convergence:
+    "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/work/research/critique-prompt-experiment/paper.md",
+  "no-easy-eutopia":
+    "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/papers/no-easy-eutopia.md",
+};
+
 // Paper name mappings for display
 const PAPER_NAMES: Record<string, string> = {
   convergence: "The Convergence Hypothesis",
@@ -115,39 +123,44 @@ export function sortByOverallScore(
 }
 
 /**
- * Generate pairs using "extremes first, converge" strategy.
+ * Generate pairs for a single paper using "extremes first, converge" strategy.
  *
- * Round 1: #1 vs #90, #2 vs #89, #3 vs #88, etc.
- * Round 2: #1 vs #45, #2 vs #44, etc. (middle pairs)
- * Round 3: #1 vs #23, #23 vs #45, etc. (quarter pairs)
- * Continue converging...
+ * Round 1: #1 vs #n, #2 vs #n-1, etc. (extremes)
+ * Round 2: #1 vs #n/2, etc. (middle pairs)
+ * Round 3: Quarter splits
+ * Round 4: Adjacent pairs for close comparisons
+ * Round 5: Every 3rd
  *
  * This ensures we first test the clearest signal (best vs worst),
  * then progressively test harder distinctions.
  */
-export function generatePairs(
+function generatePairsForPaper(
   sortedCritiques: CritiqueWithGrade[],
-  maxPairs?: number
-): PairSelection[] {
+  globalRanks: Map<string, number>,
+  usedPairs: Set<string>,
+  pairs: PairSelection[]
+): void {
   const n = sortedCritiques.length;
-  if (n < 2) return [];
-
-  const pairs: PairSelection[] = [];
-  const usedPairs = new Set<string>();
+  if (n < 2) return;
 
   // Helper to add a pair if not already added
   const addPair = (i: number, j: number) => {
     if (i === j || i < 0 || j < 0 || i >= n || j >= n) return;
-    const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+    const critiqueA = sortedCritiques[i];
+    const critiqueB = sortedCritiques[j];
+    const key =
+      critiqueA.id < critiqueB.id
+        ? `${critiqueA.id}-${critiqueB.id}`
+        : `${critiqueB.id}-${critiqueA.id}`;
     if (usedPairs.has(key)) return;
     usedPairs.add(key);
 
     pairs.push({
       pairIndex: pairs.length,
-      critiqueA: sortedCritiques[i],
-      critiqueB: sortedCritiques[j],
-      rankA: i + 1,
-      rankB: j + 1,
+      critiqueA,
+      critiqueB,
+      rankA: globalRanks.get(critiqueA.id) || i + 1,
+      rankB: globalRanks.get(critiqueB.id) || j + 1,
     });
   };
 
@@ -182,6 +195,59 @@ export function generatePairs(
   for (let i = 0; i < n - 2; i++) {
     addPair(i, i + 3);
   }
+}
+
+/**
+ * Generate pairs using "extremes first, converge" strategy.
+ * Only pairs critiques of the same paper together.
+ * Interleaves pairs from different papers.
+ */
+export function generatePairs(
+  sortedCritiques: CritiqueWithGrade[],
+  maxPairs?: number
+): PairSelection[] {
+  // Build global rank map (used for display)
+  const globalRanks = new Map<string, number>();
+  sortedCritiques.forEach((c, i) => globalRanks.set(c.id, i + 1));
+
+  // Group critiques by paper
+  const byPaper = new Map<string, CritiqueWithGrade[]>();
+  for (const critique of sortedCritiques) {
+    const paper = critique.paperSlug;
+    if (!byPaper.has(paper)) {
+      byPaper.set(paper, []);
+    }
+    byPaper.get(paper)!.push(critique);
+  }
+
+  // Generate pairs for each paper separately
+  const pairsByPaper: PairSelection[][] = [];
+  const usedPairs = new Set<string>();
+
+  for (const [, paperCritiques] of byPaper) {
+    // Sort this paper's critiques by overall score
+    const sorted = [...paperCritiques].sort(
+      (a, b) => b.grade.overall - a.grade.overall
+    );
+    const paperPairs: PairSelection[] = [];
+    generatePairsForPaper(sorted, globalRanks, usedPairs, paperPairs);
+    pairsByPaper.push(paperPairs);
+  }
+
+  // Interleave pairs from different papers (round-robin)
+  const pairs: PairSelection[] = [];
+  let added = true;
+  let round = 0;
+  while (added) {
+    added = false;
+    for (const paperPairs of pairsByPaper) {
+      if (round < paperPairs.length) {
+        pairs.push({ ...paperPairs[round], pairIndex: pairs.length });
+        added = true;
+      }
+    }
+    round++;
+  }
 
   // Limit if requested
   if (maxPairs && pairs.length > maxPairs) {
@@ -213,4 +279,36 @@ export function getNextPair(
 export function getPairId(critiqueAId: string, critiqueBId: string): string {
   const sorted = [critiqueAId, critiqueBId].sort();
   return `${sorted[0]}:${sorted[1]}`;
+}
+
+/**
+ * Load the full text of a paper by its slug.
+ */
+export async function loadPaperText(paperSlug: string): Promise<string | null> {
+  const paperPath = PAPER_PATHS[paperSlug];
+  if (!paperPath) {
+    console.warn(`No paper path configured for slug: ${paperSlug}`);
+    return null;
+  }
+
+  try {
+    return await fs.readFile(paperPath, "utf-8");
+  } catch (error) {
+    console.error(`Failed to load paper ${paperSlug}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Get all available paper slugs.
+ */
+export function getPaperSlugs(): string[] {
+  return Object.keys(PAPER_PATHS);
+}
+
+/**
+ * Get paper display name from slug.
+ */
+export function getPaperName(paperSlug: string): string {
+  return PAPER_NAMES[paperSlug] || paperSlug;
 }
