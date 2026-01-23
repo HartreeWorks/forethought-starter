@@ -265,7 +265,8 @@ export function getNextPair(
   completedPairIds: Set<string>
 ): PairSelection | null {
   for (const pair of allPairs) {
-    const pairId = `${pair.critiqueA.id}:${pair.critiqueB.id}`;
+    // Use order-independent pair ID (sorted) to match getCompletedPairIds
+    const pairId = getPairId(pair.critiqueA.id, pair.critiqueB.id);
     if (!completedPairIds.has(pairId)) {
       return pair;
     }
