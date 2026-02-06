@@ -27,7 +27,7 @@ export default function NewRunModal({
   onCreated,
   totalPairs,
 }: NewRunModalProps) {
-  const [evaluatorType, setEvaluatorType] = useState<EvaluatorType>("ai");
+  const [evaluatorType, setEvaluatorType] = useState<EvaluatorType>("human");
   const [evaluatorName, setEvaluatorName] = useState("");
   const [aiModel, setAiModel] = useState("gpt-5.2-pro");
   const [targetCount, setTargetCount] = useState(5);
@@ -121,17 +121,6 @@ export default function NewRunModal({
             <div className="flex gap-3">
               <button
                 type="button"
-                onClick={() => setEvaluatorType("ai")}
-                className={`flex-1 px-4 py-2 rounded-md font-medium transition-all ${
-                  evaluatorType === "ai"
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                AI
-              </button>
-              <button
-                type="button"
                 onClick={() => setEvaluatorType("human")}
                 className={`flex-1 px-4 py-2 rounded-md font-medium transition-all ${
                   evaluatorType === "human"
@@ -140,6 +129,17 @@ export default function NewRunModal({
                 }`}
               >
                 Human
+              </button>
+              <button
+                type="button"
+                onClick={() => setEvaluatorType("ai")}
+                className={`flex-1 px-4 py-2 rounded-md font-medium transition-all ${
+                  evaluatorType === "ai"
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                AI
               </button>
             </div>
           </div>

@@ -80,10 +80,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate targetCount
-    if (input.targetCount < 1 || input.targetCount > 500) {
+    // Validate targetCount (human runs use a high sentinel value since they finish manually)
+    const maxTarget = input.evaluatorType === "human" ? 99999 : 500;
+    if (input.targetCount < 1 || input.targetCount > maxTarget) {
       return NextResponse.json(
-        { error: "targetCount must be between 1 and 500" },
+        { error: `targetCount must be between 1 and ${maxTarget}` },
         { status: 400 }
       );
     }

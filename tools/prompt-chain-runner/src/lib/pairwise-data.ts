@@ -1,38 +1,77 @@
 import fs from "fs/promises";
 import path from "path";
 
-// Base paths for critique data
-const CRITIQUES_DIR =
-  "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/work/research/critique-prompt-experiment/outputs/parsed";
-const GRADES_DIR =
-  "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/work/research/critique-prompt-experiment/results";
+// Base directory for critique-prompt experiment data
+const EXPERIMENTS_BASE =
+  "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/work/shared/2026-01/experiments/critique-prompt";
 
-// Paper file paths
-const PAPER_PATHS: Record<string, string> = {
-  convergence:
-    "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/work/research/critique-prompt-experiment/paper.md",
-  "no-easy-eutopia":
-    "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/papers/no-easy-eutopia.md",
-};
+// Per-paper directory configuration
+// Each paper has its own outputs (parsed critiques) and results (ACORN grades) dirs
+interface PaperConfig {
+  slug: string;
+  name: string;
+  parsedDir: string;
+  resultsDir: string;
+  paperTextPath: string;
+}
 
-// Paper name mappings for display
-const PAPER_NAMES: Record<string, string> = {
-  convergence: "The Convergence Hypothesis",
-  "no-easy-eutopia": "No Easy Eutopia",
-};
+const PAPER_CONFIGS: PaperConfig[] = [
+  {
+    slug: "no-easy-eutopia",
+    name: "No Easy Eutopia",
+    parsedDir: path.join(EXPERIMENTS_BASE, "outputs-gpt/parsed"),
+    resultsDir: path.join(EXPERIMENTS_BASE, "results-gpt"),
+    paperTextPath:
+      "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/papers/no-easy-eutopia.md",
+  },
+  {
+    slug: "compute-bottlenecks",
+    name: "Will Compute Bottlenecks Prevent a SIE?",
+    parsedDir: path.join(EXPERIMENTS_BASE, "outputs-gpt-cb/parsed"),
+    resultsDir: path.join(EXPERIMENTS_BASE, "results-gpt-cb"),
+    paperTextPath:
+      "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/papers/will-compute-bottlenecks-prevent-a-sie.md",
+  },
+  {
+    slug: "convergence-and-compromise",
+    name: "Convergence and Compromise",
+    parsedDir: path.join(EXPERIMENTS_BASE, "outputs-gpt-cc/parsed"),
+    resultsDir: path.join(EXPERIMENTS_BASE, "results-gpt-cc"),
+    paperTextPath:
+      "/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/papers/convergence-and-compromise.md",
+  },
+];
 
-// Prompt name mappings
+// The 8 base prompt variants the report focuses on.
+// Excludes legacy baselines (baseline, baseline-v1) and model refinements (gemini-*, gpt-*).
+const BASE_VARIANTS = new Set([
+  "conversational",
+  "baseline-v2",
+  "surgery",
+  "personas",
+  "unforgettable",
+  "pivot-attack",
+  "authors-tribunal",
+  "pre-mortem",
+]);
+
+// Prompt display names
 const PROMPT_NAMES: Record<string, string> = {
+  conversational: "Conversational",
+  "baseline-v2": "November",
   surgery: "Argument Surgery",
   personas: "Hostile Personas",
   unforgettable: "Unforgettable Objection",
+  "pivot-attack": "Pivot-Attack",
+  "authors-tribunal": "Authors' Tribunal",
+  "pre-mortem": "Pre-Mortem",
 };
 
 export interface CritiqueWithGrade {
-  id: string; // e.g., "surgery-convergence-01"
+  id: string; // e.g., "surgery-no-easy-eutopia-01"
   promptType: string; // e.g., "surgery"
-  paperSlug: string; // e.g., "convergence"
-  paperName: string; // e.g., "The Convergence Hypothesis"
+  paperSlug: string; // e.g., "no-easy-eutopia"
+  paperName: string; // e.g., "No Easy Eutopia"
   instanceNumber: number; // e.g., 1
   critique: string; // Full critique text
   grade: AcornGrade;
@@ -59,55 +98,140 @@ export interface PairSelection {
 }
 
 /**
+ * Parse a critique filename to extract variant, paper slug, and instance number.
+ *
+ * Handles compound prompt names (pivot-attack, authors-tribunal, pre-mortem),
+ * versioned baselines (baseline-v2), and model prefixes (gemini-*, gpt-*).
+ *
+ * Adapted from the PHP report's parseFilename().
+ */
+function parseFilename(name: string): {
+  variant: string;
+  paperSlug: string;
+  instanceNumber: number;
+} | null {
+  const parts = name.split("-");
+
+  // Check for model prefix (gemini or gpt) — skip these
+  let prefix = "";
+  if (parts[0] === "gemini" || parts[0] === "gpt") {
+    prefix = parts.shift()! + "-";
+  }
+
+  let baseVariant = parts.shift();
+  if (!baseVariant) return null;
+
+  // Handle compound prompt names
+  if (baseVariant === "pivot" && parts.length > 0 && parts[0] === "attack") {
+    baseVariant = "pivot-attack";
+    parts.shift();
+  } else if (
+    baseVariant === "authors" &&
+    parts.length > 0 &&
+    parts[0] === "tribunal"
+  ) {
+    baseVariant = "authors-tribunal";
+    parts.shift();
+  } else if (
+    baseVariant === "pre" &&
+    parts.length > 0 &&
+    parts[0] === "mortem"
+  ) {
+    baseVariant = "pre-mortem";
+    parts.shift();
+  }
+
+  // Handle versioned baseline (baseline-v1, baseline-v2)
+  if (
+    baseVariant === "baseline" &&
+    parts.length > 0 &&
+    /^v\d+$/.test(parts[0])
+  ) {
+    baseVariant = "baseline-" + parts.shift();
+  }
+
+  const variant = prefix + baseVariant;
+
+  // Last part is instance number, rest is paper slug
+  const numStr = parts.pop();
+  if (!numStr) return null;
+  const instanceNumber = parseInt(numStr, 10);
+  if (isNaN(instanceNumber)) return null;
+
+  const paperSlug = parts.join("-");
+  if (!paperSlug) return null;
+
+  return { variant, paperSlug, instanceNumber };
+}
+
+/**
  * Load all critiques with their ACORN grades.
+ * Only loads the 8 base variants the report cares about.
  */
 export async function loadAllCritiques(): Promise<CritiqueWithGrade[]> {
   const critiques: CritiqueWithGrade[] = [];
 
-  // Read all .txt files from parsed directory
-  const files = await fs.readdir(CRITIQUES_DIR);
-  const txtFiles = files.filter((f) => f.endsWith(".txt"));
-
-  for (const file of txtFiles) {
-    const id = file.replace(".txt", "");
-
-    // Parse the ID: format is {prompt}-{paper}-{number}
-    // e.g., "surgery-convergence-01" or "personas-no-easy-eutopia-15"
-    const match = id.match(/^(\w+)-(.+)-(\d+)$/);
-    if (!match) {
-      console.warn(`Skipping file with unexpected format: ${file}`);
-      continue;
-    }
-
-    const [, promptType, paperSlug, numStr] = match;
-    const instanceNumber = parseInt(numStr, 10);
-
-    // Load critique text
-    const critiquePath = path.join(CRITIQUES_DIR, file);
-    const critique = await fs.readFile(critiquePath, "utf-8");
-
-    // Load grade JSON
-    const gradeFile = `${id}.json`;
-    const gradePath = path.join(GRADES_DIR, gradeFile);
-    let grade: AcornGrade;
-
+  for (const config of PAPER_CONFIGS) {
+    let files: string[];
     try {
-      const gradeJson = await fs.readFile(gradePath, "utf-8");
-      grade = JSON.parse(gradeJson);
+      files = await fs.readdir(config.parsedDir);
     } catch (error) {
-      console.warn(`No grade found for ${id}, skipping`);
+      console.warn(
+        `Could not read parsed dir for ${config.slug}: ${config.parsedDir}`
+      );
       continue;
     }
 
-    critiques.push({
-      id,
-      promptType,
-      paperSlug,
-      paperName: PAPER_NAMES[paperSlug] || paperSlug,
-      instanceNumber,
-      critique,
-      grade,
-    });
+    const txtFiles = files.filter((f) => f.endsWith(".txt"));
+
+    for (const file of txtFiles) {
+      const basename = file.replace(".txt", "");
+      const parsed = parseFilename(basename);
+      if (!parsed) {
+        console.warn(`Skipping file with unexpected format: ${file}`);
+        continue;
+      }
+
+      // Only include base variants
+      if (!BASE_VARIANTS.has(parsed.variant)) {
+        continue;
+      }
+
+      // Verify the paper slug matches this config's expected paper
+      if (parsed.paperSlug !== config.slug) {
+        console.warn(
+          `Paper slug mismatch in ${file}: expected ${config.slug}, got ${parsed.paperSlug}`
+        );
+        continue;
+      }
+
+      // Load critique text
+      const critiquePath = path.join(config.parsedDir, file);
+      const critique = await fs.readFile(critiquePath, "utf-8");
+
+      // Load grade JSON
+      const gradeFile = `${basename}.json`;
+      const gradePath = path.join(config.resultsDir, gradeFile);
+      let grade: AcornGrade;
+
+      try {
+        const gradeJson = await fs.readFile(gradePath, "utf-8");
+        grade = JSON.parse(gradeJson);
+      } catch (error) {
+        console.warn(`No grade found for ${basename}, skipping`);
+        continue;
+      }
+
+      critiques.push({
+        id: basename,
+        promptType: parsed.variant,
+        paperSlug: config.slug,
+        paperName: config.name,
+        instanceNumber: parsed.instanceNumber,
+        critique,
+        grade,
+      });
+    }
   }
 
   return critiques;
@@ -285,15 +409,17 @@ export function getPairId(critiqueAId: string, critiqueBId: string): string {
 /**
  * Load the full text of a paper by its slug.
  */
-export async function loadPaperText(paperSlug: string): Promise<string | null> {
-  const paperPath = PAPER_PATHS[paperSlug];
-  if (!paperPath) {
-    console.warn(`No paper path configured for slug: ${paperSlug}`);
+export async function loadPaperText(
+  paperSlug: string
+): Promise<string | null> {
+  const config = PAPER_CONFIGS.find((c) => c.slug === paperSlug);
+  if (!config) {
+    console.warn(`No paper config for slug: ${paperSlug}`);
     return null;
   }
 
   try {
-    return await fs.readFile(paperPath, "utf-8");
+    return await fs.readFile(config.paperTextPath, "utf-8");
   } catch (error) {
     console.error(`Failed to load paper ${paperSlug}:`, error);
     return null;
@@ -304,19 +430,20 @@ export async function loadPaperText(paperSlug: string): Promise<string | null> {
  * Get all available paper slugs.
  */
 export function getPaperSlugs(): string[] {
-  return Object.keys(PAPER_PATHS);
+  return PAPER_CONFIGS.map((c) => c.slug);
 }
 
 /**
  * Get paper display name from slug.
  */
 export function getPaperName(paperSlug: string): string {
-  return PAPER_NAMES[paperSlug] || paperSlug;
+  const config = PAPER_CONFIGS.find((c) => c.slug === paperSlug);
+  return config ? config.name : paperSlug;
 }
 
 /**
  * Get all available papers with their slugs and names.
  */
 export function getAvailablePapers(): { slug: string; name: string }[] {
-  return Object.entries(PAPER_NAMES).map(([slug, name]) => ({ slug, name }));
+  return PAPER_CONFIGS.map((c) => ({ slug: c.slug, name: c.name }));
 }
