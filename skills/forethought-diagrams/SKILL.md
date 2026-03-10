@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os, sys
 sys.path.append(os.path.expanduser('~/.claude/skills/forethought-diagrams/scripts'))
-from forethought_style import COLORS, FONTS, apply_style
+from forethought_style import COLORS, FONTS, apply_style, savefig
 
 # Create figure with correct background
 fig, ax = plt.subplots(figsize=(12, 4), facecolor=COLORS['background'])
@@ -56,9 +56,8 @@ ax.plot(x, y, color=COLORS['highlight'], linewidth=1.5)
 # Apply Forethought style
 apply_style(ax, title='Example Chart', xlabel='X values', ylabel='Y values')
 
-# Save with correct settings
-plt.savefig('chart.png', dpi=300, facecolor=COLORS['background'], bbox_inches='tight')
-plt.savefig('chart.svg', facecolor=COLORS['background'], bbox_inches='tight')
+# Save (produces chart.png + chart.svg with correct settings)
+savefig('chart')
 ```
 
 ### Style module exports
@@ -81,6 +80,10 @@ The style module (`scripts/forethought_style.py`) provides:
 - Removes top and right spines
 - Sets correct colours and fonts
 - Optional: `title`, `xlabel`, `ylabel`, `hide_y_labels`
+
+**`savefig(path, dpi=300, formats=('png', 'svg'))`** — Save with correct Forethought settings:
+- `savefig('chart')` → saves `chart.png` + `chart.svg` with brand background, 300 dpi, tight bbox
+- `savefig('chart.png')` → saves only PNG
 
 ### Tufte style conventions
 
@@ -126,15 +129,96 @@ for ax in [ax1, ax2]:
 fig.subplots_adjust(wspace=0.3)
 ```
 
+**Multi-panel with suptitle (use GridSpec for complex layouts):**
+```python
+fig = plt.figure(figsize=(12, 6), facecolor=COLORS['background'])
+gs = fig.add_gridspec(2, 2, hspace=0.4, wspace=0.3)
+ax1 = fig.add_subplot(gs[0, 0])
+ax2 = fig.add_subplot(gs[0, 1])
+ax3 = fig.add_subplot(gs[1, :])
+# ... plot on each ax, then apply_style() ...
+# Place suptitle high enough to clear panel titles
+fig.suptitle('Overall Title', fontsize=26, fontproperties=FONTS['label_medium'],
+             color=COLORS['text'], y=0.98)
+fig.subplots_adjust(top=0.88)  # make room for suptitle
+```
+
+**Subtitle / caption below title:**
+```python
+ax.text(0.5, 1.05, 'Main Title', transform=ax.transAxes, ha='center',
+        fontsize=24, color=COLORS['text'], fontproperties=FONTS['label_medium'])
+ax.text(0.5, 1.01, 'Illustrative data only', transform=ax.transAxes, ha='center',
+        fontsize=13, color=COLORS['dark_grey'], fontproperties=FONTS['body'])
+```
+
+**Bar charts — hide bottom spine:**
+```python
+# apply_style() keeps left + bottom spines by default. For bar charts,
+# remove the bottom spine and x-ticks for a cleaner look:
+apply_style(ax, ylabel='Count')
+ax.spines['bottom'].set_visible(False)
+ax.tick_params(axis='x', length=0)
+```
+
+**Log-scale y-axis:**
+```python
+# apply_style() sets minimal ticks (3–5), which looks odd on log axes.
+# Set the scale *before* apply_style, then restore matplotlib's log ticks after:
+ax.set_yscale('log')
+apply_style(ax, xlabel='X', ylabel='Y')
+from matplotlib.ticker import LogLocator, LogFormatterSciNotation
+ax.yaxis.set_major_locator(LogLocator(base=10))
+ax.yaxis.set_major_formatter(LogFormatterSciNotation())
+```
+
+### Sizing and readability
+
+These figures will appear inline in articles surrounded by body text, typically at ~700px content width. Everything must be legible at that size.
+
+**Minimum font sizes:**
+- Titles: 22–26pt
+- Axis labels: 14–18pt
+- Tick labels: 13–16pt
+- Annotations/legends: 12–14pt
+
+**Figure dimensions:**
+- Standard single chart: `(12, 4)` — wide and short works best inline
+- Side-by-side panels: `(12, 3.5)`
+- Square charts (contours, heatmaps): `(6, 5)` or `(8, 6)`
+
+**Padding:**
+- Use `bbox_inches='tight'` when saving to trim excess whitespace
+- Use `labelpad=8` (x-axis) and `labelpad=10` (y-axis) for breathing room between labels and axes
+- For subplots, use `fig.subplots_adjust(wspace=0.3)` minimum — tighter than this and labels overlap
+- Leave space above the plot for titles: `ax.text(..., y=1.05, ...)` or `top=0.88` in `subplots_adjust`
+
+**Rule of thumb:** If you squint at the figure and can't read the labels, the font is too small.
+
 ### Saving figures
 
-Always save with:
+Use the `savefig()` helper — it handles background colour, DPI, and tight bbox automatically:
 ```python
-plt.savefig('figure.png', dpi=300, facecolor=COLORS['background'], bbox_inches='tight')
-plt.savefig('figure.svg', facecolor=COLORS['background'], bbox_inches='tight')
+savefig('figure')          # → figure.png + figure.svg
+savefig('figure.png')      # → just PNG
+savefig('figure', dpi=600) # → higher DPI for print
 ```
 
 See `references/matplotlib-patterns.md` for detailed examples of different chart types.
+
+### Previewing in article context
+
+There is a script that previews a figure in a mock Forethought article layout, so the user can check sizing and readability at the actual content width (~720px).
+
+```bash
+python3 ~/.claude/skills/forethought-diagrams/scripts/preview_in_article.py figure.png
+python3 ~/.claude/skills/forethought-diagrams/scripts/preview_in_article.py figure.png "Figure 1: Description here."
+```
+
+**When to offer this:**
+- After generating the **first** figure in a conversation, mention it: "I can preview this in a mock article layout if you'd like to check sizing."
+- If the user declines, don't offer again unless they ask, or unless the figure has unusual sizing (very tall, very small text, many panels).
+- If the user accepts once, offer it again only for significantly different figure types (e.g. switching from a single chart to a multi-panel layout).
+- Never run the preview automatically — always ask first.
 
 ---
 
@@ -198,7 +282,8 @@ For complex diagrams that are hard to produce in code, Forethought has a diagram
 - **`references/canva-workflow.md`** — Canva-based diagram workflow (not yet active — pending MCP setup)
 
 ### Scripts
-- **`scripts/forethought_style.py`** — Python style module with colours, fonts, and apply_style() helper
+- **`scripts/forethought_style.py`** — Python style module with colours, fonts, apply_style(), and savefig() helpers
+- **`scripts/preview_in_article.py`** — Preview a figure in a mock article layout in the browser
 
 ### Brand assets
 The Forethought brand guidelines PDF and graphic assets are stored in the shared Google Drive. Ask your team for access if needed. These include SVG illustrations in the distinctive orange line-art style that can be used as reference or incorporated into designs.
