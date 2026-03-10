@@ -1,103 +1,142 @@
 ---
 name: forethought-diagrams
-description: This skill should be used when the user asks to "create a diagram", "make a flowchart", "design a chart", "create a Forethought-branded visual", "generate an infographic", "create a graph", or mentions needing branded diagrams for research papers or presentations.
+description: This skill should be used when the user asks to "create a diagram", "make a flowchart", "design a chart", "create a Forethought-branded visual", "generate an infographic", "create a graph", "make a matplotlib chart", "plot data", or mentions needing branded diagrams, figures, or data visualisations for research papers or presentations.
 ---
 
-# Forethought branded diagrams
+# Forethought branded diagrams and figures
 
-Create on-brand diagrams using the Canva AI Connector. Diagrams use Forethought's brand colours, typography, and style to ensure consistency across research outputs.
+Create on-brand diagrams and figures using Forethought's brand colours, typography, and style.
 
-## Prerequisites
+## Code-based charts (matplotlib)
 
-### Canva MCP connection
+For data visualisations and publication figures, use Python with the Forethought style module.
 
-**Check if connected:**
-Try any Canva operation (e.g. "search my Canva designs"). If it fails or Canva tools aren't available, proceed with setup.
+### Font check (run before generating any chart)
 
-**Setup for Claude Desktop:**
-1. Open Claude Desktop and go to **Settings**
-2. Select **Connectors**
-3. Find **Canva** in the list and select it
-4. Follow the prompts to connect your Canva account
-5. In a new chat, select the settings icon and toggle **Canva** on in the Connectors section
+Before creating any matplotlib figure, check that the Forethought brand fonts are installed:
 
-**Setup for Claude Code:**
-1. Open Claude Code settings (Cmd+, on macOS)
-2. Navigate to the **Developer** tab
-3. Click **Edit Config** and add the Canva MCP configuration
-4. Restart Claude Code to apply the new settings
-
-**Verification:**
-After setup, ask Claude to "list my recent Canva designs" to confirm the connection works.
-
-## Quick start
-
-1. Describe the diagram needed
-2. Claude generates a Canva prompt with brand specs embedded
-3. Canva creates the design
-4. Export as high-quality PNG
-5. Save to the project assets folder
-
-Example: "Create a flowchart showing the publication workflow for Forethought papers"
-
-## Workflow
-
-### Step 1: Determine diagram type
-
-| Type | Best for | Canva template |
-|------|----------|----------------|
-| **Flowchart** | Processes, decision trees, workflows | Flow diagram |
-| **Concept diagram** | Relationships, systems thinking, abstract ideas | Mind map or custom |
-| **Data visualisation** | Charts, graphs, timeline infographics | Chart or infographic |
-
-### Step 2: Generate Canva prompt
-
-Construct a prompt that includes:
-- Diagram description
-- Forethought brand specifications (see below)
-- Specific content requirements
-
-**Prompt template:**
-```
-Create a [diagram type] for Forethought Research showing [content description].
-
-Brand requirements:
-- Background colour: #FBFAF4 (Off-white) - MANDATORY
-- Primary text: Charcoal #2F2A26
-- Accent colour: Orange #FA7248
-- Font: Cormorant Garamond for headings, Inter for body text
-- Style: Clean, minimal, professional research aesthetic
-
-[Specific content details]
+```bash
+fc-list | grep -i "signifier" && fc-list | grep -i "TT Hoves"
 ```
 
-### Step 3: Create in Canva
+If either font is missing:
 
-Use the Canva AI Connector to:
-1. Create a new design with the prompt
-2. Review the generated design
-3. Request adjustments if needed (e.g. "make the background exactly #FBFAF4")
+1. Open the Forethought brand fonts folder:
+   ```bash
+   open "https://drive.google.com/drive/folders/11txBmBt-Wwzg1ENjzkKT1PcBnNdyPo15"
+   ```
+2. Tell the user: "The Forethought brand fonts aren't installed. I've opened the Google Drive folder — please download the .otf files and double-click each one to install."
+3. Wait for the user to confirm they've installed the fonts.
+4. Clear matplotlib's font cache so it picks them up:
+   ```python
+   import matplotlib.font_manager as fm
+   fm.cache_clear()
+   fm._load_fontmanager(try_read_cache=False)
+   ```
+5. Then proceed with chart generation.
 
-### Step 4: Export as PNG
+### Quick start
 
-**Export requirements (MANDATORY):**
-- Format: PNG
-- Quality: High resolution (in Canva: Download > PNG > "Size x" = 3)
-- Background: Verify it's solid #FBFAF4, NOT transparent
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import os, sys
+sys.path.append(os.path.expanduser('~/.claude/skills/forethought-diagrams/scripts'))
+from forethought_style import COLORS, FONTS, apply_style
 
-**Why this matters:** Transparent backgrounds display poorly in dark mode. Mismatched background colours look unprofessional on the website.
+# Create figure with correct background
+fig, ax = plt.subplots(figsize=(12, 4), facecolor=COLORS['background'])
 
-### Step 5: Save to project
+# Plot data
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+ax.fill_between(x, y, alpha=0.25, color=COLORS['highlight'])
+ax.plot(x, y, color=COLORS['highlight'], linewidth=1.5)
 
-Save the exported PNG to:
+# Apply Forethought style
+apply_style(ax, title='Example Chart', xlabel='X values', ylabel='Y values')
+
+# Save with correct settings
+plt.savefig('chart.png', dpi=300, facecolor=COLORS['background'], bbox_inches='tight')
+plt.savefig('chart.svg', facecolor=COLORS['background'], bbox_inches='tight')
 ```
-assets/diagrams/[descriptive-filename].png
+
+### Style module exports
+
+The style module (`scripts/forethought_style.py`) provides:
+
+**`COLORS`** — Dictionary of brand colours:
+- `background` (#FBFAF4) — Always use for figure background
+- `text` (#2F2A26) — Primary text and lines
+- `highlight` (#FA7248) — Primary accent (orange)
+- `blue`, `green`, `purple`, `yellow`, `orange`, `red` — Data series colours
+
+**`DATA_COLORS`** — List of data colours in recommended order for multi-series charts.
+
+**`FONTS`** — Dictionary of font properties:
+- `body` — Signifier Light (axis labels, tick labels)
+- `label_medium` — TT Hoves Medium (titles)
+
+**`apply_style(ax, ...)`** — Apply Tufte-style formatting to an axes:
+- Removes top and right spines
+- Sets correct colours and fonts
+- Optional: `title`, `xlabel`, `ylabel`, `hide_y_labels`
+
+### Tufte style conventions
+
+- No top/right spines (only left + bottom)
+- Thin spines (0.5px)
+- Minimal ticks (3–5 max)
+- Y-axis tick labels hidden (marks kept)
+- Generous padding and whitespace
+- Fill with low alpha (0.25) + line overlay
+
+### Fonts
+
+- **Signifier Light/Medium** (.otf) — Serif, used for axis labels and tick labels
+- **TT Hoves Pro Regular/Medium** (.otf) — Sans-serif, used for titles
+
+### Key patterns
+
+**Area under curve (distributions):**
+```python
+ax.fill_between(x, y, alpha=0.25, color=COLORS['highlight'], linewidth=0)
+ax.plot(x, y, color=COLORS['highlight'], linewidth=1.5, alpha=0.9)
 ```
 
-Or for paper-specific diagrams:
+**Multiple data series:**
+```python
+for i, (data, label) in enumerate(datasets):
+    ax.plot(x, data, color=DATA_COLORS[i], label=label)
 ```
-work/[paper-name]/diagrams/[figure-number]-[description].png
+
+**Contour/heatmap:**
+```python
+from matplotlib.colors import LinearSegmentedColormap
+cmap = LinearSegmentedColormap.from_list('ft', [COLORS['background'], COLORS['highlight']])
+ax.contourf(X, Y, Z, cmap=cmap)
 ```
+
+**Side-by-side subplots:**
+```python
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 3.5), facecolor=COLORS['background'])
+# ... plot on each ax ...
+for ax in [ax1, ax2]:
+    apply_style(ax)
+fig.subplots_adjust(wspace=0.3)
+```
+
+### Saving figures
+
+Always save with:
+```python
+plt.savefig('figure.png', dpi=300, facecolor=COLORS['background'], bbox_inches='tight')
+plt.savefig('figure.svg', facecolor=COLORS['background'], bbox_inches='tight')
+```
+
+See `references/matplotlib-patterns.md` for detailed examples of different chart types.
+
+---
 
 ## Brand specifications (quick reference)
 
@@ -137,80 +176,11 @@ See `references/brand-colors.md` for the complete palette including accessibilit
 | Labels/annotations | TT Hoves | Regular | Inter Regular |
 | Navigation/tags | TT Hoves | Medium | Inter Medium |
 
-**In Canva:** Use Cormorant Garamond and Inter as the brand fonts aren't available. These are approved fallbacks from the brand guidelines.
-
 See `references/typography.md` for full specifications.
 
-## Prompt templates
+### Alternative: Irina (contractor)
 
-### Flowchart
-
-```
-Create a flowchart for Forethought Research showing [process name].
-
-Brand requirements:
-- Background colour: #FBFAF4 (Off-white) - MANDATORY
-- Box borders and arrows: Charcoal #2F2A26
-- Decision diamonds: Orange #FA7248 accent
-- Text: Charcoal #2F2A26
-- Font: Cormorant Garamond for box text, Inter for labels
-- Style: Clean lines, minimal, no shadows or gradients
-
-Steps:
-1. [Step 1]
-2. [Step 2]
-...
-```
-
-### Concept diagram
-
-```
-Create a concept diagram for Forethought Research illustrating [concept].
-
-Brand requirements:
-- Background colour: #FBFAF4 (Off-white) - MANDATORY
-- Lines and connections: Charcoal #2F2A26 or Orange #FA7248
-- Text: Charcoal #2F2A26
-- Font: Cormorant Garamond for main concepts, Inter for annotations
-- Style: Abstract, clean, inspired by historical perspective diagrams
-
-Elements:
-- [Central concept]
-- [Related concept 1]
-...
-```
-
-### Data visualisation
-
-```
-Create a [bar chart/line graph/pie chart] for Forethought Research showing [data description].
-
-Brand requirements:
-- Background colour: #FBFAF4 (Off-white) - MANDATORY
-- Axis lines and labels: Charcoal #2F2A26
-- Data colours (in order): Blue #4988A9, Green #43B85D, Purple #8B61A6, Yellow #E6C90A
-- Font: Inter for all text
-- Style: Clean, no 3D effects, minimal gridlines
-
-Data:
-- [Series 1]: [values]
-...
-```
-
-## Export checklist
-
-Before finalising any diagram:
-
-- [ ] Background is solid #FBFAF4 (not transparent, not white)
-- [ ] Exported as PNG format
-- [ ] High quality (Canva "Size x" = 3)
-- [ ] Text is legible at intended display size
-- [ ] Colours match brand palette
-- [ ] Saved to appropriate project folder
-
-## Alternative: Irina (contractor)
-
-For complex diagrams or when Canva results aren't satisfactory, Forethought has a diagrams contractor:
+For complex diagrams that are hard to produce in code, Forethought has a diagrams contractor:
 
 **Irina Titkova** <irina.titkova90@gmail.com>
 
@@ -224,11 +194,11 @@ For complex diagrams or when Canva results aren't satisfactory, Forethought has 
 ### Reference files
 - **`references/brand-colors.md`** — Complete colour palette with all hex codes and usage guidelines
 - **`references/typography.md`** — Full typography specifications and fallback fonts
+- **`references/matplotlib-patterns.md`** — Detailed matplotlib examples for different chart types
+- **`references/canva-workflow.md`** — Canva-based diagram workflow (not yet active — pending MCP setup)
+
+### Scripts
+- **`scripts/forethought_style.py`** — Python style module with colours, fonts, and apply_style() helper
 
 ### Brand assets
-The Forethought brand guidelines PDF and graphic assets are located at:
-```
-/Users/ph/Documents/Projects/2025-09-forethought-ai-uplift/assets/brand-assets/
-```
-
-This includes SVG illustrations in the distinctive orange line-art style that can be used as reference or incorporated into designs.
+The Forethought brand guidelines PDF and graphic assets are stored in the shared Google Drive. Ask your team for access if needed. These include SVG illustrations in the distinctive orange line-art style that can be used as reference or incorporated into designs.
