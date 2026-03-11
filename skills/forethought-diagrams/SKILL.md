@@ -11,6 +11,23 @@ Create on-brand diagrams and figures using Forethought's brand colours, typograp
 
 For data visualisations and publication figures, use Python with the Forethought style module.
 
+### Environment setup (run once per machine)
+
+Install `matplotlib` and `numpy` into a dedicated virtual environment — do not install them globally.
+
+```bash
+python3 -m venv ~/.local/share/forethought-diagrams/.venv
+~/.local/share/forethought-diagrams/.venv/bin/pip install matplotlib numpy
+```
+
+**Check if already set up:** `~/.local/share/forethought-diagrams/.venv/bin/python -c "import matplotlib; print('ok')"` — if this prints `ok`, skip ahead.
+
+When running chart scripts, always use the venv Python:
+
+```bash
+~/.local/share/forethought-diagrams/.venv/bin/python my_chart.py
+```
+
 ### Font check (run before generating any chart)
 
 Before creating any matplotlib figure, check that the Forethought brand fonts are installed:
