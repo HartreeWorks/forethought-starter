@@ -241,11 +241,14 @@ python3 ~/.claude/skills/forethought-diagrams/scripts/preview_in_article.py figu
 
 ## Brand specifications (quick reference)
 
-### Background (REQUIRED)
+### Background (CRITICAL)
 
-**Always use:** `#FBFAF4` (Off-white)
+**Every figure must have `#FBFAF4` (Off-white) as its background — both the figure and all axes.**
 
-Never use transparent backgrounds. Never use pure white (#FFFFFF).
+- `apply_style()` handles this automatically for both figure and axes facecolor.
+- Never use transparent backgrounds. Never use pure white (#FFFFFF).
+- When creating figures, always pass `facecolor=COLORS['background']` to `plt.subplots()` as a safeguard.
+- The `savefig()` helper also enforces this at save time.
 
 ### Colours
 

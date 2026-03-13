@@ -167,7 +167,8 @@ def apply_style(
         ax.plot(x, y, color=COLORS['highlight'])
         apply_style(ax, title='Distribution', xlabel='Value', hide_y_labels=True)
     """
-    # Background
+    # Background — set on BOTH figure and axes so the off-white is never missed
+    ax.figure.set_facecolor(COLORS['background'])
     ax.set_facecolor(COLORS['background'])
 
     # Minimal spines - only left and bottom (Tufte style)
