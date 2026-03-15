@@ -116,6 +116,28 @@ The style module (`scripts/forethought_style.py`) provides:
 - **Signifier Light/Medium** (.otf) — Serif, used for axis labels and tick labels
 - **TT Hoves Pro Regular/Medium** (.otf) — Sans-serif, used for titles
 
+### Avoiding mathtext for correct font rendering
+
+Matplotlib's mathtext renderer (`$...$`) **ignores `fontproperties`** and uses its own font config (`rcParams['mathtext.fontset']`). Setting `rcParams['mathtext.rm'] = 'TT Hoves Pro'` does not reliably resolve to the installed font file — mathtext will silently fall back to DejaVu Sans.
+
+**The fix: avoid mathtext entirely.** Use plain text with `fontproperties=FONTS[...]` for all labels. For subscripts and superscripts:
+
+**Subscripts** — use two text elements with offset:
+```python
+# "v" with subscript "CSE" in TT Hoves
+ax.text(x, y, 'v', fontsize=14, fontproperties=FONTS['label_medium'], color=color)
+ax.annotate('CSE', xy=(x, y), xytext=(8, -5), textcoords='offset points',
+            fontsize=10, fontproperties=FONTS['label_medium'], color=color)
+```
+
+**Superscripts in tick labels** — use Unicode:
+```python
+SUP = str.maketrans('-0123456789', '\u207b\u2070\u00b9\u00b2\u00b3\u2074\u2075\u2076\u2077\u2078\u2079')
+ax.set_xticklabels(['10' + str(n).translate(SUP) for n in [5, 10, 15, 20]])
+```
+
+**Note:** Signifier does not include `≈` (U+2248) or Unicode modifier letters (ᶜ, ˢ, ᵉ). Stick to ASCII or basic Unicode superscript digits.
+
 ### Key patterns
 
 **Area under curve (distributions):**
